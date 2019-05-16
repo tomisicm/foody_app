@@ -1,17 +1,17 @@
 <template>
   <b-row>
     <b-col cols="10">
+      <b-navbar>
       <b-nav class="navbar-dark" align="left" tabs>
-        <b-nav-item active>
-          <router-link class="nav-item" :to="{ name: 'home'}">Dashboard</router-link>
-        </b-nav-item>
-        <b-nav-item>
-          <router-link class="nav-item" :to="{ name: 'reviews'}">Reviews</router-link>
-        </b-nav-item>
+        <b-nav-item exact :to="{ name: 'home'}">Dashboard</b-nav-item>
+        <b-nav-item :to="{ name: 'reviews'}">Reviews</b-nav-item>
+        <b-nav-item :to="{ name: 'reviews'}">Reviewers</b-nav-item>
       </b-nav>
+      </b-navbar>
     </b-col>
 
     <b-col cols="2">
+      <b-navbar>
       <b-nav class="navbar-dark" align="right" tabs>
         <template v-if="!user">
           <b-nav-item-dropdown
@@ -33,6 +33,7 @@
           </b-nav-item-dropdown>
         </template>
       </b-nav>
+      </b-navbar>
     </b-col>
   </b-row>
 </template>
