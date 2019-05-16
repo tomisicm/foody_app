@@ -9,11 +9,13 @@ export default new Router({
     {
       path: '/',
       name: 'home',
+      props: true,
       component: Home
     },
     {
       path: '/reviews',
       name: 'reviews',
+      props: true,
       component: Home
     },
     {
