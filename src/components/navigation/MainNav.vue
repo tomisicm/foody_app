@@ -12,7 +12,7 @@
     </b-col>
 
     <b-col cols="2">
-      <b-nav class="navbar-dark" align="right">
+      <b-nav class="navbar-dark" align="right" tabs>
         <template v-if="!user">
           <b-nav-item-dropdown
             text="User"
@@ -36,6 +36,8 @@
     </b-col>
 
   </b-row>
+
+  </div>
 </template>
 
 <script>
