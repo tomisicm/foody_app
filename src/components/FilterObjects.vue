@@ -21,6 +21,18 @@
         </multiselect>
       </div>
 
+      <div class="form-row">
+        <label class="w-100" id="categories">Categories:</label>
+        <div class="form-group col-md-6">
+          <input type="checkbox" id="food" value="food" v-model="checkedCategories">
+          <label for="food">Food</label>
+        </div>
+        <div class="form-group col-md-6">
+          <input type="checkbox" id="drink" value="drink" v-model="checkedCategories">
+          <label for="drink">Drinks</label>
+        </div>
+      </div>
+
     </form>
   </div>
 </template>
@@ -31,14 +43,12 @@ export default {
   data () {
     return {
       options: [
-        { name: 'Vue.js', category: 'Front-end' },
-        { name: 'Adonis', category: 'Backend' },
-        { name: 'Rails', category: 'Backend' },
-        { name: 'Sinatra', category: 'Backend' },
-        { name: 'Laravel', category: 'Backend' },
-        { name: 'Phoenix', category: 'Backend' }
+        { name: 'Diner', category: 'Front-end' },
+        { name: 'Restaurant', category: 'Backend' },
+        { name: 'Vine Cellar', category: 'Backend' }
       ],
-      value: []
+      value: [],
+      checkedCategories: []
     }
   },
 
