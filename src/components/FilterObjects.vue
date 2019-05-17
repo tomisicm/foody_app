@@ -33,6 +33,11 @@
         </div>
       </div>
 
+      <div class="form-row">
+        <label class="w-100" id="rating">Selected rating: {{ratingRange[0]}} - {{ratingRange[1]}}</label>
+        <vueslider class="w-100" v-model="ratingRange" :min=0 :max=10 :interval=0.1  />
+      </div>
+
     </form>
   </div>
 </template>
@@ -48,7 +53,8 @@ export default {
         { name: 'Vine Cellar', category: 'Backend' }
       ],
       value: [],
-      checkedCategories: []
+      checkedCategories: [],
+      ratingRange: [0, 10]
     }
   },
 
