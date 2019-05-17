@@ -1,0 +1,40 @@
+{
+  "objects": [
+    {
+      "id": 12312412332424,
+      "name": "At the edge",
+      "ciry": "Novi Sad",
+      "street": "Bulevar",
+      "streetNo": 19,
+      "type": ["inn", "hotel"],
+      "rating": 4
+    },
+    {
+      "id": 12312412332421,
+      "name": "At the edge",
+      "ciry": "Novi Sad",
+      "street": "Bulevar",
+      "streetNo": 19,
+      "type": ["inn", "hotel"],
+      "rating": 4
+    },
+    {
+      "id": 12312412332423,
+      "name": "At the edge",
+      "ciry": "Novi Sad",
+      "street": "Bulevar",
+      "streetNo": 19,
+      "type": ["inn", "hotel"],
+      "rating": 4
+    },
+    {
+      "id": 12312412232423,
+      "name": "At the edge",
+      "ciry": "Novi Sad",
+      "street": "Bulevar",
+      "streetNo": 19,
+      "type": ["inn", "hotel"],
+      "rating": 4
+    }
+  ]
+}
