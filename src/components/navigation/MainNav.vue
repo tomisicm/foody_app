@@ -48,11 +48,6 @@ export default {
       ],
       user: null
     }
-  },
-
-  mounted () {
-    console.log(this.$route.path)
   }
-
 }
 </script>
