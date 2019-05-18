@@ -8,7 +8,8 @@
       "streetNo": 19,
       "type": ["inn", "hotel"],
       "rating": 4,
-      "categories": ["drink"]
+      "categories": ["drink"],
+      "rating": 3
     },
     {
       "id": 12312412332421,
@@ -18,7 +19,8 @@
       "streetNo": 19,
       "type": ["inn", "hotel"],
       "rating": 4,
-      "categories": ["food", "drink"]
+      "categories": ["food", "drink"],
+      "rating": 3
     },
     {
       "id": 12312412332423,
@@ -28,7 +30,8 @@
       "streetNo": 19,
       "type": ["inn", "hotel"],
       "rating": 2,
-      "categories": ["drink"]
+      "categories": ["drink"],
+      "rating": 3
     },
     {
       "id": 12312412232423,
@@ -38,7 +41,8 @@
       "streetNo": 19,
       "type": ["inn", "hotel"],
       "rating": 5,
-      "categories": ["food"]
+      "categories": ["food"],
+      "rating": 3
     }
   ]
 }
