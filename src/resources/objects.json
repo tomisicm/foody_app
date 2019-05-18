@@ -7,7 +7,8 @@
       "street": "Bulevar",
       "streetNo": 19,
       "type": ["inn", "hotel"],
-      "rating": 4
+      "rating": 4,
+      "categories": ["drink"]
     },
     {
       "id": 12312412332421,
@@ -16,7 +17,8 @@
       "street": "Bulevar",
       "streetNo": 19,
       "type": ["inn", "hotel"],
-      "rating": 4
+      "rating": 4,
+      "categories": ["food", "drink"]
     },
     {
       "id": 12312412332423,
@@ -25,7 +27,8 @@
       "street": "Bulevar",
       "streetNo": 19,
       "type": ["inn", "hotel"],
-      "rating": 4
+      "rating": 2,
+      "categories": ["drink"]
     },
     {
       "id": 12312412232423,
@@ -34,7 +37,8 @@
       "street": "Bulevar",
       "streetNo": 19,
       "type": ["inn", "hotel"],
-      "rating": 4
+      "rating": 5,
+      "categories": ["food"]
     }
   ]
 }

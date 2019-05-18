@@ -1,10 +1,16 @@
 <template>
   <div class="text-align:left">
-    <form>
+    <form v-on:submit.prevent>
       Filter the Objects:
       <div class="form-row">
         <label for="city">City:</label>
-        <input type="text" class="form-control" id="city" aria-describedby="city" placeholder="Enter city">
+        <input v-model="city" type="text" class="form-control" id="city" aria-describedby="city" placeholder="Enter city">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-row">
+        <label for="street">Street:</label>
+        <input v-model="street" type="text" class="form-control" id="street" aria-describedby="street" placeholder="Enter city">
         <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
       </div>
 
@@ -38,6 +44,11 @@
         <vueslider class="w-100" v-model="ratingRange" :min=0 :max=10 :interval=0.1  />
       </div>
 
+      <div class="form-row">
+        <button>Clear</button>
+        <button type="submit" v-on:click="onSubmit()">Search</button>
+      </div>
+
     </form>
   </div>
 </template>
@@ -52,9 +63,27 @@ export default {
         { name: 'Restaurant', category: 'Backend' },
         { name: 'Vine Cellar', category: 'Backend' }
       ],
+      city: '',
+      street: '',
       value: [],
       checkedCategories: [],
       ratingRange: [0, 10]
+    }
+  },
+
+  methods: {
+    onSubmit () {
+      console.log(this.getFilter())
+    },
+
+    getFilter () {
+      return {
+        street: this.street,
+        city: this.city,
+        categories: this.checkedCategories,
+        ratingRange: this.ratingRange,
+        type: this.value
+      }
     }
   },
 
