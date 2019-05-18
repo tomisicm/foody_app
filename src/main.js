@@ -10,7 +10,6 @@ import 'vue-multiselect/dist/vue-multiselect.min.css'
 import 'vue-slider-component/theme/default.css'
 
 import BootstrapVue from 'bootstrap-vue'
-
 import multiselect from 'vue-multiselect'
 import vueslider from 'vue-slider-component'
 
