@@ -20,10 +20,11 @@
           v-model="value"
           :options="options"
           :multiple="true"
-          placeholder="Type to search"
           track-by="name"
-          label="name">
-            <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
+          label="name"
+          placeholder="Type to search"
+        >
+          <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
         </multiselect>
       </div>
 

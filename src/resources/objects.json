@@ -9,7 +9,8 @@
       "type": ["inn", "hotel"],
       "rating": 4,
       "categories": ["drink"],
-      "rating": 3
+      "rating": 3,
+      "owner": "Djura Jaksic"
     },
     {
       "id": 12312412332421,
@@ -20,7 +21,8 @@
       "type": ["inn", "hotel"],
       "rating": 4,
       "categories": ["food", "drink"],
-      "rating": 3
+      "rating": 3,
+      "owner": "Momcilo Bajaga"
     },
     {
       "id": 12312412332423,
@@ -31,7 +33,8 @@
       "type": ["inn", "hotel"],
       "rating": 2,
       "categories": ["drink"],
-      "rating": 3
+      "rating": 3,
+      "owner": "Nikola Djuricko"
     },
     {
       "id": 12312412232423,
@@ -42,7 +45,8 @@
       "type": ["inn", "hotel"],
       "rating": 5,
       "categories": ["food"],
-      "rating": 3
+      "rating": 3,
+      "owner": "Nikola Pekovic"
     }
   ]
 }
