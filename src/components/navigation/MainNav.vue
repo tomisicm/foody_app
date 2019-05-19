@@ -4,6 +4,7 @@
       <b-navbar>
       <b-nav class="navbar-dark" align="left" tabs>
         <b-nav-item exact :to="{ name: 'home'}">Dashboard</b-nav-item>
+        <b-nav-item exact :to="{ name: 'dashboard'}">Dashboard</b-nav-item>
         <b-nav-item :to="{ name: 'reviews'}">Reviews</b-nav-item>
         <b-nav-item :to="{ name: 'reviews'}">Reviewers</b-nav-item>
       </b-nav>
