@@ -18,8 +18,12 @@
             text="User"
             right
           >
-            <b-dropdown-item>Login</b-dropdown-item>
-            <b-dropdown-item>Register</b-dropdown-item>
+            <b-dropdown-item>
+              <b-nav-item :to="{ name: 'signin'}">Signin</b-nav-item>
+            </b-dropdown-item>
+            <b-dropdown-item>
+              <b-nav-item :to="{ name: 'register'}">Register</b-nav-item>
+            </b-dropdown-item>
           </b-nav-item-dropdown>
         </template>
 
@@ -42,10 +46,6 @@
 export default {
   data () {
     return {
-      routes: [
-        { label: 'Dashboard', to: { name: 'home' } },
-        { label: 'Reviews', to: { name: 'reviews' } }
-      ],
       user: null
     }
   }
