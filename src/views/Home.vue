@@ -6,7 +6,12 @@
       </b-col>
 
       <b-col cols="8">
-        <baseTable :items="items" :fields="fields"/>
+        <b-table
+          :items="items"
+          :fields="fields"
+          striped
+          hover
+        />
       </b-col>
   </b-row>
   </b-container>
@@ -14,7 +19,6 @@
 
 <script>
 import FilterObjects from '@/components/FilterObjects'
-import baseTable from '@/components/base/baseTable'
 
 export default {
   name: 'home',
@@ -69,6 +73,6 @@ export default {
     }
   },
 
-  components: { FilterObjects, baseTable }
+  components: { FilterObjects }
 }
 </script>

@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import VeeValidate from 'vee-validate'
+
 import App from './App.vue'
 import router from './router/index'
 import store from './store'
@@ -17,6 +19,10 @@ Vue.use(BootstrapVue)
 
 Vue.component('multiselect', multiselect)
 Vue.component('vueslider', vueslider)
+Vue.use(VeeValidate, {
+  inject: true,
+  fieldsBagName: 'veeFields'
+})
 
 Vue.config.productionTip = false
 
