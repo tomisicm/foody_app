@@ -2,10 +2,7 @@
   <b-container>
     <h2>Signin</h2>
 
-    <b-row class="text-center">
-
-    <b-col></b-col>
-    <b-col cols="8">
+    <b-row cols="8" class="justify-content-md-center text-center">
       <form v-on:submit.prevent>
         <div class="form-row">
           <label for="email">Email:</label>
@@ -27,10 +24,7 @@
           <button class="btn btn-primary">Submit</button>
         </div>
       </form>
-    </b-col>
-    <b-col></b-col>
-  </b-row>
-
+    </b-row>
   </b-container>
 </template>
 
