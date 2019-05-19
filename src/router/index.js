@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import AppAuth from '../views/AppAuth'
+import AppLogin from '../views/AppLogin'
+import AppRegister from '../views/AppRegister'
+
 import Home from '../views/Home'
 import Facility from '../views/Facility'
 import Review from '../views/Review'
@@ -13,16 +18,22 @@ export default new Router({
       path: '/',
       name: 'home',
       props: true,
-      component: Home
+      component: AppAuth,
+      children: [
+        {
+          name: 'login',
+          path: 'login',
+          component: AppLogin
+        },
+        {
+          name: 'register',
+          path: 'register',
+          component: AppRegister
+        }
+      ]
     },
     {
-      path: '/',
-      name: 'home',
-      props: true,
-      component: Home
-    },
-    {
-      path: '/',
+      path: '/dashboard',
       name: 'home',
       props: true,
       component: Home
