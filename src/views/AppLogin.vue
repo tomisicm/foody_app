@@ -36,7 +36,7 @@
             <small class="form-text text-muted">{{ errors.first('password') }}</small>
           </div>
           <div class="form-row my-4">
-            <button class="btn btn-primary">Signin</button>
+            <button class="btn btn-primary" @click="onSubmit">Signin</button>
           </div>
         </form>
       </b-col>
@@ -46,20 +46,27 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   data () {
     return {
       form: {
         email: '',
-        password: '',
+        password: ''
       }
     }
   },
 
   methods: {
-
+    ...mapActions(['login']),
+    onSubmit () {
+      try {
+        this.login(this.form)
+      } catch (e) {
+        console.log(e)
+      }
+    }
   }
-
 }
 </script>

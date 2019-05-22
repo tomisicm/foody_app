@@ -3,7 +3,7 @@ import VeeValidate from 'vee-validate'
 
 import App from './App.vue'
 import router from './router/index'
-import store from './store'
+import store from './utils/store'
 import './registerServiceWorker'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
