@@ -2,10 +2,11 @@ import http from './http-service'
 
 class AuthService {
   login (email, password) {
-    return http.post('/signin', {
-      email,
-      password
-    })
+    return http
+      .post('/signin', {
+        email,
+        password
+      })
       .then(response => {
         this.loggingIn(response.data)
         return response
@@ -13,11 +14,12 @@ class AuthService {
   }
 
   register ({ name, email, password }) {
-    return http.post('/signup', {
-      name,
-      email,
-      password
-    })
+    return http
+      .post('/signup', {
+        name,
+        email,
+        password
+      })
       .then(({ data }) => {
         this.loggingIn(data)
         return data
@@ -41,7 +43,7 @@ class AuthService {
       delete http.defaults.headers.common['authorization']
       return
     }
-    return http.defaults.headers.common['authorization'] = `Bearer ${token}`
+    return (http.defaults.headers.common['authorization'] = `Bearer ${token}`)
   }
 
   loggingIn (data) {
@@ -52,7 +54,7 @@ class AuthService {
   }
 }
 
-const checkToken = (service) => {
+const checkToken = service => {
   let token = localStorage.getItem('token')
 
   if (token) {

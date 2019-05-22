@@ -53,7 +53,6 @@ export default {
       form: {
         email: '',
         password: '',
-        passwordConfirm: ''
       }
     }
   },
