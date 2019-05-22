@@ -47,11 +47,10 @@ const actions = {
   }
 }
 const getters = {
-  getUser: state => state.user,
-  getErrors: state => state.errors
+  getUser: state => state.user
 }
 
-export const document = {
+export const authStore = {
   namespaced: true,
   state,
   actions,

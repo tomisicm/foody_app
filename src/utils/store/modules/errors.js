@@ -27,7 +27,7 @@ const getters = {
   errors: state => state.errors
 }
 
-export const errors = {
+export const errorsStore = {
   namespaced: true,
   state,
   actions,
