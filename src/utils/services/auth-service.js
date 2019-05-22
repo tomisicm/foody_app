@@ -11,6 +11,9 @@ class AuthService {
         this.loggingIn(response.data)
         return response
       })
+      .catch(error => {
+        throw error
+      })
   }
 
   register ({ name, email, password }) {

@@ -23,18 +23,21 @@ const mutations = {
 const actions = {
   async login ({ commit }, { email, password }) {
     try {
-      const { data } = await authService.login(email, password)
-      commit('SET_DATA', data)
-
-      router.push({ name: 'home' })
-    } catch (e) {}
+      const response = await authService.login(email, password)
+      commit('SET_DATA', response)
+    } catch (error) {
+      throw error
+    }
   },
+
   async register ({ commit }, user) {
     try {
       commit('SET_DATA', await authService.register(user))
-      router.push({ name: 'login' })
-    } catch (e) {}
+    } catch (e) {
+      throw e
+    }
   },
+
   async logout ({ commit }) {
     authService
       .logout()
@@ -46,6 +49,7 @@ const actions = {
       })
   }
 }
+
 const getters = {
   getUser: state => state.user
 }

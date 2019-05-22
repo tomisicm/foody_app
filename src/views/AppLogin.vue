@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -59,14 +59,20 @@ export default {
   },
 
   methods: {
-    ...mapActions(['login']),
-    onSubmit () {
+    ...mapActions('authStore', ['login']),
+    ...mapActions('errorsStore', ['handleError', 'clearErrors']),
+    async onSubmit () {
       try {
-        this.login(this.form)
+        await this.login(this.form)
       } catch (e) {
-        console.log(e)
+        console.log('is this exec')
+        this.handleError(e)
       }
     }
+  },
+
+  computed: {
+    ...mapGetters('errors', ['errors'])
   }
 }
 </script>
