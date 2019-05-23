@@ -18,7 +18,7 @@
               aria-describedby="email"
               placeholder="Enter email"
             >
-            <small class="form-text text-muted">{{ errors.first('email') }} {{ firstError('email') }}</small>
+            <small class="form-text text-danger">{{ errors.first('email') || firstError('email') }}</small>
           </div>
 
           <div class="form-row">
@@ -33,7 +33,7 @@
               aria-describedby="password"
               placeholder="Enter password"
             >
-            <small class="form-text text-muted">{{ errors.first('password') }}  {{ firstError('password') }}</small>
+            <small class="form-text text-danger">{{ errors.first('password') || firstError('password') }}</small>
           </div>
           <div class="form-row my-4">
             <button class="btn btn-primary" @click="onSubmit">Signin</button>
@@ -82,6 +82,16 @@ export default {
 
   computed: {
     ...mapGetters('errorsStore', ['firstError', 'hasErrors'])
+  },
+
+  watch: {
+    'form.email' (value) {
+      this.clearErrors('email')
+    },
+
+    'form.password' (value) {
+      this.clearErrors('password')
+    }
   }
 }
 </script>
