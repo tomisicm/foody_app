@@ -1,5 +1,5 @@
 import authService from '@/utils/services/auth-service'
-import router from '@/router'
+import _ from 'lodash'
 
 const getUserFromLocalStorage = () => {
   const user = localStorage.getItem('user')
@@ -8,7 +8,7 @@ const getUserFromLocalStorage = () => {
 
 function getInitialState () {
   return {
-    user: getUserFromLocalStorage()
+    user: getUserFromLocalStorage() || null
   }
 }
 
@@ -23,8 +23,10 @@ const mutations = {
 const actions = {
   async login ({ commit }, { email, password }) {
     try {
-      const response = await authService.login(email, password)
-      commit('SET_DATA', response)
+      // const response =
+      await authService.login(email, password)
+
+      commit('SET_DATA', getUserFromLocalStorage())
     } catch (error) {
       throw error
     }
@@ -39,19 +41,15 @@ const actions = {
   },
 
   async logout ({ commit }) {
-    authService
-      .logout()
-      .then(() => {
-        commit('SET_DATA', { user: null })
-      })
-      .then(() => {
-        router.push({ name: 'login' })
-      })
+    authService.logout().then(() => {
+      commit('SET_DATA', { user: null })
+    })
   }
 }
 
 const getters = {
-  getUser: state => state.user
+  user: state => state.user,
+  isSignedIn: state => !_.isNull(state.user)
 }
 
 export const authStore = {

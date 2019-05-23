@@ -9,7 +9,7 @@ class AuthService {
       })
       .then(response => {
         this.loggingIn(response.data)
-        return response
+        // return response
       })
       .catch(error => {
         throw error

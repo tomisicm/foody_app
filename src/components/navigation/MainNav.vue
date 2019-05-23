@@ -14,7 +14,7 @@
     <b-col cols="2">
       <b-navbar>
       <b-nav class="navbar-dark" align="right" tabs>
-        <template v-if="!user">
+        <template v-if="!isSignedIn">
           <b-nav-item-dropdown
             text="User"
             right
@@ -33,8 +33,8 @@
             text="User"
             right
           >
-            <b-dropdown-item> {{user}} </b-dropdown-item>
-            <b-dropdown-item>Profile</b-dropdown-item>
+            <b-dropdown-item>Profile Settings</b-dropdown-item>
+            <b-dropdown-item>Signout</b-dropdown-item>
           </b-nav-item-dropdown>
         </template>
       </b-nav>
@@ -44,11 +44,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  data () {
-    return {
-      user: null
-    }
+  computed: {
+    ...mapGetters('authStore', ['isSignedIn'])
   }
 }
 </script>
