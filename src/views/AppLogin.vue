@@ -33,7 +33,7 @@
               aria-describedby="password"
               placeholder="Enter password"
             >
-            <small class="form-text text-muted">{{ errors.first('password') }}</small>
+            <small class="form-text text-muted">{{ errors.first('password') }}  {{ firstError('password') }}</small>
           </div>
           <div class="form-row my-4">
             <button class="btn btn-primary" @click="onSubmit">Signin</button>
@@ -75,13 +75,13 @@ export default {
         newError[errorKey] = errorMsg
 
         await this.handleError(newError)
-        console.log(this.$store.getters)
+        console.log(this.$store.getters['errorsStore/errors'])
       }
     }
   },
 
   computed: {
-    ...mapGetters('errorsStore', ['firstError'])
+    ...mapGetters('errorsStore', ['firstError', 'hasErrors'])
   }
 }
 </script>
