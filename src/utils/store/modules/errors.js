@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 function getInitialState () {
   return {
     errors: {}
@@ -8,8 +10,7 @@ const state = getInitialState()
 
 const actions = {
   handleError ({ commit }, error) {
-    const { data } = error.response
-    commit('SET_ERRORS', data.errors)
+    commit('SET_ERRORS', error)
   }
 }
 
@@ -24,7 +25,10 @@ const mutations = {
 }
 
 const getters = {
-  errors: state => state.errors
+  errors: state => state.errors,
+  hasErrors: (state, getters) => field => !!getters.errors[field],
+  firstError: (state, getters) => field =>
+    getters.hasErrors(field) ? _.first(getters.errors[field]) : ''
 }
 
 export const errorsStore = {

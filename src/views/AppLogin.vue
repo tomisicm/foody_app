@@ -18,7 +18,7 @@
               aria-describedby="email"
               placeholder="Enter email"
             >
-            <small class="form-text text-muted">{{ errors.first('email') }}</small>
+            <small class="form-text text-muted">{{ errors.first('email') }} {{ firstError('email') }}</small>
           </div>
 
           <div class="form-row">
@@ -64,15 +64,24 @@ export default {
     async onSubmit () {
       try {
         await this.login(this.form)
-      } catch (e) {
-        console.log('is this exec')
-        this.handleError(e)
+      } catch (error) {
+        // TODO: refractor and clear noise
+        const { response } = error
+
+        const errorMsg = response.data.message
+        const errorKey = response.data.context.key
+
+        let newError = {}
+        newError[errorKey] = errorMsg
+
+        await this.handleError(newError)
+        console.log(this.$store.getters)
       }
     }
   },
 
   computed: {
-    ...mapGetters('errors', ['errors'])
+    ...mapGetters('errorsStore', ['firstError'])
   }
 }
 </script>
