@@ -65,7 +65,6 @@ export default {
       try {
         await this.login(this.form)
       } catch (error) {
-        
         // TODO: refractor and clear noise
         const { response } = error
 
