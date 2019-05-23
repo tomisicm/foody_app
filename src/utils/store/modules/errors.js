@@ -38,7 +38,7 @@ const getters = {
   errors: state => state.errors,
   hasErrors: (state, getters) => field => !!getters.errors[field],
   firstError: (state, getters) => field =>
-    getters.hasErrors(field) ? getters.errors['email'] : ''
+    getters.hasErrors(field) ? getters.errors[field] : ''
 }
 
 export const errorsStore = {

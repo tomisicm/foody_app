@@ -65,17 +65,18 @@ export default {
       try {
         await this.login(this.form)
       } catch (error) {
+        
         // TODO: refractor and clear noise
         const { response } = error
 
         const errorMsg = response.data.message
-        const errorKey = response.data.context.key
+        const errorKey = response.data.context ? response.data.context.key : 'email'
 
         let newError = {}
         newError[errorKey] = errorMsg
 
         await this.handleError(newError)
-        console.log(this.$store.getters['errorsStore/errors'])
+        // console.log(this.$store.getters['errorsStore/errors'])
       }
     }
   },
