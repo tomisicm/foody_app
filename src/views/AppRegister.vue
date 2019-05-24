@@ -53,7 +53,8 @@
             <button
               :disabled="!readyForSubmition"
               class="btn btn-primary"
-              @click="!!handleRegister">Register</button>
+              @click="handleRegister">Register
+            </button>
           </div>
         </form>
       </b-col>

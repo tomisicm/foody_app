@@ -18,7 +18,6 @@ export default new Router({
     {
       path: '/',
       name: 'auth',
-      props: true,
       component: AppAuth,
       children: [
         {
@@ -36,7 +35,6 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      props: true,
       component: AppLanding
     },
     {

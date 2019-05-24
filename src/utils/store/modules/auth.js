@@ -1,5 +1,6 @@
 import authService from '@/utils/services/auth-service'
 import _ from 'lodash'
+import router from '@/router'
 
 const getUserFromLocalStorage = () => {
   const user = localStorage.getItem('user')
@@ -27,6 +28,7 @@ const actions = {
       await authService.login(email, password)
 
       commit('SET_DATA', getUserFromLocalStorage())
+      router.push({ path: '/home' })
     } catch (error) {
       throw error
     }
@@ -38,6 +40,7 @@ const actions = {
         'SET_DATA',
         await authService.register(email, password, passwordConfirm)
       )
+      router.push({ name: 'signin' })
     } catch (e) {
       throw e
     }

@@ -36,7 +36,13 @@
             <small class="form-text text-danger">{{ errors.first('password') || firstError('password') }}</small>
           </div>
           <div class="form-row my-4">
-            <button :disabled="!readyForSubmition" class="btn btn-primary" @click="handleLogin">Signin</button>
+            <button
+              @click="handleLogin"
+              :disabled="!readyForSubmition"
+              class="btn btn-primary"
+            >
+              Signin
+            </button>
           </div>
         </form>
       </b-col>
