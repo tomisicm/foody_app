@@ -32,9 +32,12 @@ const actions = {
     }
   },
 
-  async register ({ commit }, user) {
+  async register ({ commit }, { email, password, passwordConfirm }) {
     try {
-      commit('SET_DATA', await authService.register(user))
+      commit(
+        'SET_DATA',
+        await authService.register(email, password, passwordConfirm)
+      )
     } catch (e) {
       throw e
     }

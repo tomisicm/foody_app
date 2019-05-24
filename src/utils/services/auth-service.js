@@ -16,18 +16,19 @@ class AuthService {
       })
   }
 
-  register ({ name, email, password }) {
+  register (email, password, passwordConfirm) {
     return http
       .post('/signup', {
-        name,
         email,
-        password
+        password,
+        passwordConfirm
       })
-      .then(({ data }) => {
-        this.loggingIn(data)
-        return data
+      .then(response => {
+        // console.log(response)
       })
-      .catch(error => Promise.reject(error.response.data.errors))
+      .catch(error => {
+        throw error
+      })
   }
 
   logout () {

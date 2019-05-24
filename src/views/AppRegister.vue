@@ -18,7 +18,7 @@
               aria-describedby="email"
               placeholder="Enter email"
             >
-            <small id="emailHelp" class="form-text text-muted">{{ errors.first('email') }}</small>
+            <small class="form-text text-danger">{{ errors.first('email') || firstError('email') }}</small>
           </div>
 
           <div class="form-row">
@@ -33,7 +33,7 @@
               aria-describedby="password"
               placeholder="Enter password"
             >
-            <small class="form-text text-muted">{{ errors.first('password') }}</small>
+            <small class="form-text text-danger">{{ errors.first('password') || firstError('password') }}</small>
           </div>
           <div class="form-row">
             <label for="email">Confirm password:</label>
@@ -47,10 +47,10 @@
               aria-describedby="passwordConfirm"
               placeholder="Confirm password"
             >
-            <small class="form-text text-muted">{{ errors.first('passwordConfirm') }}</small>
+            <small class="form-text text-danger">{{ errors.first('passwordConfirm') || firstError('passwordConfirm')}}</small>
           </div>
           <div class="form-row my-4">
-            <button class="btn btn-primary">Register</button>
+            <button class="btn btn-primary" @click="handleRegister">Register</button>
           </div>
         </form>
       </b-col>
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -73,7 +74,30 @@ export default {
   },
 
   methods: {
+    ...mapActions('authStore', ['register']),
+    ...mapActions('errorsStore', ['handleError', 'clearErrors']),
+    async handleRegister () {
+      try {
+        await this.register(this.form)
+      } catch (error) {
+        // TODO: refractor and clear noise
 
+        const { response } = error
+
+        const errorMsg = response.data.details[0].message
+        const errorKey = response.data.details[0].context.key
+
+        let newError = {}
+        newError[errorKey] = errorMsg
+
+        await this.handleError(newError)
+        console.log(this.$store.getters['errorsStore/errors'])
+      }
+    }
+  },
+
+  computed: {
+    ...mapGetters('errorsStore', ['firstError', 'hasErrors'])
   }
 
 }

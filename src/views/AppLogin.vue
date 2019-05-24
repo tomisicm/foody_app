@@ -36,7 +36,7 @@
             <small class="form-text text-danger">{{ errors.first('password') || firstError('password') }}</small>
           </div>
           <div class="form-row my-4">
-            <button class="btn btn-primary" @click="onSubmit">Signin</button>
+            <button class="btn btn-primary" @click="handleLogin">Signin</button>
           </div>
         </form>
       </b-col>
@@ -61,7 +61,7 @@ export default {
   methods: {
     ...mapActions('authStore', ['login']),
     ...mapActions('errorsStore', ['handleError', 'clearErrors']),
-    async onSubmit () {
+    async handleLogin () {
       try {
         await this.login(this.form)
       } catch (error) {
