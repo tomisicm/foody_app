@@ -4,14 +4,34 @@
       Filter the Objects:
       <div class="form-row">
         <label for="city">City:</label>
-        <input v-model="city" type="text" class="form-control" id="city" aria-describedby="city" placeholder="Enter city">
-        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        <input
+          v-model="city"
+          type="text"
+          class="form-control"
+          id="city"
+          aria-describedby="city"
+          placeholder="Enter city">
       </div>
 
       <div class="form-row">
         <label for="street">Street:</label>
-        <input v-model="street" type="text" class="form-control" id="street" aria-describedby="street" placeholder="Enter city">
-        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        <input v-model="street"
+          type="text"
+          class="form-control"
+          id="street"
+          aria-describedby="street"
+          placeholder="Enter street">
+      </div>
+
+      <div class="form-row">
+        <label for="streetNo">Street:</label>
+        <input
+          v-model="streetNo"
+          type="text"
+          class="form-control"
+          id="streetNo"
+          aria-describedby="streetNo"
+          placeholder="Enter street number">
       </div>
 
       <div class="form-row">
@@ -45,9 +65,9 @@
         <vueslider class="w-100" v-model="ratingRange" :min=0 :max=10 :interval=0.1  />
       </div>
 
-      <div class="form-row">
-        <button>Clear</button>
-        <button type="submit" v-on:click="onSubmit()">Search</button>
+      <div class="form-row my-4">
+        <button class="btn btn-primary mr-3" type="submit" v-on:click="onSubmit()">Search</button>
+        <button class="btn btn-outline-primary">Clear Filters</button>
       </div>
 
     </form>
@@ -66,6 +86,7 @@ export default {
       ],
       city: '',
       street: '',
+      streetNo: null,
       value: [],
       checkedCategories: [],
       ratingRange: [0, 10]
