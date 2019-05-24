@@ -35,7 +35,7 @@
       </div>
 
       <div class="form-row">
-        <label for="type">Object type:</label>
+        <label for="type">Origin:</label>
         <multiselect
           v-model="value"
           :options="options"
@@ -80,9 +80,10 @@ export default {
   data () {
     return {
       options: [
-        { name: 'Diner', category: 'Front-end' },
-        { name: 'Restaurant', category: 'Backend' },
-        { name: 'Vine Cellar', category: 'Backend' }
+        { name: 'Thai', category: 'Front-end' },
+        { name: 'Chinese', category: 'Backend' },
+        { name: 'Itallian', category: 'Backend' },
+        { name: 'Fast-food', category: 'Backend' }
       ],
       city: '',
       street: '',
