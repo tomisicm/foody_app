@@ -98,6 +98,20 @@ export default {
 
   computed: {
     ...mapGetters('errorsStore', ['firstError', 'hasErrors'])
+  },
+
+  watch: {
+    'form.email' (value) {
+      this.clearErrors('email')
+    },
+
+    'form.password' (value) {
+      this.clearErrors('password')
+    },
+
+    'form.passwordConfirm' (value) {
+      this.clearErrors('passwordConfirm')
+    }
   }
 
 }
