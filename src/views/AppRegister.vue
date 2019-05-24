@@ -50,7 +50,10 @@
             <small class="form-text text-danger">{{ errors.first('passwordConfirm') || firstError('passwordConfirm')}}</small>
           </div>
           <div class="form-row my-4">
-            <button class="btn btn-primary" @click="handleRegister">Register</button>
+            <button
+              :disabled="!readyForSubmition"
+              class="btn btn-primary"
+              @click="!!handleRegister">Register</button>
           </div>
         </form>
       </b-col>
@@ -61,6 +64,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import _ from 'lodash'
 
 export default {
   data () {
@@ -91,13 +95,18 @@ export default {
         newError[errorKey] = errorMsg
 
         await this.handleError(newError)
-        console.log(this.$store.getters['errorsStore/errors'])
+        // console.log(this.$store.getters['errorsStore/errors'])
       }
     }
   },
 
   computed: {
-    ...mapGetters('errorsStore', ['firstError', 'hasErrors'])
+    ...mapGetters('errorsStore', ['firstError', 'hasErrors']),
+
+    readyForSubmition () {
+      const { email, password, passwordConfirm } = this.form
+      return !_.isEmpty(email) && !_.isEmpty(password) && !_.isEmpty(passwordConfirm)
+    }
   },
 
   watch: {

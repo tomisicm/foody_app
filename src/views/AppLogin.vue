@@ -36,7 +36,7 @@
             <small class="form-text text-danger">{{ errors.first('password') || firstError('password') }}</small>
           </div>
           <div class="form-row my-4">
-            <button class="btn btn-primary" @click="handleLogin">Signin</button>
+            <button :disabled="!readyForSubmition" class="btn btn-primary" @click="handleLogin">Signin</button>
           </div>
         </form>
       </b-col>
@@ -47,6 +47,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import _ from 'lodash'
 
 export default {
   data () {
@@ -81,7 +82,12 @@ export default {
   },
 
   computed: {
-    ...mapGetters('errorsStore', ['firstError', 'hasErrors'])
+    ...mapGetters('errorsStore', ['firstError', 'hasErrors']),
+
+    readyForSubmition () {
+      const { email, password } = this.form
+      return !_.isEmpty(email) && !_.isEmpty(password)
+    }
   },
 
   watch: {
