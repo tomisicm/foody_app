@@ -87,6 +87,8 @@
 </template>
 
 <script>
+import cateringService from '@/utils/services/catering-service'
+
 import { mapGetters } from 'vuex'
 
 export default {
@@ -103,15 +105,17 @@ export default {
 
   methods: {
     onSubmit () {
-      console.log(this.getFilter())
+      cateringService.searchForCatering(this.getFilter())
     },
 
     getFilter () {
       return {
         name: this.name,
-        street: this.street,
-        streetNo: this.streetNo,
-        city: this.city,
+        address: {
+          city: this.city,
+          street: this.street,
+          streetNo: this.streetNo
+        },
         ratingRange: this.ratingRange,
         cuisine: this.selectedOptions.map(c => c.name)
       }
