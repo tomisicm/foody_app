@@ -3,66 +3,78 @@
     <form v-on:submit.prevent>
       Filter the Objects:
       <div class="form-row">
-        <label for="city">City:</label>
+        <label for="name" class="col-md-12 label">Name:</label>
+        <div class="col-md-12">
         <input
-          v-model="city"
+          v-model="name"
           type="text"
           class="form-control"
-          id="city"
-          aria-describedby="city"
-          placeholder="Enter city">
-      </div>
-
-      <div class="form-row">
-        <label for="street">Street:</label>
-        <input v-model="street"
-          type="text"
-          class="form-control"
-          id="street"
-          aria-describedby="street"
-          placeholder="Enter street">
-      </div>
-
-      <div class="form-row">
-        <label for="streetNo">Street:</label>
-        <input
-          v-model="streetNo"
-          type="text"
-          class="form-control"
-          id="streetNo"
-          aria-describedby="streetNo"
-          placeholder="Enter street number">
-      </div>
-
-      <div class="form-row">
-        <label for="type">Origin:</label>
-        <multiselect
-          v-model="value"
-          :options="options"
-          :multiple="true"
-          track-by="name"
-          label="name"
-          placeholder="Type to search"
+          id="name"
+          aria-describedby="name"
+          placeholder="Enter name"
         >
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="city" class="col-md-12 label">City:</label>
+        <div class="col-md-12">
+          <input
+            v-model="city"
+            type="text"
+            class="form-control"
+            id="city"
+            aria-describedby="city"
+            placeholder="Enter city"
+          >
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="street" class="col-md-12 label">Address:</label>
+        <div class="col-md-8">
+          <input v-model="street"
+            type="text"
+            class="form-control"
+            id="street"
+            aria-describedby="street"
+            placeholder="Street name"
+          >
+        </div>
+        <div class="col-md-4">
+          <input
+            v-model="streetNo"
+            type="text"
+            class="form-control"
+            id="streetNo"
+            aria-describedby="streetNo"
+            placeholder="Number"
+          >
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="col-md-12 label" for="type">Origin:</label>
+        <div class="col-md-12">
+          <multiselect
+            class="input-border"
+            v-model="value"
+            :options="options"
+            :multiple="true"
+            track-by="name"
+            label="name"
+            placeholder="Type to search"
+          >
           <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
         </multiselect>
-      </div>
-
-      <div class="form-row">
-        <label class="w-100" id="categories">Categories:</label>
-        <div class="form-group col-md-6">
-          <input type="checkbox" id="food" value="food" v-model="checkedCategories">
-          <label for="food">Food</label>
-        </div>
-        <div class="form-group col-md-6">
-          <input type="checkbox" id="drink" value="drink" v-model="checkedCategories">
-          <label for="drink">Drinks</label>
         </div>
       </div>
 
       <div class="form-row">
-        <label class="w-100" id="rating">Selected rating: {{ratingRange[0]}} - {{ratingRange[1]}}</label>
-        <vueslider class="w-100" v-model="ratingRange" :min=0 :max=10 :interval=0.1  />
+        <label class="col-md-12 label" id="rating">Selected rating: {{ratingRange[0]}} - {{ratingRange[1]}}</label>
+        <div class="col-md-12">
+          <vueslider class="w-100" v-model="ratingRange" :min=0 :max=10 :interval=0.1  />
+        </div>
       </div>
 
       <div class="form-row my-4">
@@ -85,11 +97,11 @@ export default {
         { name: 'Itallian', category: 'Backend' },
         { name: 'Fast-food', category: 'Backend' }
       ],
+      name: '',
       city: '',
       street: '',
       streetNo: null,
       value: [],
-      checkedCategories: [],
       ratingRange: [0, 10]
     }
   },
@@ -103,7 +115,6 @@ export default {
       return {
         street: this.street,
         city: this.city,
-        categories: this.checkedCategories,
         ratingRange: this.ratingRange,
         type: this.value
       }
@@ -113,3 +124,12 @@ export default {
   name: 'FilterObjects'
 }
 </script>
+
+<style>
+.label { 
+  text-align: left !important;
+}
+.multiselect__tags {
+  border: 1px solid #ced4da !important;
+}
+</style>
