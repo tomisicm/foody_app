@@ -59,7 +59,7 @@
           <multiselect
             class="input-border"
             v-model="selectedOptions"
-            :options="options"
+            :options="cuisine"
             :multiple="true"
             track-by="name"
             label="name"
@@ -87,18 +87,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
-  props: {
-    cuisine: {
-      type: Array,
-      required: true
-    }
-  },
-
   data () {
     return {
-      options: this.cuisine,
       selectedOptions: [],
       name: '',
       city: '',
@@ -111,7 +104,6 @@ export default {
   methods: {
     onSubmit () {
       console.log(this.getFilter())
-      console.log(this.cuisine)
     },
 
     getFilter () {
@@ -121,9 +113,13 @@ export default {
         streetNo: this.streetNo,
         city: this.city,
         ratingRange: this.ratingRange,
-        cuisine: this.selectedOptions
+        cuisine: this.selectedOptions.map(c => c.name)
       }
     }
+  },
+
+  computed: {
+    ...mapGetters('cuisineStore', ['cuisine'])
   },
 
   name: 'FilterObjects'
