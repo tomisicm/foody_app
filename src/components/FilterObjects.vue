@@ -58,7 +58,7 @@
         <div class="col-md-12">
           <multiselect
             class="input-border"
-            v-model="value"
+            v-model="selectedOptions"
             :options="options"
             :multiple="true"
             track-by="name"
@@ -99,11 +99,11 @@ export default {
   data () {
     return {
       options: this.cuisine,
+      selectedOptions: [],
       name: '',
       city: '',
       street: '',
       streetNo: null,
-      value: [],
       ratingRange: [0, 10]
     }
   },
@@ -116,10 +116,12 @@ export default {
 
     getFilter () {
       return {
+        name: this.name,
         street: this.street,
+        streetNo: this.streetNo,
         city: this.city,
         ratingRange: this.ratingRange,
-        type: this.value
+        cuisine: this.selectedOptions
       }
     }
   },
