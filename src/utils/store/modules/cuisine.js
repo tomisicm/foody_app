@@ -30,7 +30,7 @@ const getters = {
   cuisines: state => state.cuisines
 }
 
-export const authStore = {
+export const cuisineStore = {
   namespaced: true,
   state,
   actions,
