@@ -1,7 +1,7 @@
 <template>
   <div class="text-align:left">
     <form v-on:submit.prevent>
-      Filter the Objects:
+      Find cuisine:
       <div class="form-row">
         <label for="name" class="col-md-12 label">Name:</label>
         <div class="col-md-12">
@@ -98,12 +98,7 @@ export default {
 
   data () {
     return {
-      options: [
-        { name: 'Thai', category: 'Front-end' },
-        { name: 'Chinese', category: 'Backend' },
-        { name: 'Itallian', category: 'Backend' },
-        { name: 'Fast-food', category: 'Backend' }
-      ],
+      options: this.cuisine,
       name: '',
       city: '',
       street: '',
