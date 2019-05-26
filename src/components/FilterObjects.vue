@@ -89,6 +89,13 @@
 <script>
 
 export default {
+  props: {
+    cuisine: {
+      type: Array,
+      required: true
+    }
+  },
+
   data () {
     return {
       options: [
@@ -109,6 +116,7 @@ export default {
   methods: {
     onSubmit () {
       console.log(this.getFilter())
+      console.log(this.cuisine)
     },
 
     getFilter () {

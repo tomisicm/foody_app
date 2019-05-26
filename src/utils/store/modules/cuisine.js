@@ -9,7 +9,7 @@ function getInitialState () {
 const state = getInitialState()
 
 const mutations = {
-  SET_DATA (state, { cuisine }) {
+  SET_DATA (state, cuisine) {
     state.cuisine = cuisine
   }
 }

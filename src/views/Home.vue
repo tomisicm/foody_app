@@ -2,7 +2,7 @@
   <b-container>
     <b-row>
       <b-col cols="4">
-        <FilterObjects />
+        <FilterObjects :cuisine="cuisine"/>
       </b-col>
 
       <b-col cols="8">
@@ -85,10 +85,6 @@ export default {
 
   async created () {
     await this.$store.dispatch('cuisineStore/getCuisine')
-  },
-
-  mounted () {
-    console.log(this.cuisine)
   },
 
   components: { FilterObjects }
