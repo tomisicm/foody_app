@@ -18,7 +18,7 @@ const actions = {
   async getCuisine ({ commit }, page, perPage) {
     try {
       const cuisine = await cuisineService.getCuisine()
-      // console.log(cuisine)
+      console.log(cuisine)
       commit('SET_DATA', cuisine)
     } catch (error) {
       throw error

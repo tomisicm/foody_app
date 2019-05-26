@@ -79,8 +79,16 @@ export default {
     ...mapActions('cuisineStore', ['getCuisine'])
   },
 
-  created () {
-    this.$store.dispatch('cuisineStore/getCuisine')
+  computed: {
+    ...mapGetters('cuisineStore', ['cuisine'])
+  },
+
+  async created () {
+    await this.$store.dispatch('cuisineStore/getCuisine')
+  },
+
+  mounted () {
+    console.log(this.cuisine)
   },
 
   components: { FilterObjects }
