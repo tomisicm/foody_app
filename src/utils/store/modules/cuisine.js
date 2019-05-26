@@ -15,11 +15,11 @@ const mutations = {
 }
 
 const actions = {
-  async getCuisines ({ commit }, page, perPage) {
+  async getCuisine ({ commit }, page, perPage) {
     try {
-      const cuisines = await cuisineService.getCuisines()
-      console.log(cuisines)
-      commit('SET_DATA', cuisines)
+      const cuisine = await cuisineService.getCuisine()
+      // console.log(cuisine)
+      commit('SET_DATA', cuisine)
     } catch (error) {
       throw error
     }
@@ -27,7 +27,7 @@ const actions = {
 }
 
 const getters = {
-  cuisines: state => state.cuisines
+  cuisine: state => state.cuisine
 }
 
 export const cuisineStore = {

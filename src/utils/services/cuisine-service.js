@@ -1,7 +1,7 @@
 import http from './http-service'
 
 class CuisineService {
-  getCuisines (page, perPage) {
+  getCuisine (page, perPage) {
     return http
       .get('/api/cuisine', {
         params: {

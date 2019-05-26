@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 import FilterObjects from '@/components/FilterObjects'
 
 export default {
@@ -71,6 +73,14 @@ export default {
         }
       ]
     }
+  },
+
+  actions: {
+    ...mapActions('cuisineStore', ['getCuisine']),
+  },
+
+  created () {
+    this.$store.dispatch('cuisineStore/getCuisine')
   },
 
   components: { FilterObjects }
