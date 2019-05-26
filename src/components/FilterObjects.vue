@@ -126,7 +126,7 @@ export default {
 </script>
 
 <style>
-.label { 
+.label {
   text-align: left !important;
 }
 .multiselect__tags {

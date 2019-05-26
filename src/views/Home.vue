@@ -76,7 +76,7 @@ export default {
   },
 
   actions: {
-    ...mapActions('cuisineStore', ['getCuisine']),
+    ...mapActions('cuisineStore', ['getCuisine'])
   },
 
   created () {
