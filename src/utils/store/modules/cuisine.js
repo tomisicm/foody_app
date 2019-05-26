@@ -17,9 +17,9 @@ const mutations = {
 const actions = {
   async getCuisine ({ commit }, page, perPage) {
     try {
-      const cuisine = await cuisineService.getCuisine()
-      console.log(cuisine)
-      commit('SET_DATA', cuisine)
+      const { data } = await cuisineService.getCuisine()
+
+      commit('SET_DATA', data.docs)
     } catch (error) {
       throw error
     }
