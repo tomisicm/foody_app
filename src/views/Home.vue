@@ -2,7 +2,11 @@
   <b-container>
     <b-row>
       <b-col cols="4">
-        <FilterObjects :cuisine="cuisine" v-on:newSearch="handleSearch($event)"/>
+        <FilterObjects
+          :perPage="perPage"
+          :cuisine="cuisine"
+          v-on:newSearch="handleSearch($event)"
+        />
       </b-col>
 
       <b-col cols="8">
@@ -12,17 +16,17 @@
               split
               variant="primary"
               class="m-2"
-              v-model="limit"
+              v-model="perPage"
             >
-              <template slot="button-content">{{limit}}</template>
-              <b-dropdown-item v-for="(limit, index) in limitOptions" v-bind:key="index" @click="updateLimit($event)" href="#">{{limit}}</b-dropdown-item>
+              <template slot="button-content">{{perPage}}</template>
+              <b-dropdown-item v-for="(perPage, index) in perPageOptions" v-bind:key="index" @click="updateperPage($event)" href="#">{{perPage}}</b-dropdown-item>
             </b-dropdown>
           </div>
           <div cols="8">
             <b-pagination
-              v-model="currentPage"
+              v-model="page"
               :total-rows="total"
-              :per-page="limit"
+              :per-page="perPage"
             />
           </div>
         </b-row>
@@ -47,9 +51,8 @@ export default {
 
   data () {
     return {
-      currentPage: 1,
-      limit: 10,
-      limitOptions: [10, 25, 50, 100],
+      perPage: 10,
+      perPageOptions: [10, 25, 50, 100],
       page: 1,
       pages: null,
       total: null,
@@ -82,11 +85,13 @@ export default {
   methods: {
     handleSearch ({ data }) {
       this.items = data.docs
+      this.pages = data.pages
+      this.total = data.total
       console.log(data)
     },
 
-    updateLimit (event) {
-      this.limit = event.target.text
+    updateperPage (event) {
+      this.perPage = event.target.text
     }
   },
 

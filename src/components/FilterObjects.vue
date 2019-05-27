@@ -92,6 +92,13 @@ import cateringService from '@/utils/services/catering-service'
 import { mapGetters } from 'vuex'
 
 export default {
+  props: {
+    perPage: {
+      type: Number,
+      default: 10
+    }
+  },
+
   data () {
     return {
       selectedOptions: [],
@@ -105,7 +112,7 @@ export default {
 
   methods: {
     async handleSearch () {
-      let respData = await cateringService.searchForCatering(this.getFilter())
+      let respData = await cateringService.searchForCatering(this.getFilter(), this.getParams())
       this.$emit('newSearch', respData)
     },
 
@@ -119,6 +126,13 @@ export default {
         },
         ratingRange: this.ratingRange,
         cuisine: this.selectedOptions.map(c => c.name)
+      }
+    },
+
+    getParams () {
+      return {
+        page: 1,
+        perPage: this.perPage
       }
     }
   },
