@@ -74,8 +74,8 @@ export default {
           sortable: true
         },
         'address.city': {
-          key: 'address.city',
-          label: 'City'
+          label: 'City',
+          key: 'address.city'
         },
         'address.street': {
           key: 'address.street',
