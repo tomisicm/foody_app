@@ -41,7 +41,7 @@
         <b-table
           :items="items"
           :fields="fields"
-          @row-clicked="log($event)"
+          @row-clicked="openCateringInNewTab($event)"
           striped
           hover
         />
@@ -127,7 +127,7 @@ export default {
       }
     },
 
-    log (event) {
+    openCateringInNewTab (event) {
       let routeData = this.$router.resolve({ name: 'catering', params: { id: event._id } })
       window.open(routeData.href, '_blank')
     }
