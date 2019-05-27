@@ -29,7 +29,7 @@
                 </b-dropdown-item>
             </b-dropdown>
           </div>
-          <div cols="8">
+          <div v-if="items.length > 1" cols="8">
             <b-pagination
               v-model="page"
               :total-rows="total"
@@ -84,6 +84,11 @@ export default {
         food: {
           label: 'Cuisine Origin',
           key: 'cuisine.name',
+          sortable: true
+        },
+        rating: {
+          label: 'Rating',
+          key: 'rating',
           sortable: true
         }
       },
