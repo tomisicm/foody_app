@@ -78,7 +78,7 @@
       </div>
 
       <div class="form-row my-4">
-        <button class="btn btn-primary mr-3" type="submit" v-on:click="onSubmit()">Search</button>
+        <button class="btn btn-primary mr-3" type="submit" v-on:click="handleSearch">Search</button>
         <button class="btn btn-outline-primary">Clear Filters</button>
       </div>
 
@@ -104,8 +104,9 @@ export default {
   },
 
   methods: {
-    onSubmit () {
-      cateringService.searchForCatering(this.getFilter())
+    async handleSearch () {
+      let respData = await cateringService.searchForCatering(this.getFilter())
+      this.$emit('newSearch', respData)
     },
 
     getFilter () {

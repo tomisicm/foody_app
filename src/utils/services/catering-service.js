@@ -5,7 +5,6 @@ class CateringService {
     return http
       .post('/api/catering/search', body)
       .then(({ data }) => {
-        console.log(data)
         return data
       })
       .catch(error => {
