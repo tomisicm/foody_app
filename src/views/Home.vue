@@ -33,6 +33,7 @@
         <b-table
           :items="items"
           :fields="fields"
+          @row-clicked="log($event)"
           striped
           hover
         />
@@ -92,6 +93,10 @@ export default {
 
     updateperPage (event) {
       this.perPage = parseInt(event.target.text, 10)
+    },
+
+    log(event) {
+      console.log(event)
     }
   },
 
