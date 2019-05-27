@@ -91,7 +91,7 @@ export default {
     },
 
     updateperPage (event) {
-      this.perPage = event.target.text
+      this.perPage = parseInt(event.target.text, 10)
     }
   },
 
