@@ -11,12 +11,11 @@
             <b-dropdown
               split
               variant="primary"
-              text="10"
               class="m-2"
-              >
-              <b-dropdown-item href="#">25</b-dropdown-item>
-              <b-dropdown-item href="#">50</b-dropdown-item>
-              <b-dropdown-item href="#">100</b-dropdown-item>
+              v-model="limit"
+            >
+              <template slot="button-content">{{limit}}</template>
+              <b-dropdown-item v-for="(limit, index) in limitOptions" v-bind:key="index" @click="updateLimit($event)" href="#">{{limit}}</b-dropdown-item>
             </b-dropdown>
           </div>
           <div cols="8">
@@ -50,6 +49,7 @@ export default {
     return {
       currentPage: 1,
       limit: 10,
+      limitOptions: [10, 25, 50, 100],
       page: 1,
       pages: null,
       total: null,
@@ -83,6 +83,10 @@ export default {
     handleSearch ({ data }) {
       this.items = data.docs
       console.log(data)
+    },
+
+    updateLimit (event) {
+      this.limit = event.target.text
     }
   },
 
