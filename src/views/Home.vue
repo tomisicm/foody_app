@@ -47,7 +47,7 @@ export default {
         },
         food: {
           label: 'Cuisine Origin',
-          key: 'foodOrigin.name',
+          key: 'cuisine.name',
           sortable: true
         }
       },
