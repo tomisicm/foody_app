@@ -1,9 +1,9 @@
 import http from './http-service'
 
 class CateringService {
-  searchForCatering (body, params) {
+  searchForCatering (body, { page = 1, perPage = 10 }) {
     return http
-      .post('/api/catering/search', body, { params })
+      .post('/api/catering/search', body, { params: { page, perPage } })
       .then(({ data }) => {
         return data
       })
