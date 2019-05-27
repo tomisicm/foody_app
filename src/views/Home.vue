@@ -19,7 +19,13 @@
               v-model="perPage"
             >
               <template slot="button-content">{{perPage}}</template>
-              <b-dropdown-item v-for="(perPage, index) in perPageOptions" v-bind:key="index" @click="updateperPage($event)" href="#">{{perPage}}</b-dropdown-item>
+                <b-dropdown-item
+                  v-for="(perPage, index) in perPageOptions"
+                  v-bind:key="index" @click="updatePerPage($event)"
+                  href="#"
+                >
+                  {{perPage}}
+                </b-dropdown-item>
             </b-dropdown>
           </div>
           <div cols="8">
@@ -27,6 +33,7 @@
               v-model="page"
               :total-rows="total"
               :per-page="perPage"
+              @change="updatePage($event)"
             />
           </div>
         </b-row>
@@ -91,13 +98,27 @@ export default {
       console.log(data)
     },
 
-    updateperPage (event) {
+    updatePerPage (event) {
       this.perPage = parseInt(event.target.text, 10)
+    },
+
+    async updatePage (newPage) {
+      this.page = newPage
+      let respData = await cateringService.searchForCatering(this.getFilter(), this.getParams())
+    },
+
+    getParams () {
+      return {
+        page: this.page,
+        perPage: this.perPage
+      }
     },
 
     log(event) {
       console.log(event)
-    }
+    },
+
+
   },
 
   actions: {
