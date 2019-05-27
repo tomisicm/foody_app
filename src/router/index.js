@@ -43,15 +43,14 @@ export default new Router({
       props: true,
       component: Home
     },
-    {
-      path: '/objects',
-      name: 'objects',
+    /* {
+      path: '/catering',
       props: true,
       component: Home
-    },
+    }, */
     {
-      path: '/objects/:id',
-      name: 'object',
+      path: '/catering/:id',
+      name: 'catering',
       props: true,
       component: Facility
     },

@@ -128,7 +128,9 @@ export default {
     },
 
     log (event) {
-      console.log(event)
+      let routeData = this.$router.resolve({name: 'catering', params: {id: event._id}})
+      window.open(routeData.href, '_blank')
+     console.log(routeData)
     }
 
   },
