@@ -41,14 +41,14 @@ export default {
   },
 
   methods: {
-    async fetchData () {
+    async fetchCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
       this.cateringFacility = data
     }
   },
 
   created () {
-    this.fetchData()
+    this.fetchCateringData()
   },
 
   components: {
