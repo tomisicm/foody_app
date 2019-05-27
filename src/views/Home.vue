@@ -5,7 +5,8 @@
         <FilterObjects
           :perPage="perPage"
           :cuisine="cuisine"
-          v-on:newSearch="handleSearch($event)"
+          @update:filterCriteria="updateFilter($event)"
+          @onSearch="handleSearch"
         />
       </b-col>
 
@@ -51,6 +52,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import cateringService from '@/utils/services/catering-service'
 
 import FilterObjects from '@/components/FilterObjects'
 
@@ -59,6 +61,7 @@ export default {
 
   data () {
     return {
+      filter: null,
       perPage: 10,
       perPageOptions: [10, 25, 50, 100],
       page: 1,
@@ -91,20 +94,25 @@ export default {
   },
 
   methods: {
-    handleSearch ({ data }) {
+    async handleSearch () {
+      let { data } = await cateringService.searchForCatering(this.filter, this.getParams())
       this.items = data.docs
       this.pages = data.pages
       this.total = data.total
-      console.log(data)
+    },
+
+    updateFilter (event) {
+      this.filter = event
     },
 
     updatePerPage (event) {
       this.perPage = parseInt(event.target.text, 10)
+      this.handleSearch()
     },
 
-    async updatePage (newPage) {
+    updatePage (newPage) {
       this.page = newPage
-      let respData = await cateringService.searchForCatering(this.getFilter(), this.getParams())
+      this.handleSearch()
     },
 
     getParams () {
@@ -114,10 +122,9 @@ export default {
       }
     },
 
-    log(event) {
+    log (event) {
       console.log(event)
-    },
-
+    }
 
   },
 

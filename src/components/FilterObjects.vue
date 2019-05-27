@@ -6,7 +6,7 @@
         <label for="name" class="col-md-12 label">Name:</label>
         <div class="col-md-12">
         <input
-          v-model="name"
+          v-model="form.name"
           type="text"
           class="form-control"
           id="name"
@@ -20,7 +20,7 @@
         <label for="city" class="col-md-12 label">City:</label>
         <div class="col-md-12">
           <input
-            v-model="city"
+            v-model="form.city"
             type="text"
             class="form-control"
             id="city"
@@ -33,7 +33,7 @@
       <div class="form-row">
         <label for="street" class="col-md-12 label">Address:</label>
         <div class="col-md-8">
-          <input v-model="street"
+          <input v-model="form.street"
             type="text"
             class="form-control"
             id="street"
@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-4">
           <input
-            v-model="streetNo"
+            v-model="form.streetNo"
             type="text"
             class="form-control"
             id="streetNo"
@@ -58,7 +58,7 @@
         <div class="col-md-12">
           <multiselect
             class="input-border"
-            v-model="selectedOptions"
+            v-model="form.selectedOptions"
             :options="cuisine"
             :multiple="true"
             track-by="name"
@@ -71,14 +71,14 @@
       </div>
 
       <div class="form-row">
-        <label class="col-md-12 label" id="rating">Selected rating: {{ratingRange[0]}} - {{ratingRange[1]}}</label>
+        <label class="col-md-12 label" id="rating">Selected rating: {{form.ratingRange[0]}} - {{form.ratingRange[1]}}</label>
         <div class="col-md-12">
-          <vueslider class="w-100" v-model="ratingRange" :min=0 :max=10 :interval=0.1  />
+          <vueslider class="w-100" v-model="form.ratingRange" :min=0 :max=10 :interval=0.1  />
         </div>
       </div>
 
       <div class="form-row my-4">
-        <button class="btn btn-primary mr-3" type="submit" v-on:click="handleSearch">Search</button>
+        <button class="btn btn-primary mr-3" type="submit" @click="onSearch">Search</button>
         <button class="btn btn-outline-primary">Clear Filters</button>
       </div>
 
@@ -87,53 +87,38 @@
 </template>
 
 <script>
-import cateringService from '@/utils/services/catering-service'
-
 import { mapGetters } from 'vuex'
 
 export default {
-  props: {
-    perPage: {
-      type: Number,
-      default: 10
-    }
-  },
-
   data () {
     return {
-      selectedOptions: [],
-      name: '',
-      city: '',
-      street: '',
-      streetNo: null,
-      ratingRange: [0, 10]
+      form: {
+        selectedOptions: [],
+        name: '',
+        city: '',
+        street: '',
+        streetNo: null,
+        ratingRange: [0, 10]
+      }
     }
   },
 
   methods: {
-    async handleSearch () {
-      let respData = await cateringService.searchForCatering(this.getFilter(), this.getParams())
-      this.$emit('newSearch', respData)
-    },
-
-    getFilter () {
+    formatFilter () {
       return {
-        name: this.name,
+        name: this.form.name,
         address: {
-          city: this.city,
-          street: this.street,
-          streetNo: this.streetNo
+          city: this.form.city,
+          street: this.form.street,
+          streetNo: this.form.streetNo
         },
-        ratingRange: this.ratingRange,
-        cuisine: this.selectedOptions.map(c => c.name)
+        ratingRange: this.form.ratingRange,
+        cuisine: this.form.selectedOptions.map(c => c.name)
       }
     },
 
-    getParams () {
-      return {
-        page: 1,
-        perPage: this.perPage
-      }
+    onSearch () {
+      this.$emit('onSearch')
     }
   },
 
@@ -141,7 +126,20 @@ export default {
     ...mapGetters('cuisineStore', ['cuisine'])
   },
 
-  name: 'FilterObjects'
+  watch: {
+    'form': {
+      handler () {
+        this.$emit('update:filterCriteria', this.formatFilter())
+      },
+      deep: true
+    }
+  },
+
+  created () {
+    this.$emit('update:filterCriteria', this.formatFilter())
+  },
+
+  name: 'FilterCatering'
 }
 </script>
 
