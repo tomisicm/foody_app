@@ -11,6 +11,17 @@ class CateringService {
         throw error
       })
   }
+
+  getCatering (id) {
+    return http
+      .get(`/api/catering/${id}`)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
 }
 
 const cateringService = new CateringService()

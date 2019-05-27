@@ -7,7 +7,7 @@ import AppLogin from '../views/AppLogin'
 import AppRegister from '../views/AppRegister'
 
 import Home from '../views/Home'
-import Facility from '../views/Facility'
+import CateringFacility from '../views/CateringFacility'
 import Review from '../views/Review'
 
 Vue.use(Router)
@@ -52,7 +52,7 @@ export default new Router({
       path: '/catering/:id',
       name: 'catering',
       props: true,
-      component: Facility
+      component: CateringFacility
     },
     {
       path: '/reviews',
