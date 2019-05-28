@@ -9,7 +9,7 @@
           <b-card-text
             class="my-1 mx-1 review-text"
           >
-            {{review.generalImpression}}
+            {{review.title}}
           </b-card-text>
         </b-col>
         <b-col cols="12" md="3">
