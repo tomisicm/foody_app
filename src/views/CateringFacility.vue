@@ -30,25 +30,32 @@
 
 <script>
 import cateringService from '@/utils/services/catering-service'
+import reviewService from '@/utils/services/review-service'
 
 import baseCarousel from '@/components/baseCarousel'
 
 export default {
   data () {
     return {
-      cateringFacility: null
+      cateringFacility: null,
+      reviews: []
     }
   },
 
   methods: {
-    async fetchCateringData () {
+    async getCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
       this.cateringFacility = data
+    },
+    async getReviews () {
+      const { data } = await reviewService.getReviewsByItemId(this.$route.params.id)
+      this.reviews = data
     }
   },
 
   created () {
-    this.fetchCateringData()
+    this.getCateringData()
+    this.getReviews()
   },
 
   components: {
