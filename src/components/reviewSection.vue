@@ -6,7 +6,7 @@
           <b-img class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20" rounded="circle"></b-img>
         </b-col>
         <b-col cols="12" md="8">
-          <b-card-text 
+          <b-card-text
             class="my-1 mx-1 review-text"
           >
             This is a wider card with supporting text as a natural lead-in to additional content.
