@@ -77,10 +77,12 @@ export default {
 
     updateReviewsPage (event) {
       this.reviews.page = event
+      this.getReviews()
     },
 
     updateCommentsPage (event) {
       this.comments.page = event
+      this.getComments()
     }
   },
 
@@ -92,19 +94,6 @@ export default {
 
   components: {
     baseCarousel, reviewSection
-  },
-
-  watch: {
-    'reviews.page': {
-      handler () {
-        this.getReviews()
-      }
-    },
-    'comments.page': {
-      handler () {
-        this.getComments()
-      }
-    }
   },
 
   name: 'CateringFacility'
