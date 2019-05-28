@@ -11,6 +11,9 @@
           >
             {{review.title}}
           </b-card-text>
+          <b-card-text
+            class="my-1 mx-1 review-text"
+          >By {{review.createdBy}}, {{review.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
         </b-col>
         <b-col cols="12" md="3">
           actions
@@ -30,6 +33,8 @@
 </template>
 
 <script>
+import dateToString from '@/utils/mixins/dateToString'
+
 export default {
   props: {
     reviews: {
@@ -48,7 +53,9 @@ export default {
     updatePage (event) {
       this.$emit(`update:page`, event)
     }
-  }
+  },
+
+  mixins: [ dateToString ]
 }
 </script>
 

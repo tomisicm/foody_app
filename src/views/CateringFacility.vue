@@ -16,9 +16,7 @@
       <b-card no-body class="my-4 w-100">
         <b-tabs card fill class="nav-item">
           <b-tab title="Reviews" active>
-            <b-card-text>
-              <reviewSection :reviews="reviews" @update:page="updateReviewsPage($event)"/>
-            </b-card-text>
+            <reviewSection :reviews="reviews" @update:page="updateReviewsPage($event)"/>
           </b-tab>
           <b-tab title="Comments">
             <b-card-text>Comments</b-card-text>
