@@ -21,9 +21,9 @@
 
     <div cols="12">
       <b-pagination
-        v-model="page"
-        :total-rows="total"
-        :per-page="perPage"
+        v-model="reviews.page"
+        :total-rows="reviews.total"
+        :per-page="reviews.limit"
         @change="updatePage($event)"
       />
     </div>
@@ -36,21 +36,19 @@ export default {
     reviews: {
       type: Object,
       default: function () {
-        return {}
+        return {
+          page: 1,
+          total: 1,
+          limit: 10
+        }
       }
     }
   },
 
-  data () {
-    return {
-      page: 1,
-      total: 5,
-      perPage: 3
+  methods: {
+    updatePage (event) {
+      this.$emit(`update:page`, event)
     }
-  },
-
-  created () {
-    console.log(this.reviews)
   }
 }
 </script>

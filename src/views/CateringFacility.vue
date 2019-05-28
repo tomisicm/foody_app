@@ -17,7 +17,7 @@
         <b-tabs card fill class="nav-item">
           <b-tab title="Reviews" active>
             <b-card-text>
-              <reviewSection :reviews="reviews" />
+              <reviewSection :reviews="reviews" @update:page="updateReviewsPage($event)"/>
             </b-card-text>
           </b-tab>
           <b-tab title="Comments">
@@ -41,7 +41,7 @@ export default {
   data () {
     return {
       cateringFacility: null,
-      reviews: null
+      reviews: {}
     }
   },
 
@@ -51,8 +51,19 @@ export default {
       this.cateringFacility = data
     },
     async getReviews () {
-      const { data } = await reviewService.getReviewsByItemId(this.$route.params.id)
+      const { data } = await reviewService.getReviewsByItemId(this.$route.params.id, this.getReviewParams())
       this.reviews = data
+    },
+
+    getReviewParams () {
+      return {
+        page: this.reviews.page,
+        perPage: this.reviews.limit
+      }
+    },
+
+    updateReviewsPage (event) {
+      this.reviews.page = event
     }
   },
 
@@ -63,6 +74,14 @@ export default {
 
   components: {
     baseCarousel, reviewSection
+  },
+
+  watch: {
+    'reviews.page': {
+      handler () {
+        this.getReviews()
+      }
+    }
   },
 
   name: 'CateringFacility'

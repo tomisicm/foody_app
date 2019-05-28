@@ -1,9 +1,14 @@
 import http from './http-service'
 
 class ReviewService {
-  getReviewsByItemId (id) {
+  getReviewsByItemId (id, { page = 1, perPage = 10 }) {
     return http
-      .get(`/api/review/item/${id}`)
+      .get(`/api/review/item/${id}`, {
+        params: {
+          page: page,
+          perPage: perPage
+        }
+      })
       .then(({ data }) => {
         return data
       })
