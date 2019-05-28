@@ -16,10 +16,10 @@
       <b-card no-body class="my-4 w-100">
         <b-tabs card fill class="nav-item">
           <b-tab title="Reviews" active>
-            <reviewSection :reviews="reviews" @update:page="updateReviewsPage($event)"/>
+            <reviewSection :items="reviews" @update:page="updateReviewsPage($event)"/>
           </b-tab>
           <b-tab title="Comments">
-            <b-card-text>Comments</b-card-text>
+            <reviewSection :items="comments" @update:page="updateCommentsPage($event)"/>
           </b-tab>
         </b-tabs>
       </b-card>
@@ -31,6 +31,7 @@
 <script>
 import cateringService from '@/utils/services/catering-service'
 import reviewService from '@/utils/services/review-service'
+import commentService from '@/utils/services/comment-service'
 
 import baseCarousel from '@/components/baseCarousel'
 import reviewSection from '@/components/reviewSection'
@@ -39,7 +40,8 @@ export default {
   data () {
     return {
       cateringFacility: null,
-      reviews: {}
+      reviews: {},
+      comments: {}
     }
   },
 
@@ -48,9 +50,15 @@ export default {
       const { data } = await cateringService.getCatering(this.$route.params.id)
       this.cateringFacility = data
     },
+
     async getReviews () {
       const { data } = await reviewService.getReviewsByItemId(this.$route.params.id, this.getReviewParams())
       this.reviews = data
+    },
+
+    async getComments () {
+      const { data } = await commentService.getCommentsByItemId(this.$route.params.id, this.getCommentParams())
+      this.comments = data
     },
 
     getReviewParams () {
@@ -60,14 +68,26 @@ export default {
       }
     },
 
+    getCommentParams () {
+      return {
+        page: this.comments.page,
+        perPage: this.comments.limit
+      }
+    },
+
     updateReviewsPage (event) {
       this.reviews.page = event
+    },
+
+    updateCommentsPage (event) {
+      this.comments.page = event
     }
   },
 
   created () {
     this.getCateringData()
     this.getReviews()
+    this.getComments()
   },
 
   components: {
