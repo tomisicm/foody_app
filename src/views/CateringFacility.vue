@@ -99,6 +99,11 @@ export default {
       handler () {
         this.getReviews()
       }
+    },
+    'comments.page': {
+      handler () {
+        this.getComments()
+      }
     }
   },
 
