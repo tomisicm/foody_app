@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-card no-body class="overflow-hidden">
+    <b-card v-for="review in reviews.docs"  v-bind:key="review._id" no-body class="overflow-hidden">
       <b-row>
         <b-col cols="12" md="1">
           <b-img class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20" rounded="circle"></b-img>
@@ -9,8 +9,7 @@
           <b-card-text
             class="my-1 mx-1 review-text"
           >
-            This is a wider card with supporting text as a natural lead-in to additional content.
-            This content is a little bit longer.
+            {{review.generalImpression}}
           </b-card-text>
         </b-col>
         <b-col cols="12" md="3">
