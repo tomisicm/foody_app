@@ -16,7 +16,9 @@
       <b-card no-body class="my-4 w-100">
         <b-tabs card fill class="nav-item">
           <b-tab title="Reviews" active>
-            <b-card-text>Reviews</b-card-text>
+            <b-card-text>
+              <reviewSection :reviews="reviews" />
+            </b-card-text>
           </b-tab>
           <b-tab title="Comments">
             <b-card-text>Comments</b-card-text>
@@ -33,12 +35,13 @@ import cateringService from '@/utils/services/catering-service'
 import reviewService from '@/utils/services/review-service'
 
 import baseCarousel from '@/components/baseCarousel'
+import reviewSection from '@/components/reviewSection'
 
 export default {
   data () {
     return {
       cateringFacility: null,
-      reviews: []
+      reviews: null
     }
   },
 
@@ -59,7 +62,7 @@ export default {
   },
 
   components: {
-    baseCarousel
+    baseCarousel, reviewSection
   },
 
   name: 'CateringFacility'
