@@ -15,7 +15,15 @@ import BootstrapVue from 'bootstrap-vue'
 import multiselect from 'vue-multiselect'
 import vueslider from 'vue-slider-component'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 Vue.use(BootstrapVue)
+
+library.add(faTrash, faEdit)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.component('multiselect', multiselect)
 Vue.component('vueslider', vueslider)

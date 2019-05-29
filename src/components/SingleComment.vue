@@ -14,9 +14,12 @@
       >{{item && item.createdBy}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
     </b-col>
     <b-col cols="12" md="3">
-
-      actions
-
+      <button type="button" class="btn">
+        <font-awesome-icon icon="trash" />
+      </button>
+      <button type="button" class="btn">
+        <font-awesome-icon icon="edit" />
+      </button>
     </b-col>
   </b-row>
 </template>

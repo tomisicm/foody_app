@@ -33,7 +33,7 @@
               :items="comments"
               @update:page="updateCommentsPage($event)"
             >
-              <template v-slot:listitem="{item}">
+              <template v-slot:listitem="{ item }">
                 <SingleComment :item="item"/>
               </template>
             </List>
@@ -66,9 +66,9 @@ export default {
   },
 
   methods: {
-    www (event) {
-      console.log(event.target)
-    },
+    /* deleteItem (event) {
+      console.log(event)
+    }, */
 
     async getCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
