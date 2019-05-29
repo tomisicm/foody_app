@@ -16,7 +16,16 @@
       <b-card no-body class="my-4 w-100">
         <b-tabs card fill class="nav-item">
           <b-tab title="Reviews" active>
-            <reviewSection :items="reviews" @update:page="updateReviewsPage($event)"/>
+            <reviewSection
+              :items="reviews"
+              @update:page="updateReviewsPage($event)"
+            >
+
+              <template v-slot:dick="{itemInfo}">
+                <button @click="www($event)">{{itemInfo._id}}</button>
+              </template>
+
+            </reviewSection>
           </b-tab>
           <b-tab title="Comments">
             <reviewSection :items="comments" @update:page="updateCommentsPage($event)"/>
@@ -46,6 +55,10 @@ export default {
   },
 
   methods: {
+    www (event) {
+      console.log(event.target)
+    },
+
     async getCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
       this.cateringFacility = data

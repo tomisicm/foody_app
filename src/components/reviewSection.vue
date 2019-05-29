@@ -16,7 +16,9 @@
           >By {{item.createdBy}}, {{item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
         </b-col>
         <b-col cols="12" md="3">
-          actions
+
+          <slot name="dick" :itemInfo="item">default content</slot>
+
         </b-col>
       </b-row>
     </b-card>
