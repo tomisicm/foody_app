@@ -7,7 +7,7 @@
       <b-card-text
         class="my-1 mx-1 item-text"
       >
-        By {{item && item.body}}
+        {{item && item.itemType}}
       </b-card-text>
       <b-card-text
         class="my-1 mx-1 item-text"
@@ -25,11 +25,12 @@
 import dateToString from '@/utils/mixins/dateToString'
 
 export default {
-  /*
   props: {
-    item: Object
-  }
-  */
+    item: {
+      type: Object,
+      required: true
+    }
+  },
 
   mixins: [ dateToString ]
 }

@@ -25,11 +25,12 @@
 import dateToString from '@/utils/mixins/dateToString'
 
 export default {
-  /*
   props: {
-    item: Object
-  }
-  */
+    item: {
+      type: Object,
+      required: true
+    }
+  },
 
   mixins: [ dateToString ]
 }

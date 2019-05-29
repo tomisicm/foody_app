@@ -21,20 +21,21 @@
               :items="reviews"
               @update:page="updateReviewsPage($event)"
             >
-              <template v-slot:listitem="item">
-                <!-- <SingleReview /> -->{{item}}
+              <template v-slot:listitem="{item}">
+                <SingleReview :item="item"/>
               </template>
             </List>
 
           </b-tab>
           <b-tab title="Comments">
+
             <List
               :items="comments"
               @update:page="updateCommentsPage($event)"
             >
-            <template v-slot:listitem="item">
-              <!-- <SingleComment /> -->{{item}}
-            </template>
+              <template v-slot:listitem="{item}">
+                <SingleComment :item="item"/>
+              </template>
             </List>
 
           </b-tab>
