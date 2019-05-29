@@ -16,6 +16,39 @@ class CommentService {
         throw error
       })
   }
+
+  createComment (comment) {
+    return http
+      .post('/api/comment/', comment)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
+  deleteComment (id) {
+    return http
+      .delete(`/api/comment/${id}`)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
+  editComment (commentId, comment) {
+    return http
+      .put(`/api/comment/${commentId}`, comment)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
 }
 
 const commentService = new CommentService()
