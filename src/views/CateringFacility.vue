@@ -64,7 +64,6 @@ import SingleReview from '@/components/SingleReview'
 import SingleComment from '@/components/SingleComment'
 import NewComment from '@/components/NewComment'
 
-
 export default {
   data () {
     return {
