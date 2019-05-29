@@ -17,20 +17,26 @@
         <b-tabs card fill class="nav-item">
           <b-tab title="Reviews" active>
 
-            <reviewSection
+            <List
               :items="reviews"
               @update:page="updateReviewsPage($event)"
             >
-
-              <template v-slot:dick="{itemInfo}">
-                <button @click="www($event)">{{itemInfo._id}}</button>
+              <template v-slot:listitem="item">
+                <!-- <SingleReview /> -->{{item}}
               </template>
-
-            </reviewSection>
+            </List>
 
           </b-tab>
           <b-tab title="Comments">
-            <reviewSection :items="comments" @update:page="updateCommentsPage($event)"/>
+            <List
+              :items="comments"
+              @update:page="updateCommentsPage($event)"
+            >
+            <template v-slot:listitem="item">
+              <!-- <SingleComment /> -->{{item}}
+            </template>
+            </List>
+
           </b-tab>
         </b-tabs>
       </b-card>
@@ -45,7 +51,9 @@ import reviewService from '@/utils/services/review-service'
 import commentService from '@/utils/services/comment-service'
 
 import baseCarousel from '@/components/baseCarousel'
-import reviewSection from '@/components/reviewSection'
+import List from '@/components/List'
+import SingleReview from '@/components/SingleReview'
+import SingleComment from '@/components/SingleComment'
 
 export default {
   data () {
@@ -108,7 +116,7 @@ export default {
   },
 
   components: {
-    baseCarousel, reviewSection
+    baseCarousel, List, SingleReview, SingleComment
   },
 
   name: 'CateringFacility'
