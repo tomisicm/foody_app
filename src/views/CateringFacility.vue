@@ -29,16 +29,10 @@
           </b-tab>
           <b-tab title="Comments">
 
-            <b-card no-body class="my-2">
-              <b-form-textarea
-                placeholder="New comment..."
-                rows="3"
-                max-rows="6"
-              ></b-form-textarea>
-              <b-btn>Send</b-btn>
-            </b-card>
+            <NewComment />
 
             <List
+              class="my-1"
               :items="comments"
               @update:page="updateCommentsPage($event)"
             >
@@ -68,6 +62,8 @@ import baseCarousel from '@/components/baseCarousel'
 import List from '@/components/List'
 import SingleReview from '@/components/SingleReview'
 import SingleComment from '@/components/SingleComment'
+import NewComment from '@/components/NewComment'
+
 
 export default {
   data () {
@@ -133,7 +129,7 @@ export default {
   },
 
   components: {
-    baseCarousel, List, SingleReview, SingleComment
+    baseCarousel, List, SingleReview, SingleComment, NewComment
   },
 
   name: 'CateringFacility'
