@@ -29,6 +29,15 @@
           </b-tab>
           <b-tab title="Comments">
 
+            <b-card no-body class="my-2">
+              <b-form-textarea
+                placeholder="New comment..."
+                rows="3"
+                max-rows="6"
+              ></b-form-textarea>
+              <b-btn>Send</b-btn>
+            </b-card>
+
             <List
               :items="comments"
               @update:page="updateCommentsPage($event)"
