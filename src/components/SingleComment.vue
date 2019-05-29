@@ -7,17 +7,23 @@
       <b-card-text
         class="my-1 mx-1 item-text"
       >
-        {{item && item.itemType}}
+        {{item && item.body}}
       </b-card-text>
       <b-card-text
         class="my-1 mx-1 item-text"
       >{{item && item.createdBy}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
     </b-col>
     <b-col cols="12" md="3">
-      <button type="button" class="btn">
+      <button
+        @click="removeItem"
+        type="button"
+        class="btn">
         <font-awesome-icon icon="trash" />
       </button>
-      <button type="button" class="btn">
+      <button
+        @click="editItem"
+        type="button"
+        class="btn">
         <font-awesome-icon icon="edit" />
       </button>
     </b-col>
@@ -32,6 +38,16 @@ export default {
     item: {
       type: Object,
       required: true
+    }
+  },
+
+  methods: {
+    removeItem () {
+      this.$emit('removeItem', this.item._id)
+    },
+
+    editItem () {
+      this.$emit('editItem', this.item._id)
     }
   },
 

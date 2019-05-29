@@ -34,7 +34,11 @@
               @update:page="updateCommentsPage($event)"
             >
               <template v-slot:listitem="{ item }">
-                <SingleComment :item="item"/>
+                <SingleComment
+                  :item="item"
+                  @editItem="handleEditComment($event)"
+                  @removeItem="handleRemoveComment($event)"
+                />
               </template>
             </List>
 
@@ -66,9 +70,12 @@ export default {
   },
 
   methods: {
-    /* deleteItem (event) {
+    handleRemoveComment (event) {
       console.log(event)
-    }, */
+    },
+    handleEditComment (event) {
+      console.log(event)
+    },
 
     async getCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
