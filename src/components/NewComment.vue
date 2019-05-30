@@ -4,23 +4,45 @@
     <b-form-textarea
       v-model="body"
       placeholder="New comment..."
-      rows="3"
-      max-rows="6"
+      rows="2"
+      max-rows="5"
+      :style="{ overflowY: 'none' }"
     />
   </b-card>
   <b-container>
     <b-row>
-      <b-btn v-if="body" class="mr-auto my-2">Send</b-btn>
+      <b-btn 
+        v-if="body"
+        class="mr-auto my-2"
+        @click="handleCreateComment">
+        Send</b-btn>
     </b-row>
   </b-container>
 </div>
 </template>
 
 <script>
+import commentService from '@/utils/services/comment-service'
+
 export default {
   data () {
     return {
       body: ''
+    }
+  },
+
+  methods: {
+    getCommentData () {
+      return {
+        itemType: 'comment',
+        body: this.body,
+        item: this.$route.params.id
+      }
+    },
+
+    async handleCreateComment () {
+      const response = await commentService.createComment(this.getCommentData())
+      this.body = ''
     }
   }
 }
