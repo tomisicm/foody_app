@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div v-if="isSignedIn">
   <b-card no-body class="my-2">
     <b-form-textarea
       v-model="body"
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import commentService from '@/utils/services/comment-service'
 
 export default {
@@ -44,6 +46,10 @@ export default {
       await commentService.createComment(this.getCommentData())
       this.body = ''
     }
+  },
+
+  computed: {
+    ...mapGetters('authStore', ['isSignedIn'])
   }
 }
 </script>

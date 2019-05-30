@@ -13,14 +13,17 @@
         class="my-1 mx-1 item-text"
       >{{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
     </b-col>
-    <b-col cols="12" md="2">
+    <b-col cols="12" md="2" v-if="isSignedIn">
       <b-button
+        v-if="isCommentDeletable"
         @click="removeItem"
         variant="outline-secondary"
         size="sm">
         <font-awesome-icon icon="trash" />
       </b-button>
+
       <b-button
+        v-if="isCommentEditable"
         @click="editItem"
         variant="outline-secondary"
         size="sm">
@@ -31,6 +34,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import dateToString from '@/utils/mixins/dateToString'
 
 export default {
@@ -48,6 +53,17 @@ export default {
 
     editItem () {
       this.$emit('editItem', this.item._id)
+    }
+
+  },
+
+  computed: {
+    ...mapGetters('authStore', ['isSignedIn', 'isAdmin', 'userId']),
+    isCommentEditable () {
+      return this.isSignedIn && this.item.createdBy && (this.userId === this.item.createdBy._id)
+    },
+    isCommentDeletable () {
+      return this.isAdmin || (this.item.createdBy && this.userId === this.item.createdBy._id)
     }
   },
 
