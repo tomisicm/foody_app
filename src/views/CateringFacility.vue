@@ -3,15 +3,23 @@
     <div>
       <h1>{{cateringFacility && cateringFacility.name}}</h1>
     </div>
+
     <baseCarousel class="my-4" />
 
-    <div class="nav justify-content-center">
+    <div>
       <div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia optio facilis voluptas accusantium maxime quam, repellendus, in odit facere nesciunt quo laboriosam nisi magnam officia voluptatibus eum iusto? Dolorem, magni.</p>
-      <p>Located on {{cateringFacility && cateringFacility.address.street + cateringFacility.address.streetNo}}, {{cateringFacility && cateringFacility.address.city}}.
-        Famous for its {{cateringFacility && cateringFacility.cuisine.name }} cuisine and {{cateringFacility && cateringFacility.michelinStars }} Michelin Stars.
-      </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia optio facilis voluptas accusantium maxime quam, repellendus, in odit facere nesciunt quo laboriosam nisi magnam officia voluptatibus eum iusto? Dolorem, magni.</p>
+        <p>Located on {{cateringFacility && cateringFacility.address.street + cateringFacility.address.streetNo}}, {{cateringFacility && cateringFacility.address.city}}.
+          Famous for its {{cateringFacility && cateringFacility.cuisine.name }} cuisine and {{cateringFacility && cateringFacility.michelinStars }} Michelin Stars.
+        </p>
       </div>
+
+      <b-container>
+        <b-row class="mx-2">
+          <span class="pt-1">Add review:</span>
+          <b-button :to="{ name: 'addreview' }" pill variant="primary" class="mx-2"> + </b-button>
+        </b-row>
+      </b-container>
 
       <b-card no-body class="my-4 w-100">
         <b-tabs card fill class="nav-item">
