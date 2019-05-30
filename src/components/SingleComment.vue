@@ -44,6 +44,13 @@
           size="sm">
           <font-awesome-icon icon="edit" />
         </b-button>
+
+        <b-button
+          @click="replayTo"
+          variant="outline-secondary"
+          size="sm">
+          <font-awesome-icon icon="reply" />
+        </b-button>
       </template>
 
       <template v-else>
@@ -84,7 +91,11 @@ export default {
     },
 
     editItem () {
-      this.inEditMode = !this.inEditMode 
+      this.inEditMode = !this.inEditMode
+    },
+
+    replayTo () {
+      console.log(this.item.replayTo)
     },
 
     saveItem () {

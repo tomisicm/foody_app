@@ -16,12 +16,17 @@ import multiselect from 'vue-multiselect'
 import vueslider from 'vue-slider-component'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTrash, faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
+import {
+  faTrash,
+  faEdit,
+  faSave,
+  faReply
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(BootstrapVue)
 
-library.add(faTrash, faEdit, faSave)
+library.add(faTrash, faEdit, faSave, faReply)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
