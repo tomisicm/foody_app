@@ -41,7 +41,7 @@ export default {
     },
 
     async handleCreateComment () {
-      const response = await commentService.createComment(this.getCommentData())
+      await commentService.createComment(this.getCommentData())
       this.body = ''
     }
   }
