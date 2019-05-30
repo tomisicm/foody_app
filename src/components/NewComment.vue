@@ -11,7 +11,7 @@
   </b-card>
   <b-container>
     <b-row>
-      <b-btn 
+      <b-btn
         v-if="body"
         class="mr-auto my-2"
         @click="handleCreateComment">
