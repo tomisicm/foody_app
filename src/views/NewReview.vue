@@ -1,8 +1,7 @@
 <template>
-  <b-container>
+  <b-container class="mt-2">
       <b-form>
-        <h1>This is new review page</h1>
-
+        <h4>Please complete the following questions</h4>
         <b-form-row class="mx-1 my-3">
           <label>Title: </label>
           <b-input
@@ -27,7 +26,9 @@
                     <label class="my-1">Overall rating: </label>
                   </b-col>
                   <b-col sm="2">
-                  <b-form-input
+                  <star-rating
+                    :increment=0.1
+                    :star-size=20
                     v-model="generalRating"
                   />
                   </b-col>
@@ -52,7 +53,9 @@
                     <label class="my-1">Overall rating: </label>
                   </b-col>
                   <b-col sm="2">
-                  <b-form-input
+                  <star-rating
+                    :increment=0.1
+                    :star-size=20
                     v-model="foodRating"
                   />
                   </b-col>
@@ -77,7 +80,9 @@
                     <label class="my-1">Overall rating: </label>
                   </b-col>
                   <b-col sm="2">
-                  <b-form-input
+                  <star-rating
+                    :increment=0.1
+                    :star-size=20
                     v-model="staffRating"
                   />
                   </b-col>
@@ -90,21 +95,23 @@
   </b-container>
 </template>
 <script>
+import StarRating from 'vue-star-rating'
+
 export default {
   data () {
     return {
       title: '',
       generalImpression: '',
       foodSection: '',
-      staffSection: ''
+      staffSection: '',
+      generalRating: null,
+      foodRating: null,
+      staffRating: null
     }
   },
 
-  mounted () {
-    this.$root.$on('bv::collapse::state', (collapseId, isJustShown) => {
-      console.log('collapseId:', collapseId)
-      console.log('isJustShown:', isJustShown)
-    })
+  components: {
+    StarRating
   }
 }
 </script>
