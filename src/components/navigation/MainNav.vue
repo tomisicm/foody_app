@@ -51,6 +51,6 @@ export default {
     ...mapGetters('authStore', ['isSignedIn'])
   },
 
-  name: 'Main Navigation Bar'
+  name: 'Main_Navigation_Bar'
 }
 </script>

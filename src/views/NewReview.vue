@@ -116,6 +116,6 @@ export default {
     StarRating
   },
 
-  name: 'New Review'
+  name: 'New_Review'
 }
 </script>
