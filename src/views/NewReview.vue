@@ -2,6 +2,7 @@
   <b-container class="mt-2">
       <b-form>
         <h4>Please complete the following questions</h4>
+        <!-- <div>Ill most likely add some cuisine info onto this page.</div> -->
         <b-form-row class="mx-1 my-3">
           <label>Title: </label>
           <b-input
