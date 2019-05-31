@@ -106,12 +106,15 @@ export default {
       staffSection: '',
       generalRating: null,
       foodRating: null,
-      staffRating: null
+      staffRating: null,
+      item: this.$route.query.item
     }
   },
 
   components: {
     StarRating
-  }
+  },
+
+  name: 'New Review'
 }
 </script>

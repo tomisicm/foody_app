@@ -49,6 +49,8 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters('authStore', ['isSignedIn'])
-  }
+  },
+
+  name: 'Main Navigation Bar'
 }
 </script>
