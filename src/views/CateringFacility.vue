@@ -17,7 +17,7 @@
       <b-container>
         <b-row class="mx-2">
           <span class="pt-1">Add review:</span>
-          <b-button :to="{ name: 'addreview' }" pill variant="primary" class="mx-2"> + </b-button>
+          <b-button :to="{ name: 'addreview', params: { item: this.$route.params.id } }" pill variant="primary" class="mx-2"> + </b-button>
         </b-row>
       </b-container>
 
