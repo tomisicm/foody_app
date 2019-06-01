@@ -16,6 +16,28 @@ class ReviewService {
         throw error
       })
   }
+
+  createReview (review) {
+    return http
+      .post('/api/review/', review)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
+  deleteReview (id) {
+    return http
+      .delete(`/api/review/${id}`)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
 }
 
 const reviewService = new ReviewService()

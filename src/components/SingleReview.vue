@@ -11,7 +11,7 @@
       </b-card-text>
       <b-card-text
         class="my-1 mx-1 item-text"
-      >By {{item && item.createdBy}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
+      >By {{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
     </b-col>
     <b-col cols="12" md="3">
 

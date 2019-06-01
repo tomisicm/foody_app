@@ -13,7 +13,7 @@
         <div role="tablist" class="mx-1">
           <b-card no-body class="mb-1">
             <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.general variant="btn btn-light">General Impression</b-button>
+              <b-button block href="#" v-b-toggle.general variant="btn btn-primary">General Impression</b-button>
             </b-card-header>
 
             <b-collapse id="general" visible role="tabpanel">
@@ -40,7 +40,7 @@
 
           <b-card no-body class="mb-1">
             <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.food variant="btn btn-light">Menu and Food</b-button>
+              <b-button block href="#" v-b-toggle.food variant="btn btn-primary">Menu and Food</b-button>
             </b-card-header>
 
             <b-collapse id="food" role="tabpanel">
@@ -67,7 +67,7 @@
 
           <b-card no-body class="mb-1">
             <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.staff variant="btn btn-light">Staff and Atmosphere</b-button>
+              <b-button block href="#" v-b-toggle.staff variant="btn btn-primary">Staff and Atmosphere</b-button>
             </b-card-header>
 
             <b-collapse id="staff" role="tabpanel">
@@ -91,11 +91,18 @@
               </b-card-body>
             </b-collapse>
           </b-card>
+        <b-row v-if="readyForSubmition" class="mx-1 my-3">
+          <b-button variant="primary" @click="onSubmit">Submit</b-button>
+        </b-row>
         </div>
     </b-form>
   </b-container>
 </template>
 <script>
+import _ from 'lodash'
+
+import reviewService from '@/utils/services/review-service'
+
 import StarRating from 'vue-star-rating'
 
 export default {
@@ -105,10 +112,39 @@ export default {
       generalImpression: '',
       foodSection: '',
       staffSection: '',
-      generalRating: null,
-      foodRating: null,
-      staffRating: null,
+      generalRating: 0,
+      foodRating: 0,
+      staffRating: 0,
       item: this.$route.query.item
+    }
+  },
+
+  methods: {
+    async onSubmit () {
+      await reviewService.createReview(this.getReviewData())
+      this.$router.push({ name: 'catering', params: { id: this.item } })
+    },
+
+    getReviewData () {
+      return {
+        title: this.title,
+        generalImpression: this.generalImpression,
+        foodSection: this.foodSection,
+        staffSection: this.staffSection,
+        generalRating: this.generalRating,
+        foodRating: this.foodRating,
+        staffRating: this.staffRating,
+        item: this.item
+      }
+    }
+  },
+
+  computed: {
+    readyForSubmition () {
+      return !_.isEmpty(this.title) &&
+      (!_.isEmpty(this.generalImpression) ||
+          !_.isEmpty(this.foodSection) ||
+          !_.isEmpty(this.staffSection))
     }
   },
 
