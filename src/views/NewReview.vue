@@ -1,100 +1,100 @@
 <template>
   <b-container class="mt-2">
-      <b-form>
-        <h4>Please complete the following questions</h4>
-        <!-- <div>Ill most likely add some cuisine info onto this page.</div> -->
-        <b-form-row class="mx-1 my-3">
-          <label>Title: </label>
-          <b-input
-            v-model="title"
-          />
-        </b-form-row>
+    <b-form>
+      <h4>Please complete the following questions</h4>
+      <!-- <div>Ill most likely add some cuisine info onto this page.</div> -->
+      <b-form-row class="mx-1 my-3">
+        <label>Title: </label>
+        <b-input
+          v-model="title"
+        />
+      </b-form-row>
 
-        <div role="tablist" class="mx-1">
-          <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.general variant="btn btn-primary">General Impression</b-button>
-            </b-card-header>
+      <div role="tablist" class="mx-1">
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block href="#" v-b-toggle.general variant="btn btn-primary">General Impression</b-button>
+          </b-card-header>
 
-            <b-collapse id="general" visible role="tabpanel">
-              <b-card-body>
-                Please describe general impression. How was the place? Would you go back?
-                <b-textarea
-                  v-model="generalImpression"
+          <b-collapse id="general" visible role="tabpanel">
+            <b-card-body>
+              Please describe general impression. How was the place? Would you go back?
+              <b-textarea
+                v-model="generalImpression"
+              />
+              <b-row class="my-1">
+                <b-col sm="3">
+                  <label class="my-1">Overall rating: </label>
+                </b-col>
+                <b-col sm="2">
+                <star-rating
+                  :increment=0.1
+                  :star-size=20
+                  v-model="generalRating"
                 />
-                <b-row class="my-1">
-                  <b-col sm="3">
-                    <label class="my-1">Overall rating: </label>
-                  </b-col>
-                  <b-col sm="2">
-                  <star-rating
-                    :increment=0.1
-                    :star-size=20
-                    v-model="generalRating"
-                  />
-                  </b-col>
-                </b-row>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
+                </b-col>
+              </b-row>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
 
-          <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.food variant="btn btn-primary">Menu and Food</b-button>
-            </b-card-header>
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block href="#" v-b-toggle.food variant="btn btn-primary">Menu and Food</b-button>
+          </b-card-header>
 
-            <b-collapse id="food" role="tabpanel">
-              <b-card-body>
-                Please describe food. How was your meal? Is there particular item what would you recommend?
-                <b-textarea
-                  v-model="foodSection"
+          <b-collapse id="food" role="tabpanel">
+            <b-card-body>
+              Please describe food. How was your meal? Is there particular item what would you recommend?
+              <b-textarea
+                v-model="foodSection"
+              />
+              <b-row class="my-1">
+                <b-col sm="3">
+                  <label class="my-1">Overall rating: </label>
+                </b-col>
+                <b-col sm="2">
+                <star-rating
+                  :increment=0.1
+                  :star-size=20
+                  v-model="foodRating"
                 />
-                <b-row class="my-1">
-                  <b-col sm="3">
-                    <label class="my-1">Overall rating: </label>
-                  </b-col>
-                  <b-col sm="2">
-                  <star-rating
-                    :increment=0.1
-                    :star-size=20
-                    v-model="foodRating"
-                  />
-                  </b-col>
-                </b-row>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
+                </b-col>
+              </b-row>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
 
-          <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.staff variant="btn btn-primary">Staff and Atmosphere</b-button>
-            </b-card-header>
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block href="#" v-b-toggle.staff variant="btn btn-primary">Staff and Atmosphere</b-button>
+          </b-card-header>
 
-            <b-collapse id="staff" role="tabpanel">
-              <b-card-body>
-                How was service?
-                <b-textarea
-                  v-model="staffSection"
+          <b-collapse id="staff" role="tabpanel">
+            <b-card-body>
+              How was service?
+              <b-textarea
+                v-model="staffSection"
+              />
+              <b-row class="my-1">
+                <b-col sm="3">
+                  <label class="my-1">Overall rating: </label>
+                </b-col>
+                <b-col sm="2">
+                <star-rating
+                  :increment=0.1
+                  :star-size=20
+                  v-model="staffRating"
                 />
-                <b-row class="my-1">
-                  <b-col sm="3">
-                    <label class="my-1">Overall rating: </label>
-                  </b-col>
-                  <b-col sm="2">
-                  <star-rating
-                    :increment=0.1
-                    :star-size=20
-                    v-model="staffRating"
-                  />
-                  </b-col>
-                </b-row>
-              </b-card-body>
-            </b-collapse>
-          </b-card>
-        </div>
-        <b-row v-if="readyForSubmition" class="mx-1 my-3">
-          <b-button variant="primary" @click="onSubmit">Submit</b-button>
-        </b-row>
+                </b-col>
+              </b-row>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+      </div>
+      <b-row v-if="readyForSubmition" class="mx-1 my-3">
+        <b-button variant="primary" @click="onSubmit">Submit</b-button>
+      </b-row>
     </b-form>
   </b-container>
 </template>

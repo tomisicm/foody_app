@@ -62,6 +62,12 @@ export default new Router({
       component: NewReview
     },
     {
+      path: '/reviews/:id',
+      name: 'review',
+      props: true,
+      component: Review
+    },
+    {
       path: '/reviews',
       name: 'reviews',
       props: true,

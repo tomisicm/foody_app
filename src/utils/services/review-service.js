@@ -17,6 +17,17 @@ class ReviewService {
       })
   }
 
+  getReview (id) {
+    return http
+      .get(`/api/review/${id}`)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
   createReview (review) {
     return http
       .post('/api/review/', review)
