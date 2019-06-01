@@ -91,10 +91,10 @@
               </b-card-body>
             </b-collapse>
           </b-card>
+        </div>
         <b-row v-if="readyForSubmition" class="mx-1 my-3">
           <b-button variant="primary" @click="onSubmit">Submit</b-button>
         </b-row>
-        </div>
     </b-form>
   </b-container>
 </template>
