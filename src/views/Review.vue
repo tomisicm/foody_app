@@ -8,7 +8,7 @@
         </div>
       </b-form-row>
       
-      <div>{{content}}</div>
+      <div :contenteditable="inEditMode">{{review.foodSection}}</div>
     </b-form>
   </b-container>
 </template>
@@ -18,6 +18,7 @@ import reviewService from '@/utils/services/review-service'
 export default {
   data () {
     return {
+      inEditMode: false,
       review: null,
       content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita distinctio quia repudiandae possimus optio. Nemo deleniti iure mollitia officia vel corrupti, quibusdam rerum quidem maiores velit possimus tempore dolorem rem.'
     }
