@@ -36,7 +36,7 @@ export default {
   methods: {
     getCommentData () {
       return {
-        itemType: 'comment',
+        itemType: 'cateringestablishment',
         body: this.body,
         item: this.$route.params.id
       }
