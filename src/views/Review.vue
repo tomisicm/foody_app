@@ -8,11 +8,40 @@
         </div>
       </b-form-row>
 
-      <baseEditable
-        :content.sync="review && review.foodSection"
-        :inEditMode.sync="inEditMode"
-        @update="review.foodSection = $event"
-      />
+      <div role="tablist" class="mx-1">
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block href="#" v-b-toggle.general variant="btn btn-primary">
+              <font-awesome-icon class="when-opened" icon="arrow-up" />
+              <font-awesome-icon class="when-closed" icon="arrow-down" />
+              General Impression
+            </b-button>
+          </b-card-header>
+          
+          <b-collapse id="general" visible role="tabpanel">
+            <b-card-body>
+              <baseEditable
+                :content.sync="review && review.generalImpression"
+                :inEditMode.sync="inEditMode"
+                @update="review.generalImpression = $event"
+              />
+            </b-card-body>
+
+            <b-row class="my-1">
+              <b-col sm="3">
+                <label class="my-1">Overall rating: </label>
+              </b-col>
+              <b-col sm="2">
+                <star-rating
+                  :increment=0.1
+                  :star-size=20
+                  v-model="generalRating"
+                />
+              </b-col>
+            </b-row>
+          </b-collapse>
+        </b-card>
+      </div>
 
     </b-form>
   </b-container>
@@ -49,3 +78,11 @@ export default {
   name: 'Review_Page'
 }
 </script>
+
+<style>
+.collapsed > .when-opened,
+:not(.collapsed) > .when-closed {
+  display: none;
+}
+</style>
+
