@@ -4,7 +4,7 @@
       <b-form-row class="mx-1 my-3">
         <label class="h4">Title: </label>
         <div class="h4">
-          {{review && review.title}}
+          {{review.title}}
         </div>
       </b-form-row>
 
@@ -21,7 +21,7 @@
           <b-collapse id="general" visible role="tabpanel">
             <b-card-body>
               <baseEditable
-                :content.sync="review && review.generalImpression"
+                :content.sync="review.generalImpression"
                 :inEditMode.sync="inEditMode"
                 @update="review.generalImpression = $event"
               />
@@ -35,7 +35,7 @@
                 <star-rating
                   :increment=0.1
                   :star-size=20
-                  v-model="generalRating"
+                  v-model="review.generalRating"
                 />
               </b-col>
             </b-row>
@@ -48,13 +48,15 @@
 </template>
 <script>
 import reviewService from '@/utils/services/review-service'
+
+import StarRating from 'vue-star-rating'
 import baseEditable from '@/components/baseEditable'
 
 export default {
   data () {
     return {
       inEditMode: true,
-      review: null
+      review: {}
     }
   },
 
@@ -74,7 +76,7 @@ export default {
     this.getReviewData()
   },
 
-  components: { baseEditable },
+  components: { baseEditable, StarRating },
   name: 'Review_Page'
 }
 </script>
