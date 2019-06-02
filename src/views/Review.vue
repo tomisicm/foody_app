@@ -41,6 +41,9 @@
             </b-row>
           </b-collapse>
         </b-card>
+
+        <baseCollapse :inEditMode=true id="generall" />
+
       </div>
 
     </b-form>
@@ -51,6 +54,7 @@ import reviewService from '@/utils/services/review-service'
 
 import StarRating from 'vue-star-rating'
 import baseEditable from '@/components/baseEditable'
+import baseCollapse from '@/components/baseCollapse'
 
 export default {
   data () {
@@ -76,7 +80,7 @@ export default {
     this.getReviewData()
   },
 
-  components: { baseEditable, StarRating },
+  components: { baseEditable, StarRating, baseCollapse },
   name: 'Review_Page'
 }
 </script>
