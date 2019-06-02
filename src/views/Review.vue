@@ -17,7 +17,7 @@
               General Impression
             </b-button>
           </b-card-header>
-          
+
           <b-collapse id="general" visible role="tabpanel">
             <b-card-body>
               <baseEditable
@@ -85,4 +85,3 @@ export default {
   display: none;
 }
 </style>
-
