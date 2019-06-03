@@ -24,7 +24,6 @@
 export default {
   props: {
     headline: String,
-    label: String,
     id: {
       type: String,
       required: true

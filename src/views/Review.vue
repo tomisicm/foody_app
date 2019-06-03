@@ -12,31 +12,33 @@
 
         <baseCollapse
           headline="General Impression"
-          :inEditMode=true id="generall"
+          :inEditMode=true 
+          id="general"
         >
-        <template v-slot:mainbody>
-          <baseEditable
-            :content.sync="review.generalImpression"
-            :inEditMode.sync="inEditMode"
-            @update="review.generalImpression = $event"
-          />
-        </template>
-
-        <template v-slot:additionalbody>
-          <b-row class="my-1">
-            <b-col sm="3">
-              <label class="my-1">Rating:</label>
-            </b-col>
-          <b-col sm="2">
-            <star-rating
-              :increment=0.1
-              :star-size=20
-              v-model="review.generalRating"
+          <template v-slot:mainbody>
+            <baseEditable
+              :content.sync="review.generalImpression"
+              :inEditMode.sync="inEditMode"
+              @update="review.generalImpression = $event"
             />
-          </b-col>
-        </b-row>
-        </template>
+          </template>
+
+          <template v-slot:additionalbody>
+            <b-row class="my-1">
+              <b-col sm="3">
+                <label class="my-1">Rating:</label>
+              </b-col>
+            <b-col sm="2">
+              <star-rating
+                :increment=0.1
+                :star-size=20
+                v-model="review.generalRating"
+              />
+              </b-col>
+            </b-row>
+          </template>
         </baseCollapse>
+
 
       </div>
 
