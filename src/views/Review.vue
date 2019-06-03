@@ -24,18 +24,16 @@
           </template>
 
           <template v-slot:additionalbody>
-            <b-row class="my-1">
-              <b-col sm="3">
-                <label class="my-1">Rating:</label>
-              </b-col>
+            <b-col sm="3">
+              <label class="my-1">Rating:</label>
+            </b-col>
             <b-col sm="2">
               <star-rating
                 :increment=0.1
                 :star-size=20
                 v-model="review.generalRating"
               />
-              </b-col>
-            </b-row>
+            </b-col>
           </template>
         </baseCollapse>
 

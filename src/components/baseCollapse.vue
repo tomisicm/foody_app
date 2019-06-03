@@ -13,7 +13,9 @@
 
         <slot name="mainbody" />
 
-        <slot name="additionalbody" />
+        <b-row class="my-1">
+          <slot name="additionalbody" />
+        </b-row>
 
       </b-card-body>
     </b-collapse>
