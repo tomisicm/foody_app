@@ -11,22 +11,10 @@
     <b-collapse :id="id" visible role="tabpanel">
       <b-card-body>
 
-        <slot name="body" />
+        <slot name="mainbody" />
 
-        <b-row class="my-1">
-          <b-col sm="3">
-            <label class="my-1">{{label}}: </label>
-          </b-col>
+        <slot name="additionalbody" />
 
-          <b-col sm="2">
-            <slot name="footer" />
-              <!-- <star-rating
-                :increment=0.1
-                :star-size=20
-                v-model="review.generalRating"
-              /> -->
-          </b-col>
-        </b-row>
       </b-card-body>
 
     </b-collapse>
