@@ -100,16 +100,20 @@
           v-if="!inEditMode"
           @click="toggleEditMode"
           variant="outline-primary">Edit</b-button>
-        <b-button
+        <b-button class="mx-1"
           v-else
           @click="toggleEditMode"
           variant="outline-primary">Save</b-button>
+        <b-button class="mx-1"
+          v-if="readyForSubmit"
+          variant="primary">Submit</b-button>
       </b-row>
 
     </b-form>
   </b-container>
 </template>
 <script>
+import _ from 'lodash'
 import reviewService from '@/utils/services/review-service'
 
 import StarRating from 'vue-star-rating'
@@ -120,7 +124,8 @@ export default {
   data () {
     return {
       inEditMode: false,
-      review: {}
+      review: {},
+      initReview: {}
     }
   },
 
@@ -128,8 +133,8 @@ export default {
     async getReviewData () {
       const { data } = await reviewService.getReview(this.$route.params.id)
       this.review = data
+      this.initReview = Object.assign({}, data)
     },
-
     toggleEditMode () {
       this.inEditMode = !this.inEditMode
     }
@@ -137,6 +142,12 @@ export default {
 
   created () {
     this.getReviewData()
+  },
+
+  computed: {
+    readyForSubmit () {
+      return _.isEqual(this.review, this.initReview) && !this.inEditMode
+    }
   },
 
   components: { baseEditable, StarRating, baseCollapse },
