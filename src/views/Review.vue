@@ -9,7 +9,7 @@
       </b-form-row>
 
       <div role="tablist" class="mx-1">
-        <b-card no-body class="mb-1">
+        <!-- <b-card no-body class="mb-1">
           <b-card-header header-tag="header" class="p-1" role="tab">
             <b-button block href="#" v-b-toggle.general variant="btn btn-primary">
               <font-awesome-icon class="when-opened" icon="arrow-up" />
@@ -41,7 +41,7 @@
             </b-row>
           </b-collapse>
         </b-card>
-
+ -->
         <baseCollapse :inEditMode=true id="generall" />
 
       </div>
