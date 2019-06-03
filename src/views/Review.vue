@@ -12,7 +12,7 @@
 
         <baseCollapse
           headline="General Impression"
-          :inEditMode=true 
+          :inEditMode=true
           id="general"
         >
           <template v-slot:mainbody>
