@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div :class="[{ editable: inEditMode }, classes]"
     :contenteditable="inEditMode"
     @blur="update"
   />
@@ -8,6 +8,10 @@
 <script>
 export default {
   props: {
+    classes: {
+      type: String,
+      default: 'px-3 py-3'
+    },
     content: {
       type: String,
       default: ''
@@ -35,3 +39,9 @@ export default {
   }
 }
 </script>
+
+<style>
+div.editable {
+  border: 1px solid #ced4da !important;
+}
+</style>
