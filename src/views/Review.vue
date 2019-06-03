@@ -29,6 +29,7 @@
             </b-col>
             <b-col sm="2">
               <star-rating
+                :read-only="!inEditMode"
                 :increment=0.1
                 :star-size=20
                 v-model="review.generalRating"
@@ -56,6 +57,7 @@
             </b-col>
             <b-col sm="2">
               <star-rating
+                :read-only="!inEditMode"
                 :increment=0.1
                 :star-size=20
                 v-model="review.foodRating"
@@ -72,7 +74,7 @@
           <template v-slot:mainbody>
             <baseEditable
               :content.sync="review.staffSection"
-              :inEditMode.sync="inEditMode"
+              :inEditMode="inEditMode"
               @update="review.staffSection = $event"
             />
           </template>
@@ -83,6 +85,7 @@
             </b-col>
             <b-col sm="2">
               <star-rating
+                :read-only="!inEditMode"
                 :increment=0.1
                 :star-size=20
                 v-model="review.staffRating"
@@ -91,6 +94,17 @@
           </template>
         </baseCollapse>
       </div>
+
+      <b-row class="mx-1 my-2 mb-4">
+        <b-button class="mx-1"
+          v-if="!inEditMode"
+          @click="toggleEditMode"
+          variant="outline-primary">Edit</b-button>
+        <b-button
+          v-else
+          @click="toggleEditMode"
+          variant="outline-primary">Save</b-button>
+      </b-row>
 
     </b-form>
   </b-container>
@@ -105,7 +119,7 @@ import baseCollapse from '@/components/baseCollapse'
 export default {
   data () {
     return {
-      inEditMode: true,
+      inEditMode: false,
       review: {}
     }
   },
@@ -116,9 +130,8 @@ export default {
       this.review = data
     },
 
-    onLiveEdit (event) {
-      const src = event.target.innerHTML
-      this.review.foodSection = src
+    toggleEditMode () {
+      this.inEditMode = !this.inEditMode
     }
   },
 
