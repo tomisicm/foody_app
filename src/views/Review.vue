@@ -143,10 +143,3 @@ export default {
   name: 'Review_Page'
 }
 </script>
-
-<style>
-.collapsed > .when-opened,
-:not(.collapsed) > .when-closed {
-  display: none;
-}
-</style>
