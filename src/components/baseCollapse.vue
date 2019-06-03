@@ -16,7 +16,6 @@
         <slot name="additionalbody" />
 
       </b-card-body>
-
     </b-collapse>
   </b-card>
 </template>
