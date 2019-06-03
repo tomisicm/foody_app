@@ -9,40 +9,19 @@
       </b-form-row>
 
       <div role="tablist" class="mx-1">
-        <!-- <b-card no-body class="mb-1">
-          <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block href="#" v-b-toggle.general variant="btn btn-primary">
-              <font-awesome-icon class="when-opened" icon="arrow-up" />
-              <font-awesome-icon class="when-closed" icon="arrow-down" />
-              General Impression
-            </b-button>
-          </b-card-header>
 
-          <b-collapse id="general" visible role="tabpanel">
-            <b-card-body>
-              <baseEditable
-                :content.sync="review.generalImpression"
-                :inEditMode.sync="inEditMode"
-                @update="review.generalImpression = $event"
-              />
-            </b-card-body>
-
-            <b-row class="my-1">
-              <b-col sm="3">
-                <label class="my-1">Overall rating: </label>
-              </b-col>
-              <b-col sm="2">
-                <star-rating
-                  :increment=0.1
-                  :star-size=20
-                  v-model="review.generalRating"
-                />
-              </b-col>
-            </b-row>
-          </b-collapse>
-        </b-card>
- -->
-        <baseCollapse :inEditMode=true id="generall" />
+        <baseCollapse
+          headline="General Impression"
+          :inEditMode=true id="generall"
+        >
+        <template v-slot:body>
+          <baseEditable
+            :content.sync="review.generalImpression"
+            :inEditMode.sync="inEditMode"
+            @update="review.generalImpression = $event"
+          />
+        </template>
+        </baseCollapse>
 
       </div>
 
