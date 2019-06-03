@@ -37,7 +37,59 @@
           </template>
         </baseCollapse>
 
+        <baseCollapse
+          headline="Food Impression"
+          :inEditMode=true
+          id="food"
+        >
+          <template v-slot:mainbody>
+            <baseEditable
+              :content.sync="review.foodSection"
+              :inEditMode.sync="inEditMode"
+              @update="review.foodSection = $event"
+            />
+          </template>
 
+          <template v-slot:additionalbody>
+            <b-col sm="3">
+              <label class="my-1">Rating:</label>
+            </b-col>
+            <b-col sm="2">
+              <star-rating
+                :increment=0.1
+                :star-size=20
+                v-model="review.foodRating"
+              />
+            </b-col>
+          </template>
+        </baseCollapse>
+
+        <baseCollapse
+          headline="Staff Impression"
+          :inEditMode=true
+          id="staff"
+        >
+          <template v-slot:mainbody>
+            <baseEditable
+              :content.sync="review.staffSection"
+              :inEditMode.sync="inEditMode"
+              @update="review.staffSection = $event"
+            />
+          </template>
+
+          <template v-slot:additionalbody>
+            <b-col sm="3">
+              <label class="my-1">Rating:</label>
+            </b-col>
+            <b-col sm="2">
+              <star-rating
+                :increment=0.1
+                :star-size=20
+                v-model="review.staffRating"
+              />
+            </b-col>
+          </template>
+        </baseCollapse>
       </div>
 
     </b-form>
