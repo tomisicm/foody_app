@@ -15,7 +15,28 @@
     </b-col>
     <b-col cols="12" md="3">
 
-      actions
+    <b-button
+      @click="handleClick"
+      variant="outline-secondary"
+      size="sm">
+      <font-awesome-icon icon="external-link-square-alt" />
+    </b-button>
+
+    <b-button
+      v-if="!item.locked"
+      @click="handleLock"
+      variant="outline-secondary"
+      size="sm">
+      <font-awesome-icon icon="lock" />
+    </b-button>
+
+    <b-button
+      v-if="item.locked"
+      @click="handleLock"
+      variant="outline-secondary"
+      size="sm">
+      <font-awesome-icon icon="lock-open" />
+    </b-button>
 
     </b-col>
   </b-row>
@@ -29,6 +50,18 @@ export default {
     item: {
       type: Object,
       required: true
+    }
+  },
+
+  methods: {
+    handleClick () {
+      this.$router.push({ name: 'review', params: { id: this.item._id } })
+    },
+
+    handleLock () {
+      console.log(this.item.locked)
+      // update
+      this.item.locked = !this.item.locked
     }
   },
 

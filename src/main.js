@@ -22,13 +22,26 @@ import {
   faSave,
   faReply,
   faArrowUp,
-  faArrowDown
+  faArrowDown,
+  faExternalLinkSquareAlt,
+  faLock,
+  faLockOpen
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(BootstrapVue)
 
-library.add(faTrash, faEdit, faSave, faReply, faArrowUp, faArrowDown)
+library.add(
+  faTrash,
+  faEdit,
+  faSave,
+  faReply,
+  faArrowUp,
+  faArrowDown,
+  faExternalLinkSquareAlt,
+  faLock,
+  faLockOpen
+)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
