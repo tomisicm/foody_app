@@ -6,6 +6,7 @@
         <div class="h4">
           {{review.title}}
         </div>
+        <b-row class="mx-4 my-1">@{{review.createdBy}}</b-row>
       </b-form-row>
 
       <div role="tablist" class="mx-1">
@@ -105,15 +106,14 @@
           @click="toggleEditMode"
           variant="outline-primary">Save</b-button>
         <b-button class="mx-1"
-          v-if="readyForSubmit"
+          v-if="!inEditMode"
+          @click="onSubmit"
           variant="primary">Submit</b-button>
       </b-row>
-
     </b-form>
   </b-container>
 </template>
 <script>
-import _ from 'lodash'
 import reviewService from '@/utils/services/review-service'
 
 import StarRating from 'vue-star-rating'
@@ -124,8 +124,7 @@ export default {
   data () {
     return {
       inEditMode: false,
-      review: {},
-      initReview: {}
+      review: {}
     }
   },
 
@@ -133,7 +132,9 @@ export default {
     async getReviewData () {
       const { data } = await reviewService.getReview(this.$route.params.id)
       this.review = data
-      this.initReview = Object.assign({}, data)
+    },
+    async onSubmit () {
+      await reviewService.editReview(this.review)
     },
     toggleEditMode () {
       this.inEditMode = !this.inEditMode
@@ -144,11 +145,11 @@ export default {
     this.getReviewData()
   },
 
-  computed: {
+  /* computed: {
     readyForSubmit () {
       return _.isEqual(this.review, this.initReview) && !this.inEditMode
     }
-  },
+  }, */
 
   components: { baseEditable, StarRating, baseCollapse },
   name: 'Review_Page'

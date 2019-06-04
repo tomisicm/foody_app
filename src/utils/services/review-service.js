@@ -39,6 +39,17 @@ class ReviewService {
       })
   }
 
+  editReview (review) {
+    return http
+      .put('/api/review/', review)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
   deleteReview (id) {
     return http
       .delete(`/api/review/${id}`)
