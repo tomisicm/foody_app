@@ -9,6 +9,8 @@ import AppRegister from '../views/AppRegister'
 import Home from '../views/Home'
 import CateringFacility from '../views/CateringFacility'
 import Review from '../views/Review'
+import Reviews from '../views/Reviews'
+
 import NewReview from '../views/NewReview'
 
 Vue.use(Router)
@@ -71,7 +73,7 @@ export default new Router({
       path: '/reviews',
       name: 'reviews',
       props: true,
-      component: Review
+      component: Reviews
     }
   ]
 })
