@@ -44,7 +44,7 @@ export default {
         itemType: 'cateringestablishment',
         item: this.$route.params.id,
         body: this.body,
-        replayTo: this.reply._id
+        replyTo: (this.reply || {})._id || null
       }
     },
 
