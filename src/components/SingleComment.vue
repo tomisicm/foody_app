@@ -65,10 +65,10 @@
 
     </b-col>
   </b-row>
-  <div v-if="reply">
+  <div>
     <b-row>
       <b-col class="ml-3 mr-1">
-        <NewComment :reply="reply"/>
+        <NewComment v-if="reply" :reply="reply"/>
       </b-col>
     </b-row>
   </div>
