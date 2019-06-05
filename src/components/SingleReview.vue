@@ -1,9 +1,9 @@
 <template>
-  <b-row @click="handleClick">
+  <b-row>
     <b-col cols="12" md="1">
       <b-img class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20" rounded="circle"></b-img>
     </b-col>
-    <b-col cols="12" md="8">
+    <b-col @click="handleClick" cols="12" md="8">
       <b-card-text
         class="my-1 mx-1 item-text"
       >
