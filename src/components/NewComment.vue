@@ -27,6 +27,11 @@ import { mapGetters } from 'vuex'
 import commentService from '@/utils/services/comment-service'
 
 export default {
+  props: {
+    reply: Object,
+    default: null
+  },
+
   data () {
     return {
       body: ''
@@ -37,8 +42,9 @@ export default {
     getCommentData () {
       return {
         itemType: 'cateringestablishment',
+        item: this.$route.params.id,
         body: this.body,
-        item: this.$route.params.id
+        replayTo: this.reply._id
       }
     },
 

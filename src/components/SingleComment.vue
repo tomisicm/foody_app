@@ -1,4 +1,5 @@
 <template>
+<div>
   <b-row>
     <b-col cols="12" md="1">
       <b-img class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
@@ -64,10 +65,20 @@
 
     </b-col>
   </b-row>
+  <div v-if="reply">
+    <b-row>
+      <b-col class="ml-3 mr-1">
+        <NewComment :reply="reply"/>
+      </b-col>
+    </b-row>
+  </div>
+</div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+
+import NewComment from '@/components/NewComment'
 
 import dateToString from '@/utils/mixins/dateToString'
 
@@ -81,7 +92,8 @@ export default {
 
   data () {
     return {
-      inEditMode: false
+      inEditMode: false,
+      reply: null
     }
   },
 
@@ -95,7 +107,7 @@ export default {
     },
 
     replayTo () {
-      console.log(this.item.replayTo)
+      this.reply = this.item
     },
 
     saveItem () {
@@ -113,6 +125,10 @@ export default {
     isCommentDeletable () {
       return this.isAdmin || (this.item.createdBy && this.userId === this.item.createdBy._id)
     }
+  },
+
+  components: {
+    NewComment
   },
 
   mixins: [ dateToString ]

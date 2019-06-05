@@ -37,7 +37,19 @@
           </b-tab>
           <b-tab title="Comments">
 
-            <NewComment />
+            <NewComment>
+
+              <template v-slot:input-field>
+                <b-form-textarea
+                  v-model="body"
+                  placeholder="New comment..."
+                  rows="1"
+                  max-rows="2"
+                  :style="{ overflowY: 'none' }"
+                />
+              </template>
+
+            </NewComment>
 
             <List
               class="my-1"
