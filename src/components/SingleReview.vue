@@ -1,5 +1,5 @@
 <template>
-  <b-row>
+  <b-row @click="handleClick">
     <b-col cols="12" md="1">
       <b-img class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20" rounded="circle"></b-img>
     </b-col>
@@ -14,13 +14,6 @@
       >By {{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
     </b-col>
     <b-col cols="12" md="3" v-if="isSignedIn">
-
-      <b-button
-        @click="handleClick"
-        variant="outline-secondary"
-        size="sm">
-        <font-awesome-icon icon="external-link-square-alt" />
-      </b-button>
 
       <template v-if="isAdmin">
         <b-button
