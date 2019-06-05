@@ -107,7 +107,11 @@ export default {
     },
 
     replayTo () {
-      this.reply = this.item
+      if (this.reply) {
+        this.reply = null
+      } else {
+        this.reply = this.item
+      }
     },
 
     saveItem () {
