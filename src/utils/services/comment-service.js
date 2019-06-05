@@ -39,9 +39,11 @@ class CommentService {
       })
   }
 
-  editComment (commentId, comment) {
+  editComment (comment) {
+    const { _id, body } = comment
+
     return http
-      .put(`/api/comment/${commentId}`, comment)
+      .put(`/api/comment/${_id}`, { body: body })
       .then(({ data }) => {
         return data
       })

@@ -85,8 +85,8 @@ export default {
     handleRemoveComment (event) {
       console.log(event)
     },
-    handleEditComment (event) {
-      console.log(event)
+    async handleEditComment (event) {
+      await commentService.editComment(event)
     },
 
     async getCateringData () {
@@ -142,7 +142,3 @@ export default {
   name: 'CateringFacility'
 }
 </script>
-
-<style>
-
-</style>

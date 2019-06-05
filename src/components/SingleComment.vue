@@ -99,7 +99,7 @@ export default {
     },
 
     saveItem () {
-      this.$emit('editItem', this.item._id)
+      this.$emit('editItem', this.item)
       this.inEditMode = !this.inEditMode
     }
 
