@@ -39,6 +39,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import reviewService from '@/utils/services/review-service'
+
 import dateToString from '@/utils/mixins/dateToString'
 
 export default {
@@ -54,9 +56,8 @@ export default {
       this.$router.push({ name: 'review', params: { id: this.item._id } })
     },
 
-    handleLock () {
-      console.log(this.item.locked)
-      // update
+    async handleLock () {
+      await reviewService.changeReviewStatus(this.item._id, { locked: this.item.locked })
       this.item.locked = !this.item.locked
     }
   },

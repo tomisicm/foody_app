@@ -50,6 +50,17 @@ class ReviewService {
       })
   }
 
+  changeReviewStatus (id, body) {
+    return http
+      .put(`/api/review/${id}/status`, body)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
   deleteReview (id) {
     return http
       .delete(`/api/review/${id}`)
