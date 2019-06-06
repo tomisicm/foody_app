@@ -40,8 +40,9 @@ class ReviewService {
   }
 
   editReview (review) {
+    const { _id } = review
     return http
-      .put('/api/review/', review)
+      .put(`/api/review/${_id}`, review)
       .then(({ data }) => {
         return data
       })

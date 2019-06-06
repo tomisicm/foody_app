@@ -1,7 +1,7 @@
 <template>
   <b-container class="mt-2">
     <b-row>
-      <b-button @click="handleBack" size="lg" variant="primary"><font-awesome-icon icon="long-arrow-alt-left" /> Back</b-button>
+      <b-button @click="handleBack" variant="primary"><font-awesome-icon icon="long-arrow-alt-left" /> Back</b-button>
     </b-row>
     <b-form>
       <b-form-row class="mx-1 my-3">
