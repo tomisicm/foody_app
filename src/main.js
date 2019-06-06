@@ -25,7 +25,8 @@ import {
   faArrowDown,
   faExternalLinkSquareAlt,
   faLock,
-  faLockOpen
+  faLockOpen,
+  faLongArrowAltLeft
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -40,7 +41,8 @@ library.add(
   faArrowDown,
   faExternalLinkSquareAlt,
   faLock,
-  faLockOpen
+  faLockOpen,
+  faLongArrowAltLeft
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
