@@ -24,20 +24,23 @@ export default {
       fields: {
         name: {
           label: 'Title',
-          key: 'title',
-          sortable: true
+          key: 'title'
         },
         createdBy: {
           label: 'Author',
           key: 'createdBy.name'
         },
         totalRating: {
-          label: 'User Rating',
+          label: 'Rating',
           key: 'totalRating'
         },
         cuisineService: {
-          label: 'Cuisine Service',
+          label: 'Place Name',
           key: 'item.name'
+        },
+        cuisineAddress: {
+          label: 'Address',
+          key: 'item.fullAddress'
         }
       }
     }
