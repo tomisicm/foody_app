@@ -17,6 +17,23 @@ class ReviewService {
       })
   }
 
+  getReviews ({ page = 1, perPage = 10, sortBy = '-updatedAt' }) {
+    return http
+      .get(`/api/review`, {
+        params: {
+          page: page,
+          perPage: perPage,
+          sortBy: sortBy
+        }
+      })
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
   getReview (id) {
     return http
       .get(`/api/review/${id}`)
