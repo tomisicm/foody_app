@@ -56,7 +56,7 @@ const actions = {
 const getters = {
   user: state => state.user,
   isSignedIn: state => !_.isNull(state.user),
-  isAdmin: state => state.user.admin,
+  isAdmin: state => (state.user && state.user.admin) || false,
   userId: state => state.user && state.user._id
 }
 
