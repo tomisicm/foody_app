@@ -18,7 +18,7 @@
     <b-col md="6" class="my-1">
       <b-form-group label-cols-sm="3" label="Catering" class="mb-0">
         <b-input-group>
-          <b-form-input v-model="form.catering.name" placeholder="Name"></b-form-input>
+          <b-form-input v-model="form.name" placeholder="Name"></b-form-input>
         </b-input-group>
       </b-form-group>
     </b-col>
@@ -26,8 +26,8 @@
     <b-col md="6" class="my-1">
       <b-form-group label-cols-sm="3" label="Place Address" class="mb-0">
         <b-input-group>
-          <b-form-input v-model="form.catering.address.city" placeholder="City"></b-form-input>
-          <b-form-input v-model="form.catering.address.street" placeholder="Street"></b-form-input>
+          <b-form-input v-model="form.city" placeholder="City"></b-form-input>
+          <b-form-input v-model="form.street" placeholder="Street"></b-form-input>
         </b-input-group>
       </b-form-group>
     </b-col>
@@ -47,6 +47,12 @@
           </multiselect>
         </b-input-group>
       </b-form-group>
+    </b-col>
+
+    <b-col md="6" class="my-1">
+      <b-input-group>
+        <b-btn @click="handleSearch">Search</b-btn>
+      </b-input-group>
     </b-col>
 
     <!--
@@ -83,22 +89,32 @@ export default {
   data () {
     return {
       form: {
-        title: null,
-        catering: {
-          name: '',
-          address: {
-            city: '',
-            address: ''
-          },
-          cuisine: ''
-        }
+        title: '',
+        name: '',
+        city: '',
+        street: '',
+        cuisine: ''
       }
     }
   },
 
   methods: {
     formatFilter () {
+      return {
+        title: this.form.title,
+        name: this.form.name,
+        catering: {
+          address: {
+            city: this.form.city,
+            street: this.form.street,
+          }
+        },
+        // cuisine: this.form.selectedOptions.map(c => c.name)
+      }
+    },
 
+    handleSearch () {
+      console.log(this.formatFilter())
     }
   },
 
