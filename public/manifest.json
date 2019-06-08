@@ -1,6 +1,6 @@
 {
-  "name": "object_rating_app",
-  "short_name": "object_rating_app",
+  "name": "foody",
+  "short_name": "foody",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

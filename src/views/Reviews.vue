@@ -1,7 +1,9 @@
 <template>
 <div>
   <div>Reviews page</div>
-  <b-container>
+  <b-container fluid>
+
+    <FilterReviews />
 
     <b-table
       :items="reviews"
@@ -16,10 +18,12 @@
 
 <script>
 import reviewService from '@/utils/services/review-service'
+import FilterReviews from '@/components/FilterReviews'
 
 export default {
   data () {
     return {
+      filter: null,
       reviews: [],
       fields: {
         name: {
@@ -55,6 +59,10 @@ export default {
 
   created () {
     this.getReviews()
+  },
+
+  components: {
+    FilterReviews
   },
   name: 'Reviews'
 }
