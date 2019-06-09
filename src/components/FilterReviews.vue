@@ -50,9 +50,16 @@
     </b-col>
 
     <b-col md="6" class="my-1">
+      <b-form-group class="mb-0">
       <b-input-group>
-        <b-btn @click="handleSearch">Search</b-btn>
+        <b-form-checkbox class="mt-2 mr-auto"
+          v-model="form.hasMichelinStars"
+          name="check-button" switch>Has Michelin Stars
+        </b-form-checkbox>
+
+        <b-btn variant="primary" @click="handleSearch">Search</b-btn>
       </b-input-group>
+      </b-form-group>
     </b-col>
 
     <!--
@@ -66,16 +73,6 @@
             <option :value="false">Asc</option> <option :value="true">Desc</option>
           </b-form-select>
         </b-input-group>
-      </b-form-group>
-    </b-col>
-
-    <b-col md="6" class="my-1">
-      <b-form-group label-cols-sm="3" label="Sort direction" class="mb-0">
-        <b-form-select v-model="sortDirection">
-          <option value="asc">Asc</option>
-          <option value="desc">Desc</option>
-          <option value="last">Last</option>
-        </b-form-select>
       </b-form-group>
     </b-col>
     -->
@@ -93,7 +90,8 @@ export default {
         name: '',
         city: '',
         street: '',
-        cuisine: ''
+        cuisine: '',
+        hasMichelinStars: false
       }
     }
   },
@@ -107,7 +105,8 @@ export default {
           address: {
             city: this.form.city,
             street: this.form.street,
-          }
+          },
+          hasMichelinStars: this.form.hasMichelinStars
         },
         // cuisine: this.form.selectedOptions.map(c => c.name)
       }
