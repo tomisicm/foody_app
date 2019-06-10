@@ -52,13 +52,30 @@
     <b-col md="6" class="my-1">
       <b-form-group class="mb-0">
       <b-input-group>
-        <b-form-checkbox class="mt-2 mr-auto"
+        <div class="mx-3 mb-2">Michelin Stars</div>
+        <b-form-checkbox class="mt-1 ml-2 mr-auto"
           v-model="form.hasMichelinStars"
-          name="check-button" switch>Has Michelin Stars
+          name="check-button" switch>
         </b-form-checkbox>
 
         <b-btn variant="primary" @click="handleSearch">Search</b-btn>
       </b-input-group>
+      </b-form-group>
+    </b-col>
+
+    <b-col md="6" class="my-1">
+      <b-form-group label-cols-sm="3" label="Filter by status" class="mb-0">
+        <b-input-group>
+          <multiselect
+            class="input-border"
+            v-model="filterValue"
+            :options="filterBy"
+            track-by="name"
+            label="name"
+            placeholder="Type to search"
+          >
+          </multiselect>
+        </b-input-group>
       </b-form-group>
     </b-col>
 
@@ -92,7 +109,12 @@ export default {
         street: '',
         cuisine: '',
         hasMichelinStars: false
-      }
+      },
+      filterValue: { name: 'All', value: true },
+      filterBy: [
+        { name: 'All', value: false },
+        { name: 'Non-approved', value: true }
+      ]
     }
   },
 
@@ -104,10 +126,10 @@ export default {
         catering: {
           address: {
             city: this.form.city,
-            street: this.form.street,
+            street: this.form.street
           },
           hasMichelinStars: this.form.hasMichelinStars
-        },
+        }
         // cuisine: this.form.selectedOptions.map(c => c.name)
       }
     },

@@ -1,16 +1,20 @@
 <template>
 <div>
-  <div>Reviews page</div>
+  <div>Find reviews:</div>
   <b-container fluid>
 
     <FilterReviews />
 
+  <div class="mb-0">
+    Reviews:
     <b-table
       :items="reviews"
       :fields="fields"
       striped
       hover
-    />
+    >
+    </b-table>
+  </div>
 
   </b-container>
 </div>
