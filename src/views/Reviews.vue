@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 import reviewService from '@/utils/services/review-service'
 import FilterReviews from '@/components/FilterReviews'
 
@@ -73,6 +75,19 @@ export default {
       this.filter = event
       // console.log(this.filter)
     }
+  },
+
+  // temprorary will i fix filter
+  actions: {
+    ...mapActions('cuisineStore', ['getCuisine'])
+  },
+  // temprorary will i fix filter
+  computed: {
+    ...mapGetters('cuisineStore', ['cuisine'])
+  },
+
+  async created () {
+    await this.$store.dispatch('cuisineStore/getCuisine')
   },
 
   mixins: [ commonFilter ],

@@ -107,7 +107,7 @@ export default {
         name: '',
         city: '',
         street: '',
-        cuisine: '',
+        selectedOptions: [],
         hasMichelinStars: false
       },
       filterValue: { name: 'All', value: true },
@@ -129,8 +129,8 @@ export default {
             street: this.form.street
           },
           hasMichelinStars: this.form.hasMichelinStars
-        }
-        // cuisine: this.form.selectedOptions.map(c => c.name)
+        },
+        cuisine: this.form.selectedOptions.map(c => c.name)
       }
     },
 
