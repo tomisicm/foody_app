@@ -3,7 +3,10 @@
   <div>Find reviews:</div>
   <b-container fluid>
 
-    <FilterReviews />
+    <FilterReviews
+      @update:filterCriteria="updateFilter($event)"
+      @onSearch="handleSearch"
+    />
 
   <div class="mb-0">
     Reviews:
@@ -24,11 +27,15 @@
 import reviewService from '@/utils/services/review-service'
 import FilterReviews from '@/components/FilterReviews'
 
+import commonFilter from '@/utils/mixins/commonFilter'
+
 export default {
   data () {
     return {
       filter: null,
       reviews: [],
+      page: 1,
+      perPage: 20,
       fields: {
         name: {
           label: 'Title',
@@ -55,16 +62,20 @@ export default {
   },
 
   methods: {
-    async getReviews () {
-      const { data } = await reviewService.getReviews({})
+    // to be replaced with the post one
+    async handleSearch () {
+      const { data } = await reviewService.searchForReviews(this.filter, this.getParams())
       this.reviews = data.docs
+      this.total = data.total
+    },
+
+    updateFilter (event) {
+      this.filter = event
+      // console.log(this.filter)
     }
   },
 
-  created () {
-    this.getReviews()
-  },
-
+  mixins: [ commonFilter ],
   components: {
     FilterReviews
   },

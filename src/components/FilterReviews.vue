@@ -58,7 +58,7 @@
           name="check-button" switch>
         </b-form-checkbox>
 
-        <b-btn variant="primary" @click="handleSearch">Search</b-btn>
+        <b-btn variant="primary" @click="onSearch">Search</b-btn>
       </b-input-group>
       </b-form-group>
     </b-col>
@@ -134,8 +134,8 @@ export default {
       }
     },
 
-    handleSearch () {
-      console.log(this.formatFilter())
+    onSearch () {
+      this.$emit('onSearch')
     }
   },
 

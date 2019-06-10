@@ -17,15 +17,9 @@ class ReviewService {
       })
   }
 
-  getReviews ({ page = 1, perPage = 10, sortBy = '-updatedAt' }) {
+  searchForReviews (body, { page = 1, perPage = 10 }) {
     return http
-      .get(`/api/review`, {
-        params: {
-          page: page,
-          perPage: perPage,
-          sortBy: sortBy
-        }
-      })
+      .post('/api/review/search', body, { params: { page, perPage } })
       .then(({ data }) => {
         return data
       })
