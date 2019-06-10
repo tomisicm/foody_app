@@ -45,7 +45,7 @@ export default {
         },
         createdBy: {
           label: 'Author',
-          key: 'createdBy.name'
+          key: 'author.name'
         },
         totalRating: {
           label: 'Rating',
@@ -53,11 +53,11 @@ export default {
         },
         cuisineService: {
           label: 'Place Name',
-          key: 'item.name'
+          key: 'catering.name'
         },
         cuisineAddress: {
           label: 'Address',
-          key: 'item.fullAddress'
+          key: 'catering.fullAddress'
         }
       }
     }
