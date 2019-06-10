@@ -68,9 +68,9 @@
         <b-input-group>
           <multiselect
             class="input-border"
-            v-model="filterValue"
-            :options="filterBy"
-            track-by="name"
+            v-model="form.approved"
+            :options="filterByStatusOptions"
+            track-by="value"
             label="name"
             placeholder="Type to search"
           >
@@ -105,13 +105,14 @@ export default {
       form: {
         title: '',
         name: '',
+        approved: { name: 'Non-approved', value: true },
         city: '',
         street: '',
         selectedOptions: [],
         hasMichelinStars: false
       },
       filterValue: { name: 'All', value: true },
-      filterBy: [
+      filterByStatusOptions: [
         { name: 'All', value: false },
         { name: 'Non-approved', value: true }
       ]
@@ -123,14 +124,15 @@ export default {
       return {
         title: this.form.title,
         name: this.form.name,
+        approved: this.form.approved.value,
         catering: {
           address: {
             city: this.form.city,
             street: this.form.street
           },
-          hasMichelinStars: this.form.hasMichelinStars
-        },
-        cuisine: this.form.selectedOptions.map(c => c.name)
+          hasMichelinStars: this.form.hasMichelinStars,
+          cuisine: this.form.selectedOptions.map(c => c.name)
+        }
       }
     },
 
