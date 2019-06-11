@@ -152,6 +152,10 @@ export default {
       },
       deep: true
     }
+  },
+
+  created () {
+    this.$emit('update:filterCriteria', this.formatFilter())
   }
 }
 </script>
