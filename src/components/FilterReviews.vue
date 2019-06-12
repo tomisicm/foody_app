@@ -128,7 +128,7 @@ export default {
         review: {
           title: this.form.review.title,
           author: this.form.review.author,
-          approved: this.form.approved.value,
+          approved: this.form.approved.value
         },
         catering: {
           name: this.form.name,
