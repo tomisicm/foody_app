@@ -8,8 +8,36 @@
       @onSearch="handleSearch"
     />
 
-  <div class="mb-0">
-    Reviews:
+  <b-row class="mx-1 mt-2">
+    <div cols="4">
+      <b-dropdown
+        split
+        variant="primary"
+        class="m-2"
+        v-model="perPage"
+      >
+        <template slot="button-content">{{perPage}}</template>
+          <b-dropdown-item
+            v-for="(perPage, index) in perPageOptions"
+            v-bind:key="index" @click="updatePerPage($event)"
+            href="#"
+          >
+          {{perPage}}
+        </b-dropdown-item>
+      </b-dropdown>
+    </div>
+    <div v-if="reviews.length > 1" cols="8">
+      <b-pagination
+        v-model="page"
+        :total-rows="total"
+        :per-page="perPage"
+        @change="updatePage($event)"
+      />
+    </div>
+  </b-row>
+
+  <div class="mx-2">
+    <h4>Reviews:</h4>
     <b-table
       :items="reviews"
       :fields="fields"
@@ -39,9 +67,10 @@ export default {
   data () {
     return {
       filter: null,
-      reviews: [],
       page: 1,
-      perPage: 20,
+      perPage: 10,
+      perPageOptions: [10, 25, 50, 100],
+      reviews: [],
       fields: {
         name: {
           label: 'Title',
@@ -78,6 +107,16 @@ export default {
     updateFilter (event) {
       this.filter = event
       // console.log(this.filter)
+    },
+
+    updatePerPage (event) {
+      this.perPage = parseInt(event.target.text, 10)
+      this.handleSearch()
+    },
+
+    updatePage (newPage) {
+      this.page = newPage
+      this.handleSearch()
     }
   },
 
