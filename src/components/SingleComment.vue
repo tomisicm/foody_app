@@ -133,7 +133,7 @@ export default {
 
     async handleEditComment (event) {
       await commentService.editComment(event)
-    },
+    }
 
   },
 
