@@ -41,7 +41,7 @@ class ReviewService {
 
   createReview (review) {
     return http
-      .post('/api/review/', review)
+      .post('/api/review/', { ...review, itemType: 'cateringestablishment' })
       .then(({ data }) => {
         return data
       })

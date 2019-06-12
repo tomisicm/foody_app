@@ -16,6 +16,10 @@
       striped
       hover
     >
+      <template slot="address" slot-scope="reviews">
+        {{ reviews.item.catering.address.city }}, {{ reviews.item.catering.address.street }}
+
+      </template>
     </b-table>
   </div>
 
@@ -49,7 +53,7 @@ export default {
         },
         totalRating: {
           label: 'Rating',
-          key: 'totalRating'
+          key: 'avgRating'
         },
         cuisineService: {
           label: 'Place Name',
@@ -57,7 +61,7 @@ export default {
         },
         cuisineAddress: {
           label: 'Address',
-          key: 'catering.fullAddress'
+          key: 'address'
         }
       }
     }
