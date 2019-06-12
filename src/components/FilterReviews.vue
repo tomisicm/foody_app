@@ -3,14 +3,14 @@
     <b-col md="6" class="my-1">
       <b-form-group label-cols-sm="3" label="Review Title" class="mb-0">
         <b-input-group>
-          <b-form-input v-model="form.title" placeholder="Type to Search"></b-form-input>
+          <b-form-input v-model="form.review.title" placeholder="Type to Search"></b-form-input>
         </b-input-group>
       </b-form-group>
     </b-col>
     <b-col md="6" class="my-1">
       <b-form-group label-cols-sm="3" label="Review Author" class="mb-0">
         <b-input-group>
-          <b-form-input v-model="form.author" placeholder="Type to Search"></b-form-input>
+          <b-form-input v-model="form.review.author" placeholder="Type to Search"></b-form-input>
         </b-input-group>
       </b-form-group>
     </b-col>
@@ -103,7 +103,10 @@ export default {
   data () {
     return {
       form: {
-        title: '',
+        review: {
+          title: '',
+          author: ''
+        },
         name: '',
         approved: { name: 'Non-approved', value: true },
         city: '',
@@ -122,10 +125,13 @@ export default {
   methods: {
     formatFilter () {
       return {
-        title: this.form.title,
-        name: this.form.name,
+        review: {
+          title: this.form.review.title,
+          author: this.form.review.author
+        },
         approved: this.form.approved.value,
         catering: {
+          name: this.form.name,
           address: {
             city: this.form.city,
             street: this.form.street

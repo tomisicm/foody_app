@@ -73,11 +73,11 @@ export default {
       reviews: [],
       fields: {
         name: {
-          label: 'Title',
+          label: 'Review Title',
           key: 'title'
         },
         createdBy: {
-          label: 'Author',
+          label: 'Review Author',
           key: 'author.name'
         },
         totalRating: {
