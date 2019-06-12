@@ -3,7 +3,7 @@
   <div>Find reviews:</div>
   <b-container fluid>
 
-    <FilterReviews
+    <FilterReviews class="mx-1"
       @update:filterCriteria="updateFilter($event)"
       @onSearch="handleSearch"
     />
