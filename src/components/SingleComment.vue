@@ -47,6 +47,7 @@
         </b-button>
 
         <b-button
+          v-if="isCommentFurtherReplyable"
           @click="replayTo"
           variant="outline-secondary"
           size="sm">
@@ -66,6 +67,15 @@
     </b-col>
   </b-row>
   <div>
+
+    <div v-for="item in item.thread" :key="item._id">
+      <SingleComment class="ml-3"
+        :item="item"
+        @editItem="handleEditComment($event)"
+        @removeItem="handleRemoveComment($event)"
+      />
+    </div>
+
     <b-row>
       <b-col class="ml-3 mr-1">
         <NewComment v-if="reply" :reply="reply"/>
@@ -77,8 +87,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import commentService from '@/utils/services/comment-service'
 
 import NewComment from '@/components/NewComment'
+import SingleComment from '@/components/SingleComment'
 
 import dateToString from '@/utils/mixins/dateToString'
 
@@ -117,7 +129,11 @@ export default {
     saveItem () {
       this.$emit('editItem', this.item)
       this.inEditMode = !this.inEditMode
-    }
+    },
+
+    async handleEditComment (event) {
+      await commentService.editComment(event)
+    },
 
   },
 
@@ -128,13 +144,16 @@ export default {
     },
     isCommentDeletable () {
       return this.isAdmin || (this.item.createdBy && this.userId === this.item.createdBy._id)
+    },
+    isCommentFurtherReplyable () {
+      return this.item.thread.length >= 1
     }
   },
 
   components: {
-    NewComment
+    NewComment, SingleComment
   },
-
-  mixins: [ dateToString ]
+  mixins: [ dateToString ],
+  name: 'SingleComment'
 }
 </script>
