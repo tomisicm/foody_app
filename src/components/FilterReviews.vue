@@ -107,12 +107,12 @@ export default {
           title: '',
           author: ''
         },
-        name: '',
         approved: { name: 'Non-approved', value: true },
+        name: '',
         city: '',
         street: '',
-        selectedOptions: [],
-        hasMichelinStars: false
+        hasMichelinStars: false,
+        selectedOptions: []
       },
       filterValue: { name: 'All', value: true },
       filterByStatusOptions: [
@@ -127,9 +127,9 @@ export default {
       return {
         review: {
           title: this.form.review.title,
-          author: this.form.review.author
+          author: this.form.review.author,
+          approved: this.form.approved.value,
         },
-        approved: this.form.approved.value,
         catering: {
           name: this.form.name,
           address: {
