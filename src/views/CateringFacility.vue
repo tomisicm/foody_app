@@ -143,7 +143,6 @@ export default {
     },
 
     getCommentParams () {
-      
       return {
         page: this.comments.page,
         perPage: this.comments.limit
