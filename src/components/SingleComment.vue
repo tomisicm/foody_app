@@ -145,8 +145,9 @@ export default {
     isCommentDeletable () {
       return this.isAdmin || (this.item.createdBy && this.userId === this.item.createdBy._id)
     },
+    // only level 1 thread.
     isCommentFurtherReplyable () {
-      return this.item.thread.length >= 1
+      return !this.item.replyTo
     }
   },
 
