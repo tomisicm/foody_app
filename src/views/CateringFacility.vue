@@ -138,7 +138,7 @@ export default {
 
     updateCommentsPage (event) {
       this.comments.page = event
-      this.getCommentsByItemId({ itemId : this.$route.params.id, params: this.getCommentParams()})
+      this.getCommentsByItemId({ itemId: this.$route.params.id, params: this.getCommentParams() })
     }
   },
 
@@ -150,7 +150,7 @@ export default {
     this.getCateringData()
     this.getReviews()
 
-    this.getCommentsByItemId({ itemId : this.$route.params.id, params: this.getCommentParams()})
+    this.getCommentsByItemId({ itemId: this.$route.params.id, params: this.getCommentParams() })
   },
 
   components: {
