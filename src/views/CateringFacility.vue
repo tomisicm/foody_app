@@ -78,6 +78,8 @@ import cateringService from '@/utils/services/catering-service'
 import reviewService from '@/utils/services/review-service'
 import commentService from '@/utils/services/comment-service'
 
+import { mapGetters, mapActions } from 'vuex'
+
 import baseCarousel from '@/components/baseCarousel'
 import List from '@/components/List'
 import SingleReview from '@/components/SingleReview'
@@ -88,12 +90,12 @@ export default {
   data () {
     return {
       cateringFacility: null,
-      reviews: {},
-      comments: {}
+      reviews: {}
     }
   },
 
   methods: {
+    ...mapActions('commentStore', ['getCommentsByItemId']),
     handleRemoveComment (event) {
       console.log(event)
     },
@@ -111,11 +113,6 @@ export default {
       this.reviews = data
     },
 
-    async getComments () {
-      const { data } = await commentService.getCommentsByItemId(this.$route.params.id, this.getCommentParams())
-      this.comments = data
-    },
-
     getReviewParams () {
       return {
         page: this.reviews.page,
@@ -124,6 +121,10 @@ export default {
     },
 
     getCommentParams () {
+      console.log({
+        page: this.comments.page,
+        perPage: this.comments.limit
+      })
       return {
         page: this.comments.page,
         perPage: this.comments.limit
@@ -137,14 +138,19 @@ export default {
 
     updateCommentsPage (event) {
       this.comments.page = event
-      this.getComments()
+      this.getCommentsByItemId({ itemId : this.$route.params.id, params: this.getCommentParams()})
     }
+  },
+
+  computed: {
+    ...mapGetters('commentStore', ['comments'])
   },
 
   created () {
     this.getCateringData()
     this.getReviews()
-    this.getComments()
+
+    this.getCommentsByItemId({ itemId : this.$route.params.id, params: this.getCommentParams()})
   },
 
   components: {

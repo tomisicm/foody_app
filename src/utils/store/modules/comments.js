@@ -2,7 +2,7 @@ import commentService from '@/utils/services/comment-service'
 
 function getInitialState () {
   return {
-    comments: []
+    comments: {}
   }
 }
 
@@ -15,7 +15,7 @@ const mutations = {
 }
 
 const actions = {
-  async createComment ({ commit }, comment) {
+  /*   async createComment ({ commit }, comment) {
     try {
       const { data } = await commentService.createComment()
 
@@ -23,9 +23,9 @@ const actions = {
     } catch (error) {
       throw error
     }
-  },
+  }, */
 
-  async deleteComment ({ commit }, commentId) {
+  /*   async deleteComment ({ commit }, commentId) {
     try {
       const { data } = await commentService.deleteComment(commentId)
     } catch (error) {
@@ -33,13 +33,13 @@ const actions = {
     }
 
     // commit('REMOVE_DATA', data.docs)
-  },
+  }, */
 
-  async getComments ({ commit }, itemId) {
+  async getCommentsByItemId ({ commit }, { itemId, params }) {
     try {
-      const { data } = await commentService.getCommentsByItemId(itemId)
+      const { data } = await commentService.getCommentsByItemId(itemId, params)
 
-      commit('SET_DATA', data.docs)
+      commit('SET_DATA', data)
     } catch (error) {
       throw error
     }
