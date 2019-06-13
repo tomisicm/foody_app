@@ -2,14 +2,9 @@ import http from './http-service'
 
 class CommentService {
   getCommentsByItemId (id, params) {
-    const page = 1
-    const perPage = 10
     return http
       .get(`/api/comment/item/${id}`, {
-        params: {
-          page: page,
-          perPage: perPage
-        }
+        params
       })
       .then(({ data }) => {
         return data

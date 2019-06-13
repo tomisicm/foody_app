@@ -2,7 +2,10 @@ import commentService from '@/utils/services/comment-service'
 
 function getInitialState () {
   return {
-    comments: {}
+    comments: {
+      page: 1,
+      limit: 10
+    }
   }
 }
 
@@ -25,7 +28,8 @@ const actions = {
     }
   }, */
 
-  /*   async deleteComment ({ commit }, commentId) {
+  /*
+  async deleteComment ({ commit }, commentId) {
     try {
       const { data } = await commentService.deleteComment(commentId)
     } catch (error) {

@@ -26,13 +26,22 @@
           <b-tab title="Reviews" active>
 
             <List
-              :items="reviews"
+              :items="reviews.docs"
               @update:page="updateReviewsPage($event)"
             >
               <template v-slot:listitem="{item}">
                 <SingleReview :item="item"/>
               </template>
             </List>
+
+            <div cols="12">
+              <b-pagination
+                v-model="reviews.page"
+                :total-rows="reviews.total"
+                :per-page="reviews.limit"
+                @change="updateReviewsPage($event)"
+              />
+            </div>
 
           </b-tab>
           <b-tab title="Comments">
@@ -53,7 +62,7 @@
 
             <List
               class="my-1"
-              :items="comments"
+              :items="comments.docs"
               @update:page="updateCommentsPage($event)"
             >
               <template v-slot:listitem="{ item }">
@@ -64,6 +73,15 @@
                 />
               </template>
             </List>
+
+            <div cols="12">
+              <b-pagination
+                v-model="comments.page"
+                :total-rows="comments.total"
+                :per-page="comments.limit"
+                @change="updateCommentsPage($event)"
+              />
+            </div>
 
           </b-tab>
         </b-tabs>
@@ -90,7 +108,11 @@ export default {
   data () {
     return {
       cateringFacility: null,
-      reviews: {}
+      reviews: {
+        docs: [],
+        page: 1,
+        perPage: 10
+      }
     }
   },
 
@@ -121,10 +143,7 @@ export default {
     },
 
     getCommentParams () {
-      console.log({
-        page: this.comments.page,
-        perPage: this.comments.limit
-      })
+      
       return {
         page: this.comments.page,
         perPage: this.comments.limit
