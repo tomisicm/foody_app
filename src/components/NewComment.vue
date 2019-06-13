@@ -14,22 +14,24 @@
         <b-btn
           v-if="body"
           class="mr-auto my-2"
-          @click="handleCreateComment">
-          Send</b-btn>
+          @click="handleCreateComment"
+        >
+          Send
+        </b-btn>
       </b-row>
     </b-container>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
-import commentService from '@/utils/services/comment-service'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: {
     reply: Object,
-    default: null
+    default: function () {
+      return null
+    }
   },
 
   data () {
@@ -39,6 +41,8 @@ export default {
   },
 
   methods: {
+    ...mapActions('commentStore', ['createComment']),
+
     getCommentData () {
       return {
         itemType: 'cateringestablishment',
@@ -49,7 +53,7 @@ export default {
     },
 
     async handleCreateComment () {
-      await commentService.createComment(this.getCommentData())
+      await this.$store.dispatch('commentStore/createComment', this.getCommentData())
       this.body = ''
     }
   },
