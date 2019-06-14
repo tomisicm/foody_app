@@ -35,16 +35,18 @@ const actions = {
     }
   },
 
-  /*
-  async deleteComment ({ commit }, commentId) {
+  async deleteComment ({ commit, dispatch, getters }, commentId) {
     try {
       const { data } = await commentService.deleteComment(commentId)
+
+      dispatch('getCommentsByItemId', {
+        itemId: data.item,
+        params: getters.params
+      })
     } catch (error) {
       throw error
     }
-
-    // commit('REMOVE_DATA', data.docs)
-  }, */
+  },
 
   async getCommentsByItemId ({ commit }, { itemId, params }) {
     try {
