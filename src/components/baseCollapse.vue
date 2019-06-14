@@ -31,14 +31,6 @@ export default {
       required: true
     },
     inEditMode: Boolean
-  },
-
-  data () {
-    return {
-      review: {
-        generalImpression: 'dasa'
-      }
-    }
   }
 
 }

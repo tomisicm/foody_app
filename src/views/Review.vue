@@ -6,10 +6,8 @@
     <b-form>
       <b-form-row class="mx-1 my-3">
         <label class="h4">Title: </label>
-        <div class="h4">
-          {{review.title}}
-        </div>
-        <b-row class="mx-4 my-1">@{{review.createdBy}}</b-row>
+        <div class="h4">{{review.title}}</div>
+        <b-row class="mx-4 my-1">By: {{review.createdBy && review.createdBy.name}}</b-row>
       </b-form-row>
 
       <div role="tablist" class="mx-1">
