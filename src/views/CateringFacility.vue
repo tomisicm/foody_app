@@ -45,7 +45,6 @@
 
           </b-tab>
 
-
           <b-tab title="Comments">
 
             <NewComment>
