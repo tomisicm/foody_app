@@ -43,10 +43,10 @@
       :fields="fields"
       striped
       hover
+      @row-clicked="openReview($event)"
     >
       <template slot="address" slot-scope="reviews">
         {{ reviews.item.catering.address.city }}, {{ reviews.item.catering.address.street }}
-
       </template>
     </b-table>
   </div>
@@ -72,7 +72,7 @@ export default {
       perPageOptions: [10, 25, 50, 100],
       reviews: [],
       fields: {
-        name: {
+        title: {
           label: 'Review Title',
           key: 'title'
         },
@@ -83,6 +83,10 @@ export default {
         totalRating: {
           label: 'Rating',
           key: 'avgRating'
+        },
+        status: {
+          label: 'Approved',
+          key: 'approved'
         },
         cuisineService: {
           label: 'Place Name',
@@ -117,6 +121,10 @@ export default {
     updatePage (newPage) {
       this.page = newPage
       this.handleSearch()
+    },
+
+    openReview (event) {
+      this.$router.push({ name: 'review', params: { id: event._id } })
     }
   },
 
