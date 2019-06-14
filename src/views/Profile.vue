@@ -2,21 +2,21 @@
   <b-container class="mt-2">
     Profile Page:
     <b-form>
-      <b-row md="6" class="my-1">
+      <b-col md="6" class="my-1">
         <b-form-group label-cols-sm="3" label="Name" class="mb-0">
           <b-input-group>
             <b-form-input v-model="form.username" placeholder="Username"></b-form-input>
           </b-input-group>
         </b-form-group>
-      </b-row>
+      </b-col>
 
-      <b-row md="6" class="my-1">
+      <b-col md="6" class="my-1">
         <b-form-group label-cols-sm="3" label="Profession" class="mb-0">
           <b-input-group>
             <b-form-input v-model="form.username" placeholder="Profession"></b-form-input>
           </b-input-group>
         </b-form-group>
-      </b-row>
+      </b-col>
     </b-form>
   </b-container>
 </template>
