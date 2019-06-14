@@ -19,12 +19,8 @@
             text="User"
             right
           >
-            <b-dropdown-item>
-              <b-nav-item :to="{ name: 'signin'}">Signin</b-nav-item>
-            </b-dropdown-item>
-            <b-dropdown-item>
-              <b-nav-item :to="{ name: 'register'}">Register</b-nav-item>
-            </b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'signin'}">Signin</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'register'}">Register</b-dropdown-item>
           </b-nav-item-dropdown>
         </template>
 
@@ -33,7 +29,7 @@
             text="User"
             right
           >
-            <b-dropdown-item>Profile Settings</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'profile'}">Profile Settings</b-dropdown-item>
             <b-dropdown-item>Signout</b-dropdown-item>
           </b-nav-item-dropdown>
         </template>

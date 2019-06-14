@@ -5,6 +5,7 @@ import AppAuth from '../views/AppAuth'
 import AppLanding from '../views/AppLanding'
 import AppLogin from '../views/AppLogin'
 import AppRegister from '../views/AppRegister'
+import Profile from '../views/Profile'
 
 import Home from '../views/Home'
 import CateringFacility from '../views/CateringFacility'
@@ -32,6 +33,11 @@ export default new Router({
           name: 'register',
           path: 'register',
           component: AppRegister
+        },
+        {
+          name: 'profile',
+          path: 'profile',
+          component: Profile
         }
       ]
     },
