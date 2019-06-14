@@ -125,15 +125,10 @@ export default {
       }
     },
 
-    saveItem () {
+    async saveItem () {
       this.inEditMode = !this.inEditMode
-      // await this.editComment(event)
-    },
-
-    async handleEditComment (event) {
-      await commentService.editComment(event)
+      await this.editComment(this.item)
     }
-
   },
 
   computed: {
