@@ -110,7 +110,7 @@ export default {
   methods: {
     ...mapActions('commentStore', ['deleteComment', 'editComment']),
     async removeItem () {
-      await this.$store.dispatch('commentStore/deleteComment', this.item._id)
+      await this.deleteComment(this.item._id)
     },
 
     editItem () {
@@ -127,6 +127,7 @@ export default {
 
     saveItem () {
       this.inEditMode = !this.inEditMode
+      // await this.editComment(event)
     },
 
     async handleEditComment (event) {
