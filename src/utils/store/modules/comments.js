@@ -37,8 +37,6 @@ const actions = {
     commit('SET_PER_PAGE', perPage)
   },
 
-  // when new comment is created ill be on the page one. that seems appropriate.
-  // issues with replying when comment is on the second page.
   async createComment ({ commit, dispatch, getters }, comment) {
     try {
       const { data } = await commentService.createComment(comment)
