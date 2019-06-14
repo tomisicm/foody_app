@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import commentService from '@/utils/services/comment-service'
 
 import NewComment from '@/components/NewComment'
@@ -110,8 +110,9 @@ export default {
   },
 
   methods: {
-    removeItem () {
-      this.$emit('removeItem', this.item._id)
+    ...mapActions('commentStore', ['deleteComment']),
+    async removeItem () {
+      await this.$store.dispatch('commentStore/deleteComment', this.item._id)
     },
 
     editItem () {
