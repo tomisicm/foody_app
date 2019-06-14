@@ -44,10 +44,11 @@
             </div>
 
           </b-tab>
+
+
           <b-tab title="Comments">
 
             <NewComment>
-
               <template v-slot:input-field>
                 <b-form-textarea
                   v-model="body"
@@ -57,13 +58,11 @@
                   :style="{ overflowY: 'none' }"
                 />
               </template>
-
             </NewComment>
 
             <List
               class="my-1"
               :items="comments.docs"
-              @update:page="updateCommentsPage($event)"
             >
               <template v-slot:listitem="{ item }">
                 <SingleComment
@@ -117,7 +116,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('commentStore', ['getCommentsByItemId']),
+    ...mapActions('commentStore', ['getCommentsByItemId', 'changePage']),
     handleRemoveComment (event) {
       console.log(event)
     },
@@ -143,10 +142,7 @@ export default {
     },
 
     getCommentParams () {
-      return {
-        page: this.comments.page,
-        perPage: this.comments.limit
-      }
+      return this.params
     },
 
     updateReviewsPage (event) {
@@ -155,13 +151,13 @@ export default {
     },
 
     updateCommentsPage (event) {
-      this.comments.page = event
+      this.changePage(event)
       this.getCommentsByItemId({ itemId: this.$route.params.id, params: this.getCommentParams() })
     }
   },
 
   computed: {
-    ...mapGetters('commentStore', ['comments'])
+    ...mapGetters('commentStore', ['comments', 'params'])
   },
 
   created () {

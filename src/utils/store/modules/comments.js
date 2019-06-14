@@ -17,10 +17,26 @@ const state = getInitialState()
 const mutations = {
   SET_DATA (state, comments) {
     state.comments = comments
+  },
+
+  SET_PAGE (state, page) {
+    state.params.page = page
+  },
+
+  SET_PER_PAGE (state, perPage) {
+    state.params.perPage = perPage
   }
 }
 
 const actions = {
+  changePage ({ commit }, page) {
+    commit('SET_PAGE', page)
+  },
+
+  changePerPage ({ commit }, perPage) {
+    commit('SET_PER_PAGE', perPage)
+  },
+
   // when new comment is created ill be on the page one. that seems appropriate.
   // issues with replying when comment is on the second page.
   async createComment ({ commit, dispatch, getters }, comment) {
@@ -62,7 +78,7 @@ const actions = {
 
 const getters = {
   comments: state => state.comments,
-  params: state => state.comments.params
+  params: state => state.params
 }
 
 export const commentStore = {
