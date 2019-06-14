@@ -85,7 +85,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import commentService from '@/utils/services/comment-service'
 
 import NewComment from '@/components/NewComment'
 import SingleComment from '@/components/SingleComment'
