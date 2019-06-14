@@ -27,7 +27,6 @@
 
             <List
               :items="reviews.docs"
-              @update:page="updateReviewsPage($event)"
             >
               <template v-slot:listitem="{item}">
                 <SingleReview :item="item"/>
@@ -66,8 +65,6 @@
               <template v-slot:listitem="{ item }">
                 <SingleComment
                   :item="item"
-                  @editItem="handleEditComment($event)"
-                  @removeItem="handleRemoveComment($event)"
                 />
               </template>
             </List>
@@ -92,7 +89,6 @@
 <script>
 import cateringService from '@/utils/services/catering-service'
 import reviewService from '@/utils/services/review-service'
-import commentService from '@/utils/services/comment-service'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -116,12 +112,6 @@ export default {
 
   methods: {
     ...mapActions('commentStore', ['getCommentsByItemId', 'changePage']),
-    handleRemoveComment (event) {
-      console.log(event)
-    },
-    async handleEditComment (event) {
-      await commentService.editComment(event)
-    },
 
     async getCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
