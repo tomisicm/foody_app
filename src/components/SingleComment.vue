@@ -33,7 +33,7 @@
         <b-button
           v-if="isCommentDeletable"
           @click="removeItem"
-          variant="outline-secondary"
+          variant="outline-primary"
           size="sm">
           <font-awesome-icon icon="trash" />
         </b-button>
@@ -41,7 +41,7 @@
         <b-button
           v-if="isCommentEditable"
           @click="editItem"
-          variant="outline-secondary"
+          variant="outline-primary"
           size="sm">
           <font-awesome-icon icon="edit" />
         </b-button>
@@ -49,7 +49,7 @@
         <b-button
           v-if="isCommentFurtherReplyable"
           @click="replayTo"
-          variant="outline-secondary"
+          variant="outline-primary"
           size="sm">
           <font-awesome-icon icon="reply" />
         </b-button>
@@ -58,7 +58,7 @@
       <template v-else>
         <b-button
           @click="saveItem"
-          variant="outline-secondary"
+          variant="outline-primary"
           size="sm">
           <font-awesome-icon icon="save" />
         </b-button>
