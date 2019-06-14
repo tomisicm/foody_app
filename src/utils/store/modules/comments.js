@@ -63,6 +63,14 @@ const actions = {
     }
   },
 
+  async editComment ({ commit, dispatch, getters }, comment) {
+    try {
+      await commentService.editComment(comment)
+    } catch (error) {
+      throw error
+    }
+  },
+
   async getCommentsByItemId ({ commit }, { itemId, params }) {
     try {
       const { data } = await commentService.getCommentsByItemId(itemId, params)

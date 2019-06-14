@@ -71,8 +71,6 @@
     <div v-for="item in item.thread" :key="item._id">
       <SingleComment class="ml-3"
         :item="item"
-        @editItem="handleEditComment($event)"
-        @removeItem="handleRemoveComment($event)"
       />
     </div>
 
@@ -110,7 +108,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('commentStore', ['deleteComment']),
+    ...mapActions('commentStore', ['deleteComment', 'editComment']),
     async removeItem () {
       await this.$store.dispatch('commentStore/deleteComment', this.item._id)
     },
@@ -128,7 +126,6 @@ export default {
     },
 
     saveItem () {
-      this.$emit('editItem', this.item)
       this.inEditMode = !this.inEditMode
     },
 
