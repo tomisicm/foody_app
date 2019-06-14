@@ -101,7 +101,8 @@ export default {
   },
 
   methods: {
-    // to be replaced with the post one
+    ...mapActions('cuisineStore', ['getCuisine']),
+
     async handleSearch () {
       const { data } = await reviewService.searchForReviews(this.filter, this.getParams())
       this.reviews = data.docs
@@ -110,7 +111,6 @@ export default {
 
     updateFilter (event) {
       this.filter = event
-      // console.log(this.filter)
     },
 
     updatePerPage (event) {
@@ -128,17 +128,12 @@ export default {
     }
   },
 
-  // temprorary will i fix filter
-  actions: {
-    ...mapActions('cuisineStore', ['getCuisine'])
-  },
-  // temprorary will i fix filter
   computed: {
     ...mapGetters('cuisineStore', ['cuisine'])
   },
 
   async created () {
-    await this.$store.dispatch('cuisineStore/getCuisine')
+    await this.getCuisine()
   },
 
   mixins: [ commonFilter ],
