@@ -60,9 +60,9 @@
         placeholder="Choose picture"
       >
       </b-form-file>
-  
+
     </b-col>
-    <b-col>      
+    <b-col>
     <div
       v-show="selectedFileUrl"
       class="my-2"
@@ -97,6 +97,8 @@
 import VueCropper from 'vue-cropperjs'
 import 'cropperjs/dist/cropper.css'
 
+import userService from '@/utils/services/user-service'
+
 export default {
   data () {
     return {
@@ -105,6 +107,7 @@ export default {
         profession: '',
         email: ''
       },
+      selectedFileName: '',
       cropImg: null,
       selectedFileUrl: null
     }
@@ -113,6 +116,7 @@ export default {
   methods: {
     onFileSelected (event) {
       const selectedFile = event.target.files[0]
+      this.selectedFileName = selectedFile.name
       this.selectedFileUrl = URL.createObjectURL(selectedFile)
       this.$refs.cropper.replace(this.selectedFileUrl)
     },
@@ -122,7 +126,7 @@ export default {
     },
 
     handleUpload () {
-      console.log('uploading')
+      userService.uploadUserAvatar({ file: this.cropImg, filename: this.selectedFileName }).then((data) => {console.log(data)})
     }
   },
 
@@ -131,11 +135,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-#preview > img {
-  max-width: 200px;
-  max-height: 200px;
-}
-</style>
