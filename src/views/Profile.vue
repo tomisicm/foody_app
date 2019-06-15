@@ -33,9 +33,9 @@
           </b-col>
         </b-col>
 
-        <!-- <b-col md="4" id="preview">
-          <b-img v-if="selectedFileUrl" width="200" height="200" :src="selectedFileUrl" />
-        </b-col> -->
+        <b-col md="4" id="preview">
+          <b-img v-if="selectedFileUrl" width="200" height="200" :src="cropImg" />
+        </b-col>
 
       </b-row>
 
@@ -69,12 +69,6 @@
         :img-style="{ 'width': '400px', 'height': '300px' }">
       </vue-cropper>
     </div>
-    <img :src="cropImg" style="width: 200px; height: 150px; border: 1px solid gray" alt="Cropped Image" />
-    <br/>
-    <br />
-
-    <button @click="cropImage" v-if="selectedFileUrl" style="margin-right: 40px;">Crop</button>
-
   </b-container>
 </template>
 
@@ -90,6 +84,7 @@ export default {
         profession: '',
         email: ''
       },
+      cropImg: null,
       selectedFile: null,
       selectedFileUrl: null
     }
