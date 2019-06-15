@@ -86,7 +86,7 @@
       v-if="selectedFileUrl"
       class="mx-2"
       variant="primary"
-    >Crop</b-btn>
+        >Crop</b-btn>
     </div>
     </b-col>
     </b-container>
