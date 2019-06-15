@@ -53,20 +53,21 @@
       </b-row>
     </b-form>
 
-    <div style="width: 400px; height:300px; border: 1px solid gray; display: inline-block;">
+    <div
+      v-show="selectedFileUrl"
+      class="my-2"
+      style="width: 300px; height:250px; border: 1px solid gray; display: inline-block;"
+    >
       <vue-cropper
         ref='cropper'
-        :guides="true"
-        :view-mode="2"
+        :view-mode="3"
         drag-mode="crop"
-        :auto-crop-area="0.5"
-        :min-container-width="250"
-        :min-container-height="180"
-        :background="true"
-        :rotatable="true"
+        :auto-crop-area="0.6"
+        :min-container-width="300"
+        :min-container-height="250"
         :src="selectedFileUrl"
         alt="Source Image"
-        :img-style="{ 'width': '400px', 'height': '300px' }">
+        :img-style="{ 'width': '300px', 'height': '250px' }">
       </vue-cropper>
     </div>
   </b-container>
@@ -85,15 +86,14 @@ export default {
         email: ''
       },
       cropImg: null,
-      selectedFile: null,
       selectedFileUrl: null
     }
   },
 
   methods: {
     onFileSelected (event) {
-      this.selectedFile = event.target.files[0]
-      this.selectedFileUrl = this.selectedFile && URL.createObjectURL(this.selectedFile)
+      const selectedFile = event.target.files[0]
+      this.selectedFileUrl = URL.createObjectURL(selectedFile)
       this.$refs.cropper.replace(this.selectedFileUrl)
     },
 
