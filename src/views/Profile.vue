@@ -33,8 +33,20 @@
           </b-col>
         </b-col>
 
-        <b-col md="4" id="preview">
-          <b-img v-if="selectedFileUrl" width="200" height="200" :src="cropImg" />
+        <b-col v-if="selectedFileUrl" md="4">
+          <b-container>
+            <b-col>
+              <b-img width="200" height="200" :src="cropImg" />
+            </b-col>
+
+            <b-col class="w-100">
+              <b-btn
+                v-if="cropImg"
+                @click="handleUpload"
+                class="my-2"
+                variant="primary">Upload</b-btn>
+            </b-col>
+          </b-container>
         </b-col>
 
       </b-row>
@@ -48,11 +60,16 @@
           >
           </b-form-file>
         </b-form-group>
-        <b-btn @click="cropImage" v-if="selectedFileUrl" style="margin-right: 40px;">Crop</b-btn>
-        <b-btn @click="handleUpload" class="mx-2" variant="primary">Upload</b-btn>
+        <b-btn
+          @click="cropImage"
+          v-if="selectedFileUrl"
+          class="mx-2"
+          variant="primary"
+        >Crop</b-btn>
       </b-row>
     </b-form>
 
+    <b-row>
     <div
       v-show="selectedFileUrl"
       class="my-2"
@@ -70,6 +87,7 @@
         :img-style="{ 'width': '300px', 'height': '250px' }">
       </vue-cropper>
     </div>
+    </b-row>
   </b-container>
 </template>
 
@@ -113,11 +131,6 @@ export default {
 </script>
 
 <style>
-#preview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 #preview > img {
   max-width: 200px;
