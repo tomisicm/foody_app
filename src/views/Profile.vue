@@ -50,26 +50,19 @@
         </b-col>
 
       </b-row>
-
-      <b-row md="8" class="mt-3">
-        <b-form-group class="mb-0">
-          <b-form-file
-            @change="onFileSelected"
-            accept="image/jpeg, image/png, image/gif"
-            placeholder="Choose picture"
-          >
-          </b-form-file>
-        </b-form-group>
-        <b-btn
-          @click="cropImage"
-          v-if="selectedFileUrl"
-          class="mx-2"
-          variant="primary"
-        >Crop</b-btn>
-      </b-row>
     </b-form>
 
-    <b-row>
+  <b-container>
+    <b-col md="6" class="mt-3">
+      <b-form-file
+        @change="onFileSelected"
+        accept="image/jpeg, image/png, image/gif"
+        placeholder="Choose picture"
+      >
+      </b-form-file>
+  
+    </b-col>
+    <b-col>      
     <div
       v-show="selectedFileUrl"
       class="my-2"
@@ -87,7 +80,16 @@
         :img-style="{ 'width': '300px', 'height': '250px' }">
       </vue-cropper>
     </div>
-    </b-row>
+    <div>
+    <b-btn
+      @click="cropImage"
+      v-if="selectedFileUrl"
+      class="mx-2"
+      variant="primary"
+    >Crop</b-btn>
+    </div>
+    </b-col>
+    </b-container>
   </b-container>
 </template>
 
