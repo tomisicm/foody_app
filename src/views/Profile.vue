@@ -3,7 +3,7 @@
     Profile Page:
     <b-form>
       <b-row>
-        <b-col md="8">
+        <!-- <b-col md="8">
           <b-col class="my-3">
             <b-form-group label-cols-sm="3" label="Name" class="mb-0">
               <b-input-group>
@@ -32,7 +32,7 @@
             </b-form-group>
           </b-col>
         </b-col>
-
+ -->
         <b-col v-if="selectedFileUrl" md="4">
           <b-container>
             <b-col>
