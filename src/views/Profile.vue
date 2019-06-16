@@ -126,7 +126,7 @@ export default {
     },
 
     handleUpload () {
-      userService.uploadUserAvatar({ file: this.cropImg, filename: this.selectedFileName }).then((data) => {console.log(data)})
+      userService.uploadUserAvatar(this.cropImg).then((data) => {console.log(data)})
     }
   },
 
