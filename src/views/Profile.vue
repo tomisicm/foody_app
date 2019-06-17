@@ -3,7 +3,7 @@
     Profile Page:
     <b-form>
       <b-row>
-        <!-- <b-col md="8">
+        <b-col md="8">
           <b-col class="my-3">
             <b-form-group label-cols-sm="3" label="Name" class="mb-0">
               <b-input-group>
@@ -32,20 +32,19 @@
             </b-form-group>
           </b-col>
         </b-col>
- -->
-        <b-col v-if="selectedFileUrl" md="4">
+        <b-col md="4">
           <b-container>
             <b-col>
-              <b-img width="200" height="200" :src="cropImg" />
+              <b-img v-if="selectedFileUrl" width="200" height="200" :src="cropImg" />
             </b-col>
-
-            <b-col class="w-100">
+            <b-row md="6" class="mt-3">
+              <baseFileInput class="mx-5" @changeSelectedFile="onFileSelected($event)"/>
               <b-btn
                 v-if="cropImg"
                 @click="handleUpload"
-                class="my-2"
-                variant="primary">Upload</b-btn>
-            </b-col>
+                variant="primary">Upload
+              </b-btn>
+            </b-row>
           </b-container>
         </b-col>
 
@@ -53,16 +52,6 @@
     </b-form>
 
   <b-container>
-    <b-col md="6" class="mt-3">
-      <b-form-file
-        @change="onFileSelected"
-        accept="image/jpeg, image/png, image/gif"
-        placeholder="Choose picture"
-      >
-      </b-form-file>
-
-    </b-col>
-    <b-col>
     <div
       v-show="selectedFileUrl"
       class="my-2"
@@ -80,14 +69,15 @@
         :img-style="{ 'width': '300px', 'height': '250px' }">
       </vue-cropper>
     </div>
-    <div>
-    <b-btn
-      @click="cropImage"
-      v-if="selectedFileUrl"
-      class="mx-2"
-      variant="primary"
+    <b-col>
+      <div>
+        <b-btn
+          @click="cropImage"
+          v-if="selectedFileUrl"
+          class="mx-2"
+          variant="primary"
         >Crop</b-btn>
-    </div>
+      </div>
     </b-col>
     </b-container>
   </b-container>
@@ -98,6 +88,8 @@ import VueCropper from 'vue-cropperjs'
 import 'cropperjs/dist/cropper.css'
 
 import userService from '@/utils/services/user-service'
+
+import baseFileInput from '@/components/baseFileInput'
 
 export default {
   data () {
@@ -115,7 +107,7 @@ export default {
 
   methods: {
     onFileSelected (event) {
-      this.selectedFile = event.target.files[0]
+      this.selectedFile = event
       this.selectedFileUrl = URL.createObjectURL(this.selectedFile)
       this.$refs.cropper.replace(this.selectedFileUrl)
     },
@@ -136,14 +128,8 @@ export default {
     }
   },
 
-  computed: {
-    test () {
-      return this.cropImg.toBlob()
-    }
-  },
-
   components: {
-    VueCropper
+    VueCropper, baseFileInput
   }
 }
 </script>
