@@ -26,7 +26,7 @@
             <b-form-group label-cols-sm="3" label="Profession" class="mb-0">
               <b-input-group>
                 <b-form-input
-                  v-model="form.username"
+                  v-model="form.profession"
                   placeholder="Profession"></b-form-input>
               </b-input-group>
             </b-form-group>
@@ -35,7 +35,7 @@
         <b-col md="4">
           <b-container>
             <b-col>
-              <b-img v-if="selectedFileUrl" width="200" height="200" :src="cropImg" />
+              <b-img width="200" height="200" :src="cropImg" />
             </b-col>
             <b-row md="6" class="mt-3">
               <baseFileInput class="mx-5" @changeSelectedFile="onFileSelected($event)"/>
@@ -78,6 +78,13 @@
           class="mx-2"
           variant="primary"
         >Crop</b-btn>
+        <!-- will see later what do  -->
+        <b-btn
+          @click="cropImage"
+          v-if="selectedFileUrl"
+          class="mx-2"
+          variant="primary"
+        >Done</b-btn>
       </div>
     </b-col>
     </b-container>
@@ -126,7 +133,18 @@ export default {
         formData.append('file', blob)
         userService.uploadUserAvatar(formData)
       })
+    },
+
+    async getProfileData () {
+      const { data } = await userService.getProfileData()
+      this.form.username = data.name
+      this.form.email = data.email
+      this.form.profession = data.profession 
     }
+  },
+
+  created () {
+    this.getProfileData()
   },
 
   components: {
