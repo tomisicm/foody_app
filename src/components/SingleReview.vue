@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col cols="12" md="1">
-      <b-img class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20" rounded="circle"></b-img>
+      <b-img class="avatar my-1 mx-1" :src="image" rounded="circle"></b-img>
     </b-col>
     <b-col @click="handleClick" cols="12" md="8">
       <b-card-text
@@ -63,7 +63,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters('authStore', ['isSignedIn', 'isAdmin'])
+    ...mapGetters('authStore', ['isSignedIn', 'isAdmin']),
+    image () {
+      return 'http://localhost:3000/' + this.item.createdBy.profile.avatar
+    }
   },
 
   mixins: [ dateToString ]
