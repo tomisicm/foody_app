@@ -145,7 +145,7 @@ export default {
       const { data } = await userService.getProfileData()
       this.form.username = data.name
       this.form.email = data.email
-      this.form.profession = data.profession
+      this.form.profession = data.profile.profession
       this.img = 'http://localhost:3000/' + data.profile.avatar
     },
 
