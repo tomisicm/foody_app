@@ -35,7 +35,8 @@
         <b-col md="4">
           <b-container>
             <b-col>
-              <b-img width="200" height="200" :src="cropImg" />
+              <b-img v-if="!cropImg" width="200" height="200" :src="img" />
+              <b-img v-else width="200" height="200" :src="cropImg" />
             </b-col>
             <b-row md="6" class="mt-3">
               <baseFileInput class="mx-5" @changeSelectedFile="onFileSelected($event)"/>
@@ -107,6 +108,7 @@ export default {
         profession: '',
         email: ''
       },
+      img: null,
       cropImg: null,
       selectedFile: null,
       selectedFileUrl: null
@@ -139,7 +141,8 @@ export default {
       const { data } = await userService.getProfileData()
       this.form.username = data.name
       this.form.email = data.email
-      this.form.profession = data.profession 
+      this.form.profession = data.profession
+      this.img = 'http://localhost:3000/' + data.profile.avatar
     }
   },
 
