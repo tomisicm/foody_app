@@ -31,6 +31,10 @@
               </b-input-group>
             </b-form-group>
           </b-col>
+
+          <b-col class="my-3">
+            <b-btn @click="handleUpdate" variant="primary">Update</b-btn>
+          </b-col>
         </b-col>
         <b-col md="4">
           <b-container>
@@ -143,6 +147,10 @@ export default {
       this.form.email = data.email
       this.form.profession = data.profession
       this.img = 'http://localhost:3000/' + data.profile.avatar
+    },
+
+    async handleUpdate () {
+      await userService.updateProfile(this.form)
     }
   },
 

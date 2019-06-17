@@ -22,6 +22,17 @@ class UserService {
         throw error
       })
   }
+
+  updateProfile (body) {
+    return http
+      .put('/api/user', body)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
 }
 
 const userService = new UserService()
