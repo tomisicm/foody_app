@@ -40,6 +40,7 @@
             <b-row md="6" class="mt-3">
               <baseFileInput class="mx-5" @changeSelectedFile="onFileSelected($event)"/>
               <b-btn
+                :style="{ marginBottom: '0.5rem' }"
                 v-if="cropImg"
                 @click="handleUpload"
                 variant="primary">Upload
