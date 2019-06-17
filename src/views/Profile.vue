@@ -125,12 +125,10 @@ export default {
     },
 
     async handleUpload () {
-      
       this.$refs.cropper.getCroppedCanvas().toBlob((blob) => {
-        
         blob.lastModifiedDate = new Date()
         blob.name = 'file.png'
-        
+
         const formData = new FormData()
         formData.append('file', blob)
         userService.uploadUserAvatar(formData)
