@@ -2,13 +2,8 @@ import http from './http-service'
 
 class UserService {
   uploadUserAvatar (file) {
-    console.log(file)
-
-    const formData = new FormData()
-    formData.append('file', file)
-
     return http
-      .post('/api/user/avatar', formData)
+      .post('/api/user/avatar', file)
       .then(({ data }) => {
         return data
       })

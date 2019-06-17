@@ -107,17 +107,16 @@ export default {
         profession: '',
         email: ''
       },
-      selectedFileName: '',
       cropImg: null,
+      selectedFile: null,
       selectedFileUrl: null
     }
   },
 
   methods: {
     onFileSelected (event) {
-      const selectedFile = event.target.files[0]
-      this.selectedFileName = selectedFile.name
-      this.selectedFileUrl = URL.createObjectURL(selectedFile)
+      this.selectedFile = event.target.files[0]
+      this.selectedFileUrl = URL.createObjectURL(this.selectedFile)
       this.$refs.cropper.replace(this.selectedFileUrl)
     },
 
@@ -125,8 +124,23 @@ export default {
       this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL()
     },
 
-    handleUpload () {
-      userService.uploadUserAvatar(this.cropImg).then((data) => {console.log(data)})
+    async handleUpload () {
+      
+      this.$refs.cropper.getCroppedCanvas().toBlob((blob) => {
+        
+        blob.lastModifiedDate = new Date()
+        blob.name = 'file.png'
+        
+        const formData = new FormData()
+        formData.append('file', blob)
+        userService.uploadUserAvatar(formData)
+      })
+    }
+  },
+
+  computed: {
+    test () {
+      return this.cropImg.toBlob()
     }
   },
 
