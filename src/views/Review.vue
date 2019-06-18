@@ -14,8 +14,9 @@
         <b-col class="review__sectrion ml-4 mt-4">
           <b-row>Average rating: {{review.avgRating}}</b-row>
           <b-row>Is review approved? {{!!review.approved}}</b-row>
-          <b-row>Catering: {{review.item.name}}</b-row>
-          <b-row>At: {{review.item.address.city}}, {{review.item.address.street}} at {{review.item.address.streetNo}}</b-row>
+          <b-row>Catering:<b-link :to="{ name: 'catering', params: { id: review.item._id } }"> {{review.item.name}} </b-link></b-row>
+          <b-row>Address: {{review.item.address.city}}, {{review.item.address.street}} at {{review.item.address.streetNo}}</b-row>
+          <b-row>Cuisine: {{review.item.cuisine.name}}</b-row>
         </b-col>
 
       <b-col class="reviewer__sectrion mb-2">
