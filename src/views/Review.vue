@@ -11,16 +11,16 @@
     
     <b-form>
       <b-row>
-        <b-col class="review__sectrion">
-          <b-form-row class="mx-1 my-3">
-            
-          </b-form-row>
+        <b-col class="review__sectrion ml-4 mt-4">
+          <b-row class="mt-1">Total average rating: {{review.avgRating}}</b-row>
+          <b-row class="mt-1">Is review approved? {{!!review.approved}}</b-row>
+          
         </b-col>
 
-      <b-col class="reviewer__sectrion">
-        <b-col><b-img width="150" height="150" :src="img" /></b-col>
-        <b-row class="mx-4 my-1">By: {{review.createdBy && review.createdBy.name}}</b-row>
-        <b-row class="mx-4 my-1">Profession: {{review.createdBy.profile && review.createdBy.profile.profession}}</b-row>
+      <b-col class="reviewer__sectrion mb-2">
+        <b-col><b-img width="120" height="120" :src="img" /></b-col>
+        <b-row class="mx-4">By: {{review.createdBy && review.createdBy.name}}</b-row>
+        <b-row class="mx-4">Profession: {{review.createdBy.profile && review.createdBy.profile.profession}}</b-row>
       </b-col>
       </b-row>
 
