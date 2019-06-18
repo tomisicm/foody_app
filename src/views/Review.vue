@@ -18,9 +18,15 @@
         </b-col>
 
       <b-col class="reviewer__sectrion mb-2">
-        <b-col><b-img width="120" height="120" :src="img" /></b-col>
-        <b-row class="mx-4">By: {{review.createdBy && review.createdBy.name}}</b-row>
-        <b-row class="mx-4">Profession: {{review.createdBy.profile && review.createdBy.profile.profession}}</b-row>
+        <b-row>
+        <b-col class="mt-4">
+          <b-row class="ml-4">By: <strong>{{review.createdBy && review.createdBy.name}}</strong></b-row>
+          <b-row class="ml-4">Profession: {{review.createdBy.profile && review.createdBy.profile.profession}}</b-row>
+        </b-col>
+        <b-col>
+          <b-img width="120" height="120" :src="img" />
+        </b-col>
+        </b-row>
       </b-col>
       </b-row>
 
