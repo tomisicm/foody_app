@@ -8,13 +8,13 @@
         Title: {{review.title}}
       </div>
     </b-row>
-    
+
     <b-form>
       <b-row>
         <b-col class="review__sectrion ml-4 mt-4">
           <b-row class="mt-1">Total average rating: {{review.avgRating}}</b-row>
           <b-row class="mt-1">Is review approved? {{!!review.approved}}</b-row>
-          
+
         </b-col>
 
       <b-col class="reviewer__sectrion mb-2">
