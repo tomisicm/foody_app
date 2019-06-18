@@ -1,14 +1,28 @@
 <template>
   <b-container class="mt-2">
     <b-row>
-      <b-button @click="handleBack" variant="primary"><font-awesome-icon icon="long-arrow-alt-left" /> Back</b-button>
+      <div>
+        <b-button @click="handleBack" variant="primary"><font-awesome-icon icon="long-arrow-alt-left" /> Back</b-button>
+      </div>
+      <div class="h4 mx-5 my-2">
+        Title: {{review.title}}
+      </div>
     </b-row>
+    
     <b-form>
-      <b-form-row class="mx-1 my-3">
-        <label class="h4">Title: </label>
-        <div class="h4">{{review.title}}</div>
+      <b-row>
+        <b-col class="review__sectrion">
+          <b-form-row class="mx-1 my-3">
+            
+          </b-form-row>
+        </b-col>
+
+      <b-col class="reviewer__sectrion">
+        <b-col><b-img width="150" height="150" :src="img" /></b-col>
         <b-row class="mx-4 my-1">By: {{review.createdBy && review.createdBy.name}}</b-row>
-      </b-form-row>
+        <b-row class="mx-4 my-1">Profession: {{review.createdBy.profile && review.createdBy.profile.profession}}</b-row>
+      </b-col>
+      </b-row>
 
       <div role="tablist" class="mx-1">
 
@@ -142,6 +156,12 @@ export default {
     },
     handleBack () {
       window.history.back()
+    }
+  },
+
+  computed: {
+    img () {
+      return this.review.createdBy.profile && 'http://localhost:3000/' + this.review.createdBy.profile.avatar
     }
   },
 
