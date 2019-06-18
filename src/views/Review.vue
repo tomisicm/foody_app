@@ -12,9 +12,10 @@
     <b-form>
       <b-row>
         <b-col class="review__sectrion ml-4 mt-4">
-          <b-row class="mt-1">Total average rating: {{review.avgRating}}</b-row>
-          <b-row class="mt-1">Is review approved? {{!!review.approved}}</b-row>
-
+          <b-row>Average rating: {{review.avgRating}}</b-row>
+          <b-row>Is review approved? {{!!review.approved}}</b-row>
+          <b-row>Catering: {{review.item.name}}</b-row>
+          <b-row>At: {{review.item.address.city}}, {{review.item.address.street}} at {{review.item.address.streetNo}}</b-row>
         </b-col>
 
       <b-col class="reviewer__sectrion mb-2">
