@@ -47,8 +47,8 @@ export default new Router({
       component: AppLanding
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
+      path: '/catering',
+      name: 'catering',
       props: true,
       component: Home
     },
