@@ -14,6 +14,8 @@ import Reviews from '../views/Reviews'
 
 import NewReview from '../views/NewReview'
 
+import store from '@/utils/store'
+
 Vue.use(Router)
 
 export default new Router({
@@ -37,6 +39,10 @@ export default new Router({
         {
           name: 'profile',
           path: 'profile',
+          beforeEnter (to, from, next) {
+            if (store.getters['authStore/isSignedIn']) next()
+            else next('signin')
+          },
           component: Profile
         }
       ]
