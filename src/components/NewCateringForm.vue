@@ -43,9 +43,17 @@
       </b-col>
 
       <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Contact information" class="mb-0">
+        <b-form-group label-cols-sm="3" label="Contact" class="mb-0">
           <b-input-group>
-            <b-form-input placeholder="Phone or Email"></b-form-input>
+            <template v-for="(contact, index) in form.contactInformation">
+              <div class="col-md-9">
+                <b-form-input v-model="form.contactInformation[index]" placeholder="Phone or Email"></b-form-input>
+              </div>
+              <div class="col-md-3">
+                <b-btn variant="primary" @click="addContact" pill>+</b-btn>
+                <b-btn variant="outline-danger" @click="removeContact(contact)"> - </b-btn>
+              </div>
+            </template>
           </b-input-group>
         </b-form-group>
       </b-col>
@@ -72,7 +80,7 @@
         <b-form-group label-cols-sm="3" label="Micheline stars" class="mb-0">
           <b-input-group>
             <div class="col-md-6">
-              <b-form-checkbox v-model="checked" class="mt-2" name="check-button" switch/>
+              <b-form-checkbox v-model="form.checked" class="mt-2" name="check-button" switch/>
             </div>
             <div class="col-md-6">
               <b-form-input placeholder="Micheline stars"></b-form-input>
@@ -94,14 +102,27 @@ export default {
   data () {
     return {
       form: {
-
+        checked: false,
+        contactInformation: [
+          ''
+        ]
       }
+    }
+  },
+
+  methods: {
+    addContact () {
+      this.form.contactInformation.push('')
+    },
+    removeContact (contact) {
+      const i = this.form.contactInformation.indexOf(contact);
+      this.form.contactInformation.splice(i, 1)
     }
   },
 
   computed: {
     ...mapGetters('cuisineStore', ['cuisine'])
-  },
+  }
 
 }
 </script>
