@@ -8,6 +8,7 @@ import AppRegister from '../views/AppRegister'
 import Profile from '../views/Profile'
 
 import Home from '../views/Home'
+import NewCatering from '../views/NewCatering'
 import CateringFacility from '../views/CateringFacility'
 import Review from '../views/Review'
 import Reviews from '../views/Reviews'
@@ -52,11 +53,11 @@ export default new Router({
       props: true,
       component: Home
     },
-    /* {
-      path: '/catering',
+    {
+      path: '/catering/add',
       props: true,
-      component: Home
-    }, */
+      component: NewCatering
+    },
     {
       path: '/catering/:id',
       name: 'catering',
