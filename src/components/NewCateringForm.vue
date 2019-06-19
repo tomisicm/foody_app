@@ -110,19 +110,18 @@
     </b-col>
 
     <b-col md="5">
-      <p class="h2">Pictures</p>
+      <p class="h2">Images</p>
       <b-col class="my-3">
-
-      <ListControlled
-        :items="form.pictures"
+      
+      <List
+        :items="images"
       >
-          <template v-slot:listitem="{item}">
-            <b-row>
-              <b-col>{{item}}</b-col>
-              <b-col><b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn></b-col>
-            </b-row>
-          </template>
-        </ListControlled>
+        <template v-slot:listitem="{item}">
+          <div :item="item">
+            {{item}}
+          </div>
+        </template>
+      </List>
 
       </b-col>
     </b-col>
@@ -138,7 +137,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import ListControlled from '@/components/ListControlled'
+import List from '@/components/List'
 
 export default {
   data () {
@@ -147,12 +146,12 @@ export default {
         checked: false,
         contactInformation: [
           ''
-        ],
-        pictures: [
-          { e: '2' },
-          { e: '3' }
         ]
-      }
+      },
+      images: [
+        { e: '2' },
+        { e: '3' }
+      ]
     }
   },
 
@@ -171,7 +170,7 @@ export default {
   },
 
   components: {
-    ListControlled
+    List
   }
 
 }
