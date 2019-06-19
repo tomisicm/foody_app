@@ -2,7 +2,7 @@
   <b-form>
     <!-- brief instructions if the user has not created catering -->
     <b-row>
-    <b-col md="8">
+    <b-col md="7">
 
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" label="Name " class="mb-0">
@@ -50,7 +50,7 @@
               </div>
               <div class="col-md-3">
                 <b-btn variant="primary" v-if="!contact || index==0" @click="addContact" pill>+</b-btn>
-                <b-btn variant="outline-danger" v-else @click="removeContact(contact)"> - </b-btn>
+                <b-btn variant="outline-danger" v-if="contact || index > 0" @click="removeContact(contact)"> - </b-btn>
                 <!-- v-if="index > 0 && contact" -->
               </div>
           </b-input-group>
