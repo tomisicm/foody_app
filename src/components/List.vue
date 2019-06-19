@@ -23,7 +23,7 @@ export default {
     }
   },
 
-  name: 'List'
+  name: 'baseList'
 }
 </script>
 
