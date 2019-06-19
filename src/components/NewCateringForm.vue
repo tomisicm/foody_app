@@ -111,19 +111,10 @@
 
     <b-col md="5">
       <p class="h2">Images</p>
-      <b-col class="my-3">
-      
-      <List
-        :items="images"
-      >
-        <template v-slot:listitem="{item}">
-          <div :item="item">
-            {{item}}
-          </div>
-        </template>
-      </List>
+        <ImagesList
+          :images="images"
+        />
 
-      </b-col>
     </b-col>
 
     <b-col md="5">
@@ -137,7 +128,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import List from '@/components/List'
+import ImagesList from '@/components/ImagesList'
 
 export default {
   data () {
@@ -170,7 +161,7 @@ export default {
   },
 
   components: {
-    List
+    ImagesList
   }
 
 }
