@@ -17,6 +17,8 @@ import NewReview from '../views/NewReview'
 
 Vue.use(Router)
 
+/* Dispatch get cuisine action */
+
 export default new Router({
   mode: 'history',
   routes: [
@@ -49,7 +51,7 @@ export default new Router({
     },
     {
       path: '/catering',
-      name: 'catering',
+      name: 'caterings',
       props: true,
       component: Home
     },
