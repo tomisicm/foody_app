@@ -45,7 +45,9 @@
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" label="Contact" class="mb-0">
           <b-input-group v-for="(contact, index) in form.contactInformation" :key="index" class="my-2">
+
               <b-form-input class="col-md-9" v-model="form.contactInformation[index]" placeholder="Phone or Email"></b-form-input>
+
               <div class="col-md-3">
                 <b-btn variant="outline-danger" v-if="!contact && index > 0" @click="removeContact(contact)"> - </b-btn>
                 <b-btn variant="primary" v-else @click="addContact" pill>+</b-btn>
@@ -109,6 +111,20 @@
 
     <b-col md="5">
       <p class="h2">Pictures</p>
+      <b-col class="my-3">
+
+          <ListControlled
+              :items="form.pictures"
+            >
+              <template v-slot:listitem="{item}">
+                <b-row>
+                  <b-col>{{item}}</b-col>
+                  <b-col><b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn></b-col>
+                </b-row>
+              </template>
+            </ListControlled>
+
+      </b-col>
     </b-col>
 
     <b-col md="5">
@@ -122,6 +138,9 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import List from '@/components/List'
+import ListControlled from '@/components/ListControlled'
+
 export default {
   data () {
     return {
@@ -129,6 +148,9 @@ export default {
         checked: false,
         contactInformation: [
           ''
+        ],
+        pictures: [
+          { e: '' }, { e: '' }
         ]
       }
     }
@@ -146,6 +168,10 @@ export default {
 
   computed: {
     ...mapGetters('cuisineStore', ['cuisine'])
+  },
+
+  components: {
+    /* List,  */ListControlled
   }
 
 }
