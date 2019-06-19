@@ -45,9 +45,7 @@
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" label="Contact" class="mb-0">
           <b-input-group v-for="(contact, index) in form.contactInformation" :key="index" class="my-2">
-              <div class="col-md-9">
-                <b-form-input v-model="form.contactInformation[index]" placeholder="Phone or Email"></b-form-input>
-              </div>
+              <b-form-input class="col-md-9" v-model="form.contactInformation[index]" placeholder="Phone or Email"></b-form-input>
               <div class="col-md-3">
                 <b-btn variant="primary" v-if="!contact || index==0" @click="addContact" pill>+</b-btn>
                 <b-btn variant="outline-danger" v-if="contact || index > 0" @click="removeContact(contact)"> - </b-btn>
