@@ -21,7 +21,9 @@ export default {
         return []
       }
     }
-  }
+  },
+
+  name: 'List'
 }
 </script>
 
