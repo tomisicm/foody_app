@@ -113,16 +113,16 @@
       <p class="h2">Pictures</p>
       <b-col class="my-3">
 
-          <ListControlled
-              :items="form.pictures"
-            >
-              <template v-slot:listitem="{item}">
-                <b-row>
-                  <b-col>{{item}}</b-col>
-                  <b-col><b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn></b-col>
-                </b-row>
-              </template>
-            </ListControlled>
+      <ListControlled
+        :items="form.pictures"
+      >
+          <template v-slot:listitem="{item}">
+            <b-row>
+              <b-col>{{item}}</b-col>
+              <b-col><b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn></b-col>
+            </b-row>
+          </template>
+        </ListControlled>
 
       </b-col>
     </b-col>
@@ -138,7 +138,6 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import List from '@/components/List'
 import ListControlled from '@/components/ListControlled'
 
 export default {
@@ -150,7 +149,8 @@ export default {
           ''
         ],
         pictures: [
-          { e: '' }, { e: '' }
+          { e: '2' },
+          { e: '3' }
         ]
       }
     }
@@ -171,7 +171,7 @@ export default {
   },
 
   components: {
-    /* List,  */ListControlled
+    ListControlled
   }
 
 }
