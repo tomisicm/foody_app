@@ -88,7 +88,7 @@
         </b-form-group>
       </b-col>
 
-      <!-- potential typeahead -->
+      <!-- Vue-Multiselect type-a-head #sub-asynchronous-select-->
       <b-col class="my-3" v-b-popover.hover.left="'Does the owner have account? Leave empty otherwise.'">
         <b-form-group label-cols-sm="3" label="Owner" class="mb-0">
           <b-input-group>
@@ -98,7 +98,11 @@
       </b-col>
     </b-col>
 
-    <b-col>
+    <b-col md="5">
+      <p class="h2">Pictures</p>
+    </b-col>
+
+    <b-col md="5">
       <p class="h2">Menu information</p>
     </b-col>
 
