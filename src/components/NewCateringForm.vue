@@ -44,14 +44,15 @@
 
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" label="Contact" class="mb-0">
-          <b-input-group>
-            <template v-for="(contact, index) in form.contactInformation">
+          <b-input-group v-for="(contact, index) in form.contactInformation" :key="index" class="my-2">
+            <template>
               <div class="col-md-9">
                 <b-form-input v-model="form.contactInformation[index]" placeholder="Phone or Email"></b-form-input>
               </div>
               <div class="col-md-3">
-                <b-btn variant="primary" @click="addContact" pill>+</b-btn>
-                <b-btn variant="outline-danger" @click="removeContact(contact)"> - </b-btn>
+                <b-btn variant="primary" v-if="!contact || index==0" @click="addContact" pill>+</b-btn>
+                <b-btn variant="outline-danger" v-else @click="removeContact(contact)"> - </b-btn>
+                <!-- v-if="index > 0 && contact" -->
               </div>
             </template>
           </b-input-group>
@@ -115,7 +116,7 @@ export default {
       this.form.contactInformation.push('')
     },
     removeContact (contact) {
-      const i = this.form.contactInformation.indexOf(contact);
+      const i = this.form.contactInformation.indexOf(contact)
       this.form.contactInformation.splice(i, 1)
     }
   },
