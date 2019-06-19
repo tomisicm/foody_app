@@ -1,9 +1,9 @@
-<template>
+    <template>
   <b-form>
     <!-- brief instructions if the user has not created catering -->
     <b-row>
     <b-col md="7">
-
+      <p class="h2">Basic information</p>
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" label="Name " class="mb-0">
           <b-input-group>
@@ -88,6 +88,18 @@
         </b-form-group>
       </b-col>
 
+      <!-- potential typeahead -->
+      <b-col class="my-3" v-b-popover.hover.left="'Does the owner have account? Leave empty otherwise.'">
+        <b-form-group label-cols-sm="3" label="Owner" class="mb-0">
+          <b-input-group>
+            <b-form-input placeholder="Enter owner"></b-form-input>
+          </b-input-group>
+        </b-form-group>
+      </b-col>
+    </b-col>
+
+    <b-col>
+      <p class="h2">Menu information</p>
     </b-col>
 
     </b-row>
