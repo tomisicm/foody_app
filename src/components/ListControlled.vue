@@ -2,21 +2,19 @@
   <div>
     <b-form-input placeholder="Enter url"></b-form-input>
     <b-btn variant="primary" pill>+</b-btn>
-    <List
-      :items="items"
-    >
-      <template v-slot:listitem="{item}">
-        <b-row>
-          <b-col>{{item}}</b-col>
-          <b-col><b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn></b-col>
-        </b-row>
-      </template>
-    </List>
+    <b-row v-for="(item, index) in items"  :key="index">
+
+      <b-row>
+        <b-col>{{item}}</b-col>
+        <b-col><b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn></b-col>
+      </b-row>
+
+    </b-row>
+
   </div>
 </template>
 
 <script>
-import List from '@/components/List'
 
 export default {
   props: {
@@ -32,18 +30,15 @@ export default {
     addItem (event) {
     },
     removeItem (event) {
-      const i = this.items.indexOf(event)
-      this.items.splice(i, 1)
+    /*   const i = this.items.indexOf(event)
+      this.items.splice(i, 1) */
+      console.log(item)
     }
   },
 
   watch: {
-    items () {
-      console.log('change')
-    }
+    
   },
 
-  components: {
-    List
-  }
+  name: 'ListControlled'  
 }
