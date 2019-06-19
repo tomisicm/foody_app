@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col cols="12" md="1">
-      <b-img class="avatar my-1 mx-1" :src="image" rounded="circle"></b-img>
+      <b-img width="80" height="80" class="avatar my-1 mx-1" :src="image" rounded="circle"></b-img>
     </b-col>
     <b-col @click="handleClick" cols="12" md="8">
       <b-card-text

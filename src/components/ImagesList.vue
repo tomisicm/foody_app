@@ -8,13 +8,13 @@
       </b-row>
 
     <List
-      :items="images"
+      :items="items"
       class="my-2"
     >
       <template v-slot:listitem="{item}">
         <b-row>
           <b-col :item="item">
-            {{item}}
+            <b-nav-item>{{item}}</b-nav-item>
           </b-col>
           <div class="col-md-3">
             <b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn>
@@ -30,7 +30,7 @@ import List from '@/components/List'
 
 export default {
   props: {
-    images: {
+    items: {
       type: Array,
       default: function () {
         return []
@@ -45,17 +45,14 @@ export default {
   },
 
   methods: {
-    addItem (event) {
-      console.log(this.newItem)
+    addItem () {
+      if (!this.newItem) return
+      this.$emit('additem', this.newItem)
       this.newItem = ''
     },
 
-    removeItem (event) {
-      /*
-        const i = this.items.indexOf(event)
-        this.items.splice(i, 1)
-      */
-      console.log(event)
+    removeItem (item) {
+      this.$emit('removeitem', item)
     }
   },
 

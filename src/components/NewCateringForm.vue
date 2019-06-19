@@ -112,7 +112,9 @@
     <b-col md="5">
       <p class="h2">Images</p>
         <ImagesList
-          :images="images"
+          :items="images"
+          @additem="handleAddItem($event)"
+          @removeitem="handleRemoveItem($event)"
         />
 
     </b-col>
@@ -139,10 +141,7 @@ export default {
           ''
         ]
       },
-      images: [
-        { e: '2' },
-        { e: '3' }
-      ]
+      images: []
     }
   },
 
@@ -153,7 +152,16 @@ export default {
     removeContact (contact) {
       const i = this.form.contactInformation.indexOf(contact)
       this.form.contactInformation.splice(i, 1)
+    },
+
+    handleAddItem (event) {
+      this.images.push(event)
+    },
+    handleRemoveItem (event) {
+      const i = this.images.indexOf(event)
+      this.images.splice(i, 1)
     }
+
   },
 
   computed: {
