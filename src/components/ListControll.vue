@@ -1,10 +1,11 @@
 <template>
   <b-col class="my-3">
-      <b-row>
-        <slot name="inputfield" />
-        <b-col class="col-md-2">
-          <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
-        </b-col>
+    <slot name="labelfield" />
+    <b-row>
+      <slot name="inputfield" />
+      <b-col class="col-md-2">
+        <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
+      </b-col>
         <slot name="inputerrors" />
       </b-row>
 

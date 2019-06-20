@@ -18,22 +18,33 @@
       />
 
       <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Contact" class="mb-0">
-          <b-input-group v-for="(contact, index) in form.contactInformation" :key="index" class="my-2">
+        <ListControll
+          :items="form.contactInformation"
+          :error="!!errors.first('contact')"
+          @additem="handleAddContact"
+          @removeitem="handleRemoveContact"
+        >
+        <template v-slot:labelfield>
+          <b-form-group
+            label-cols-sm="6"
+            label="Contact Information"
+            class="mb-0 mr-4"
+          />
+        </template>
 
+          <template v-slot:inputfield>
             <b-form-input class="col-md-9"
               name="contact"
               v-validate="'phoneOrEmail'"
-              v-model="form.contactInformation[index]"
+              v-model="newContact"
               placeholder="Phone or Email"
             />
+          </template>
+          <template v-slot:inputerrors>
             <small class="form-text text-danger">{{ errors.first('contact') }}</small>
-              <div class="col-md-3">
-                <b-btn variant="outline-danger" v-if="!contact && index > 0" @click="removeContact(contact)"> - </b-btn>
-                <b-btn variant="primary" v-else @click="addContact" pill>+</b-btn>
-              </div>
-          </b-input-group>
-        </b-form-group>
+          </template>
+        </ListControll>
+
       </b-col>
 
       <b-col class="my-3">
@@ -90,13 +101,13 @@
         <ListControll
           :items="images"
           :error="!!errors.first('imageurl')"
-          @additem="handleAddItem"
-          @removeitem="handleRemoveItem"
+          @additem="handleAddImage"
+          @removeitem="handleRemoveImage"
         >
           <template v-slot:inputfield="{item}">
             <b-form-input
               v-model="newImage"
-              @keydown.enter="handleAddItem"
+              @keydown.enter="handleAddImage"
               v-validate="'url'"
               name="imageurl"
               class="col-md-9"
@@ -134,31 +145,33 @@ export default {
 
         },
         contactInformation: [
-          ''
         ],
         checked: false
       },
       images: [],
-      newImage: ''
+      newImage: '',
+      newContact: ''
     }
   },
 
   methods: {
-    addContact () {
-      this.form.contactInformation.push('')
+    handleAddContact () {
+      if (!this.newContact) return
+      this.form.contactInformation.push(this.newContact)
+      this.newContact = ''
     },
-    removeContact (contact) {
+    handleRemoveContact (contact) {
       const i = this.form.contactInformation.indexOf(contact)
       this.form.contactInformation.splice(i, 1)
     },
 
-    handleAddItem () {
+    handleAddImage () {
       if (!this.newImage) return
       this.images.push(this.newImage)
       this.newImage = ''
     },
-    handleRemoveItem (event) {
-      const i = this.images.indexOf(event)
+    handleRemoveImage (image) {
+      const i = this.images.indexOf(image)
       this.images.splice(i, 1)
     },
 
