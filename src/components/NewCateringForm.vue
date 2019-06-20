@@ -33,10 +33,12 @@
         </template>
 
           <template v-slot:inputfield>
-            <b-form-input class="col-md-9"
+            <b-form-input
+              v-model="newContact"
+              @keydown.enter="handleAddImage"
               name="contact"
               v-validate="'phoneOrEmail'"
-              v-model="newContact"
+              class="col-md-9"
               placeholder="Phone or Email"
             />
           </template>
