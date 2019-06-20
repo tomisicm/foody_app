@@ -13,34 +13,9 @@
       </b-col>
 
       <!-- address component is repeating -->
-      <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Address" class="mb-0">
-          <b-input-group>
-            <b-form-input placeholder="City"></b-form-input>
-          </b-input-group>
-        </b-form-group>
-        <b-form-row class="mt-3">
-          <div class="col-md-8">
-            <b-form-input v-model="form.street"
-              type="text"
-              class="form-control"
-              id="street"
-              aria-describedby="street"
-              placeholder="Street name"
-            />
-          </div>
-          <div class="col-md-4">
-            <b-form-input
-              v-model="form.streetNo"
-              type="text"
-              class="form-control"
-              id="streetNo"
-              aria-describedby="streetNo"
-              placeholder="Number"
-            />
-          </div>
-        </b-form-row>
-      </b-col>
+      <Address
+        @update:address="updateAddress($event)"
+      />
 
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" label="Contact" class="mb-0">
@@ -131,6 +106,7 @@
 import { mapGetters } from 'vuex'
 
 import ImagesList from '@/components/ImagesList'
+import Address from '@/components/parts/Address'
 
 export default {
   data () {
@@ -164,6 +140,10 @@ export default {
     handleRemoveItem (event) {
       const i = this.images.indexOf(event)
       this.images.splice(i, 1)
+    },
+
+    updateAddress (address) {
+      this.form.address = address
     }
 
   },
@@ -173,7 +153,7 @@ export default {
   },
 
   components: {
-    ImagesList
+    ImagesList, Address
   }
 
 }
