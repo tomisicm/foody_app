@@ -17,7 +17,7 @@
               id="email"
               aria-describedby="email"
               placeholder="Enter email"
-            >
+            />
             <small class="form-text text-danger">{{ errors.first('email') || firstError('email') }}</small>
           </div>
 
