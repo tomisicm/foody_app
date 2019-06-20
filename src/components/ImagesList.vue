@@ -1,10 +1,18 @@
 <template>
   <b-col class="my-3">
       <b-row>
-        <b-form-input v-model="newItem" @keydown.enter="addItem" class="col-md-9" placeholder="Enter url"></b-form-input>
-        <b-col class="col-md-3">
-          <b-btn variant="primary" @click="addItem" pill>+</b-btn>
+        <b-form-input
+          v-model="newItem"
+          @keydown.enter="addItem"
+          v-validate="'url'"
+          name="imageurl"
+          class="col-md-9"
+          placeholder="Enter url"
+        />
+        <b-col class="col-md-2">
+          <b-btn variant="primary" @click="addItem" :disabled="!!errors.first('imageurl')" pill>+</b-btn>
         </b-col>
+        <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
       </b-row>
 
     <List
