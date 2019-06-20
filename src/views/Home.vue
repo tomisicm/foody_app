@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import cateringService from '@/utils/services/catering-service'
 
 import FilterObjects from '@/components/FilterObjects'
@@ -134,16 +134,8 @@ export default {
 
   },
 
-  actions: {
-    ...mapActions('cuisineStore', ['getCuisine'])
-  },
-
   computed: {
     ...mapGetters('cuisineStore', ['cuisine'])
-  },
-
-  async created () {
-    await this.$store.dispatch('cuisineStore/getCuisine')
   },
 
   components: { FilterObjects }

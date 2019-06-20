@@ -19,7 +19,6 @@ import store from '@/utils/store'
 
 Vue.use(Router)
 
-// TODO: REMOVE CUISINE CALLS THROUGHOUT THE APP
 store.dispatch('cuisineStore/getCuisine')
 
 export default new Router({

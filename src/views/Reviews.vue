@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 import reviewService from '@/utils/services/review-service'
 import FilterReviews from '@/components/FilterReviews'
@@ -101,8 +101,6 @@ export default {
   },
 
   methods: {
-    ...mapActions('cuisineStore', ['getCuisine']),
-
     async handleSearch () {
       const { data } = await reviewService.searchForReviews(this.filter, this.getParams())
       this.reviews = data.docs
@@ -130,10 +128,6 @@ export default {
 
   computed: {
     ...mapGetters('cuisineStore', ['cuisine'])
-  },
-
-  async created () {
-    await this.getCuisine()
   },
 
   mixins: [ commonFilter ],
