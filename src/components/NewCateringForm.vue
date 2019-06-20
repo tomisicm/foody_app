@@ -5,7 +5,7 @@
     <b-col md="7">
       <p class="h2">Basic information</p>
       <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Name " class="mb-0">
+        <b-form-group label-cols-sm="3" v-model="form.name" label="Name " class="mb-0">
           <b-input-group>
             <b-form-input placeholder="Enter name of foody place"></b-form-input>
           </b-input-group>
@@ -136,10 +136,14 @@ export default {
   data () {
     return {
       form: {
-        checked: false,
+        name,
+        address: {
+
+        },
         contactInformation: [
           ''
-        ]
+        ],
+        checked: false
       },
       images: []
     }
