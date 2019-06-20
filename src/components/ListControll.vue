@@ -17,9 +17,9 @@
           <b-col class="col-md-9" :item="item">
             <b-link>{{item}}</b-link>
           </b-col>
-          <div class="col-md-3">
+          <b-col md="3">
             <b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn>
-          </div>
+          </b-col>
         </b-row>
       </template>
     </List>
