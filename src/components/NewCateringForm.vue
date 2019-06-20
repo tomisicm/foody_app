@@ -87,11 +87,27 @@
 
     <b-col md="5">
       <p class="h2">Images</p>
-        <ImagesList
+        <ListControll
           :items="images"
-          @additem="handleAddItem($event)"
-          @removeitem="handleRemoveItem($event)"
-        />
+          :error="!!errors.first('imageurl')"
+          @additem="handleAddItem"
+          @removeitem="handleRemoveItem"
+        >
+          <template v-slot:inputfield="{item}">
+            <b-form-input
+              v-model="newImage"
+              @keydown.enter="handleAddItem"
+              v-validate="'url'"
+              name="imageurl"
+              class="col-md-9"
+              placeholder="Enter url"
+            />
+          </template>
+          <template v-slot:inputerrors>
+            <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
+          </template>
+
+        </ListControll>
 
     </b-col>
 
@@ -106,7 +122,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import ImagesList from '@/components/ImagesList'
+import ListControll from '@/components/ListControll'
 import Address from '@/components/parts/Address'
 
 export default {
@@ -122,7 +138,8 @@ export default {
         ],
         checked: false
       },
-      images: []
+      images: [],
+      newImage: ''
     }
   },
 
@@ -135,8 +152,10 @@ export default {
       this.form.contactInformation.splice(i, 1)
     },
 
-    handleAddItem (event) {
-      this.images.push(event)
+    handleAddItem () {
+      if (!this.newImage) return
+      this.images.push(this.newImage)
+      this.newImage = ''
     },
     handleRemoveItem (event) {
       const i = this.images.indexOf(event)
@@ -154,7 +173,7 @@ export default {
   },
 
   components: {
-    ImagesList, Address
+    ListControll, Address
   }
 
 }

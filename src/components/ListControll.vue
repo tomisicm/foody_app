@@ -1,18 +1,11 @@
 <template>
   <b-col class="my-3">
       <b-row>
-        <b-form-input
-          v-model="newItem"
-          @keydown.enter="addItem"
-          v-validate="'url'"
-          name="imageurl"
-          class="col-md-9"
-          placeholder="Enter url"
-        />
+        <slot name="inputfield" />
         <b-col class="col-md-2">
-          <b-btn variant="primary" @click="addItem" :disabled="!!errors.first('imageurl')" pill>+</b-btn>
+          <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
         </b-col>
-        <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
+        <slot name="inputerrors" />
       </b-row>
 
     <List
@@ -43,6 +36,10 @@ export default {
       default: function () {
         return []
       }
+    },
+    error: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -54,9 +51,7 @@ export default {
 
   methods: {
     addItem () {
-      if (!this.newItem) return
-      this.$emit('additem', this.newItem)
-      this.newItem = ''
+      this.$emit('additem')
     },
 
     removeItem (item) {
