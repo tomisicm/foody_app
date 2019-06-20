@@ -30,6 +30,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import { phoneOrEmailRule } from '@/utils/validationRules'
+VeeValidate.Validator.extend('phoneOrEmail', phoneOrEmailRule)
+
 Vue.use(BootstrapVue)
 
 library.add(
