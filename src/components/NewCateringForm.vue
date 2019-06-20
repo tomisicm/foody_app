@@ -1,4 +1,4 @@
-    <template>
+<template>
   <b-form>
     <!-- brief instructions if the user has not created catering -->
     <b-row>
