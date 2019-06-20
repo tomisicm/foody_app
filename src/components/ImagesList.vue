@@ -1,7 +1,7 @@
 <template>
   <b-col class="my-3">
       <b-row>
-        <b-form-input v-model="newItem" class="col-md-9" placeholder="Enter url"></b-form-input>
+        <b-form-input v-model="newItem" @keydown.enter="addItem" class="col-md-9" placeholder="Enter url"></b-form-input>
         <b-col class="col-md-3">
           <b-btn variant="primary" @click="addItem" pill>+</b-btn>
         </b-col>
@@ -13,8 +13,8 @@
     >
       <template v-slot:listitem="{item}">
         <b-row>
-          <b-col :item="item">
-            <b-nav-item>{{item}}</b-nav-item>
+          <b-col class="col-md-9" :item="item">
+            <b-link>{{item}}</b-link>
           </b-col>
           <div class="col-md-3">
             <b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn>
