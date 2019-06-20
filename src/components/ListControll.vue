@@ -16,6 +16,7 @@
       <template v-slot:listitem="{item}">
         <b-row>
           <b-col class="col-md-9" :item="item">
+            <!-- TODO: this should be SLOT -->
             <b-link>{{item}}</b-link>
           </b-col>
           <b-col md="3">
