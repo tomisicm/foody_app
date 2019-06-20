@@ -35,7 +35,7 @@
           <template v-slot:inputfield>
             <b-form-input
               v-model="newContact"
-              @keydown.enter="handleAddImage"
+              @keydown.enter="handleAddContact"
               name="contact"
               v-validate="'phoneOrEmail'"
               class="col-md-9"
