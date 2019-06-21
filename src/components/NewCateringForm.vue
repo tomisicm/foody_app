@@ -161,9 +161,7 @@ export default {
     return {
       form: {
         name,
-        address: {
-
-        },
+        address: {},
         contactInformation: [],
         website: '',
         selectedOptions: [],
