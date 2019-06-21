@@ -37,6 +37,7 @@
               v-model="newContact"
               @keydown.enter="handleAddContact"
               name="contact"
+              v-b-popover.hover.right="HELP_TEXT_CONSTANTS.phoneNumbFormatHelpText"
               v-validate="'phoneOrEmail'"
               class="col-md-9"
               placeholder="Phone or Email"
@@ -94,13 +95,13 @@
       </b-col>
 
       <!-- Vue-Multiselect type-a-head #sub-asynchronous-select-->
-      <b-col class="my-3" v-b-popover.hover.left="'Does the owner have account? Leave empty otherwise.'">
+      <!-- <b-col class="my-3" v-b-popover.hover.left="'Does the owner have account? Leave empty otherwise.'">
         <b-form-group label-cols-sm="3" label="Owner" class="mb-0">
           <b-input-group>
             <b-form-input placeholder="Enter owner"></b-form-input>
           </b-input-group>
         </b-form-group>
-      </b-col>
+      </b-col> -->
 
       <!-- TODO: website -->
 
@@ -153,6 +154,8 @@ import { mapGetters } from 'vuex'
 import ListControll from '@/components/ListControll'
 import Address from '@/components/parts/Address'
 
+import constants from '@/utils/constants'
+
 export default {
   data () {
     return {
@@ -164,7 +167,7 @@ export default {
         contactInformation: [],
         website: '',
         selectedOptions: [],
-        michelinStars: null,
+        michelinStars: null
 
       },
       images: [],
@@ -212,7 +215,11 @@ export default {
 
   components: {
     ListControll, Address
-  }
+  },
 
+  created () {
+    // TODO: THERE HAS TO BE ANOTHER WAY
+    this.HELP_TEXT_CONSTANTS = constants
+  }
 }
 </script>
