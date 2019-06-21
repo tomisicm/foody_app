@@ -3,7 +3,7 @@
     <!-- brief instructions if the user has not created catering -->
     <b-row>
     <b-col md="7">
-      <p class="h2">Basic information</p>
+      <p class="h3 mt-2">Basic information</p>
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" v-model="form.name" label="Name " class="mb-0">
           <b-input-group>
@@ -28,7 +28,7 @@
           <b-form-group
             label-cols-sm="6"
             label="Contact Information"
-            class="mb-0 mr-4"
+            class="mb-0 mr-0"
           />
         </template>
 
@@ -46,7 +46,14 @@
             <small class="form-text text-danger">{{ errors.first('contact') }}</small>
           </template>
         </ListControll>
+      </b-col>
 
+      <b-col class="my-3">
+        <b-form-group label-cols-sm="3" v-model="form.website" label="Website" class="mb-0">
+          <b-input-group>
+            <b-form-input placeholder="Website"></b-form-input>
+          </b-input-group>
+        </b-form-group>
       </b-col>
 
       <b-col class="my-3">
@@ -71,10 +78,16 @@
         <b-form-group label-cols-sm="3" label="Micheline stars" class="mb-0">
           <b-input-group>
             <div class="col-md-6">
-              <b-form-checkbox v-model="form.checked" class="mt-2" name="check-button" switch/>
+              <b-form-checkbox
+                v-model="hasStarsBoolean"
+                @input="handleStars($event)"
+                class="mt-2"
+                name="check-button"
+                switch
+              />
             </div>
-            <div class="col-md-6">
-              <b-form-input placeholder="Micheline stars"></b-form-input>
+            <div v-if="hasStarsBoolean" class="col-md-5">
+              <b-form-input v-model="form.michelinStars" placeholder="Number of stars"></b-form-input>
             </div>
           </b-input-group>
         </b-form-group>
@@ -101,7 +114,7 @@
     </b-col>
 
     <b-col md="5">
-      <p class="h2">Images</p>
+      <p class="h3 mt-2">Images</p>
         <ListControll
           :items="images"
           :error="!!errors.first('imageurl')"
@@ -148,11 +161,14 @@ export default {
         address: {
 
         },
-        contactInformation: [
-        ],
-        checked: false
+        contactInformation: [],
+        website: '',
+        selectedOptions: [],
+        michelinStars: null,
+
       },
       images: [],
+      hasStarsBoolean: false,
       newImage: '',
       newContact: ''
     }
@@ -181,8 +197,13 @@ export default {
 
     updateAddress (address) {
       this.form.address = address
-    }
+    },
 
+    handleStars (event) {
+      if (event === false) {
+        this.form.michelinStars = null
+      }
+    }
   },
 
   computed: {
