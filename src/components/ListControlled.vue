@@ -37,8 +37,8 @@ export default {
   },
 
   watch: {
-    
+
   },
 
-  name: 'ListControlled'  
+  name: 'ListControlled'
 }

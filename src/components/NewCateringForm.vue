@@ -150,6 +150,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import cateringService from '@/utils/services/catering-service'
 
 import ListControll from '@/components/ListControll'
 import Address from '@/components/parts/Address'
@@ -165,10 +166,9 @@ export default {
         contactInformation: [],
         website: '',
         selectedOptions: [],
-        michelinStars: null
-
+        michelinStars: null,
+        images: []
       },
-      images: [],
       hasStarsBoolean: false,
       newImage: '',
       newContact: ''
@@ -204,6 +204,16 @@ export default {
       if (event === false) {
         this.form.michelinStars = null
       }
+    },
+
+    beforeSubmit () {
+      return {}
+    },
+
+    async handleSubmit () {
+      cateringService.createCatering().then(({ data }) => {
+        console.log(this.beforeSubmit())
+      })
     }
   },
 

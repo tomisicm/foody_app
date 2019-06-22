@@ -22,6 +22,17 @@ class CateringService {
         throw error
       })
   }
+
+  createCatering (body) {
+    return http
+      .post('/api/catering/', body)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
 }
 
 const cateringService = new CateringService()
