@@ -54,7 +54,7 @@ Vue.component('multiselect', multiselect)
 Vue.component('vueslider', vueslider)
 Vue.use(VeeValidate, {
   inject: true,
-  fieldsBagName: 'veeFields'
+  fieldsBagName: 'errorFields'
 })
 
 Vue.config.productionTip = false

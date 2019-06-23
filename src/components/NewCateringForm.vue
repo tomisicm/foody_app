@@ -7,7 +7,13 @@
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" v-model="form.name" label="Name " class="mb-0">
           <b-input-group>
-            <b-form-input placeholder="Enter name of foody place"></b-form-input>
+            <b-form-input
+              name="name"
+              class="w-100"
+              placeholder="Enter name of foody place"
+              v-validate="'required'"
+            />
+            <small class="form-text text-danger">{{ errors.first('name') }}</small>
           </b-input-group>
         </b-form-group>
       </b-col>
@@ -39,7 +45,7 @@
               name="contact"
               v-b-popover.hover.right="HELP_TEXT_CONSTANTS.phoneNumbFormatHelpText"
               v-validate="'phoneOrEmail'"
-              class="col-md-9"
+              class="col-md-9 w-100"
               placeholder="Phone or Email"
             />
           </template>
@@ -61,16 +67,19 @@
         <b-form-group label-cols-sm="3" label="Cusine" class="mb-0">
             <b-input-group>
               <multiselect
-                class="input-border"
                 v-model="form.selectedOptions"
                 :options="cuisine"
                 :multiple="true"
                 track-by="name"
+                v-validate="'required'"
+                name="cuisine"
                 label="name"
-                placeholder="Type to search"
+                class="input-border"
+                placeholder="Select cuisine"
               >
               <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
             </multiselect>
+            <small class="form-text text-danger">{{ errors.first('cuisine') }}</small>
           </b-input-group>
         </b-form-group>
       </b-col>
@@ -117,7 +126,7 @@
     <b-col md="5">
       <p class="h3 mt-2">Images</p>
         <ListControll
-          :items="images"
+          :items="form.images"
           :error="!!errors.first('imageurl')"
           @additem="handleAddImage"
           @removeitem="handleRemoveImage"
@@ -140,10 +149,14 @@
 
     </b-col>
 
-    <b-col md="5">
+    <!-- <b-col md="5">
       <p class="h2">Menu information</p>
-    </b-col>
+    </b-col> -->
 
+    </b-row>
+
+    <b-row>
+      <b-btn @click="handleSubmit">Submit</b-btn>
     </b-row>
   </b-form>
 </template>
@@ -188,12 +201,12 @@ export default {
 
     handleAddImage () {
       if (!this.newImage) return
-      this.images.push(this.newImage)
+      this.form.images.push(this.newImage)
       this.newImage = ''
     },
     handleRemoveImage (image) {
-      const i = this.images.indexOf(image)
-      this.images.splice(i, 1)
+      const i = this.form.images.indexOf(image)
+      this.form.images.splice(i, 1)
     },
 
     updateAddress (address) {
@@ -207,13 +220,15 @@ export default {
     },
 
     beforeSubmit () {
+      console.log(this.errorFields)
       return {}
     },
 
     async handleSubmit () {
-      cateringService.createCatering().then(({ data }) => {
+      this.beforeSubmit()
+      /* cateringService.createCatering().then(({ data }) => {
         console.log(this.beforeSubmit())
-      })
+      }) */
     }
   },
 
