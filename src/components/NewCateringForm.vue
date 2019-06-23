@@ -157,7 +157,11 @@
     </b-row>
 
     <b-row>
-      <b-btn @click="handleSubmit">Submit</b-btn>
+      <b-btn
+        :disabled="errors.any()"
+        variant="primary"
+        @click="handleSubmit"
+      >Submit</b-btn>
     </b-row>
   </b-form>
 </template>
