@@ -185,7 +185,7 @@ export default {
         contactInformation: [],
         website: '',
         cuisine: [],
-        michelinStars: null,
+        michelinStars: 0,
         images: []
       },
       hasStarsBoolean: false,
@@ -221,7 +221,7 @@ export default {
 
     handleStars (event) {
       if (event === false) {
-        this.form.michelinStars = null
+        this.form.michelinStars = 0
       }
     },
 
