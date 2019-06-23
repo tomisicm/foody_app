@@ -45,8 +45,8 @@
           striped
           hover
         >
-          <template slot="address" slot-scope="items">
-            {{ items.fullAddress }}
+          <template slot="cuisine" slot-scope="item">
+            {{ item.value.map(el => el.name).toString() }}
           </template>
         </b-table>
       </b-col>
@@ -83,8 +83,7 @@ export default {
         },
         food: {
           label: 'Cuisine Origin',
-          key: 'cuisine',
-          sortable: true
+          key: 'cuisine'
         },
         rating: {
           label: 'Rating',
