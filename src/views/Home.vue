@@ -44,7 +44,11 @@
           @row-clicked="openCateringInNewTab($event)"
           striped
           hover
-        />
+        >
+          <template slot="address" slot-scope="items">
+            {{ items.fullAddress }}
+          </template>
+        </b-table>
       </b-col>
   </b-row>
   </b-container>
@@ -73,17 +77,13 @@ export default {
           key: 'name',
           sortable: true
         },
-        'address.city': {
-          label: 'City',
-          key: 'address.city'
-        },
-        'address.street': {
-          key: 'address.street',
-          label: 'Street'
+        cateringAddress: {
+          label: 'Address',
+          key: 'fullAddress'
         },
         food: {
           label: 'Cuisine Origin',
-          key: 'cuisine.name',
+          key: 'cuisine',
           sortable: true
         },
         rating: {
