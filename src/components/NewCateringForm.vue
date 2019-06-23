@@ -5,9 +5,10 @@
     <b-col md="7">
       <p class="h3 mt-2">Basic information</p>
       <b-col class="my-3">
-        <b-form-group label-cols-sm="3" v-model="form.name" label="Name " class="mb-0">
+        <b-form-group label-cols-sm="3" label="Name" class="mb-0">
           <b-input-group>
             <b-form-input
+              v-model="form.name"
               name="name"
               class="w-100"
               placeholder="Enter name of foody place"
