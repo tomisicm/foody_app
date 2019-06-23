@@ -67,7 +67,7 @@
         <b-form-group label-cols-sm="3" label="Cusine" class="mb-0">
             <b-input-group>
               <multiselect
-                v-model="form.selectedOptions"
+                v-model="form.cuisine"
                 :options="cuisine"
                 :multiple="true"
                 track-by="name"
@@ -163,6 +163,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 import cateringService from '@/utils/services/catering-service'
 
 import ListControll from '@/components/ListControll'
@@ -178,7 +179,7 @@ export default {
         address: {},
         contactInformation: [],
         website: '',
-        selectedOptions: [],
+        cuisine: [],
         michelinStars: null,
         images: []
       },
@@ -219,13 +220,33 @@ export default {
       }
     },
 
-    beforeSubmit () {
-      console.log(this.errorFields)
-      return {}
+    validateBeforeSubmit () {
+      if (this.form.contactInformation.length === 0) {
+        this.errors.add({
+          field: 'contact',
+          msg: 'Please provide contact information.'
+        })
+      } else if (this.form.cuisine.length === 0) {
+        this.errors.add({
+          field: 'cuisine',
+          msg: 'Please provide cuisine category.'
+        })
+      } else if (this.form.images.length < 2) {
+        this.errors.add({
+          field: 'imageurl',
+          msg: 'Please provide at least two images.'
+        })
+      } else {
+        this.$validator.validateAll().then((result) => {
+          console.log(result)
+        })
+        return this.form
+      }
     },
 
     async handleSubmit () {
-      this.beforeSubmit()
+      console.log(await this.$validator.validateAll())
+      // console.log(this.validateBeforeSubmit())
       /* cateringService.createCatering().then(({ data }) => {
         console.log(this.beforeSubmit())
       }) */
