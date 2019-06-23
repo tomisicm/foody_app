@@ -71,10 +71,10 @@
                 v-model="form.cuisine"
                 :options="cuisine"
                 :multiple="true"
-                track-by="name"
+                track-by="_id"
+                label="name"
                 v-validate="'required'"
                 name="cuisine"
-                label="name"
                 class="input-border"
                 placeholder="Select cuisine"
               >
@@ -225,7 +225,7 @@ export default {
       }
     },
 
-    validateBeforeSubmit () {
+    async validateBeforeSubmit () {
       if (this.form.contactInformation.length === 0) {
         this.errors.add({
           field: 'contact',
@@ -242,19 +242,14 @@ export default {
           msg: 'Please provide at least two images.'
         })
       } else {
-        this.$validator.validateAll().then((result) => {
-          console.log(result)
-        })
-        return this.form
+        return this.$validator.validateAll()
       }
     },
 
     async handleSubmit () {
-      console.log(await this.$validator.validateAll())
-      // console.log(this.validateBeforeSubmit())
-      /* cateringService.createCatering().then(({ data }) => {
-        console.log(this.beforeSubmit())
-      }) */
+      if (await this.validateBeforeSubmit()) {
+        await cateringService.createCatering(this.form)
+      }
     }
   },
 
