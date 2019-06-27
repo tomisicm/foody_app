@@ -36,13 +36,11 @@
 
 <script>
 export default {
-  data () {
-    return {
-      address: {
-        city: '',
-        street: '',
-        streetNo: ''
-      }
+  props: {
+    address: {
+      city: '',
+      street: '',
+      streetNo: ''
     }
   },
 
