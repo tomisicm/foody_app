@@ -16,6 +16,7 @@
 
       <b-container>
         <b-row class="mx-2">
+          <!-- TODO: HIDE if user not logged in -->
           <span class="pt-1">Add review:</span>
           <b-button :to="{ name: 'addreview', query: { item: this.$route.params.id } }" pill variant="primary" class="mx-2"> + </b-button>
         </b-row>
