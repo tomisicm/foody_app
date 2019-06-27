@@ -86,18 +86,9 @@
       </b-col>
 
       <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Micheline stars" class="mb-0">
+        <b-form-group label-cols-sm="3" label="Micheline" class="mb-0">
           <b-input-group>
-            <div class="col-md-6">
-              <b-form-checkbox
-                v-model="hasStarsBoolean"
-                @input="handleStars($event)"
-                class="mt-2"
-                name="check-button"
-                switch
-              />
-            </div>
-            <div v-if="hasStarsBoolean" class="col-md-5">
+            <div class="w-25">
               <b-form-input v-model="catering.michelinStars" placeholder="Number of stars"></b-form-input>
             </div>
           </b-input-group>
@@ -149,9 +140,9 @@
 
     </b-col>
 
-    <!-- <b-col md="5">
+    <b-col md="5">
       <p class="h2">Menu information</p>
-    </b-col> -->
+    </b-col>
 
     </b-row>
 
@@ -191,7 +182,6 @@ export default {
         michelinStars: 0,
         images: []
       },
-      hasStarsBoolean: false,
       newImage: '',
       newContact: ''
     }
