@@ -8,11 +8,12 @@ import AppRegister from '../views/AppRegister'
 import Profile from '../views/Profile'
 
 import Home from '../views/Home'
-import NewCatering from '../views/NewCatering'
+import Catering from '../views/Catering'
+import NewCateringForm from '../components/NewCateringForm'
 import CateringFacility from '../views/CateringFacility'
+
 import Review from '../views/Review'
 import Reviews from '../views/Reviews'
-
 import NewReview from '../views/NewReview'
 
 import store from '@/utils/store'
@@ -73,12 +74,27 @@ const router = new Router({
       }
     },
     {
-      path: '/catering/add',
-      props: true,
-      component: NewCatering,
-      meta: {
-        isAuthenticated: true
-      }
+      path: '/catering',
+      component: Catering,
+      children: [
+        {
+          name: 'newcatering',
+          path: '/catering/add',
+          component: NewCateringForm,
+          meta: {
+            isAuthenticated: true
+          }
+        },
+        {
+          name: 'editcatering',
+          path: '/catering/:id/edit',
+          component: NewCateringForm,
+          props: { inEdit: true },
+          meta: {
+            isAuthenticated: true
+          }
+        }
+      ]
     },
     {
       path: '/catering/:id',

@@ -176,6 +176,10 @@ import Address from '@/components/parts/Address'
 import constants from '@/utils/constants'
 
 export default {
+  props: {
+    inEdit: Boolean
+  },
+
   data () {
     return {
       form: {
@@ -249,6 +253,13 @@ export default {
       if (await this.validateBeforeSubmit()) {
         await cateringService.createCatering(this.form)
       }
+    },
+
+    async getCatering () {
+      if (this.inEdit) {
+        const {data} = await cateringService.getCatering(this.$route.params.id)
+
+      }
     }
   },
 
@@ -261,6 +272,7 @@ export default {
   },
 
   created () {
+    this.getCatering()
     // TODO: THERE HAS TO BE ANOTHER WAY
     this.HELP_TEXT_CONSTANTS = constants
   }
