@@ -8,7 +8,7 @@
         <b-form-group label-cols-sm="3" label="Name" class="mb-0">
           <b-input-group>
             <b-form-input
-              v-model="form.name"
+              v-model="catering.name"
               name="name"
               class="w-100"
               placeholder="Enter name of foody place"
@@ -26,7 +26,7 @@
 
       <b-col class="my-3">
         <ListControll
-          :items="form.contactInformation"
+          :items="catering.contactInformation"
           :error="!!errors.first('contact')"
           @additem="handleAddContact"
           @removeitem="handleRemoveContact"
@@ -57,7 +57,7 @@
       </b-col>
 
       <b-col class="my-3">
-        <b-form-group label-cols-sm="3" v-model="form.website" label="Website" class="mb-0">
+        <b-form-group label-cols-sm="3" v-model="catering.website" label="Website" class="mb-0">
           <b-input-group>
             <b-form-input placeholder="Website"></b-form-input>
           </b-input-group>
@@ -68,7 +68,7 @@
         <b-form-group label-cols-sm="3" label="Cusine" class="mb-0">
             <b-input-group>
               <multiselect
-                v-model="form.cuisine"
+                v-model="catering.cuisine"
                 :options="cuisine"
                 :multiple="true"
                 track-by="_id"
@@ -98,7 +98,7 @@
               />
             </div>
             <div v-if="hasStarsBoolean" class="col-md-5">
-              <b-form-input v-model="form.michelinStars" placeholder="Number of stars"></b-form-input>
+              <b-form-input v-model="catering.michelinStars" placeholder="Number of stars"></b-form-input>
             </div>
           </b-input-group>
         </b-form-group>
@@ -126,7 +126,7 @@
     <b-col md="5">
       <p class="h3 mt-2">Images</p>
         <ListControll
-          :items="form.images"
+          :items="catering.images"
           :error="!!errors.first('imageurl')"
           @additem="handleAddImage"
           @removeitem="handleRemoveImage"
@@ -182,7 +182,7 @@ export default {
 
   data () {
     return {
-      form: {
+      catering: {
         name,
         address: {},
         contactInformation: [],
@@ -200,46 +200,46 @@ export default {
   methods: {
     handleAddContact () {
       if (!this.newContact) return
-      this.form.contactInformation.push(this.newContact)
+      this.catering.contactInformation.push(this.newContact)
       this.newContact = ''
     },
     handleRemoveContact (contact) {
-      const i = this.form.contactInformation.indexOf(contact)
-      this.form.contactInformation.splice(i, 1)
+      const i = this.catering.contactInformation.indexOf(contact)
+      this.catering.contactInformation.splice(i, 1)
     },
 
     handleAddImage () {
       if (!this.newImage) return
-      this.form.images.push(this.newImage)
+      this.catering.images.push(this.newImage)
       this.newImage = ''
     },
     handleRemoveImage (image) {
-      const i = this.form.images.indexOf(image)
-      this.form.images.splice(i, 1)
+      const i = this.catering.images.indexOf(image)
+      this.catering.images.splice(i, 1)
     },
 
     updateAddress (address) {
-      this.form.address = address
+      this.catering.address = address
     },
 
     handleStars (event) {
       if (event === false) {
-        this.form.michelinStars = 0
+        this.catering.michelinStars = 0
       }
     },
 
     async validateBeforeSubmit () {
-      if (this.form.contactInformation.length === 0) {
+      if (this.catering.contactInformation.length === 0) {
         this.errors.add({
           field: 'contact',
           msg: 'Please provide contact information.'
         })
-      } else if (this.form.cuisine.length === 0) {
+      } else if (this.catering.cuisine.length === 0) {
         this.errors.add({
           field: 'cuisine',
           msg: 'Please provide cuisine category.'
         })
-      } else if (this.form.images.length < 2) {
+      } else if (this.catering.images.length < 2) {
         this.errors.add({
           field: 'imageurl',
           msg: 'Please provide at least two images.'
@@ -251,13 +251,14 @@ export default {
 
     async handleSubmit () {
       if (await this.validateBeforeSubmit()) {
-        await cateringService.createCatering(this.form)
+        await cateringService.createCatering(this.catering)
       }
     },
 
     async getCatering () {
       if (this.inEdit) {
-        const {data} = await cateringService.getCatering(this.$route.params.id)
+        const { data } = await cateringService.getCatering(this.$route.params.id)
+        this.catering = data
 
       }
     }
