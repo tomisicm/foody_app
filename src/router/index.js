@@ -21,7 +21,7 @@ Vue.use(Router)
 
 store.dispatch('cuisineStore/getCuisine')
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -32,63 +32,103 @@ export default new Router({
         {
           name: 'signin',
           path: 'signin',
-          component: AppLogin
+          component: AppLogin,
+          meta: {
+            isAuthenticated: false
+          }
         },
         {
           name: 'register',
           path: 'register',
-          component: AppRegister
+          component: AppRegister,
+          meta: {
+            isAuthenticated: false
+          }
         },
         {
           name: 'profile',
           path: 'profile',
-          beforeEnter (to, from, next) {
-            if (store.getters['authStore/isSignedIn']) next()
-            else next('signin')
-          },
-          component: Profile
+          component: Profile,
+          meta: {
+            isAuthenticated: false
+          }
         }
       ]
     },
     {
       path: '/home',
       name: 'home',
-      component: AppLanding
+      component: AppLanding,
+      meta: {
+        isAuthenticated: false
+      }
     },
     {
       path: '/catering',
       name: 'caterings',
       props: true,
-      component: Home
+      component: Home,
+      meta: {
+        isAuthenticated: false
+      }
     },
     {
       path: '/catering/add',
       props: true,
-      component: NewCatering
+      component: NewCatering,
+      meta: {
+        isAuthenticated: true
+      }
     },
     {
       path: '/catering/:id',
       name: 'catering',
       props: true,
-      component: CateringFacility
+      component: CateringFacility,
+      meta: {
+        isAuthenticated: false
+      }
     },
     {
       path: '/reviews/add',
       name: 'addreview',
       props: true,
-      component: NewReview
+      component: NewReview,
+      meta: {
+        isAuthenticated: true
+      }
     },
     {
       path: '/reviews/:id',
       name: 'review',
       props: true,
-      component: Review
+      component: Review,
+      meta: {
+        isAuthenticated: false
+      }
     },
     {
       path: '/reviews',
       name: 'reviews',
       props: true,
-      component: Reviews
+      component: Reviews,
+      meta: {
+        isAuthenticated: false
+      }
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const isAuth = store.getters['authStore/isSignedIn']
+
+  // user not logged and wants to acces part of app which requires autheticated user
+  if (!isAuth && to.meta.isAuthenticated) {
+    return next({ name: 'signin' })
+  } else next()
+})
+
+// TODO: user can only edit his own reviews
+// TODO: user can only edit catering places he added
+
+export default router
