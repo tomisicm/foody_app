@@ -250,7 +250,6 @@ export default {
       if (this.inEdit) {
         const { data } = await cateringService.getCatering(this.$route.params.id)
         this.catering = data
-
       }
     }
   },

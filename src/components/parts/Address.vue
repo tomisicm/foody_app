@@ -38,9 +38,14 @@
 export default {
   props: {
     address: {
-      city: '',
-      street: '',
-      streetNo: ''
+      type: Object,
+      default: function () {
+        return {
+          city: '',
+          street: '',
+          streetNo: ''
+        }
+      }
     }
   },
 
