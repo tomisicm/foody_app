@@ -95,7 +95,7 @@
       <b-col class="my-3">
         <b-form-group label-cols-sm="3" label="Micheline" class="mb-0">
           <b-input-group>
-            <div class="w-25">
+            <div class="col-md-6">
               <b-form-input v-model="catering.michelinStars" placeholder="Number of stars"></b-form-input>
             </div>
           </b-input-group>
