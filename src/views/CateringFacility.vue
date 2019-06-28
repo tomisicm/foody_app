@@ -34,6 +34,7 @@
               </template>
             </List>
 
+            <!-- no reviews case -->
             <div cols="12">
               <b-pagination
                 v-model="reviews.page"
