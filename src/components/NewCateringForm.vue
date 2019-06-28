@@ -65,9 +65,9 @@
       </b-col>
 
       <b-col class="my-3">
-        <b-form-group label-cols-sm="3" v-model="catering.website" label="Website" class="mb-0">
+        <b-form-group label-cols-sm="3" label="Website" class="mb-0">
           <b-input-group>
-            <b-form-input placeholder="Website"></b-form-input>
+            <b-form-input v-model="catering.website" placeholder="Website"></b-form-input>
           </b-input-group>
         </b-form-group>
       </b-col>
