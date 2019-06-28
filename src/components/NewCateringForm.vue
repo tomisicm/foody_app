@@ -51,11 +51,12 @@
               placeholder="Phone or Email"
             />
           </template>
+
           <template v-slot:inputerrors>
             <small class="form-text text-danger">{{ errors.first('contact') }}</small>
           </template>
 
-          <template v-slot:singleitem={item}>
+          <template v-slot:listitem={item}>
             <div class="mt-1">
               <span class="align-middle">{{item}}</span>
             </div>
@@ -143,7 +144,7 @@
             <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
           </template>
 
-          <template v-slot:singleitem={item}>
+          <template v-slot:listitem={item}>
             <div>{{item}}</div>
           </template>
 

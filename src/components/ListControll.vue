@@ -12,31 +12,26 @@
       <slot name="inputerrors" />
     </b-row>
 
-    <List
-      :items="items"
-      class="my-2"
-    >
-      <template v-slot:listitem="{item}">
-        <b-row>
-          <b-col md="9" :item="item">
+    <b-card v-for="item in items"  v-bind:key="item._id" no-body class="overflow-hidden my-2">
+      <b-row>
+        <b-col md="9">
+          <slot
+            name="listitem"
+            :item="item"
+          />
+        </b-col>
 
-            <slot name="singleitem"
-              :item="item">
-            </slot>
+        <b-col md="3">
+          <b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn>
+        </b-col>
+      </b-row>
 
-          </b-col>
-          <b-col md="3">
-            <b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn>
-          </b-col>
-        </b-row>
-      </template>
-    </List>
+    </b-card>
+
   </b-col>
 </template>
 
 <script>
-import List from '@/components/List'
-
 export default {
   props: {
     items: {
@@ -65,11 +60,6 @@ export default {
     removeItem (item) {
       this.$emit('removeitem', item)
     }
-  },
-
-  components: {
-    List
   }
-
 }
 </script>
