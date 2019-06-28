@@ -32,13 +32,13 @@
           @additem="handleAddContact"
           @removeitem="handleRemoveContact"
         >
-        <template v-slot:labelfield>
-          <b-form-group
-            label-cols-sm="6"
-            label="Contact Information"
-            class="mb-0 mr-0"
-          />
-        </template>
+          <template v-slot:labelfield>
+            <b-form-group
+              label-cols-sm="6"
+              label="Contact Information"
+              class="mb-0 mr-0"
+            />
+          </template>
 
           <template v-slot:inputfield>
             <b-form-input
@@ -53,6 +53,12 @@
           </template>
           <template v-slot:inputerrors>
             <small class="form-text text-danger">{{ errors.first('contact') }}</small>
+          </template>
+
+          <template v-slot:singleitem={item}>
+            <div class="mt-1">
+              <span class="align-middle">{{item}}</span>
+            </div>
           </template>
         </ListControll>
       </b-col>
@@ -135,6 +141,10 @@
           </template>
           <template v-slot:inputerrors>
             <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
+          </template>
+
+          <template v-slot:singleitem={item}>
+            <div>{{item}}</div>
           </template>
 
         </ListControll>

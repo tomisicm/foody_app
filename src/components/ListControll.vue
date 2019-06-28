@@ -16,8 +16,11 @@
       <template v-slot:listitem="{item}">
         <b-row>
           <b-col class="col-md-9" :item="item">
-            <!-- TODO: this should be SLOT -->
-            <b-link>{{item}}</b-link>
+
+            <slot name="singleitem"
+              :item="item">
+            </slot>
+
           </b-col>
           <b-col md="3">
             <b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn>
