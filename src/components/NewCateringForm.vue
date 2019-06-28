@@ -158,12 +158,21 @@
 
     </b-row>
 
-    <b-row>
+    <b-row class="my-3">
       <b-btn
+        v-if="!inEdit"
         :disabled="errors.any()"
         variant="primary"
         @click="handleSubmit"
+        size="lg"
       >Submit</b-btn>
+      <b-btn
+        v-else
+        :disabled="errors.any()"
+        variant="primary"
+        @click="handleSubmit"
+        size="lg"
+      >Save</b-btn>
     </b-row>
   </b-form>
 </template>
