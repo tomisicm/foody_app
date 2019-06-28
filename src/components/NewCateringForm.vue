@@ -262,7 +262,7 @@ export default {
 
     async handleSubmit () {
       if (await this.validateBeforeSubmit()) {
-        await cateringService.createCatering(this.catering)
+        await cateringService.saveCatering(this.$route.params.id, this.catering)
       }
     },
 

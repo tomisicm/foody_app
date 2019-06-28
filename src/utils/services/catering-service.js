@@ -34,15 +34,23 @@ class CateringService {
       })
   }
 
-  updateCatering (body) {
+  updateCatering (id, body) {
     return http
-      .put('/api/catering/:id', body)
+      .put(`/api/catering/${id}`, body)
       .then(({ data }) => {
         return data
       })
       .catch(error => {
         throw error
       })
+  }
+
+  saveCatering (id, body) {
+    if (!id) {
+      return this.createCatering(body)
+    } else {
+      return this.updateCatering(id, body)
+    }
   }
 }
 
