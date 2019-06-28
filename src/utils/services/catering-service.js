@@ -33,6 +33,17 @@ class CateringService {
         throw error
       })
   }
+
+  updateCatering (body) {
+    return http
+      .put('/api/catering/:id', body)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
 }
 
 const cateringService = new CateringService()
