@@ -2,12 +2,15 @@
   <b-col class="my-3">
     <slot name="labelfield" />
     <b-row>
+
       <slot name="inputfield" />
+
       <b-col class="col-md-2">
         <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
       </b-col>
-        <slot name="inputerrors" />
-      </b-row>
+
+      <slot name="inputerrors" />
+    </b-row>
 
     <List
       :items="items"
@@ -15,7 +18,7 @@
     >
       <template v-slot:listitem="{item}">
         <b-row>
-          <b-col class="col-md-9" :item="item">
+          <b-col md="9" :item="item">
 
             <slot name="singleitem"
               :item="item">
