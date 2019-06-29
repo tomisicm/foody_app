@@ -9,7 +9,7 @@ import Profile from '../views/Profile'
 
 import Home from '../views/Home'
 import Catering from '../views/Catering'
-import NewCateringForm from '../components/NewCateringForm'
+import CateringForm from '../components/CateringForm'
 import CateringFacility from '../views/CateringFacility'
 
 import Review from '../views/Review'
@@ -80,7 +80,7 @@ const router = new Router({
         {
           name: 'newcatering',
           path: '/catering/add',
-          component: NewCateringForm,
+          component: CateringForm,
           meta: {
             isAuthenticated: true
           }
@@ -88,7 +88,7 @@ const router = new Router({
         {
           name: 'editcatering',
           path: '/catering/:id/edit',
-          component: NewCateringForm,
+          component: CateringForm,
           props: { inEdit: true },
           meta: {
             isAuthenticated: true
