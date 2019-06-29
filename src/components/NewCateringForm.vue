@@ -1,186 +1,198 @@
 <template>
-  <b-form>
-    <!-- brief instructions if the user has not created catering -->
-    <b-row>
-    <b-col md="7">
-      <p class="h3 mt-2">Basic information</p>
-      <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Name" class="mb-0">
-          <b-input-group>
-            <b-form-input
-              v-model="catering.name"
-              name="name"
-              class="w-100"
-              placeholder="Enter name of foody place"
-              v-validate="'required'"
-            />
-            <small class="form-text text-danger">{{ errors.first('name') }}</small>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+  <keep-alive>
+  <b-tabs pills>
+    <b-tab title="Basic information" active>
+      <b-form>
+      <!-- brief instructions if the user has not created catering -->
+      <b-row>
+        <b-col md="7">
+          <!-- <p class="h3 mt-2">Basic information</p> -->
+          <b-col class="my-3">
+            <b-form-group label-cols-sm="3" label="Name" class="mb-0">
+              <b-input-group>
+                <b-form-input
+                  v-model="catering.name"
+                  name="name"
+                  class="w-100"
+                  placeholder="Enter name of foody place"
+                  v-validate="'required'"
+                />
+                <small class="form-text text-danger">{{ errors.first('name') }}</small>
+              </b-input-group>
+            </b-form-group>
+          </b-col>
 
-      <!-- address component is repeating -->
-      <Address
-        :address="this.catering.address"
-        @update:address="updateAddress($event)"
-      />
+          <!-- address component is repeating -->
+          <Address
+            :address="this.catering.address"
+            @update:address="updateAddress($event)"
+          />
 
-      <b-col class="my-3">
-        <ListControll
-          :items="catering.contactInformation"
-          :error="!!errors.first('contact')"
-          @additem="handleAddContact"
-          @removeitem="handleRemoveContact"
-        >
-          <template v-slot:labelfield>
-            <b-form-group
-              label-cols-sm="6"
-              label="Contact Information"
-              class="mb-0 mr-0"
-            />
-          </template>
+          <b-col class="my-3">
+            <ListControll
+              :items="catering.contactInformation"
+              :error="!!errors.first('contact')"
+              @additem="handleAddContact"
+              @removeitem="handleRemoveContact"
+            >
+              <template v-slot:labelfield>
+                <b-form-group
+                  label-cols-sm="6"
+                  label="Contact Information"
+                  class="mb-0 mr-0"
+                />
+              </template>
 
-          <template v-slot:inputfield>
-            <b-form-input
-              v-model="newContact"
-              @keydown.enter="handleAddContact"
-              name="contact"
-              v-b-popover.hover.right="HELP_TEXT_CONSTANTS.phoneNumbFormatHelpText"
-              v-validate="'phoneOrEmail'"
-              class="col-md-9 w-100"
-              placeholder="Phone or Email"
-            />
-          </template>
+              <template v-slot:inputfield>
+                <b-form-input
+                  v-model="newContact"
+                  @keydown.enter="handleAddContact"
+                  name="contact"
+                  v-b-popover.hover.right="HELP_TEXT_CONSTANTS.phoneNumbFormatHelpText"
+                  v-validate="'phoneOrEmail'"
+                  class="col-md-9 w-100"
+                  placeholder="Phone or Email"
+                />
+              </template>
 
-          <template v-slot:inputerrors>
-            <small class="form-text text-danger">{{ errors.first('contact') }}</small>
-          </template>
+              <template v-slot:inputerrors>
+                <small class="form-text text-danger">{{ errors.first('contact') }}</small>
+              </template>
 
-          <template v-slot:listitem={item}>
-            <div class="mt-1">
-              <span class="align-middle">{{item}}</span>
-            </div>
-          </template>
-        </ListControll>
-      </b-col>
+              <template v-slot:listitem={item}>
+                <div class="mt-1">
+                  <span class="align-middle">{{item}}</span>
+                </div>
+              </template>
+            </ListControll>
+          </b-col>
 
-      <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Website" class="mb-0">
-          <b-input-group>
-            <b-form-input v-model="catering.website" placeholder="Website"></b-form-input>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+          <b-col class="my-3">
+            <b-form-group label-cols-sm="3" label="Website" class="mb-0">
+              <b-input-group>
+                <b-form-input v-model="catering.website" placeholder="Website"></b-form-input>
+              </b-input-group>
+            </b-form-group>
+          </b-col>
 
-      <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Cusine" class="mb-0">
-            <b-input-group>
-              <multiselect
-                v-model="catering.cuisine"
-                :options="cuisine"
-                :multiple="true"
-                track-by="_id"
-                label="name"
-                v-validate="'required'"
-                name="cuisine"
-                class="input-border"
-                placeholder="Select cuisine"
-              >
-              <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
-            </multiselect>
-            <small class="form-text text-danger">{{ errors.first('cuisine') }}</small>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+          <b-col class="my-3">
+            <b-form-group label-cols-sm="3" label="Cusine" class="mb-0">
+                <b-input-group>
+                  <multiselect
+                    v-model="catering.cuisine"
+                    :options="cuisine"
+                    :multiple="true"
+                    track-by="_id"
+                    label="name"
+                    v-validate="'required'"
+                    name="cuisine"
+                    class="input-border"
+                    placeholder="Select cuisine"
+                  >
+                  <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
+                </multiselect>
+                <small class="form-text text-danger">{{ errors.first('cuisine') }}</small>
+              </b-input-group>
+            </b-form-group>
+          </b-col>
 
-      <b-col class="my-3">
-        <b-form-group label-cols-sm="3" label="Micheline" class="mb-0">
-          <b-input-group>
-            <div class="col-md-6">
-              <b-form-input v-model="catering.michelinStars" placeholder="Number of stars"></b-form-input>
-            </div>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+          <b-col class="my-3">
+            <b-form-group label-cols-sm="3" label="Micheline" class="mb-0">
+              <b-input-group>
+                <div class="col-md-6">
+                  <b-form-input v-model="catering.michelinStars" placeholder="Number of stars"></b-form-input>
+                </div>
+              </b-input-group>
+            </b-form-group>
+          </b-col>
 
-      <!-- Vue-Multiselect type-a-head #sub-asynchronous-select-->
-      <!-- <b-col class="my-3" v-b-popover.hover.left="'Does the owner have account? Leave empty otherwise.'">
-        <b-form-group label-cols-sm="3" label="Owner" class="mb-0">
-          <b-input-group>
-            <b-form-input placeholder="Enter owner"></b-form-input>
-          </b-input-group>
-        </b-form-group>
-      </b-col> -->
+          <!-- Vue-Multiselect type-a-head #sub-asynchronous-select-->
+          <!-- <b-col class="my-3" v-b-popover.hover.left="'Does the owner have account? Leave empty otherwise.'">
+            <b-form-group label-cols-sm="3" label="Owner" class="mb-0">
+              <b-input-group>
+                <b-form-input placeholder="Enter owner"></b-form-input>
+              </b-input-group>
+            </b-form-group>
+          </b-col> -->
 
-      <!-- TODO: fornow only the creator will be allowed to edit page -->
-      <!-- <b-col class="my-3" v-b-popover.hover.left="'If checked, you will have edit rights if there is no owner.'">
-        <b-form-group label-cols-sm="6" label="I will maintain this page?" class="mb-0">
-          <b-input-group>
-            <b-form-checkbox class="mt-2"></b-form-checkbox>
-          </b-input-group>
-        </b-form-group>
-      </b-col> -->
-    </b-col>
+          <!-- TODO: fornow only the creator will be allowed to edit page -->
+          <!-- <b-col class="my-3" v-b-popover.hover.left="'If checked, you will have edit rights if there is no owner.'">
+            <b-form-group label-cols-sm="6" label="I will maintain this page?" class="mb-0">
+              <b-input-group>
+                <b-form-checkbox class="mt-2"></b-form-checkbox>
+              </b-input-group>
+            </b-form-group>
+          </b-col> -->
+        </b-col>
 
-    <b-col md="5">
-      <p class="h3 mt-2">Images</p>
-        <ListControll
-          :items="catering.images"
-          :error="!!errors.first('imageurl')"
-          @additem="handleAddImage"
-          @removeitem="handleRemoveImage"
-        >
-          <template v-slot:inputfield="{item}">
-            <b-form-input
-              v-model="newImage"
-              @keydown.enter="handleAddImage"
-              v-validate="'url'"
-              name="imageurl"
-              class="col-md-9"
-              placeholder="Enter url"
-            />
-          </template>
-          <template v-slot:inputerrors>
-            <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
-          </template>
+        <b-col md="5">
+          <p class="h3 mt-2">Images</p>
+          <ListControll
+            :items="catering.images"
+            :error="!!errors.first('imageurl')"
+            @additem="handleAddImage"
+            @removeitem="handleRemoveImage"
+          >
+            <template v-slot:inputfield="{item}">
+              <b-form-input
+                v-model="newImage"
+                @keydown.enter="handleAddImage"
+                v-validate="'url'"
+                name="imageurl"
+                class="col-md-9"
+                placeholder="Enter url"
+              />
+            </template>
+            <template v-slot:inputerrors>
+              <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
+            </template>
 
-          <template v-slot:listitem={item}>
-            <div>{{item}}</div>
-          </template>
+            <template v-slot:listitem={item}>
+              <div>{{item}}</div>
+            </template>
 
-        </ListControll>
+          </ListControll>
 
-    </b-col>
+        </b-col>
+      </b-row>
 
-    <b-col md="5">
-      <p class="h2">Menu information</p>
-    </b-col>
+      <b-row class="my-3">
+        <b-btn
+          v-if="!inEdit"
+          :disabled="errors.any()"
+          variant="primary"
+          @click="handleSubmit"
+          size="lg"
+        >Submit</b-btn>
+        <b-btn
+          v-else
+          :disabled="errors.any()"
+          variant="primary"
+          @click="handleSubmit"
+          size="lg"
+        >Save</b-btn>
+      </b-row>
+      </b-form>
+    </b-tab>
 
-    </b-row>
+    <b-tab title="Menu">
+      <Menu />
+    </b-tab>
 
-    <b-row class="my-3">
-      <b-btn
-        v-if="!inEdit"
-        :disabled="errors.any()"
-        variant="primary"
-        @click="handleSubmit"
-        size="lg"
-      >Submit</b-btn>
-      <b-btn
-        v-else
-        :disabled="errors.any()"
-        variant="primary"
-        @click="handleSubmit"
-        size="lg"
-      >Save</b-btn>
-    </b-row>
-  </b-form>
+    <b-tab title="Delivery">
+      <div>delivery</div>
+    </b-tab>
+  </b-tabs>
+  </keep-alive>
+
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
 import cateringService from '@/utils/services/catering-service'
+
+import Menu from '@/components/Menu'
 
 import ListControll from '@/components/ListControll'
 import Address from '@/components/parts/Address'
@@ -279,7 +291,7 @@ export default {
   },
 
   components: {
-    ListControll, Address
+    ListControll, Address, Menu
   },
 
   created () {
