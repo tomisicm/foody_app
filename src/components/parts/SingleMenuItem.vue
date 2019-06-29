@@ -11,7 +11,14 @@
     <b-row>
       <b-img fluid src="https://www.donesi.com/images/product/20/166820_m.jpg"/>
     </b-row>
-    <b-row class="mt-1 text-size-10 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.</b-row>
+
+    <b-row class="mt-1 text-size-10 text-muted">
+      <baseEditable
+        :content.sync="bs"
+        :inEditMode.sync="inEdit"
+        @update="review.generalImpression = $event"
+      />
+    </b-row>
 
     <b-row class="text-size-10 mt-2">
       <b-col cols="auto mr-auto" :style="{ textAlign: 'left' }">portion in g</b-col>
@@ -55,6 +62,8 @@
 </template>
 
 <script>
+import baseEditable from '@/components/base/baseEditable'
+
 export default {
   props: {
     item: {
@@ -66,7 +75,8 @@ export default {
   data () {
     return {
       inEdit: false,
-      localitem: this.item
+      localitem: this.item,
+      bs: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.'
     }
   },
 
@@ -82,6 +92,10 @@ export default {
     handleSave () {
       this.toggleEdit()
     }
+  },
+
+  components: {
+    baseEditable
   }
 }
 </script>
