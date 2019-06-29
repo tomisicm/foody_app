@@ -3,7 +3,7 @@
     <b-row class="mt-1">
       <b-col class="px-0" md="8" :style="{ textAlign: 'left' }">
         <b-alert v-if="!inEdit" show variant="light">{{name}}</b-alert>
-        <b-form-input v-model="name" v-else />
+        <b-form-input placeholder="Name" v-model="name" v-else />
       </b-col>
       <b-col class="px-0" md="4">
         <b-alert show variant="warning">Popular</b-alert>
@@ -18,7 +18,7 @@
       <baseEditable
         :content.sync="bs"
         :inEditMode.sync="inEdit"
-        @update="review.generalImpression = $event"
+        @update="bs = $event"
       />
     </b-row>
 
