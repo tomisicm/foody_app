@@ -5,9 +5,9 @@
       <span variant="success" v-else>Select File</span>
     </div>
     <b-form-file
-        @change="handleFileChange"
-        accept="image/jpeg, image/png, image/gif"
-        placeholder="Choose picture"
+      @change="handleFileChange"
+      accept="image/jpeg, image/png, image/gif"
+      placeholder="Choose picture"
     />
   </label>
 </template>
