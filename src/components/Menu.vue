@@ -1,16 +1,42 @@
 <template>
   <div class="mt-4">
+    <ListControll
+      :items="menuItems"
+      @additem="handleAddMenuItem"
+      @removeitem="handleRemoveMenuItem"
+    >
+      <template v-slot:listitem={item}>
+        <menuItem/>
+      </template>
+    </ListControll>
     <menuItem/>
   </div>
 </template>
 
 <script>
 import MenuItem from '@/components/parts/MenuItem'
+import ListControll from '@/components/ListControll'
 
 export default {
+  data () {
+    return {
+      menuItems: [
+        { }, { }
+      ]
+    }
+  },
+
+  methods: {
+    handleAddMenuItem () {
+
+    },
+    handleRemoveMenuItem () {
+
+    }
+  },
 
   components: {
-    MenuItem
+    ListControll, MenuItem
   }
 }
 </script>

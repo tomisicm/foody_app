@@ -60,9 +60,12 @@
               </template>
 
               <template v-slot:listitem={item}>
-                <div class="mt-1">
-                  <span class="align-middle">{{item}}</span>
-                </div>
+                <PlaneListItem
+                  :item="item"
+                  @removeitem="handleRemoveContact"
+                >
+                  {{item}}
+                </PlaneListItem>
               </template>
             </ListControll>
           </b-col>
@@ -148,9 +151,13 @@
             </template>
 
             <template v-slot:listitem={item}>
-              <div>{{item}}</div>
+              <PlaneListItem
+                :item="item"
+                @removeitem="handleRemoveImage"
+              >
+                {{item}}
+              </PlaneListItem>
             </template>
-
           </ListControll>
 
         </b-col>
@@ -195,6 +202,8 @@ import cateringService from '@/utils/services/catering-service'
 import Menu from '@/components/Menu'
 
 import ListControll from '@/components/ListControll'
+import PlaneListItem from '@/components/parts/PlaneListItem'
+
 import Address from '@/components/parts/Address'
 
 import constants from '@/utils/constants'
@@ -291,7 +300,7 @@ export default {
   },
 
   components: {
-    ListControll, Address, Menu
+    ListControll, PlaneListItem, Address, Menu
   },
 
   created () {
