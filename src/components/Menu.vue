@@ -4,7 +4,7 @@
       :items="menuItems"
       @additem="handleAddMenuItem"
       @removeitem="handleRemoveMenuItem"
-      :display="'col-md-4'"
+      :classes="'col-md-4'"
     >
       <template v-slot:listitem={item}>
         <menuItem/>

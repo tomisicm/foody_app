@@ -34,7 +34,7 @@
               :error="!!errors.first('contact')"
               @additem="handleAddContact"
               @removeitem="handleRemoveContact"
-              :display="'row w-100'"
+              :classes="'row w-100'"
             >
               <template v-slot:labelfield>
                 <b-form-group
