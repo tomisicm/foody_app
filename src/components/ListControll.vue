@@ -1,8 +1,8 @@
 <template>
-  <b-col class="my-3">
+  <div class="my-3">
     <slot name="labelfield" />
-    <b-row>
 
+    <b-row>
       <slot name="inputfield" />
 
       <b-col class="col-md-2">
@@ -12,18 +12,22 @@
       <slot name="inputerrors" />
     </b-row>
 
-    <div v-for="item in items"  v-bind:key="item._id" no-body class="overflow-hidden my-2">
+    <b-row>
 
-      <b-col>
+      <div
+        v-for="item in items"
+        v-bind:key="item._id"
+        :class="display"
+      >
         <slot
           name="listitem"
           :item="item"
         />
-      </b-col>
+      </div>
 
-    </div>
+    </b-row>
 
-  </b-col>
+  </div>
 </template>
 
 <script>
@@ -38,7 +42,8 @@ export default {
     error: {
       type: Boolean,
       default: false
-    }
+    },
+    display: String
   },
 
   data () {

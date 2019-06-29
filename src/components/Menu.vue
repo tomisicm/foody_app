@@ -1,16 +1,17 @@
 <template>
-  <div class="mt-4">
+  <!-- <div class="mt-4"> -->
     <ListControll
       :items="menuItems"
       @additem="handleAddMenuItem"
       @removeitem="handleRemoveMenuItem"
+      :display="'col-md-4'"
     >
       <template v-slot:listitem={item}>
         <menuItem/>
       </template>
     </ListControll>
-    <menuItem/>
-  </div>
+    <!-- <menuItem/> -->
+  <!-- </div> -->
 </template>
 
 <script>

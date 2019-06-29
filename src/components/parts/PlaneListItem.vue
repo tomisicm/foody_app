@@ -1,5 +1,5 @@
 <template>
-  <b-card>
+  <b-card class="w-100 ml-3">
     <b-row>
       <b-col md="9">
         {{item}}
