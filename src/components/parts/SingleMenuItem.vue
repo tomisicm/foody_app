@@ -11,14 +11,80 @@
     <b-row>
       <b-img fluid src="https://www.donesi.com/images/product/20/166820_m.jpg"/>
     </b-row>
-    <b-row class="mt-1 text-size-11">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.</b-row>
-    <hr />
-    <b-row class="text-size-10">
+    <b-row class="mt-1 text-size-10 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.</b-row>
+
+    <b-row class="text-size-10 mt-2">
       <b-col cols="auto mr-auto" :style="{ textAlign: 'left' }">portion in g</b-col>
       <b-col class="auto" :style="{ textAlign: 'right' }">price</b-col>
     </b-row>
+
+    <hr />
+    <b-row class="mt-2">
+      <b-col
+        v-if="!inEdit"
+        cols="auto"
+        class="mr-auto"
+      >
+        <b-btn
+          @click="toggleEdit"
+          variant="primary"
+        >Edit</b-btn>
+      </b-col>
+
+      <b-col
+        v-else
+        cols="auto"
+      >
+        <b-btn
+          variant="outline-danger"
+          class="mr-1"
+          @click="handleDelete"
+        >Delete</b-btn>
+        <b-btn
+          class="mr-1"
+          variant="outline-primary"
+          @click="toggleEdit"
+        >Cancel</b-btn>
+        <b-btn
+          variant="success"
+          @click="handleSave"
+        >Save</b-btn>
+      </b-col>
+    </b-row>
   </b-card>
 </template>
+
+<script>
+export default {
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+
+  data () {
+    return {
+      inEdit: false,
+      localitem: this.item
+    }
+  },
+
+  methods: {
+    toggleEdit () {
+      this.inEdit = !this.inEdit
+    },
+
+    handleDelete () {
+
+    },
+
+    handleSave () {
+      this.toggleEdit()
+    }
+  }
+}
+</script>
 
 <style>
 /*
