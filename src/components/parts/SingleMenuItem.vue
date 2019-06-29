@@ -2,10 +2,12 @@
   <b-card class="px-1">
     <b-row class="mt-1">
       <b-col class="px-0" md="8" :style="{ textAlign: 'left' }">
-        <b-alert show variant="light">Food Name</b-alert>
+        <b-alert v-if="!inEdit" show variant="light">{{name}}</b-alert>
+        <b-form-input v-model="name" v-else />
       </b-col>
       <b-col class="px-0" md="4">
         <b-alert show variant="warning">Popular</b-alert>
+
       </b-col>
     </b-row>
     <b-row>
@@ -76,7 +78,8 @@ export default {
     return {
       inEdit: false,
       localitem: this.item,
-      bs: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.'
+      bs: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
+      name: 'Food Name'
     }
   },
 
