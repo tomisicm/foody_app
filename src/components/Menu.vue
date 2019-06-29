@@ -7,7 +7,7 @@
       :classes="'col-md-4'"
     >
       <template v-slot:listitem={item}>
-        <menuItem/>
+        <SingleMenuItem/>
       </template>
     </ListControll>
     <!-- <menuItem/> -->
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import MenuItem from '@/components/parts/MenuItem'
+import SingleMenuItem from '@/components/parts/SingleMenuItem'
 import ListControll from '@/components/ListControll'
 
 export default {
@@ -37,7 +37,7 @@ export default {
   },
 
   components: {
-    ListControll, MenuItem
+    ListControll, SingleMenuItem
   }
 }
 </script>
