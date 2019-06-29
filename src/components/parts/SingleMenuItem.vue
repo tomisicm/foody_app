@@ -3,11 +3,15 @@
     <b-row class="mt-1">
       <b-col class="px-0" md="8" :style="{ textAlign: 'left' }">
         <b-alert v-if="!inEdit" show variant="light">{{name}}</b-alert>
-        <b-form-input placeholder="Name" v-model="name" v-else />
+        <b-form-input class="alert" v-else placeholder="Name" v-model="name" />
       </b-col>
       <b-col class="px-0" md="4">
-        <b-alert show variant="warning">Popular</b-alert>
-
+        <b-alert v-if="!inEdit" show variant="warning">Tag</b-alert>
+        <b-dropdown split class="w-100 h-75" v-else right text="None" variant="primary">
+          <b-dropdown-item>Action</b-dropdown-item>
+          <b-dropdown-item>Another</b-dropdown-item>
+          <b-dropdown-item>Something</b-dropdown-item>
+        </b-dropdown>
       </b-col>
     </b-row>
     <b-row>
