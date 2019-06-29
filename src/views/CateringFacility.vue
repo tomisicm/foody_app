@@ -94,7 +94,7 @@ import reviewService from '@/utils/services/review-service'
 
 import { mapGetters, mapActions } from 'vuex'
 
-import baseCarousel from '@/components/baseCarousel'
+import baseCarousel from '@/components/base/baseCarousel'
 import List from '@/components/List'
 import SingleReview from '@/components/SingleReview'
 import SingleComment from '@/components/SingleComment'

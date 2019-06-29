@@ -102,7 +102,7 @@ import 'cropperjs/dist/cropper.css'
 
 import userService from '@/utils/services/user-service'
 
-import baseFileInput from '@/components/baseFileInput'
+import baseFileInput from '@/components/base/baseFileInput'
 
 export default {
   data () {

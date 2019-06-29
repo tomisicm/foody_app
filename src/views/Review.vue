@@ -140,8 +140,8 @@
 import reviewService from '@/utils/services/review-service'
 
 import StarRating from 'vue-star-rating'
-import baseEditable from '@/components/baseEditable'
-import baseCollapse from '@/components/baseCollapse'
+import baseEditable from '@/components/base/baseEditable'
+import baseCollapse from '@/components/base/baseCollapse'
 
 export default {
   data () {
