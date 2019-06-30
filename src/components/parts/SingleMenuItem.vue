@@ -1,48 +1,51 @@
 <template>
   <b-card class="px-1">
     <b-row class="mt-1">
+
       <b-col class="px-0" md="7" :style="{ textAlign: 'left' }">
-        <b-alert v-if="!inEdit" show variant="light">{{name}}</b-alert>
-        <b-form-input class="alert" v-else placeholder="Name" v-model="name" />
+        <b-alert v-if="!inEdit" show variant="light">{{localitem.name}}</b-alert>
+        <b-form-input class="alert" v-else placeholder="Name" v-model="localitem.name" />
       </b-col>
-      <b-col v-if="tag" class="px-0" md="5">
-        <b-alert v-if="!inEdit" show variant="warning">{{tag}}</b-alert>
+
+      <b-col v-if="localitem.tag" class="px-0" md="5">
+        <b-alert v-if="!inEdit" show variant="warning">{{localitem.tag}}</b-alert>
         <b-dropdown
           v-else
           v-model="tag"
           class="w-100 h-75"
-          right :text="tag"
+          right :text="localitem.tag"
           variant="primary"
         >
-          <template slot="button-content">{{tag}}</template>
+          <template slot="button-content">{{localitem.tag}}</template>
           <b-dropdown-item-button
             @click="updateTag($event)"
-            v-for="(tag, index) in tags"
+            v-for="(tag, index) in suggestedTags"
             :key="index"
             >{{tag}}</b-dropdown-item-button>
         </b-dropdown>
       </b-col>
     </b-row>
+
     <b-row>
-      <b-img fluid :src="image"/>
+      <b-img fluid :src="localitem.image"/>
     </b-row>
 
     <b-row class="mt-1 text-size-10 text-muted">
       <baseEditable
-        :content.sync="bs"
+        :content.sync="localitem.description"
         :inEditMode.sync="inEdit"
-        @update="bs = $event"
+        @update="localitem.description = $event"
       />
     </b-row>
 
     <b-row class="text-size-10 mt-2">
       <b-col cols="auto mr-auto" md="6" :style="{ textAlign: 'left' }">
-        <span v-if="!inEdit">{{portion}}</span>
-        <b-form-input class="text-size-10" v-else placeholder="Portion" v-model="portion" />
+        <span v-if="!inEdit">{{localitem.portion}}</span>
+        <b-form-input class="text-size-10" v-else placeholder="Portion" v-model="localitem.portion" />
       </b-col>
       <b-col class="auto" md="6" :style="{ textAlign: 'right' }">
-        <span v-if="!inEdit">{{price}}</span>
-        <b-form-input class="text-size-10" v-else placeholder="Price" v-model="price" />
+        <span v-if="!inEdit">{{localitem.price}}</span>
+        <b-form-input class="text-size-10" v-else placeholder="Price" v-model="localitem.price" />
       </b-col>
     </b-row>
 
@@ -71,7 +74,7 @@
         <b-btn
           class="mr-1"
           variant="outline-primary"
-          @click="toggleEdit"
+          @click="handleCancel"
         >Cancel</b-btn>
         <b-btn
           variant="success"
@@ -96,20 +99,25 @@ export default {
   data () {
     return {
       inEdit: false,
-      localitem: this.item,
-      image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
-      bs: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
+      suggestedTags: ['Popular', 'Spicy', 'Recommended'],
+      localitem: Object.assign({}, this.item)
+      /* image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
       name: 'Food Name',
       portion: 'portion (g)',
       price: 'price',
       tag: '',
-      tags: ['Popular', 'Spicy', 'Recommended']
+      */
     }
   },
 
   methods: {
     toggleEdit () {
       this.inEdit = !this.inEdit
+    },
+
+    handleCancel () {
+      this.localitem = Object.assign({}, this.item)
+      this.toggleEdit()
     },
 
     handleDelete () {
