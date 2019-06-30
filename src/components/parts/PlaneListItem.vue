@@ -1,11 +1,11 @@
 <template>
   <b-card class="w-100 ml-3">
     <b-row>
-      <b-col md="9">
+      <b-col md="10">
         {{item}}
       </b-col>
 
-      <b-col md="3">
+      <b-col class="pl-0 pr-0" md="2">
         <b-btn variant="outline-danger" @click="removeItem(item)"> - </b-btn>
       </b-col>
     </b-row>
@@ -15,7 +15,8 @@
 <script>
 export default {
   props: {
-    item: String
+    item: String,
+    classes: String
   },
 
   methods: {
