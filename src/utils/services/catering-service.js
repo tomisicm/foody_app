@@ -52,6 +52,19 @@ class CateringService {
       return this.updateCatering(id, body)
     }
   }
+
+  updateMenuItem (id, body) {}
+
+  deleteMenuItem (id) {
+    return http
+      .delete(`/api/catering/${id}`)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
 }
 
 const cateringService = new CateringService()
