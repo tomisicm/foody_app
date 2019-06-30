@@ -6,7 +6,7 @@
 
         <slot name="inputfield" />
 
-        <b-col md="2">
+        <b-col md="1">
           <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
         </b-col>
 
