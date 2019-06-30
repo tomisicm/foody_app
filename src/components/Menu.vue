@@ -1,17 +1,27 @@
 <template>
-  <!-- <div class="mt-4"> -->
+  <div class="mt-4">
     <ListControll
       :items="menuItems"
       @additem="handleAddMenuItem"
       @removeitem="handleRemoveMenuItem"
       :classes="'col-md-4'"
     >
+      <!-- <template v-slot:inputfield>
+        <div class="col-md-4">
+          <SingleMenuItem
+            :item="newMenuItem"
+          />
+        </div>
+      </template> -->
+
       <template v-slot:listitem={item}>
-        <SingleMenuItem/>
+        <SingleMenuItem
+        :item="item"
+      />
       </template>
     </ListControll>
-    <!-- <menuItem/> -->
-  <!-- </div> -->
+
+  </div>
 </template>
 
 <script>
@@ -21,6 +31,9 @@ import ListControll from '@/components/ListControll'
 export default {
   data () {
     return {
+      newMenuItem: {
+
+      },
       menuItems: [
         { }, { }
       ]
