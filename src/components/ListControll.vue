@@ -2,7 +2,7 @@
   <div class="my-3">
     <b-row>
       <slot name="labelfield" />
-      <b-row>
+      <b-row class="w-100">
 
         <slot name="inputfield" />
 
