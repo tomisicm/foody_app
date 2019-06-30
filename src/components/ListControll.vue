@@ -1,18 +1,17 @@
 <template>
   <div class="my-3">
-    <slot name="labelfield" />
-
     <b-row>
-      <slot name="inputfield" />
+      <slot name="labelfield" />
+      <b-row>
 
-      <b-col class="col-md-2">
-        <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
-      </b-col>
+        <slot name="inputfield" />
 
-      <slot name="inputerrors" />
-    </b-row>
+        <b-col md="2">
+          <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
+        </b-col>
 
-    <b-row>
+        <slot name="inputerrors" />
+      </b-row>
 
       <div
         v-for="item in items"

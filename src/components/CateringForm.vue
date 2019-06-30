@@ -45,15 +45,17 @@
               </template>
 
               <template v-slot:inputfield>
+                <b-col md="10" class="w-100">
                 <b-form-input
                   v-model="newContact"
                   @keydown.enter="handleAddContact"
                   name="contact"
                   v-b-popover.hover.right="HELP_TEXT_CONSTANTS.phoneNumbFormatHelpText"
                   v-validate="'phoneOrEmail'"
-                  class="col-md-9 w-100"
+                  class="w-100"
                   placeholder="Phone or Email"
                 />
+                </b-col>
               </template>
 
               <template v-slot:inputerrors>
@@ -138,14 +140,16 @@
             @removeitem="handleRemoveImage"
           >
             <template v-slot:inputfield="{item}">
+              <b-col md="10" class="w-100">
               <b-form-input
                 v-model="newImage"
                 @keydown.enter="handleAddImage"
                 v-validate="'url'"
                 name="imageurl"
-                class="col-md-9"
+                class="w-100"
                 placeholder="Enter url"
               />
+              </b-col>
             </template>
             <template v-slot:inputerrors>
               <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
