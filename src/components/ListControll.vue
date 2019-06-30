@@ -46,9 +46,7 @@ export default {
   },
 
   data () {
-    return {
-      newItem: ''
-    }
+    return {}
   },
 
   methods: {
