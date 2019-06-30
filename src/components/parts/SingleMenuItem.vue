@@ -7,7 +7,7 @@
       </b-col>
       <b-col class="px-0" md="4">
         <b-alert v-if="!inEdit" show variant="warning">Tag</b-alert>
-        <b-dropdown split class="w-100 h-75" v-else right text="None" variant="primary">
+        <b-dropdown class="w-100 h-75" v-else right text="None" variant="primary">
           <b-dropdown-item>Action</b-dropdown-item>
           <b-dropdown-item>Another</b-dropdown-item>
           <b-dropdown-item>Something</b-dropdown-item>
@@ -15,7 +15,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-img fluid src="https://www.donesi.com/images/product/20/166820_m.jpg"/>
+      <b-img fluid :src="image"/>
     </b-row>
 
     <b-row class="mt-1 text-size-10 text-muted">
@@ -27,8 +27,14 @@
     </b-row>
 
     <b-row class="text-size-10 mt-2">
-      <b-col cols="auto mr-auto" :style="{ textAlign: 'left' }">portion in g</b-col>
-      <b-col class="auto" :style="{ textAlign: 'right' }">price</b-col>
+      <b-col cols="auto mr-auto" md="6" :style="{ textAlign: 'left' }">
+        <span v-if="!inEdit">{{portion}}</span>
+        <b-form-input class="text-size-10" v-else placeholder="Portion" v-model="portion" />
+      </b-col>
+      <b-col class="auto" md="6" :style="{ textAlign: 'right' }">
+        <span v-if="!inEdit">{{price}}</span>
+        <b-form-input class="text-size-10" v-else placeholder="Price" v-model="price" />
+      </b-col>
     </b-row>
 
     <hr />
@@ -82,8 +88,11 @@ export default {
     return {
       inEdit: false,
       localitem: this.item,
+      image: "https://www.donesi.com/images/product/20/166820_m.jpg",
       bs: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
-      name: 'Food Name'
+      name: 'Food Name',
+      portion: 'portion (g)',
+      price: 'price'
     }
   },
 
@@ -118,7 +127,7 @@ export default {
 }
 
 .text-size-10 {
-  font-size: 10pt;
+  font-size: 10pt !important;
 }
 
 .alert.light {
