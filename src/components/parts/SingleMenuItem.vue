@@ -88,7 +88,7 @@ export default {
     return {
       inEdit: false,
       localitem: this.item,
-      image: "https://www.donesi.com/images/product/20/166820_m.jpg",
+      image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
       bs: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
       name: 'Food Name',
       portion: 'portion (g)',
