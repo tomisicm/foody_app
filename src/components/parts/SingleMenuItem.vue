@@ -1,16 +1,25 @@
 <template>
   <b-card class="px-1">
     <b-row class="mt-1">
-      <b-col class="px-0" md="8" :style="{ textAlign: 'left' }">
+      <b-col class="px-0" md="7" :style="{ textAlign: 'left' }">
         <b-alert v-if="!inEdit" show variant="light">{{name}}</b-alert>
         <b-form-input class="alert" v-else placeholder="Name" v-model="name" />
       </b-col>
-      <b-col class="px-0" md="4">
-        <b-alert v-if="!inEdit" show variant="warning">Tag</b-alert>
-        <b-dropdown class="w-100 h-75" v-else right text="None" variant="primary">
-          <b-dropdown-item>Action</b-dropdown-item>
-          <b-dropdown-item>Another</b-dropdown-item>
-          <b-dropdown-item>Something</b-dropdown-item>
+      <b-col v-if="tag" class="px-0" md="5">
+        <b-alert v-if="!inEdit" show variant="warning">{{tag}}</b-alert>
+        <b-dropdown
+          v-else
+          v-model="tag"
+          class="w-100 h-75"
+          right :text="tag"
+          variant="primary"
+        >
+          <template slot="button-content">{{tag}}</template>
+          <b-dropdown-item-button
+            @click="updateTag($event)"
+            v-for="(tag, index) in tags"
+            :key="index"
+            >{{tag}}</b-dropdown-item-button>
         </b-dropdown>
       </b-col>
     </b-row>
@@ -92,7 +101,9 @@ export default {
       bs: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
       name: 'Food Name',
       portion: 'portion (g)',
-      price: 'price'
+      price: 'price',
+      tag: '',
+      tags: ['Popular', 'Spicy', 'Recommended']
     }
   },
 
@@ -107,6 +118,10 @@ export default {
 
     handleSave () {
       this.toggleEdit()
+    },
+
+    updateTag (event) {
+      this.tag = event.target.innerText
     }
   },
 
