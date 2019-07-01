@@ -44,6 +44,12 @@
                 />
               </template>
 
+              <template v-slot:btnfield>
+                <b-col md="1">
+                  <b-btn variant="primary" @click="handleAddContact" :disabled="!!errors.first('contact')" pill>+</b-btn>
+                </b-col>
+              </template>
+
               <template v-slot:inputfield>
                 <b-col md="10" class="w-100">
                 <b-form-input
@@ -151,6 +157,13 @@
               />
               </b-col>
             </template>
+
+            <template v-slot:btnfield>
+              <b-col md="1">
+                <b-btn variant="primary" @click="handleAddImage" :disabled="!!errors.first('imageurl')" pill>+</b-btn>
+              </b-col>
+            </template>
+
             <template v-slot:inputerrors>
               <small class="form-text text-danger">{{ errors.first('imageurl') }}</small>
             </template>

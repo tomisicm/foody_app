@@ -3,12 +3,9 @@
     <b-row>
       <slot name="labelfield" />
       <b-row class="w-100">
-
         <slot name="inputfield" />
 
-        <b-col md="1">
-          <b-btn variant="primary" @click="addItem" :disabled="error" pill>+</b-btn>
-        </b-col>
+        <slot name="btnfield" />
 
         <slot name="inputerrors" />
       </b-row>
