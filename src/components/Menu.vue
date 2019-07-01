@@ -6,14 +6,6 @@
       @removeitem="handleRemoveMenuItem"
       :listitemclass="'col-md-4'"
     >
-      <!-- <template v-slot:inputfield>
-        <div class="col-md-4">
-          <SingleMenuItem
-            :item="newMenuItem"
-          />
-        </div>
-      </template> -->
-
       <template v-slot:listitem={item}>
         <SingleMenuItem
           :item="item"
