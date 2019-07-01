@@ -39,16 +39,6 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-
-  methods: {
-    addItem () {
-      this.$emit('additem')
-    },
-
-    removeItem (item) {
-      this.$emit('removeitem', item)
-    }
   }
 }
 </script>
