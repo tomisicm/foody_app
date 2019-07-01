@@ -34,11 +34,11 @@ export default {
         return []
       }
     },
+    listitemclass: String,
     error: {
       type: Boolean,
       default: false
-    },
-    listitemclass: String
+    }
   },
 
   methods: {
