@@ -3,12 +3,12 @@
     <b-row class="mt-1">
 
       <b-col class="px-0" md="7" :style="{ textAlign: 'left' }">
-        <b-alert v-if="!inEdit" show variant="light">{{localitem.name}}</b-alert>
+        <b-alert v-if="!inEditMode" show variant="light">{{localitem.name}}</b-alert>
         <b-form-input class="alert" v-else placeholder="Name" v-model="localitem.name" />
       </b-col>
 
       <b-col v-if="localitem.tag" class="px-0" md="5">
-        <b-alert v-if="!inEdit" show variant="warning">{{localitem.tag}}</b-alert>
+        <b-alert v-if="!inEditMode" show variant="warning">{{localitem.tag}}</b-alert>
         <b-dropdown
           v-else
           v-model="localitem.tag"
@@ -32,19 +32,20 @@
 
     <b-row class="mt-1 text-size-10 text-muted">
       <baseEditable
+        class="w-100 px-3 py-3"
         :content.sync="localitem.description"
-        :inEditMode.sync="inEdit"
+        :inEditMode.sync="inEditMode"
         @update="localitem.description = $event"
       />
     </b-row>
 
     <b-row class="text-size-10 mt-2">
       <b-col cols="auto mr-auto" md="6" :style="{ textAlign: 'left' }">
-        <span v-if="!inEdit">{{localitem.portion}}</span>
+        <span v-if="!inEditMode">{{localitem.portion}}</span>
         <b-form-input class="text-size-10" v-else placeholder="Portion" v-model="localitem.portion" />
       </b-col>
       <b-col class="auto" md="6" :style="{ textAlign: 'right' }">
-        <span v-if="!inEdit">{{localitem.price}}</span>
+        <span v-if="!inEditMode">{{localitem.price}}</span>
         <b-form-input class="text-size-10" v-else placeholder="Price" v-model="localitem.price" />
       </b-col>
     </b-row>
@@ -52,7 +53,7 @@
     <hr />
     <b-row class="mt-2">
       <b-col
-        v-if="!inEdit"
+        v-if="!inEditMode"
         cols="auto"
         class="mr-auto"
       >
@@ -98,7 +99,7 @@ export default {
 
   data () {
     return {
-      inEdit: false,
+      inEditMode: false,
       suggestedTags: ['Popular', 'Spicy', 'Recommended'],
       localitem: Object.assign({}, this.item)
       /* image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
@@ -112,7 +113,7 @@ export default {
 
   methods: {
     toggleEdit () {
-      this.inEdit = !this.inEdit
+      this.inEditMode = !this.inEditMode
     },
 
     handleCancel () {
