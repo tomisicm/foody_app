@@ -53,17 +53,45 @@ class CateringService {
     }
   }
 
-  updateMenuItem (id, body) {}
+  createMenuItem (body) {
+    /* return http
+      .post('/api/catering/', body)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      }) */
+  }
+
+  updateMenuItem (id, body) {
+    /* return http
+      .put(`/api/catering/${id}`, body)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      }) */
+  }
+
+  saveMenuItem (id, body) {
+    /* if (!id) {
+      return this.createCatering(body)
+    } else {
+      return this.updateCatering(id, body)
+    } */
+  }
 
   deleteMenuItem (id) {
-    return http
+    /* return http
       .delete(`/api/catering/${id}`)
       .then(({ data }) => {
         return data
       })
       .catch(error => {
         throw error
-      })
+      }) */
   }
 }
 

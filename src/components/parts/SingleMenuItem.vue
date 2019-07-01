@@ -7,7 +7,7 @@
         <b-form-input class="alert" v-else placeholder="Name" v-model="localitem.name" />
       </b-col>
 
-      <b-col v-if="localitem.tag" class="px-0" md="5">
+      <b-col class="px-0" md="5">
         <b-alert v-if="!inEditMode" show variant="warning">{{localitem.tag}}</b-alert>
         <b-dropdown
           v-else
@@ -67,6 +67,7 @@
         v-else
         cols="auto"
       >
+        <!-- delete does not exist if no id provided -->
         <b-btn
           variant="outline-danger"
           class="mr-1"
@@ -111,20 +112,27 @@ export default {
     },
 
     handleCancel () {
-      this.localitem = Object.assign({}, this.item)
-      this.toggleEdit()
+      // new item or existing one
+      if (this.item._id) {
+        this.localitem = Object.assign({}, this.item)
+        this.toggleEdit()
+      } else {
+        this.$emit('cancelitem')
+      }
     },
 
     handleDelete () {
-
+      this.$emit('deleteitem', this.item)
     },
 
     handleSave () {
+      // const { data } = await cateringService.saveMenuItem(item)
+      // this.item = data
       this.toggleEdit()
     },
 
     updateTag (event) {
-      this.tag = event.target.innerText
+      this.localitem.tag = event.target.innerText
     }
   },
 

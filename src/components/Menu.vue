@@ -10,17 +10,12 @@
           <b-btn variant="primary" @click="handleAddMenuItem">New Menu Item</b-btn>
         </b-row>
       </template>
-      <!-- <template v-slot:inputfield>
-        <div class="col-md-4">
-          <SingleMenuItem
-            :item="newMenuItem"
-          />
-        </div>
-      </template> -->
 
       <template v-slot:listitem={item}>
         <SingleMenuItem
           :item="item"
+          @cancelitem="handleItemCancel"
+          @deleteitem="handleDeleteMenuItem($event)"
         />
       </template>
     </ListControll>
@@ -29,6 +24,8 @@
 </template>
 
 <script>
+import cateringService from '@/utils/services/catering-service'
+
 import SingleMenuItem from '@/components/parts/SingleMenuItem'
 import ListControll from '@/components/ListControll'
 
@@ -63,8 +60,14 @@ export default {
     handleAddMenuItem () {
       this.menuItems.unshift(this.newMenuItem)
     },
-    handleRemoveMenuItem () {
+    async handleDeleteMenuItem (item) {
+      // await cateringService.deleteMenuItem(item)
+      const i = this.menuItems.indexOf(item)
+      this.menuItems.splice(i, 1)
+    },
 
+    handleItemCancel () {
+      this.menuItems.shift()
     },
 
     resetNewItem () {
