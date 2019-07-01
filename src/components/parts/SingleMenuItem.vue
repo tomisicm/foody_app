@@ -11,7 +11,7 @@
         <b-alert v-if="!inEdit" show variant="warning">{{localitem.tag}}</b-alert>
         <b-dropdown
           v-else
-          v-model="tag"
+          v-model="localitem.tag"
           class="w-100 h-75"
           right :text="localitem.tag"
           variant="primary"
