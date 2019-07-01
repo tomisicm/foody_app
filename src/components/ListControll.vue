@@ -13,7 +13,7 @@
       <div
         v-for="item in items"
         v-bind:key="item._id"
-        :class="classes"
+        :class="listitemclass"
       >
         <slot
           name="listitem"
@@ -38,11 +38,7 @@ export default {
       type: Boolean,
       default: false
     },
-    classes: String
-  },
-
-  data () {
-    return {}
+    listitemclass: String
   },
 
   methods: {

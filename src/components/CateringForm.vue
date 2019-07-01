@@ -34,7 +34,7 @@
               :error="!!errors.first('contact')"
               @additem="handleAddContact"
               @removeitem="handleRemoveContact"
-              :classes="'row w-100'"
+              :listitemclass="'row w-100'"
             >
               <template v-slot:labelfield>
                 <b-form-group
@@ -144,6 +144,7 @@
             :error="!!errors.first('imageurl')"
             @additem="handleAddImage"
             @removeitem="handleRemoveImage"
+            :listitemclass="'row w-100'"
           >
             <template v-slot:inputfield="{item}">
               <b-col md="10" class="w-100">
