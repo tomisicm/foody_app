@@ -99,15 +99,9 @@ export default {
 
   data () {
     return {
-      inEditMode: false,
+      inEditMode: !this.item._id,
       suggestedTags: ['Popular', 'Spicy', 'Recommended'],
       localitem: Object.assign({}, this.item)
-      /* image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
-      name: 'Food Name',
-      portion: 'portion (g)',
-      price: 'price',
-      tag: '',
-      */
     }
   },
 
