@@ -32,8 +32,6 @@
             <ListControll
               :items="catering.contactInformation"
               :error="!!errors.first('contact')"
-              @additem="handleAddContact"
-              @removeitem="handleRemoveContact"
               :listitemclass="'row w-100'"
             >
               <template v-slot:labelfield>
@@ -142,8 +140,6 @@
           <ListControll
             :items="catering.images"
             :error="!!errors.first('imageurl')"
-            @additem="handleAddImage"
-            @removeitem="handleRemoveImage"
             :listitemclass="'row w-100'"
           >
             <template v-slot:inputfield="{item}">
