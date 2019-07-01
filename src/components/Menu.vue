@@ -4,7 +4,7 @@
       :items="menuItems"
       @additem="handleAddMenuItem"
       @removeitem="handleRemoveMenuItem"
-      :classes="'col-md-4'"
+      :listitemclass="'col-md-4'"
     >
       <!-- <template v-slot:inputfield>
         <div class="col-md-4">
@@ -16,8 +16,8 @@
 
       <template v-slot:listitem={item}>
         <SingleMenuItem
-        :item="item"
-      />
+          :item="item"
+        />
       </template>
     </ListControll>
 
@@ -35,7 +35,22 @@ export default {
 
       },
       menuItems: [
-        { }, { }
+        {
+          name: 'Virsla',
+          image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
+          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
+          portion: 'portion (g)',
+          price: 'price',
+          tag: 'Popular'
+        },
+        {
+          name: 'Virsla II',
+          image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
+          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
+          portion: 'portion (g)',
+          price: 'price',
+          tag: 'Popular'
+        }
       ]
     }
   },
