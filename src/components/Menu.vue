@@ -39,8 +39,8 @@ export default {
           name: 'Virsla',
           image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
           description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
-          portion: 'portion (g)',
-          price: 'price',
+          portion: '434',
+          price: '6',
           tag: 'Popular'
         },
         {
@@ -48,8 +48,8 @@ export default {
           name: 'Virsla II',
           image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
           description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
-          portion: 'portion (g)',
-          price: 'price',
+          portion: '232',
+          price: '5',
           tag: 'Popular'
         }
       ]

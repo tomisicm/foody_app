@@ -52,7 +52,6 @@
         :content.sync="localitem.description"
         :inEditMode.sync="inEditMode"
         @update="localitem.description = $event"
-        v-validate="'required'"
         name="description"
         class="w-100 px-3 py-3"
       />
@@ -167,11 +166,29 @@ export default {
     handleSave () {
       // const { data } = await cateringService.saveMenuItem(item)
       // this.item = data
+      this.validateBeforeSubmit()
       this.toggleEdit()
     },
 
     updateTag (event) {
       this.localitem.tag = event.target.innerText
+    },
+
+    async validateBeforeSubmit () {
+      if (this.localitem.description === '') {
+        this.errors.add({
+          field: 'description',
+          msg: 'The description field is required.'
+        })
+      } else {
+        this.$validator.validateAll()
+      }
+    }
+  },
+
+  watch: {
+    'localitem.description' (value) {
+      this.errors.remove('description')
     }
   },
 
