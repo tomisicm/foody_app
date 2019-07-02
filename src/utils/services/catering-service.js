@@ -96,14 +96,14 @@ class CateringService {
   }
 
   deleteMenuItem (id) {
-    /* return http
-      .delete(`/api/catering/${id}`)
+    return http
+      .delete(`/api/food/${id}`)
       .then(({ data }) => {
         return data
       })
       .catch(error => {
         throw error
-      }) */
+      })
   }
 }
 

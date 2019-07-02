@@ -161,8 +161,8 @@ export default {
       }
     },
 
-    handleDelete () {
-      // after successful delete just emit this thing
+    async handleDelete () {
+      await cateringService.deleteMenuItem(this.item._id)
       this.$emit('deleteitem', this.item)
     },
 
