@@ -104,8 +104,8 @@
         v-else
         cols="auto"
       >
-        <!-- delete does not exist if no id provided -->
         <b-btn
+          v-if="localitem._id"
           variant="outline-danger"
           class="mr-1"
           @click="handleDelete"
@@ -164,11 +164,13 @@ export default {
       this.$emit('deleteitem', this.item)
     },
 
-    handleSave () {
+    async handleSave () {
       // const { data } = await cateringService.saveMenuItem(item)
       // this.item = data
-      this.validateBeforeSubmit()
-      this.toggleEdit()
+      const anyErrors = this.validateBeforeSubmit()
+      if (!anyErrors) {
+        this.toggleEdit()
+      }
     },
 
     updateDescription (event) {
@@ -188,7 +190,7 @@ export default {
     },
 
     async validateBeforeSubmit () {
-      await this.$validator.validateAll()
+      return this.$validator.validateAll()
     }
   },
 
