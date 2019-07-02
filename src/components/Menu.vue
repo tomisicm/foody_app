@@ -33,26 +33,7 @@ export default {
   data () {
     return {
       newMenuItem: Object.assign({}, this.resetNewItem()),
-      menuItems: [
-        {
-          _id: '23423423423423',
-          name: 'Virsla',
-          image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
-          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
-          portion: '434',
-          price: '6',
-          tag: 'Popular'
-        },
-        {
-          _id: '23423423423433',
-          name: 'Virsla II',
-          image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
-          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt deleniti est, saepe, voluptas ipsam animi, consequatur ipsum dolorum iure asperiores labore facilis tenetur.',
-          portion: '232',
-          price: '5',
-          tag: 'Popular'
-        }
-      ]
+      menuItems: []
     }
   },
 
@@ -80,7 +61,16 @@ export default {
         price: '',
         tag: ''
       }
+    },
+
+    async getMenuItems () {
+      const { data } = await cateringService.getMentItemsForCatering(this.$route.params.id)
+      this.menuItems = data.docs
     }
+  },
+
+  created () {
+    this.getMenuItems()
   },
 
   components: {

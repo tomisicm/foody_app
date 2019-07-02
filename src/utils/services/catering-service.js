@@ -53,6 +53,17 @@ class CateringService {
     }
   }
 
+  getMentItemsForCatering (id) {
+    return http
+      .get(`/api/food/catering/${id}`)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
   createMenuItem (body) {
     return http
       .post('/api/food/', body)
