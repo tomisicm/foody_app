@@ -54,33 +54,34 @@ class CateringService {
   }
 
   createMenuItem (body) {
-    /* return http
-      .post('/api/catering/', body)
+    return http
+      .post('/api/food/', body)
       .then(({ data }) => {
         return data
       })
       .catch(error => {
         throw error
-      }) */
+      })
   }
 
   updateMenuItem (id, body) {
-    /* return http
+    return http
       .put(`/api/catering/${id}`, body)
       .then(({ data }) => {
         return data
       })
       .catch(error => {
         throw error
-      }) */
+      })
   }
 
-  saveMenuItem (id, body) {
-    /* if (!id) {
-      return this.createCatering(body)
+  saveMenuItem (item) {
+    const { _id } = item
+    if (!_id) {
+      return this.createMenuItem(item)
     } else {
-      return this.updateCatering(id, body)
-    } */
+      return this.updateMenuItem(_id, item)
+    }
   }
 
   deleteMenuItem (id) {

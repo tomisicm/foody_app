@@ -73,6 +73,7 @@ export default {
     resetNewItem () {
       return {
         name: '',
+        catering: this.$route.params.id,
         image: 'https://www.donesi.com/images/product/20/166820_m.jpg',
         description: '',
         portion: '',

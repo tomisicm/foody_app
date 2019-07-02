@@ -126,6 +126,8 @@
 </template>
 
 <script>
+import cateringService from '@/utils/services/catering-service'
+
 import baseEditable from '@/components/base/baseEditable'
 
 export default {
@@ -165,11 +167,13 @@ export default {
     },
 
     async handleSave () {
-      // const { data } = await cateringService.saveMenuItem(item)
-      // this.item = data
       const anyErrors = this.validateBeforeSubmit()
       if (!anyErrors) {
         this.toggleEdit()
+      } else {
+        const { data } = await cateringService.saveMenuItem(this.localitem)
+        // console.log(data)
+        this.item = data
       }
     },
 
