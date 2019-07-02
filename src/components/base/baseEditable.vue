@@ -1,6 +1,7 @@
 <template>
   <div :class="[{ editable: inEditMode }, classes]"
     :contenteditable="inEditMode"
+    :placeholder="placeholder"
     @blur="update"
   />
 </template>
@@ -15,6 +16,10 @@ export default {
     content: {
       type: String,
       default: ''
+    },
+    placeholder: {
+      type: String,
+      default: 'Enter text here...'
     },
     inEditMode: Boolean,
     default: function () {
@@ -44,4 +49,10 @@ export default {
 div.editable {
   border: 1px solid #ced4da !important;
 }
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block;
+}
+
 </style>
