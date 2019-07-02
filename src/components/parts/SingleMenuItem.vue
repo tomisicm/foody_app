@@ -3,12 +3,27 @@
     <b-row class="mt-1">
 
       <b-col class="px-0" md="7" :style="{ textAlign: 'left' }">
-        <b-alert v-if="!inEditMode" show variant="light">{{localitem.name}}</b-alert>
-        <b-form-input v-else v-validate="'required'" v-model="localitem.name" class="alert" name="foodname" placeholder="Name" />
+        <b-alert
+          v-if="!inEditMode"
+          show
+          variant="light"
+        >{{localitem.name}}</b-alert>
+
+        <b-form-input
+          v-else v-validate="'required'"
+          v-model="localitem.name"
+          class="alert"
+          name="foodname"
+          placeholder="Name"
+        />
       </b-col>
 
       <b-col class="px-0" md="5">
-        <b-alert v-if="!inEditMode" show variant="warning">{{localitem.tag}}</b-alert>
+        <b-alert
+          v-if="!inEditMode"
+          show
+          variant="warning"
+        >{{localitem.tag}}</b-alert>
         <b-dropdown
           v-else
           v-model="localitem.tag"
@@ -48,11 +63,25 @@
     <b-row class="text-size-10 mt-2">
       <b-col cols="auto mr-auto" md="6" :style="{ textAlign: 'left' }">
         <span v-if="!inEditMode">{{localitem.portion}}</span>
-        <b-form-input v-else v-model="localitem.portion" v-validate="'required|numeric'" class="text-size-10" name="portion" placeholder="Portion" />
+        <b-form-input
+          v-else
+          v-model="localitem.portion"
+          v-validate="'required|numeric'"
+          class="text-size-10"
+          name="portion"
+          placeholder="Portion"
+        />
       </b-col>
       <b-col class="auto" md="6" :style="{ textAlign: 'right' }">
         <span v-if="!inEditMode">{{localitem.price}}</span>
-        <b-form-input v-else v-model="localitem.price" v-validate="'required|numeric'" class="text-size-10" name="price" placeholder="Price"/>
+        <b-form-input
+          v-else
+          v-model="localitem.price"
+          v-validate="'required|numeric'"
+          class="text-size-10"
+          name="price"
+          placeholder="Price"
+        />
       </b-col>
 
       <small class="form-text text-danger mb-2">{{ errors.first('portion') }}</small>
@@ -131,6 +160,7 @@ export default {
     },
 
     handleDelete () {
+      // after successful delete just emit this thing
       this.$emit('deleteitem', this.item)
     },
 
