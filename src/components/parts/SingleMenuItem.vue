@@ -51,7 +51,7 @@
       <baseEditable
         :content.sync="localitem.description"
         :inEditMode.sync="inEditMode"
-        @update="localitem.description = $event"
+        @update="updateDescription($event)"
         name="description"
         class="w-100 px-3 py-3"
       />
@@ -118,6 +118,7 @@
         <b-btn
           variant="success"
           @click="handleSave"
+          :disabled="errors.any()"
         >Save</b-btn>
       </b-col>
     </b-row>
@@ -170,26 +171,33 @@ export default {
       this.toggleEdit()
     },
 
-    updateTag (event) {
-      this.localitem.tag = event.target.innerText
-    },
-
-    async validateBeforeSubmit () {
-      if (this.localitem.description === '') {
+    updateDescription (event) {
+      if (!event) {
         this.errors.add({
           field: 'description',
           msg: 'The description field is required.'
         })
       } else {
-        this.$validator.validateAll()
+        this.errors.remove('description')
+        this.localitem.description = event
       }
+    },
+
+    updateTag (event) {
+      this.localitem.tag = event.target.innerText
+    },
+
+    async validateBeforeSubmit () {
+      await this.$validator.validateAll()
     }
   },
 
   watch: {
+    /*
     'localitem.description' (value) {
       this.errors.remove('description')
     }
+    */
   },
 
   components: {
