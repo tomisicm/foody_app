@@ -77,7 +77,7 @@ class CateringService {
 
   updateMenuItem (id, body) {
     return http
-      .put(`/api/catering/${id}`, body)
+      .put(`/api/food/${id}`, body)
       .then(({ data }) => {
         return data
       })
