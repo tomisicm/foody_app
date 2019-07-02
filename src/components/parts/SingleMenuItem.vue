@@ -4,7 +4,7 @@
 
       <b-col class="px-0" md="7" :style="{ textAlign: 'left' }">
         <b-alert v-if="!inEditMode" show variant="light">{{localitem.name}}</b-alert>
-        <b-form-input class="alert" v-else placeholder="Name" v-model="localitem.name" />
+        <b-form-input v-else v-validate="'required'" v-model="localitem.name" class="alert" name="foodname" placeholder="Name" />
       </b-col>
 
       <b-col class="px-0" md="5">
@@ -24,6 +24,8 @@
             >{{tag}}</b-dropdown-item-button>
         </b-dropdown>
       </b-col>
+
+      <small class="form-text text-danger mb-2">{{ errors.first('foodname') }}</small>
     </b-row>
 
     <b-row>
@@ -32,22 +34,29 @@
 
     <b-row class="mt-1 text-size-10 text-muted">
       <baseEditable
-        class="w-100 px-3 py-3"
         :content.sync="localitem.description"
         :inEditMode.sync="inEditMode"
         @update="localitem.description = $event"
+        v-validate="'required'"
+        name="description"
+        class="w-100 px-3 py-3"
       />
+
+      <small class="form-text text-danger mb-2">{{ errors.first('description') }}</small>
     </b-row>
 
     <b-row class="text-size-10 mt-2">
       <b-col cols="auto mr-auto" md="6" :style="{ textAlign: 'left' }">
         <span v-if="!inEditMode">{{localitem.portion}}</span>
-        <b-form-input class="text-size-10" v-else placeholder="Portion" v-model="localitem.portion" />
+        <b-form-input v-else v-model="localitem.portion" v-validate="'required|numeric'" class="text-size-10" name="portion" placeholder="Portion" />
       </b-col>
       <b-col class="auto" md="6" :style="{ textAlign: 'right' }">
         <span v-if="!inEditMode">{{localitem.price}}</span>
-        <b-form-input class="text-size-10" v-else placeholder="Price" v-model="localitem.price" />
+        <b-form-input v-else v-model="localitem.price" v-validate="'required|numeric'" class="text-size-10" name="price" placeholder="Price"/>
       </b-col>
+
+      <small class="form-text text-danger mb-2">{{ errors.first('portion') }}</small>
+      <small class="form-text text-danger mb-2">{{ errors.first('price') }}</small>
     </b-row>
 
     <hr />
