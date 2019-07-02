@@ -172,8 +172,8 @@ export default {
         this.toggleEdit()
       } else {
         const { data } = await cateringService.saveMenuItem(this.localitem)
-        // console.log(data)
         this.item = data
+        this.toggleEdit()
       }
     },
 
