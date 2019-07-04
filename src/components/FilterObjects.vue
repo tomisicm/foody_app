@@ -12,14 +12,14 @@
         </b-input-group>
       </b-form-group>
 
+      <!-- TODO: validations for this field -->
       <Address
         :address="form.address"
         @update:address="form.address = $event"
       />
 
-      <div class="form-row">
-        <label class="col-md-12 label" for="type">Origin:</label>
-        <div class="col-md-12">
+      <b-form-group label-cols-sm="3" label="Origin" class="mb-0">
+        <b-input-group>
           <multiselect
             class="input-border"
             v-model="form.selectedOptions"
@@ -31,15 +31,17 @@
           >
           <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
         </multiselect>
-        </div>
-      </div>
+        </b-input-group>
+      </b-form-group>
 
-      <div class="form-row">
-        <label class="col-md-12 label" id="rating">Selected rating: {{form.ratingRange[0]}} - {{form.ratingRange[1]}}</label>
-        <div class="col-md-12">
+      <b-form-group label-cols-sm="3" label="Rating range" class="mb-0">
+        <slot name="label">
+          <div class="mt-2">
+          Selected rating: {{form.ratingRange[0]}} - {{form.ratingRange[1]}}
+          </div>
+        </slot>
           <vueslider class="w-100" v-model="form.ratingRange" :min=0 :max=10 :interval=0.1  />
-        </div>
-      </div>
+      </b-form-group>
 
       <div class="form-row my-4">
         <button class="btn btn-primary mr-3" type="submit" @click="onSearch">Search</button>
