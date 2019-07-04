@@ -63,8 +63,6 @@
 import cateringService from '@/utils/services/catering-service'
 import reviewService from '@/utils/services/review-service'
 
-import { mapGetters, mapActions } from 'vuex'
-
 import baseCarousel from '@/components/base/baseCarousel'
 import List from '@/components/base/List'
 import SingleReview from '@/components/SingleReview'
@@ -84,8 +82,6 @@ export default {
   },
 
   methods: {
-    ...mapActions('commentStore', ['getCommentsByItemId', 'changePage']),
-
     async getCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
       this.cateringFacility = data
