@@ -30,7 +30,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import VModal from 'vue-js-modal'
+
 import { phoneOrEmailRule } from '@/utils/validationRules'
+
 VeeValidate.Validator.extend('phoneOrEmail', phoneOrEmailRule)
 
 Vue.use(BootstrapVue)
@@ -56,6 +59,8 @@ Vue.use(VeeValidate, {
   inject: true,
   fieldsBagName: 'errorFields'
 })
+
+Vue.use(VModal)
 
 Vue.config.productionTip = false
 

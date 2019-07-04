@@ -4,6 +4,7 @@
     <b-col cols="12" md="1">
       <b-img width="80" height="80" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
     </b-col>
+
     <b-col cols="12" md="9">
 
       <b-card-text
@@ -87,7 +88,6 @@
 import { mapGetters, mapActions } from 'vuex'
 
 import NewComment from '@/components/NewComment'
-import SingleComment from '@/components/SingleComment'
 
 import dateToString from '@/utils/mixins/dateToString'
 
@@ -109,7 +109,11 @@ export default {
   methods: {
     ...mapActions('commentStore', ['deleteComment', 'editComment']),
     async removeItem () {
-      await this.deleteComment(this.item._id)
+      this.$modal.show('confirm-action', {})
+      // modal confirm =>
+      // await this.deleteComment(this.item._id)
+      // else
+      // this.$modal.hide
     },
 
     editItem () {
@@ -145,7 +149,7 @@ export default {
   },
 
   components: {
-    NewComment, SingleComment
+    'NewComment': NewComment, 'SingleComment': this
   },
   mixins: [ dateToString ],
   name: 'SingleComment'
