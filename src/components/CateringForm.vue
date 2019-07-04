@@ -22,7 +22,7 @@
             </b-form-group>
           </b-col>
 
-          <!-- address component is repeating -->
+          <!-- TODO: validations for this field -->
           <Address
             :address="catering.address"
             @update:address="updateAddress($event)"

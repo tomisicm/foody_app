@@ -13,7 +13,6 @@
       </b-input-group>
     </b-form-group>
 
-    <!-- TODO: validations for this field -->
     <Address
       :address="form.address"
       @update:address="form.address = $event"
