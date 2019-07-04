@@ -2,56 +2,20 @@
   <div class="text-align:left">
     <form v-on:submit.prevent>
       Find cuisine:
-      <div class="form-row">
-        <label for="name" class="col-md-12 label">Name:</label>
-        <div class="col-md-12">
-        <input
-          v-model="form.name"
-          type="text"
-          class="form-control"
-          id="name"
-          aria-describedby="name"
-          placeholder="Enter name"
-        >
-        </div>
-      </div>
+      <b-form-group label-cols-sm="3" label="Name" class="mb-0">
+        <b-input-group>
+          <b-form-input
+            v-model="form.name"
+            type="text"
+            placeholder="Foody place name"
+          />
+        </b-input-group>
+      </b-form-group>
 
-      <div class="form-row">
-        <label for="city" class="col-md-12 label">City:</label>
-        <div class="col-md-12">
-          <input
-            v-model="form.city"
-            type="text"
-            class="form-control"
-            id="city"
-            aria-describedby="city"
-            placeholder="Enter city"
-          >
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label for="street" class="col-md-12 label">Address:</label>
-        <div class="col-md-8">
-          <input v-model="form.street"
-            type="text"
-            class="form-control"
-            id="street"
-            aria-describedby="street"
-            placeholder="Street name"
-          >
-        </div>
-        <div class="col-md-4">
-          <input
-            v-model="form.streetNo"
-            type="text"
-            class="form-control"
-            id="streetNo"
-            aria-describedby="streetNo"
-            placeholder="Number"
-          >
-        </div>
-      </div>
+      <Address
+        :address="form.address"
+        @update:address="form.address = $event"
+      />
 
       <div class="form-row">
         <label class="col-md-12 label" for="type">Origin:</label>
@@ -89,15 +53,19 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import Address from '@/components/parts/Address'
+
 export default {
   data () {
     return {
       form: {
         selectedOptions: [],
         name: '',
-        city: '',
-        street: '',
-        streetNo: null,
+        address: {
+          city: '',
+          street: '',
+          streetNo: null
+        },
         ratingRange: [0, 10]
       }
     }
@@ -137,6 +105,10 @@ export default {
 
   created () {
     this.$emit('update:filterCriteria', this.formatFilter())
+  },
+
+  components: {
+    Address
   },
 
   name: 'FilterCatering'

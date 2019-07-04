@@ -24,7 +24,7 @@
 
           <!-- address component is repeating -->
           <Address
-            :address="this.catering.address"
+            :address="catering.address"
             @update:address="updateAddress($event)"
           />
 
