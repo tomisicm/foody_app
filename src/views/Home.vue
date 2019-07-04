@@ -1,7 +1,7 @@
 <template>
-  <b-container>
+  <b-container fluid>
     <b-row>
-      <b-col cols="4">
+      <b-col md="4">
         <FilterObjects
           :perPage="perPage"
           :cuisine="cuisine"
@@ -10,7 +10,7 @@
         />
       </b-col>
 
-      <b-col cols="8">
+      <b-col md="8">
         <b-row>
           <div cols="4">
             <b-dropdown
