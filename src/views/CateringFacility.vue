@@ -24,6 +24,7 @@
 
       <b-card no-body class="my-4 w-100">
         <b-tabs card fill class="nav-item">
+          <!-- TODO: ReviewSection component -->
           <b-tab title="Reviews" active>
 
             <List
@@ -34,7 +35,7 @@
               </template>
             </List>
 
-            <!-- no reviews case -->
+            <!-- TODO: no reviews case -->
             <div cols="12">
               <b-pagination
                 v-model="reviews.page"
@@ -48,37 +49,7 @@
 
           <b-tab title="Comments">
 
-            <NewComment>
-              <template v-slot:input-field>
-                <b-form-textarea
-                  v-model="body"
-                  placeholder="New comment..."
-                  rows="1"
-                  max-rows="2"
-                  :style="{ overflowY: 'none' }"
-                />
-              </template>
-            </NewComment>
-
-            <List
-              class="my-1"
-              :items="comments.docs"
-            >
-              <template v-slot:listitem="{ item }">
-                <SingleComment
-                  :item="item"
-                />
-              </template>
-            </List>
-
-            <div cols="12">
-              <b-pagination
-                v-model="comments.page"
-                :total-rows="comments.total"
-                :per-page="comments.limit"
-                @change="updateCommentsPage($event)"
-              />
-            </div>
+            <CommentSection />
 
           </b-tab>
         </b-tabs>
@@ -97,8 +68,8 @@ import { mapGetters, mapActions } from 'vuex'
 import baseCarousel from '@/components/base/baseCarousel'
 import List from '@/components/base/List'
 import SingleReview from '@/components/SingleReview'
-import SingleComment from '@/components/SingleComment'
-import NewComment from '@/components/NewComment'
+
+import CommentSection from '@/components/CommentSection'
 
 export default {
   data () {
@@ -132,36 +103,21 @@ export default {
       }
     },
 
-    getCommentParams () {
-      return this.params
-    },
-
     updateReviewsPage (event) {
       this.reviews.page = event
       this.getReviews()
-    },
-
-    updateCommentsPage (event) {
-      this.changePage(event)
-      this.getCommentsByItemId({ itemId: this.$route.params.id, params: this.getCommentParams() })
     }
-  },
-
-  computed: {
-    ...mapGetters('commentStore', ['comments', 'params'])
   },
 
   created () {
     this.getCateringData()
     this.getReviews()
-
-    this.getCommentsByItemId({ itemId: this.$route.params.id, params: this.getCommentParams() })
   },
 
   components: {
-    baseCarousel, List, SingleReview, SingleComment, NewComment
+    baseCarousel, List, SingleReview, CommentSection
   },
 
-  name: 'CateringFacility'
+  name: 'Catering'
 }
 </script>
