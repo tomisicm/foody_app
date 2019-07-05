@@ -13,10 +13,16 @@
         <b-row>
           <b-col cols="auto" class="mr-auto"/>
           <b-col cols="auto">
-            <b-button variant="outline-success">Cancel</b-button>
+            <b-button
+              @click="handleCancel"
+              variant="outline-success"
+            >Cancel</b-button>
           </b-col>
           <b-col cols="auto">
-            <b-button variant="success">Confirm</b-button>
+            <b-button
+              @click="handleConfirm"
+              variant="success"
+            >Confirm</b-button>
           </b-col>
         </b-row>
       </slot>
@@ -30,6 +36,16 @@ export default {
     title: {
       type: String,
       default: 'Confirm Action'
+    }
+  },
+
+  methods: {
+    handleCancel () {
+      this.$emit('confirmAction')
+    },
+
+    handleConfirm () {
+      this.$emit('confirmCancel')
     }
   },
 

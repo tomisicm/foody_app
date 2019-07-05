@@ -1,6 +1,8 @@
 <template>
 <div>
-  <AppModal>
+  <AppModal
+    @confirmAction="removeItem"
+  >
     <template v-slot:body>
       <div>Are you sure you want to delete this comment?</div>
     </template>
