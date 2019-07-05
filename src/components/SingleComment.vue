@@ -33,7 +33,7 @@
       <template v-if="!inEditMode">
         <b-button
           v-if="isCommentDeletable"
-          @click="removeItem"
+          @click="handleDelete"
           variant="outline-primary"
           size="sm">
           <font-awesome-icon icon="trash" />
@@ -72,6 +72,7 @@
     <div v-for="item in item.thread" :key="item._id">
       <SingleComment class="ml-3"
         :item="item"
+        :removeItem="removeItem"
       />
     </div>
 
@@ -96,6 +97,10 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    removeItem: {
+      type: Function,
+      required: true
     }
   },
 
@@ -108,12 +113,9 @@ export default {
 
   methods: {
     ...mapActions('commentStore', ['deleteComment', 'editComment']),
-    async removeItem () {
-      this.$modal.show('confirm-action', {})
-      // modal confirm =>
-      // await this.deleteComment(this.item._id)
-      // else
-      // this.$modal.hide
+
+    handleDelete () {
+      this.removeItem(this.item)
     },
 
     editItem () {

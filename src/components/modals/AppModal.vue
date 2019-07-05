@@ -41,11 +41,11 @@ export default {
 
   methods: {
     handleCancel () {
-      this.$emit('confirmAction')
+      this.$emit('cancelAction')
     },
 
     handleConfirm () {
-      this.$emit('confirmCancel')
+      this.$emit('confirmAction')
     }
   },
 

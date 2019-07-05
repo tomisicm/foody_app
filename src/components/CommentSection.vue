@@ -2,6 +2,7 @@
 <div>
   <AppModal
     @confirmAction="removeItem"
+    @cancelAction="$modal.hide('confirm-action', {})"
   >
     <template v-slot:body>
       <div>Are you sure you want to delete this comment?</div>
@@ -28,6 +29,7 @@
     <template v-slot:listitem="{ item }">
       <SingleComment
         :item="item"
+        :removeItem="removeItem"
       />
     </template>
   </List>
@@ -70,6 +72,21 @@ export default {
 
     getCommentParams () {
       return this.params
+    },
+
+    removeItem (item) {
+      const itemToBeRemoved = item
+      this.$modal.show('confirm-action', {})
+      console.log(item)
+      
+      // await this.deleteComment(this.item._id)
+      // else
+      // this.$modal.hide
+    },
+
+    handleCancel () {
+      console.log('cancel')
+      this.$modal.hide('confirm-action', {})
     }
   },
 
