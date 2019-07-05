@@ -1,6 +1,11 @@
 <template>
   <div>
-    <b-card v-for="item in items"  v-bind:key="item._id" no-body class="overflow-hidden">
+    <b-card
+      v-for="item in items"
+      v-bind:key="item._id"
+      no-body
+      class="overflow-hidden"
+    >
 
       <slot
         name="listitem"
