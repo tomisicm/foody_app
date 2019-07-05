@@ -1,5 +1,11 @@
 <template>
 <div>
+  <AppModal>
+    <template v-slot:body>
+      <div>Are you sure you want to delete this comment?</div>
+    </template>
+  </AppModal>
+
   <NewComment>
     <template v-slot:input-field>
       <b-form-textarea
@@ -39,6 +45,8 @@
 
 import { mapGetters, mapActions } from 'vuex'
 
+import AppModal from '@/components/modals/AppModal'
+
 import List from '@/components/base/List'
 import SingleComment from '@/components/SingleComment'
 import NewComment from '@/components/NewComment'
@@ -72,7 +80,7 @@ export default {
   },
 
   components: {
-    List, SingleComment, NewComment
+    List, SingleComment, NewComment, AppModal
   }
 }
 </script>
