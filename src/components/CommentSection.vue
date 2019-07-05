@@ -72,7 +72,7 @@ export default {
     getCommentParams () {
       return this.params
     },
-    
+
     /* * * TODO: REFACTOR * * */
     getItemToBeRemoved (item) {
       this.$modal.show('confirm-action', {})
