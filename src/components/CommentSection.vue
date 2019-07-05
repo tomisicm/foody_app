@@ -29,7 +29,7 @@
     <template v-slot:listitem="{ item }">
       <SingleComment
         :item="item"
-        :removeItem="removeItem"
+        :removeItem="getItemToBeRemoved"
       />
     </template>
   </List>
@@ -46,7 +46,6 @@
 </template>
 
 <script>
-
 import { mapGetters, mapActions } from 'vuex'
 
 import AppModal from '@/components/modals/AppModal'
@@ -58,12 +57,12 @@ import NewComment from '@/components/NewComment'
 export default {
   data () {
     return {
-
+      itemToBeRemoved: null
     }
   },
 
   methods: {
-    ...mapActions('commentStore', ['getCommentsByItemId', 'changePage']),
+    ...mapActions('commentStore', ['getCommentsByItemId', 'changePage', 'deleteComment']),
 
     updateCommentsPage (event) {
       this.changePage(event)
@@ -73,19 +72,15 @@ export default {
     getCommentParams () {
       return this.params
     },
-
-    removeItem (item) {
-      const itemToBeRemoved = item
+    
+    /* * * TODO: REFACTOR * * */
+    getItemToBeRemoved (item) {
       this.$modal.show('confirm-action', {})
-      console.log(item)
-      
-      // await this.deleteComment(this.item._id)
-      // else
-      // this.$modal.hide
+      this.itemToBeRemoved = item._id
     },
-
-    handleCancel () {
-      console.log('cancel')
+    /* * * TODO: REFACTOR * * */
+    async removeItem () {
+      await this.deleteComment(this.itemToBeRemoved)
       this.$modal.hide('confirm-action', {})
     }
   },
