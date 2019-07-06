@@ -1,11 +1,11 @@
 <template>
-  <b-card>
+  <b-card class="mb-1">
     <b-row class="text-size-11">
       <b-col md="1" class="d-none d-md-block">
         <b-img width="50" height="50" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
       </b-col>
 
-      <b-col md="9" class="comment">
+      <b-col md="9" sm="8" class="comment">
         <b-card-text
           v-if="!inEditMode"
           class="my-1 mx-1 item-text"
@@ -32,7 +32,7 @@
         />
 
       </b-col>
-      <b-col md="2" v-if="isSignedIn">
+      <b-col md="2" sm="4" v-if="isSignedIn">
 
         <template v-if="!inEditMode">
           <b-button
