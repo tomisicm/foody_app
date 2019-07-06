@@ -2,7 +2,7 @@
 <div>
   <b-row>
     <b-col cols="12" md="1">
-      <b-img width="80" height="80" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
+      <b-img width="50" height="50" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
     </b-col>
 
     <b-col cols="12" md="9">
