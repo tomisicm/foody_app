@@ -18,7 +18,7 @@
           </b-row>
 
           <b-row class="my-1 text-size-10 text-muted">
-          {{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}
+            {{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}
           </b-row>
         </b-container>
         </b-card-text>
