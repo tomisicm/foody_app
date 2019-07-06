@@ -1,73 +1,70 @@
 <template>
-<div>
-  <b-row>
-    <b-col cols="12" md="1">
-      <b-img width="50" height="50" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
-    </b-col>
-
-    <b-col cols="12" md="9">
-
-      <b-card-text
-        v-if="!inEditMode"
-        class="my-1 mx-1 item-text"
-        rows="3"
-        max-rows="4"
-      >
-        {{item && item.body}}
-      </b-card-text>
-
-      <b-form-textarea
-        v-else
-        v-model="item.body"
-        rows="2"
-        max-rows="4"
-      ></b-form-textarea>
-
-      <b-card-text
-        v-if="!inEditMode"
-        class="my-1 mx-1 item-text"
-      >{{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
-    </b-col>
-    <b-col cols="12" md="2" v-if="isSignedIn">
-
-      <template v-if="!inEditMode">
-        <b-button
-          v-if="isCommentDeletable"
-          @click="handleDelete"
-          variant="outline-primary"
-          size="sm">
-          <font-awesome-icon icon="trash" />
-        </b-button>
-
-        <b-button
-          v-if="isCommentEditable"
-          @click="editItem"
-          variant="outline-primary"
-          size="sm">
-          <font-awesome-icon icon="edit" />
-        </b-button>
-
-        <b-button
-          v-if="isCommentFurtherReplyable"
-          @click="replayTo"
-          variant="outline-primary"
-          size="sm">
-          <font-awesome-icon icon="reply" />
-        </b-button>
-      </template>
-
-      <template v-else>
-        <b-button
-          @click="saveItem"
-          variant="outline-primary"
-          size="sm">
-          <font-awesome-icon icon="save" />
-        </b-button>
-      </template>
-
-    </b-col>
-  </b-row>
   <div>
+    <b-row>
+      <b-col cols="12" md="1">
+        <b-img width="50" height="50" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
+      </b-col>
+
+      <b-col cols="12" md="9">
+        <b-card-text
+          v-if="!inEditMode"
+          class="my-1 mx-1 item-text"
+          rows="3"
+          max-rows="4"
+        >
+          {{item && item.body}}
+        </b-card-text>
+
+        <b-form-textarea
+          v-else
+          v-model="item.body"
+          rows="2"
+          max-rows="4"
+        ></b-form-textarea>
+
+        <b-card-text
+          v-if="!inEditMode"
+          class="my-1 mx-1 item-text"
+        >{{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
+      </b-col>
+      <b-col cols="12" md="2" v-if="isSignedIn">
+
+        <template v-if="!inEditMode">
+          <b-button
+            v-if="isCommentDeletable"
+            @click="handleDelete"
+            variant="outline-primary"
+            size="sm">
+            <font-awesome-icon icon="trash" />
+          </b-button>
+
+          <b-button
+            v-if="isCommentEditable"
+            @click="editItem"
+            variant="outline-primary"
+            size="sm">
+            <font-awesome-icon icon="edit" />
+          </b-button>
+
+          <b-button
+            v-if="isCommentFurtherReplyable"
+            @click="replayTo"
+            variant="outline-primary"
+            size="sm">
+            <font-awesome-icon icon="reply" />
+          </b-button>
+        </template>
+
+        <template v-else>
+          <b-button
+            @click="saveItem"
+            variant="outline-primary"
+            size="sm">
+            <font-awesome-icon icon="save" />
+          </b-button>
+        </template>
+      </b-col>
+    </b-row>
 
     <div v-for="item in item.thread" :key="item._id">
       <SingleComment class="ml-3"
@@ -81,8 +78,8 @@
         <NewComment v-if="reply" :reply="reply"/>
       </b-col>
     </b-row>
+
   </div>
-</div>
 </template>
 
 <script>
