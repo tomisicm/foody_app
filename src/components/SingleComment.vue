@@ -1,5 +1,5 @@
 <template>
-  <b-card class="mb-1">
+  <b-card class="mb-1 mr-1">
     <b-row class="text-size-11">
       <b-col md="1" class="d-none d-md-block">
         <b-img width="50" height="50" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
