@@ -14,6 +14,7 @@
         <b-btn
           v-if="body"
           class="mr-auto my-2"
+          variant="primary"
           @click="handleCreateComment"
         >
           Send
