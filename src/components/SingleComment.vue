@@ -12,8 +12,15 @@
           rows="3"
           max-rows="4"
         >
+        
           {{item && item.body}}
+
         </b-card-text>
+
+        <b-card-text
+          v-if="!inEditMode"
+          class="my-1 mx-1 text-size-10"
+        >{{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
 
         <b-form-textarea
           v-else
@@ -23,10 +30,6 @@
           class="mx-2"
         />
 
-        <b-card-text
-          v-if="!inEditMode"
-          class="my-1 mx-1 text-size-10"
-        >{{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
       </b-col>
       <b-col md="2" v-if="isSignedIn">
 
