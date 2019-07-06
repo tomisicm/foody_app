@@ -12,14 +12,16 @@
           rows="3"
           max-rows="4"
         >
-          {{item && item.body}}
+        <b-container>
+          <b-row>
+            {{item && item.body}}
+          </b-row>
 
+          <b-row class="my-1 text-size-10 text-muted">
+          {{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}
+          </b-row>
+        </b-container>
         </b-card-text>
-
-        <b-card-text
-          v-if="!inEditMode"
-          class="my-1 mx-1 text-size-10"
-        >{{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
 
         <b-form-textarea
           v-else
