@@ -12,7 +12,6 @@
           rows="3"
           max-rows="4"
         >
-        
           {{item && item.body}}
 
         </b-card-text>
