@@ -38,6 +38,6 @@ export default {
   height: 50px;
 }
 .item-text {
-  text-align:left
+  text-align:left;
 }
 </style>

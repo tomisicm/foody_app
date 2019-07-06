@@ -218,14 +218,6 @@ export default {
   padding: 0.5rem !important;
 } */
 
-.text-size-11 {
-  font-size: 11pt;
-}
-
-.text-size-10 {
-  font-size: 10pt !important;
-}
-
 .alert.light {
   padding: .5rem .25rem;
   margin-bottom: 0rem;
