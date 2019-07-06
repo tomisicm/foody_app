@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <b-card>
     <b-row>
       <b-col cols="12" md="1">
         <b-img width="50" height="50" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
@@ -20,7 +20,8 @@
           v-model="item.body"
           rows="2"
           max-rows="4"
-        ></b-form-textarea>
+          class="mx-2"
+        />
 
         <b-card-text
           v-if="!inEditMode"
@@ -79,7 +80,7 @@
       </b-col>
     </b-row>
 
-  </div>
+  </b-card>
 </template>
 
 <script>
@@ -154,3 +155,9 @@ export default {
   name: 'SingleComment'
 }
 </script>
+
+<style scoped>
+.card-body {
+  padding: 0%;
+}
+</style>

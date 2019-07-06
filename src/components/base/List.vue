@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-card
+  <div v-if="items.length">
+    <div
       v-for="item in items"
       v-bind:key="item._id"
       no-body
@@ -12,7 +12,7 @@
         :item="item"
       />
 
-    </b-card>
+    </div>
   </div>
 </template>
 
