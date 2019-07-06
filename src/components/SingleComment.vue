@@ -1,7 +1,7 @@
 <template>
   <b-card>
     <b-row class="text-size-11">
-      <b-col cols="12" md="1">
+      <b-col md="1" class="d-none d-md-block">
         <b-img width="50" height="50" class="avatar my-1 mx-1" src="https://picsum.photos/150/150/?image=20"></b-img>
       </b-col>
 
