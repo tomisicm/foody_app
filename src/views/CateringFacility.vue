@@ -24,26 +24,10 @@
 
       <b-card no-body class="my-4 w-100">
         <b-tabs card fill class="nav-item">
-          <!-- TODO: ReviewSection component -->
+
           <b-tab title="Reviews" active>
 
-            <List
-              :items="reviews.docs"
-            >
-              <template v-slot:listitem="{item}">
-                <SingleReview :item="item"/>
-              </template>
-            </List>
-
-            <!-- TODO: no reviews case -->
-            <div cols="12">
-              <b-pagination
-                v-model="reviews.page"
-                :total-rows="reviews.total"
-                :per-page="reviews.limit"
-                @change="updateReviewsPage($event)"
-              />
-            </div>
+            <ReviewSection />
 
           </b-tab>
 
@@ -61,13 +45,11 @@
 
 <script>
 import cateringService from '@/utils/services/catering-service'
-import reviewService from '@/utils/services/review-service'
 
 import baseCarousel from '@/components/base/baseCarousel'
-import List from '@/components/base/List'
-import SingleReview from '@/components/SingleReview'
 
 import CommentSection from '@/components/CommentSection'
+import ReviewSection from '@/components/ReviewSection'
 
 export default {
   data () {
@@ -85,33 +67,16 @@ export default {
     async getCateringData () {
       const { data } = await cateringService.getCatering(this.$route.params.id)
       this.cateringFacility = data
-    },
-
-    async getReviews () {
-      const { data } = await reviewService.getReviewsByItemId(this.$route.params.id, this.getReviewParams())
-      this.reviews = data
-    },
-
-    getReviewParams () {
-      return {
-        page: this.reviews.page,
-        perPage: this.reviews.limit
-      }
-    },
-
-    updateReviewsPage (event) {
-      this.reviews.page = event
-      this.getReviews()
     }
+
   },
 
   created () {
     this.getCateringData()
-    this.getReviews()
   },
 
   components: {
-    baseCarousel, List, SingleReview, CommentSection
+    baseCarousel, CommentSection, ReviewSection
   },
 
   name: 'Catering'
