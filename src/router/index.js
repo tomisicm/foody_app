@@ -8,7 +8,7 @@ import AppRegister from '../views/AppRegister'
 import Profile from '../views/Profile'
 
 import Home from '../views/Home'
-import Catering from '../views/Catering'
+import CateringView from '../views/CateringView'
 import CateringForm from '../components/CateringForm'
 import CateringFacility from '../views/CateringFacility'
 
@@ -75,10 +75,10 @@ const router = new Router({
     },
     {
       path: '/catering',
-      component: Catering,
+      component: CateringView,
       children: [
         {
-          name: 'newcatering',
+          name: 'addcatering',
           path: '/catering/add',
           component: CateringForm,
           meta: {
