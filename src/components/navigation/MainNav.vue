@@ -30,7 +30,7 @@
             right
           >
             <b-dropdown-item :to="{ name: 'profile'}">Profile Settings</b-dropdown-item>
-            <b-dropdown-item>Signout</b-dropdown-item>
+            <b-dropdown-item @click="handleLogout">Signout</b-dropdown-item>
           </b-nav-item-dropdown>
         </template>
       </b-nav>
@@ -40,11 +40,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: {
     ...mapGetters('authStore', ['isSignedIn'])
+  },
+
+  methods: {
+    ...mapActions('authStore', ['logout']),
+
+    async handleLogout () {
+      if (this.$route.meta.isAuthenticated) {
+        await this.logout()
+        this.$router.push('home')
+      }
+      await this.logout()
+    }
   },
 
   name: 'Main_Navigation_Bar'

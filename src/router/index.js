@@ -51,7 +51,7 @@ const router = new Router({
           path: 'profile',
           component: Profile,
           meta: {
-            isAuthenticated: false
+            isAuthenticated: true
           }
         }
       ]
