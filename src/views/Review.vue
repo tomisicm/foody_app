@@ -9,6 +9,12 @@
       </div>
     </b-row>
 
+    <!-- TODO:
+      <b-row>
+        Admin Lock, Delete, fileds
+      </b-row>
+     -->
+
     <b-form>
       <b-row>
         <b-col class="review__sectrion ml-1 mb-1 mt-4">
