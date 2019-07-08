@@ -15,7 +15,7 @@
 
     <Address
       :address="form.address"
-      @update:address="form.address = $event"
+      @update:address="updateAddress($event)"
     />
 
     <b-form-group label-cols-sm="3" label="Origin" class="mb-0">
@@ -76,14 +76,14 @@ export default {
     formatFilter () {
       return {
         name: this.form.name,
-        address: {
-          city: this.form.city,
-          street: this.form.street,
-          streetNo: this.form.streetNo
-        },
+        address: this.form.address,
         ratingRange: this.form.ratingRange,
         cuisine: this.form.selectedOptions.map(c => c.name)
       }
+    },
+
+    updateAddress (address) {
+      this.form.address = address
     },
 
     onSearch () {
