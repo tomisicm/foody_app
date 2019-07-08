@@ -29,22 +29,22 @@
         ><font-awesome-icon icon="thumbs-up" /></b-button>
 
         <template v-if="isSignedIn">
-        <template v-if="isAdmin">
-          <b-button
-            v-if="!item.locked"
-            @click="handleLock"
-            variant="outline-success"
-            size="sm">
-            <font-awesome-icon icon="lock" />
-          </b-button>
-          <b-button
-            v-if="item.locked"
-            @click="handleLock"
-            variant="outline-success"
-            size="sm">
-            <font-awesome-icon icon="lock-open" />
-          </b-button>
-        </template>
+          <template v-if="isAdmin">
+            <b-button
+              v-if="!item.locked"
+              @click="handleLock"
+              variant="outline-success"
+              size="sm">
+              <font-awesome-icon icon="lock" />
+            </b-button>
+            <b-button
+              v-if="item.locked"
+              @click="handleLock"
+              variant="outline-success"
+              size="sm">
+              <font-awesome-icon icon="lock-open" />
+            </b-button>
+          </template>
         </template>
       </b-col>
 

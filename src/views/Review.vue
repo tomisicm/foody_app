@@ -17,7 +17,10 @@
             2323 <b-button variant="success" class="ml-2"><font-awesome-icon icon="thumbs-up" /></b-button>
           </template>
           <template>
-            <b-button variant="success" class="ml-2">Lock</b-button>
+            <b-button variant="success" class="ml-2">
+              <font-awesome-icon :icon="review.locked ? 'lock' : 'lock-open'" />
+              {{review.locked ? 'Lock' : 'Unlock' }}
+            </b-button>
             <b-button variant="success" :pressed=true class="ml-2">Approve</b-button>
           </template>
         </b-col>
