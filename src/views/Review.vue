@@ -17,7 +17,11 @@
             2323 <b-button variant="success" class="ml-2"><font-awesome-icon icon="thumbs-up" /></b-button>
           </template>
           <template>
-            <b-button variant="success" class="ml-2">
+            <b-button
+              @click="handleLock"
+              variant="success"
+              class="ml-2"
+            >
               <font-awesome-icon :icon="review.locked ? 'lock' : 'lock-open'" />
               {{review.locked ? 'Lock' : 'Unlock' }}
             </b-button>
@@ -193,6 +197,10 @@ export default {
     },
     handleBack () {
       window.history.back()
+    },
+    async handleLock () {
+      await reviewService.changeReviewStatus(this.review._id, { locked: this.review.locked })
+      this.review.locked = !this.review.locked
     }
   },
 
