@@ -44,8 +44,8 @@
     </b-form-group>
 
     <div class="form-row my-4">
-      <button class="btn btn-primary mr-3" type="submit" @click="onSearch">Search</button>
-      <button class="btn btn-outline-primary">Clear Filters</button>
+      <button @click="onSearch" class="btn btn-primary mr-3" type="submit" >Search</button>
+      <button @click="restartFilter" class="btn btn-outline-primary">Clear Filters</button>
     </div>
     </b-card>
   </form>
@@ -88,6 +88,19 @@ export default {
 
     onSearch () {
       this.$emit('onSearch')
+    },
+
+    restartFilter () {
+      this.form = {
+        selectedOptions: [],
+        name: '',
+        address: {
+          city: '',
+          street: '',
+          streetNo: null
+        },
+        ratingRange: [0, 10]
+      }
     }
   },
 
