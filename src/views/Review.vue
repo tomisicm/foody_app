@@ -14,7 +14,10 @@
         <b-col cols="auto"></b-col>
         <b-col md="4" class="ml-auto">
           <template>
-            2323 <b-button variant="success" class="ml-2"><font-awesome-icon icon="thumbs-up" /></b-button>
+            <b-button-group>
+            <b-button :disabled="true" variant="outline-success" class="ml-2">2323 </b-button>
+            <b-button variant="success"><font-awesome-icon icon="thumbs-up" /></b-button>
+            </b-button-group>
           </template>
           <template>
             <b-button
