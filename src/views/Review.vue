@@ -11,30 +11,34 @@
 
     <b-form>
       <b-row>
-        <b-col class="review__sectrion ml-4 mt-4">
-          <b-row>Average rating: {{review.avgRating}}</b-row>
-          <b-row>Is review approved? {{!!review.approved}}</b-row>
-          <b-row v-if="review.item">
-            <span>
-              Catering: <b-link :to="{ name: 'catering', params: { id: review.item && review.item._id } }">
-                {{review.item && review.item.name}}</b-link>
-            </span>
-          </b-row>
-          <b-row>Address: {{ review.item && review.item.address.city }}, {{ review.item && review.item.address.street }} at {{ review.item && review.item.address.streetNo }}</b-row>
-          <b-row>Cuisine: {{review.item && review.item.cuisine.name }}</b-row>
+        <b-col class="review__sectrion ml-1 mb-1 mt-4">
+          <b-card>
+            <b-row class="ml-1">Average rating: {{review.avgRating}}</b-row>
+            <b-row class="ml-1">Is review approved? {{!!review.approved}}</b-row>
+            <b-row class="ml-1" v-if="review.item">
+              <span>
+                Catering: <b-link :to="{ name: 'catering', params: { id: review.item && review.item._id } }">
+                  {{review.item && review.item.name}}</b-link>
+              </span>
+            </b-row>
+            <b-row class="ml-1">Address: {{ review.item && review.item.address.city }}, {{ review.item && review.item.address.street }} at {{ review.item && review.item.address.streetNo }}</b-row>
+            <b-row class="ml-1">Cuisine: {{review.item && review.item.cuisine.name }}</b-row>
+          </b-card>
         </b-col>
 
-      <b-col class="reviewer__sectrion mb-2">
-        <b-row>
-        <b-col class="mt-4">
-          <b-row class="ml-4">By: <strong>{{review.createdBy && review.createdBy.name}}</strong></b-row>
-          <b-row class="ml-4">Profession: {{ review.createdBy && review.createdBy.profile && review.createdBy.profile.profession}}</b-row>
+        <b-col class="reviewer__sectrion ml-1 mb-1 mt-4">
+          <b-card>
+            <b-row>
+              <b-col class="mt-4">
+                <b-row class="ml-1">By: <strong>{{review.createdBy && review.createdBy.name}}</strong></b-row>
+                <b-row class="ml-1">Profession: {{ review.createdBy && review.createdBy.profile && review.createdBy.profile.profession}}</b-row>
+              </b-col>
+              <b-col>
+                <b-img width="120" height="120" :src="img" />
+              </b-col>
+            </b-row>
+          </b-card>
         </b-col>
-        <b-col>
-          <b-img width="120" height="120" :src="img" />
-        </b-col>
-        </b-row>
-      </b-col>
       </b-row>
 
       <div role="tablist" class="mx-1">
