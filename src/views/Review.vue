@@ -9,17 +9,17 @@
       </div>
     </b-row>
 
-    <b-container v-if="isSignedIn" fluid class="mt-2">
+    <b-container fluid class="mt-2">
       <b-row>
         <b-col cols="auto"></b-col>
         <b-col md="4" class="ml-auto">
-          <template>
+          <template >
             <b-button-group>
             <b-button :disabled="true" variant="outline-success" class="ml-2">2323 </b-button>
-            <b-button variant="success"><font-awesome-icon icon="thumbs-up" /></b-button>
+            <b-button :disabled="!isSignedIn" variant="success"><font-awesome-icon icon="thumbs-up" /></b-button>
             </b-button-group>
           </template>
-          <template>
+          <template v-if="isSignedIn">
             <b-button
               @click="handleLock"
               variant="success"
