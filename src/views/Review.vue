@@ -22,8 +22,8 @@
               variant="success"
               class="ml-2"
             >
-              <font-awesome-icon :icon="review.locked ? 'lock' : 'lock-open'" />
-              {{review.locked ? 'Lock' : 'Unlock' }}
+              <font-awesome-icon :icon="!review.locked ? 'lock' : 'lock-open'" />
+              {{!review.locked ? 'Lock' : 'Unlock' }}
             </b-button>
             <b-button variant="success" :pressed=true class="ml-2">Approve</b-button>
           </template>
@@ -199,7 +199,7 @@ export default {
       window.history.back()
     },
     async handleLock () {
-      await reviewService.changeReviewStatus(this.review._id, { locked: this.review.locked })
+      await reviewService.changeReviewStatus(this.review._id, { locked: !this.review.locked })
       this.review.locked = !this.review.locked
     }
   },
