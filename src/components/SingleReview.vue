@@ -9,34 +9,45 @@
         <b-card-text
           class="my-1 mx-1 item-text"
         >
-          {{item && item.title}}
+          <b-container>
+            <b-row class="ml-1">{{item && item.title}}</b-row>
+            <b-row
+              class="my-1 mx-1 text-size-10 text-muted"
+            >
+              By {{item && item.createdBy && item.createdBy.name}}, {{item && item.updatedAt | formatDate('d MMM, YYYY')}}
+            </b-row>
+          </b-container>
         </b-card-text>
-
-        <b-card-text
-          class="my-1 mx-1 item-text"
-        >By {{item && item.createdBy && item.createdBy.name}}, {{item && item.createdAt | formatDate('d MMM, YYYY')}}</b-card-text>
       </b-col>
 
-      <b-col cols="12" md="3" v-if="isSignedIn">
+      <b-col md="3">
+        <!-- TODO: wire this thing up -->
+        <b-button
+          v-if="item.likes"
+          variant="outline-success"
+          size="sm"
+        ><font-awesome-icon icon="thumbs-up" /></b-button>
 
+        <template v-if="isSignedIn">
         <template v-if="isAdmin">
           <b-button
             v-if="!item.locked"
             @click="handleLock"
-            variant="outline-secondary"
+            variant="outline-success"
             size="sm">
             <font-awesome-icon icon="lock" />
           </b-button>
-
           <b-button
             v-if="item.locked"
             @click="handleLock"
-            variant="outline-secondary"
+            variant="outline-success"
             size="sm">
             <font-awesome-icon icon="lock-open" />
           </b-button>
         </template>
+        </template>
       </b-col>
+
     </b-row>
   </b-card>
 </template>
