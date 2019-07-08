@@ -37,7 +37,7 @@
                 </b-dropdown-item>
             </b-dropdown>
           </div>
-          <div v-if="items.length > 1" cols="8">
+          <div v-if="items.length >= 1 && pages > 1" cols="8">
             <b-pagination
               v-model="page"
               :total-rows="total"
