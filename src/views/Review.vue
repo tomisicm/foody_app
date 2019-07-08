@@ -25,7 +25,9 @@
               <font-awesome-icon :icon="!review.locked ? 'lock' : 'lock-open'" />
               {{!review.locked ? 'Lock' : 'Unlock' }}
             </b-button>
-            <b-button variant="success" :pressed=true class="ml-2">Approve</b-button>
+            <b-button variant="success" :pressed="review.approved" :disabled="review.approved" class="ml-2">
+              {{review.approved ? 'Approved' : 'Approve' }}
+            </b-button>
           </template>
         </b-col>
       </b-row>
