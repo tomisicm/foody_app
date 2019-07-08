@@ -1,11 +1,10 @@
 <template>
   <b-container fluid>
-    <b-row>
-      <b-col md="4" order="2" order-sm="2" order-md="1">
+    <b-row class="d-md-block">
+      <b-col md="4" order="2" order-sm="2" class="float-left">
         <b-row class="ml-1 mr-1">
         <FilterObjects
           :perPage="perPage"
-          :cuisine="cuisine"
           @update:filterCriteria="updateFilter($event)"
           @onSearch="handleSearch"
         />
@@ -13,14 +12,14 @@
       </b-col>
 
       <!-- TODO: if user is logged in -->
-      <b-col md="8" order="1" order-sm="1" class="h-25">
+      <b-col md="8" order="1" order-sm="1" class="h-25 float-right">
         <b-nav pills class="my-2 ml-1">
           <b-nav-item active>All Foody Places</b-nav-item>
           <b-nav-item :to="{ name: 'addcatering' }">New Foody Place</b-nav-item>
         </b-nav>
       </b-col>
 
-      <b-col md="8" order="3" order-sm="3">
+      <b-col md="8" order="3" order-sm="3" class="float-right">
         <b-row class="ml-1">
           <div cols="4">
             <b-dropdown
