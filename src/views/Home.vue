@@ -2,15 +2,26 @@
   <b-container fluid>
     <b-row>
       <b-col md="4">
+        <b-row class="ml-1 mr-1">
         <FilterObjects
           :perPage="perPage"
           :cuisine="cuisine"
           @update:filterCriteria="updateFilter($event)"
           @onSearch="handleSearch"
         />
+        </b-row>
       </b-col>
 
       <b-col md="8">
+
+        <!-- TODO: if user is logged in -->
+        <b-row class="mb-2">
+          <b-nav pills>
+            <b-nav-item active>All Foody Places</b-nav-item>
+            <b-nav-item :to="{ name: 'addcatering' }">New Foody Place</b-nav-item>
+          </b-nav>
+        </b-row>
+
         <b-row>
           <div cols="4">
             <b-dropdown
