@@ -9,11 +9,20 @@
       </div>
     </b-row>
 
-    <!-- TODO:
+    <b-container v-if="isSignedIn" fluid class="mt-2">
       <b-row>
-        Admin Approve, Lock fileds
+        <b-col cols="auto"></b-col>
+        <b-col md="4" class="ml-auto">
+          <template>
+            2323 <b-button variant="success" class="ml-2"><font-awesome-icon icon="thumbs-up" /></b-button>
+          </template>
+          <template>
+            <b-button variant="success" class="ml-2">Lock</b-button>
+            <b-button variant="success" :pressed=true class="ml-2">Approve</b-button>
+          </template>
+        </b-col>
       </b-row>
-     -->
+    </b-container>
 
     <b-form>
       <b-row class="text-size-11">
@@ -151,7 +160,9 @@
     </b-form>
   </b-container>
 </template>
+
 <script>
+import { mapGetters } from 'vuex'
 import reviewService from '@/utils/services/review-service'
 
 import StarRating from 'vue-star-rating'
@@ -183,6 +194,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters('authStore', ['isSignedIn']),
     img () {
       return this.review.createdBy && 'http://localhost:3000/' + this.review.createdBy.profile.avatar
     }
