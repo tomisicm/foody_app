@@ -33,7 +33,7 @@
         />
 
       </b-col>
-      <b-col md="2" sm="4" v-if="isSignedIn">
+      <b-col md="2" sm="4" v-if="isSignedIn" align-h="center">
 
         <template v-if="!inEditMode">
           <b-button
@@ -69,6 +69,7 @@
             <font-awesome-icon icon="save" />
           </b-button>
         </template>
+
       </b-col>
     </b-row>
 
