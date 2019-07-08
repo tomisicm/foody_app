@@ -9,7 +9,7 @@
         <b-card-text
           class="my-1 mx-1 item-text"
         >
-          <b-container>
+          <b-container @click="handleClick">
             <b-row class="ml-1">{{item && item.title}}</b-row>
             <b-row
               class="my-1 mx-1 text-size-10 text-muted"
