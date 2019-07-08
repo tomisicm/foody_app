@@ -41,7 +41,7 @@
           </b-card>
         </b-col>
 
-        <b-col class="reviewer__sectrion ml-1 mb-1 mt-4">
+        <b-col class="reviewer__sectrion mx-1 mb-1 mt-4">
           <b-card>
             <b-row>
               <b-col md="7" class="mt-4" order="2" order-sm="2" order-md="1">
