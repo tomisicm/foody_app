@@ -169,7 +169,7 @@ export default {
 
   computed: {
     img () {
-      return this.review.createdBy.profile && 'http://localhost:3000/' + this.review.createdBy.profile.avatar
+      return this.review.createdBy && 'http://localhost:3000/' + this.review.createdBy.profile.avatar
     }
   },
 
