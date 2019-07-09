@@ -13,12 +13,19 @@
       <b-row>
         <b-col cols="auto"></b-col>
         <b-col md="4" class="ml-auto">
-          <template >
+
             <b-button-group>
-            <b-button :disabled="true" variant="outline-success" class="ml-2">2323 </b-button>
-            <b-button :disabled="!isSignedIn" variant="success"><font-awesome-icon icon="thumbs-up" /></b-button>
+              <b-button :disabled="true" variant="outline-success" class="ml-2">2323 </b-button>
+              <b-button :disabled="!isSignedIn" variant="success"><font-awesome-icon icon="thumbs-up" /></b-button>
             </b-button-group>
-          </template>
+            <b-button
+              @click="handleApprove"
+              :pressed="!!review.approved"
+              class="ml-2"
+              variant="success">
+              {{review.approved ? 'Approved' : 'Approve' }}
+            </b-button>
+
           <template v-if="isSignedIn">
             <b-button
               @click="handleLock"
@@ -27,9 +34,6 @@
             >
               <font-awesome-icon :icon="!review.locked ? 'lock' : 'lock-open'" />
               {{!review.locked ? 'Lock' : 'Unlock' }}
-            </b-button>
-            <b-button variant="success" :pressed="review.approved" :disabled="review.approved" class="ml-2">
-              {{review.approved ? 'Approved' : 'Approve' }}
             </b-button>
           </template>
         </b-col>
@@ -209,6 +213,12 @@ export default {
     async handleLock () {
       await reviewService.changeReviewStatus(this.review._id, { locked: !this.review.locked })
       this.review.locked = !this.review.locked
+    },
+    async handleApprove () {
+      if (!this.review.approved) {
+        await reviewService.changeReviewStatus(this.review._id, { approved: true })
+        this.review.approved = !this.review.approved
+      }
     }
   },
 
