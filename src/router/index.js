@@ -5,6 +5,10 @@ import AppAuth from '../views/AppAuth'
 import AppLanding from '../views/AppLanding'
 import AppLogin from '../views/AppLogin'
 import AppRegister from '../views/AppRegister'
+
+import Forbidden from '@/components/containers/Forbidden'
+import NotFound from '@/components/containers/NotFound'
+
 import Profile from '../views/Profile'
 
 import Home from '../views/Home'
@@ -52,6 +56,22 @@ const router = new Router({
           component: Profile,
           meta: {
             isAuthenticated: true
+          }
+        },
+        {
+          name: 'forbidden',
+          path: 'forbidden',
+          component: Forbidden,
+          meta: {
+            isAuthenticated: false
+          }
+        },
+        {
+          name: 'notfound',
+          path: 'notfound',
+          component: NotFound,
+          meta: {
+            isAuthenticated: false
           }
         }
       ]
