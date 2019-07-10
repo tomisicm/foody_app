@@ -305,13 +305,20 @@ export default {
     async getCatering () {
       if (this.inEdit) {
         const { data } = await cateringService.getCatering(this.$route.params.id)
+        
+        // TODO: extract this
+        if (!data.pageMaintainedBy.includes(this.user._id)) {
+          this.$route.push({ name: 'forbidden'})
+        }
+        
         this.catering = data
       }
     }
   },
 
   computed: {
-    ...mapGetters('cuisineStore', ['cuisine'])
+    ...mapGetters('cuisineStore', ['cuisine']),
+    ...mapGetters('authStore', ['user'])
   },
 
   components: {
