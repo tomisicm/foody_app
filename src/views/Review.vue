@@ -162,7 +162,10 @@
         </baseCollapse>
       </div>
 
-      <b-row class="mx-1 my-2 mb-4">
+      <b-row
+        v-if="isLoggedUserReviewCreator"
+        class="mx-1 my-2 mb-4"
+      >
         <b-button class="mx-1"
           v-if="!inEditMode"
           @click="toggleEditMode"
@@ -224,20 +227,19 @@ export default {
 
   computed: {
     ...mapGetters('authStore', ['isSignedIn']),
+    ...mapGetters('authStore', ['user']),
     img () {
       return this.review.createdBy && 'http://localhost:3000/' + this.review.createdBy.profile.avatar
+    },
+
+    isLoggedUserReviewCreator () {
+      return this.user._id === this.review.createdBy._id
     }
   },
 
   created () {
     this.getReviewData()
   },
-
-  /* computed: {
-    readyForSubmit () {
-      return _.isEqual(this.review, this.initReview) && !this.inEditMode
-    }
-  }, */
 
   components: { baseEditable, StarRating, baseCollapse },
   name: 'Review_Page'
