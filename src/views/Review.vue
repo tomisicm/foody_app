@@ -233,7 +233,7 @@ export default {
     },
 
     isLoggedUserReviewCreator () {
-      return this.user._id === this.review.createdBy._id
+      return this.user._id === (this.review.createdBy || {})._id
     }
   },
 
