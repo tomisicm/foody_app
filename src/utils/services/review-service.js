@@ -39,6 +39,17 @@ class ReviewService {
       })
   }
 
+  getReviewLikes (id) {
+    return http
+      .get(`/api/review/${id}/like`)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
   createReview (review) {
     return http
       .post('/api/review/', { ...review, itemType: 'cateringestablishment' })
@@ -65,6 +76,17 @@ class ReviewService {
   changeReviewStatus (id, body) {
     return http
       .put(`/api/review/${id}/status`, body)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(error => {
+        throw error
+      })
+  }
+
+  changeReviewLike (id) {
+    return http
+      .post(`/api/review/${id}/like`)
       .then(({ data }) => {
         return data
       })
