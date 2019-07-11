@@ -15,7 +15,7 @@
         <b-col md="4" class="ml-auto">
 
             <b-button-group>
-              <b-button :disabled="true" variant="outline-success" class="ml-2">2323 </b-button>
+              <b-button :disabled="true" variant="outline-success" class="ml-2">2323</b-button>
               <b-button :disabled="!isSignedIn" variant="success"><font-awesome-icon icon="thumbs-up" /></b-button>
             </b-button-group>
             <b-button
@@ -233,7 +233,8 @@ export default {
     },
 
     isLoggedUserReviewCreator () {
-      return this.user._id === (this.review.createdBy || {})._id
+      // TODO: THIS LOGIC SHOULD BE IN STROE !
+      return this.isSignedIn && this.user._id === (this.review.createdBy || {})._id
     }
   },
 
