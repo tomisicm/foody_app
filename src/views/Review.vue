@@ -14,22 +14,22 @@
         <b-col cols="auto"></b-col>
         <b-col md="4" class="ml-auto">
 
-            <b-button-group>
-              <b-button :disabled="true" variant="outline-success" class="ml-2">{{reviewLikes.likes}}</b-button>
-              <b-button
-                @click="handleLike"
-                :disabled="!isSignedIn"
-                :pressed="reviewLikes.liked"
-                variant="success"><font-awesome-icon icon="thumbs-up" />
-              </b-button>
-            </b-button-group>
+          <b-button-group>
+            <b-button :disabled="true" variant="outline-success" class="ml-2">{{reviewLikes.likes}}</b-button>
             <b-button
-              @click="handleApprove"
-              :pressed="!!review.approved"
-              class="ml-2"
-              variant="success">
-              {{review.approved ? 'Approved' : 'Approve' }}
+              @click="handleLike"
+              :disabled="!isSignedIn"
+              :pressed="reviewLikes.liked"
+              variant="success"><font-awesome-icon icon="thumbs-up" />
             </b-button>
+          </b-button-group>
+          <b-button
+            @click="handleApprove"
+            :pressed="!!review.approved"
+            class="ml-2"
+            variant="success">
+            {{review.approved ? 'Approved' : 'Approve' }}
+          </b-button>
 
           <template v-if="isSignedIn">
             <b-button
