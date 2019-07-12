@@ -1,4 +1,5 @@
 // import _ from 'lodash'
+// TODO: Research MAP as the errors collection
 
 function getInitialState () {
   return {
