@@ -53,7 +53,7 @@
             <b-row class="ml-1">Is review approved? {{!!review.approved ? 'Yes' : 'No'}}</b-row>
             <b-row class="ml-1" v-if="review.item">
               <span>
-                Catering: <b-link :to="{ name: 'catering', params: { id: review.item && review.item._id } }">
+                Catering: <b-link :to="{ name: 'viewcatering', params: { id: review.item && review.item._id } }">
                   {{review.item && review.item.name}}</b-link>
               </span>
             </b-row>
