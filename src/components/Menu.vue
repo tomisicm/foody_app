@@ -14,6 +14,7 @@
       <template v-slot:listitem={item}>
         <SingleMenuItem
           :item="item"
+          :orderState="orderState"
           @cancelitem="handleItemCancel"
           @deleteitem="handleDeleteMenuItem($event)"
         />
@@ -30,6 +31,12 @@ import SingleMenuItem from '@/components/parts/SingleMenuItem'
 import ListControll from '@/components/ListControll'
 
 export default {
+  props: {
+    orderState: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       newMenuItem: Object.assign({}, this.resetNewItem()),

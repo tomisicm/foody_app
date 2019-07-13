@@ -5,6 +5,7 @@ import { errorsStore } from './modules/errors'
 
 import { cuisineStore } from './modules/cuisine'
 import { commentStore } from './modules/comments'
+import { cartStore } from './modules/cart'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -12,7 +13,8 @@ const store = new Vuex.Store({
     authStore,
     errorsStore,
     cuisineStore,
-    commentStore
+    commentStore,
+    cartStore
   }
 })
 

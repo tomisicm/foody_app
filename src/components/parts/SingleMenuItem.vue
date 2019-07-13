@@ -88,7 +88,7 @@
     </b-row>
 
     <hr />
-    <b-row class="mt-2">
+    <b-row v-if="!orderState" class="mt-2">
       <b-col
         v-if="!inEditMode"
         cols="auto"
@@ -122,10 +122,18 @@
         >Save</b-btn>
       </b-col>
     </b-row>
+    <b-row v-else>
+      <b-btn
+        variant="warning"
+        @click="addToCart(localitem)"
+      >Add To Cart</b-btn>
+    </b-row>
   </b-card>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import cateringService from '@/utils/services/catering-service'
 
 import baseEditable from '@/components/base/baseEditable'
@@ -135,6 +143,10 @@ export default {
     item: {
       type: Object,
       required: true
+    },
+    orderState: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -147,6 +159,8 @@ export default {
   },
 
   methods: {
+    ...mapActions('cartStore', ['addToCart']),
+
     toggleEdit () {
       this.inEditMode = !this.inEditMode
     },
