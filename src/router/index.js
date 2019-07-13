@@ -1,24 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import AppAuth from '../views/AppAuth'
-import AppLanding from '../views/AppLanding'
-import AppLogin from '../views/AppLogin'
-import AppRegister from '../views/AppRegister'
+import AppAuth from '@/views/AppAuth'
+import AppLanding from '@/views/AppLanding'
+import AppLogin from '@/views/AppLogin'
+import AppRegister from '@/views/AppRegister'
 
 import Forbidden from '@/components/containers/Forbidden'
 import NotFound from '@/components/containers/NotFound'
 
-import Profile from '../views/Profile'
+import Profile from '@/views/Profile'
 
-import Home from '../views/Home'
-import CateringView from '../views/CateringView'
-import CateringForm from '../components/CateringForm'
-import CateringFacility from '../views/CateringFacility'
+import AllCaterings from '@/views/AllCaterings'
+import CateringContainer from '@/views/CateringContainer'
+import CateringForm from '@/components/CateringForm'
+import CateringFacility from '@/views/CateringFacility'
 
-import Review from '../views/Review'
-import Reviews from '../views/Reviews'
-import NewReview from '../views/NewReview'
+import Review from '@/views/Review'
+import Reviews from '@/views/Reviews'
+import NewReview from '@/views/NewReview'
+
+import OrderConainer from '@/views/OrderConainer'
 
 import store from '@/utils/store'
 
@@ -77,7 +79,7 @@ const router = new Router({
       ]
     },
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       component: AppLanding,
       meta: {
@@ -88,14 +90,14 @@ const router = new Router({
       path: '/catering',
       name: 'caterings',
       props: true,
-      component: Home,
+      component: AllCaterings,
       meta: {
         isAuthenticated: false
       }
     },
     {
       path: '/catering',
-      component: CateringView,
+      component: CateringContainer,
       children: [
         {
           name: 'addcatering',
@@ -118,12 +120,27 @@ const router = new Router({
     },
     {
       path: '/catering/:id',
-      name: 'catering',
-      props: true,
-      component: CateringFacility,
-      meta: {
-        isAuthenticated: false
-      }
+      component: CateringContainer,
+      children: [
+        {
+          name: 'viewcatering',
+          path: '/catering/:id',
+          props: true,
+          component: CateringFacility,
+          meta: {
+            isAuthenticated: false
+          }
+        },
+        {
+          name: 'ordercatering',
+          path: '/catering/:id/order',
+          props: true,
+          component: OrderConainer,
+          meta: {
+            isAuthenticated: true
+          }
+        }
+      ]
     },
     {
       path: '/reviews/add',
