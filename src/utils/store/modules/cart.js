@@ -12,8 +12,9 @@ const mutations = {
   PUSH_ITEM (state, order) {
     state.orders.push({ menuItem: order, quantity: 1 })
   },
-  UPDATE_ITEM (state, order) {
-    console.log('update')
+
+  UPDATE_ITEM (state, index) {
+    state.orders[index].quantity++
   }
 }
 
@@ -29,17 +30,13 @@ const actions = {
   }, */
 
   addToCart ({ commit, state }, item) {
-    console.log(
-      state.orders.some(cartItem => cartItem.menuItem._id === item._id)
+    const index = state.orders.findIndex(
+      cartItem => cartItem.menuItem._id === item._id
     )
 
-    console.log(state)
-    console.log(item._id)
-
-    if (state.orders.some(cartItem => cartItem.menuItem._id === item._id)) {
-      commit('UPDATE_ITEM', item)
+    if (index > -1) {
+      return commit('UPDATE_ITEM', index)
     }
-
     commit('PUSH_ITEM', item)
   }
 }
