@@ -7,30 +7,36 @@
           :orderState="true"
         />
       </b-col>
-
-      <!-- this might not exist on wide screens -->
+      <!-- there will be bottom for narrow and this + narrow for wide (interchangable) -->
       <b-col md="3">
-        <aside class="floating-menu">Expand as possible</aside>
+        <aside class="floating-menu">{{orders.map(order => order.menuItem.name + ': ' + order.quantity )}}</aside>
       </b-col>
     </b-row>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import Menu from '@/components/Menu'
 
 export default {
 
   data () {
     return {
-      orders: []
+
     }
   },
 
   methods: {
-    updateOrdersList (event) {
-      console.log(event)
-    }
+
+  },
+
+  computed: {
+    ...mapState('cartStore', {
+      orders: state => state.orders
+    })
+
   },
 
   components: {
