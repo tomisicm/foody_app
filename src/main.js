@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import VeeValidate from 'vee-validate'
 
 import App from './App.vue'
@@ -11,6 +12,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 import 'vue-slider-component/theme/default.css'
 
+import Toasted from 'vue-toasted'
 import BootstrapVue from 'bootstrap-vue'
 import multiselect from 'vue-multiselect'
 import vueslider from 'vue-slider-component'
@@ -65,6 +67,11 @@ Vue.use(VeeValidate, {
 })
 
 Vue.use(VModal)
+
+Vue.use(Toasted, {
+  duration: 33000,
+  theme: 'outline'
+})
 
 Vue.config.productionTip = false
 

@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import commentService from '@/utils/services/comment-service'
 
 function getInitialState () {
@@ -45,7 +46,13 @@ const actions = {
         itemId: data.item,
         params: getters.params
       })
+      Vue.toasted.show('Success!', {
+        type: 'success'
+      })
     } catch (error) {
+      Vue.toasted.show('Error!', {
+        type: 'error'
+      })
       throw error
     }
   },
