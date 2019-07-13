@@ -15,6 +15,10 @@ const mutations = {
 
   UPDATE_ITEM (state, index) {
     state.orders[index].quantity++
+  },
+
+  SET_DATA (state, orders) {
+    state.orders = [state.orders, ...orders]
   }
 }
 
