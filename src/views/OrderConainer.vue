@@ -10,8 +10,9 @@
       <!-- there will be bottom for narrow and this + narrow for wide (interchangable) -->
       <b-col md="3">
         <aside class="floating-menu">
+          <!-- :style="{ backgroundColor: 'inherit' }" -->
           <b-card
-            :style="{ backgroundColor: 'inherit' }"
+            header-bg-variant="success"
           >
             <div slot="header">
               Cart Items
@@ -19,10 +20,18 @@
                 <font-awesome-icon icon="window-minimize" />
               </b-button-close>
             </div>
-            <!-- {{orders.map(order => order.menuItem.name + ': ' + order.quantity )}} -->
+
             <b-row v-for="order in orders" :key="order.menuItem._id">
-              {{ order.menuItem.name }} x {{ order.quantity }}
+              <b-col class="px-1">
+                {{ order.menuItem.name }}
+              </b-col>
+              <b-col md="3" class="px-0">
+                <b-input
+                  v-model="order.quantity"
+                />
+              </b-col>
             </b-row>
+
         </b-card>
         </aside>
       </b-col>
@@ -62,8 +71,9 @@ export default {
 
 <style>
 .floating-menu {
-  background: yellowgreen;
-  padding: 5px;;
+  background: rgb(80, 113, 14);
+  border-radius: 5px;
+  padding: 3px;
   width: 250px;
   z-index: 100;
   position: fixed;
