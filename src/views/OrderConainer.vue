@@ -27,27 +27,27 @@
               :key="order.menuItem._id"
               class="text-size-11 px-0 mx-0"
             >
-              <b-col class="px-1">
+              <b-col class="px-0 mx-0 mt-2">
                 {{ order.menuItem.name }}
               </b-col>
-              <b-col cols="4" sm="4" class="px-0 mx-0">
+              <b-col cols="4" sm="4" class="px-0 mx-0 mt-2">
                 {{ order.menuItem.price * order.quantity }}
               </b-col>
-              <b-col cols="3" sm="3" md="3" class="px-0">
+              <b-col cols="3" sm="3" md="3" class="px-0 mt-0">
                 <b-input
-                  :stype="{ fontSize: '12px' }"
                   v-model="order.quantity"
                 />
               </b-col>
               <hr />
-
             </b-row>
 
             <hr />
               <footer>
-                <b-row class="mb-2">
+                <b-row class="mb-2 align-end">
                   <b-col>
+                    <span class="align-text-bottom">
                     Total: {{totalOrder}}
+                    </span>
                   </b-col>
                   <b-col md="7">
                     <b-button variant="success">Order</b-button>
@@ -114,5 +114,9 @@ export default {
   position: fixed;
   top: 200px;
   right: 0px;
+}
+
+.align-end {
+  align-items: flex-end;
 }
 </style>
