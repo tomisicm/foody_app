@@ -2,21 +2,16 @@
   <div>
     Order
     <b-row>
-      <b-col md="10">
-        <Menu
-          :orderState="true"
-        />
-      </b-col>
-      <!-- there will be bottom for narrow and this + narrow for wide (interchangable) -->
-      <b-col md="3">
-        <aside class="floating-menu">
-          <!-- :style="{ backgroundColor: 'inherit' }" -->
+      <b-col md="4">
+        <aside v-bind:class="[ isMinimized ? 'floating' : ' ']">
           <b-card
             header-bg-variant="success"
           >
             <div slot="header">
               Cart Items
-              <b-button-close size="sm" aria-label="Minimize" variant="outline-success">
+              <b-button-close
+                @click="toggleMinimize"
+                size="sm" aria-label="Minimize" variant="outline-success">
                 <font-awesome-icon icon="window-minimize" />
               </b-button-close>
             </div>
@@ -32,9 +27,17 @@
               </b-col>
             </b-row>
 
-        </b-card>
+          </b-card>
         </aside>
+
       </b-col>
+
+      <b-col md="9">
+        <Menu
+          :orderState="true"
+        />
+      </b-col>
+
     </b-row>
   </div>
 </template>
@@ -48,12 +51,14 @@ export default {
 
   data () {
     return {
-
+      isMinimized: true
     }
   },
 
   methods: {
-
+    toggleMinimize () {
+      this.isMinimized = !this.isMinimized
+    }
   },
 
   computed: {
@@ -70,7 +75,7 @@ export default {
 </script>
 
 <style>
-.floating-menu {
+.floating {
   background: rgb(80, 113, 14);
   border-radius: 5px;
   padding: 3px;
