@@ -30,7 +30,8 @@ import {
   faLockOpen,
   faLongArrowAltLeft,
   faSmile,
-  faThumbsUp
+  faThumbsUp,
+  faWindowMinimize
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -54,7 +55,8 @@ library.add(
   faLockOpen,
   faLongArrowAltLeft,
   faSmile,
-  faThumbsUp
+  faThumbsUp,
+  faWindowMinimize
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
