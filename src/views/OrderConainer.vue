@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import Menu from '@/components/Menu'
 
@@ -83,6 +83,7 @@ export default {
   },
 
   methods: {
+    ...mapActions('cartStore', ['makeOrder']),
     toggleMinimize () {
       this.isMinimized = !this.isMinimized
     }

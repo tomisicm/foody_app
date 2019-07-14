@@ -1,4 +1,4 @@
-// import cartService from '@/utils/services/cuisine-service'
+import cartService from '@/utils/services/cuisine-service'
 
 function getInitialState () {
   return {
@@ -42,6 +42,11 @@ const actions = {
       return commit('UPDATE_ITEM', index)
     }
     commit('PUSH_ITEM', item)
+  },
+
+  async makeOrder ({ commit, state }) {
+    const body = state.orders
+    const { data } = await cartService.makeOrder(body)
   }
 }
 
