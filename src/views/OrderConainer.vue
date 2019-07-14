@@ -2,7 +2,7 @@
   <div>
     Order
     <b-row>
-      <b-col md="4">
+      <b-col md="6">
         <aside v-bind:class="[ isMinimized ? 'floating' : ' ']">
           <b-card
             header-bg-variant="success"
@@ -16,17 +16,34 @@
               </b-button-close>
             </div>
 
-            <b-row v-for="order in orders" :key="order.menuItem._id">
+            <b-row class="text-size-11 px-0 mx-0">
+              <b-col class="px-1">Name:</b-col>
+              <b-col cols="4" sm="4" md="4" class="px-0">Total:</b-col>
+              <b-col cols="4" sm="4" md="4" class="px-0">Quantity</b-col>
+            </b-row>
+            <hr />
+            <b-row
+              v-for="order in orders"
+              :key="order.menuItem._id"
+              class="text-size-11 px-0 mx-0"
+            >
               <b-col class="px-1">
                 {{ order.menuItem.name }}
               </b-col>
-              <b-col md="3" class="px-0">
+              <b-col cols="4" sm="4" class="px-0 mx-0">
+                {{ order.menuItem.price * order.quantity }}
+              </b-col>
+              <b-col cols="3" sm="3" md="3" class="px-0">
                 <b-input
+                  :stype="{ fontSize: '12px' }"
                   v-model="order.quantity"
                 />
               </b-col>
+
+              <hr />
             </b-row>
 
+            <hr />
           </b-card>
         </aside>
 
