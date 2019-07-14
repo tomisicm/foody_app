@@ -44,7 +44,16 @@
             </b-row>
 
             <hr />
-            Total: {{totalOrder}}
+              <footer>
+                <b-row class="mb-2">
+                  <b-col>
+                    Total: {{totalOrder}}
+                  </b-col>
+                  <b-col md="7">
+                    <b-button variant="success">Order</b-button>
+                  </b-col>
+                </b-row>
+              </footer>
           </b-card>
         </aside>
 
