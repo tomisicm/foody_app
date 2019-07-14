@@ -39,11 +39,12 @@
                   v-model="order.quantity"
                 />
               </b-col>
-
               <hr />
+
             </b-row>
 
             <hr />
+            Total: {{totalOrder}}
           </b-card>
         </aside>
 
@@ -81,8 +82,11 @@ export default {
   computed: {
     ...mapState('cartStore', {
       orders: state => state.orders
-    })
+    }),
 
+    totalOrder () {
+      return this.orders.reduce((acc, obj) => acc + obj.menuItem.price * obj.quantity, 0)
+    }
   },
 
   components: {
