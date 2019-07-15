@@ -30,13 +30,12 @@
         <b-col cols="4" sm="4" class="px-0 mx-0 mt-2">
           {{ order.menuItem.price * order.quantity }}
         </b-col>
-        
+
         <b-col cols="3" sm="3" md="3" class="px-0 mt-0">
           <b-input
             v-model="order.quantity"
           />
         </b-col>
-        <hr />
       </b-row>
 
       <hr />
