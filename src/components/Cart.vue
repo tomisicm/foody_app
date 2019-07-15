@@ -1,5 +1,14 @@
 <template>
   <aside v-bind:class="[ isMinimized ? 'floating' : ' ']">
+
+    <AppModal
+      @cancelAction="$modal.hide('confirm-action', {})"
+    >
+      <template v-slot:body>
+        <div>{{getMenuItems}}</div>
+      </template>
+    </AppModal>
+
     <b-card
       header-bg-variant="success"
     >
@@ -61,6 +70,8 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
+import AppModal from '@/components/modals/AppModal'
+
 export default {
   data () {
     return {
@@ -74,6 +85,7 @@ export default {
       this.isMinimized = !this.isMinimized
     },
     order () {
+      this.$modal.show('confirm-action', {})
       console.log(this.getMenuItems)
     }
   },
@@ -98,6 +110,10 @@ export default {
 
       return orderz
     }
+  },
+
+  components: {
+    AppModal
   }
 }
 </script>
