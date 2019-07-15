@@ -11,7 +11,7 @@
         </b-row>
       </template>
 
-      <template v-slot:listitem={item}>
+      <template v-slot:listitem="{item}">
         <SingleMenuItem
           :item="item"
           :orderState="orderState"

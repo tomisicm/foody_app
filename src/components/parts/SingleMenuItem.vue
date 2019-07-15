@@ -186,7 +186,7 @@ export default {
         this.toggleEdit()
       } else {
         const { data } = await cateringService.saveMenuItem(this.localitem)
-        this.item = data
+        this.localitem = data
         this.toggleEdit()
       }
     },
