@@ -1,6 +1,15 @@
 <template>
   <div>
-    Order
+    <h3>New Order</h3>
+
+    <b-row>
+      <b-col md="6">
+        <Address :label="'Order Address'">
+
+        </Address>
+      </b-col>
+    </b-row>
+
     <b-row>
       <b-col md="6">
         <Cart />
@@ -30,6 +39,7 @@ import cateringService from '@/utils/services/catering-service'
 import Cart from '@/components/Cart'
 import SingleMenuItem from '@/components/parts/SingleMenuItem'
 import ListControll from '@/components/ListControll'
+import Address from '@/components/parts/Address'
 
 export default {
 
@@ -55,7 +65,7 @@ export default {
   },
 
   components: {
-    Cart, ListControll, SingleMenuItem
+    Cart, Address, ListControll, SingleMenuItem
   }
 }
 </script>

@@ -1,11 +1,28 @@
 <template>
   <aside v-bind:class="[ isMinimized ? 'floating' : ' ']">
 
+    <!-- TODO: mobile does not look too good -->
     <AppModal
       @cancelAction="$modal.hide('confirm-action', {})"
     >
       <template v-slot:body>
-        <div>{{getMenuItems}}</div>
+        <div>
+          <b-row
+            v-for="order in getMenuItems"
+            :key="order.menuItemId"
+            class="text-size-11 px-0 mx-0"
+          >
+            <b-col class="px-1">{{order.orderName}}</b-col>
+            <b-col cols="4" sm="4" md="4" class="px-0">Item total: {{order.orderItemTotal}}</b-col>
+            <b-col cols="4" sm="4" md="4" class="px-0">Quantity: {{order.quantity}}</b-col>
+          </b-row>
+          <hr />
+          <b-row
+            class="text-size-11 pl-1 mx-0"
+          >
+            Total cost: {{totalOrder}}
+          </b-row>
+        </div>
       </template>
     </AppModal>
 
@@ -105,7 +122,12 @@ export default {
       orderz = orderz.filter(order => order.quantity > 0)
 
       orderz = orderz.map(function (order) {
-        return { menuItemId: order.menuItem._id, quantity: order.quantity }
+        return {
+          menuItemId: order.menuItem._id,
+          quantity: order.quantity,
+          orderName: order.menuItem.name,
+          orderItemTotal: order.menuItem.price * order.quantity
+        }
       })
 
       return orderz

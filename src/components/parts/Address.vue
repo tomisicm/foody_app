@@ -1,6 +1,6 @@
 <template>
   <b-col class="my-3">
-    <b-form-group label-cols-sm="3" label="Address" class="mb-0">
+    <b-form-group label-cols-sm="3" :label="label" class="mb-0">
       <b-input-group>
         <b-form-input
           v-model="address.city"
@@ -46,6 +46,10 @@ export default {
           streetNo: ''
         }
       }
+    },
+    label: {
+      type: String,
+      default: 'Address'
     }
   },
 
