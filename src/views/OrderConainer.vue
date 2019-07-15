@@ -7,7 +7,7 @@
       </b-col>
 
       <!-- REFACTOR MENU ITEM -->
-      <b-col md="9">
+      <b-col md="12">
         <ListControll
           :items="menuItems"
           :listitemclass="'col-md-4'"

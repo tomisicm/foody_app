@@ -46,7 +46,11 @@
           </b-col>
 
           <b-col md="7">
-            <b-button variant="success">Order</b-button>
+            <b-button
+              @click="order"
+              :disabled="getMenuItems.length === 0"
+              variant="success"
+            >Order</b-button>
           </b-col>
         </b-row>
       </footer>
@@ -68,6 +72,9 @@ export default {
     ...mapActions('cartStore', ['makeOrder']),
     toggleMinimize () {
       this.isMinimized = !this.isMinimized
+    },
+    order () {
+      console.log(this.getMenuItems)
     }
   },
 
@@ -78,6 +85,18 @@ export default {
 
     totalOrder () {
       return this.orders.reduce((acc, obj) => acc + obj.menuItem.price * obj.quantity, 0)
+    },
+
+    getMenuItems () {
+      let orderz = [...this.orders]
+
+      orderz = orderz.filter(order => order.quantity > 0)
+
+      orderz = orderz.map(function (order) {
+        return { menuItemId: order.menuItem._id, quantity: order.quantity }
+      })
+
+      return orderz
     }
   }
 }
