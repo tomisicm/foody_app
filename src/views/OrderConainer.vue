@@ -16,7 +16,6 @@
             <SingleMenuItem
               :item="item"
               :orderState="true"
-              @deleteitem="handleDeleteMenuItem($event)"
             />
           </template>
         </ListControll>
