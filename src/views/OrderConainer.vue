@@ -4,15 +4,25 @@
 
     <b-row>
       <b-col md="6">
-        <Address :label="'Order Address'">
-
+        <Address
+          :label="'Order Address'"
+          :address="address"
+          @update:address="updateAddress($event)"
+        >
+          <template v-slot:inputerrors>
+            <small class="form-text text-danger">{{ errors.first('address') }}</small>
+          </template>
         </Address>
+
       </b-col>
     </b-row>
 
     <b-row>
       <b-col md="6">
-        <Cart />
+        <Cart
+          :address="address"
+          :validateBeforeSubmit="validateBeforeSubmit"
+        />
       </b-col>
 
       <!-- REFACTOR MENU ITEM -->
@@ -36,6 +46,8 @@
 <script>
 import cateringService from '@/utils/services/catering-service'
 
+import _ from 'lodash'
+
 import Cart from '@/components/Cart'
 import SingleMenuItem from '@/components/parts/SingleMenuItem'
 import ListControll from '@/components/ListControll'
@@ -45,7 +57,12 @@ export default {
 
   data () {
     return {
-      menuItems: []
+      menuItems: [],
+      address: {
+        city: '',
+        street: '',
+        streetNo: ''
+      }
     }
   },
 
@@ -53,10 +70,36 @@ export default {
     async getMenuItems () {
       const { data } = await cateringService.getMentItemsForCatering(this.$route.params.id)
       this.menuItems = data.docs
+    },
+
+    updateAddress (address) {
+      this.address = address
+    },
+
+    validateBeforeSubmit () {
+      const adrBool = Object.values(this.address).every(adr => !_.isEmpty(adr))
+
+      if (!adrBool) {
+        this.errors.add({
+          field: 'address',
+          msg: 'Please provide order destination.'
+        })
+      }
+      return adrBool
     }
   },
 
   computed: {
+
+  },
+
+  watch: {
+    'address': {
+      handler: function (value) {
+        this.errors.remove('address')
+      },
+      deep: true
+    }
 
   },
 

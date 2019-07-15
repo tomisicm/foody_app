@@ -30,6 +30,9 @@
           placeholder="Number"
         />
       </div>
+
+      <slot name="inputerrors" />
+
     </b-form-row>
   </b-col>
 </template>

@@ -86,10 +86,21 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-
 import AppModal from '@/components/modals/AppModal'
 
 export default {
+  props: {
+    address: {
+      type: Object,
+      required: true
+    },
+
+    validateBeforeSubmit: {
+      type: Function,
+      required: true
+    }
+  },
+
   data () {
     return {
       isMinimized: true
@@ -102,9 +113,12 @@ export default {
       this.isMinimized = !this.isMinimized
     },
     order () {
+      if (!this.validateBeforeSubmit()) return
+
       this.$modal.show('confirm-action', {})
-      console.log(this.getMenuItems)
+      // console.log(this.getMenuItems)
     }
+
   },
 
   computed: {
