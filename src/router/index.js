@@ -14,7 +14,7 @@ import Profile from '@/views/Profile'
 import AllCaterings from '@/views/AllCaterings'
 import CateringContainer from '@/views/CateringContainer'
 import CateringForm from '@/components/CateringForm'
-import CateringFacility from '@/views/CateringFacility'
+import Catering from '@/views/Catering'
 
 import Review from '@/views/Review'
 import Reviews from '@/views/Reviews'
@@ -127,7 +127,7 @@ const router = new Router({
           name: 'viewcatering',
           path: '/catering/:id',
           props: true,
-          component: CateringFacility,
+          component: Catering,
           meta: {
             isAuthenticated: false
           }

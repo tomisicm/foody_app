@@ -16,14 +16,16 @@
 
       <b-container>
         <b-row v-if="isSignedIn">
-          <b-col md="3">
+          <b-col cols="8" md="4">
             <b-button
               :to="{ name: 'ordercatering', }" variant="success"
-              >Order food
+            >Order food
             </b-button>
-          </b-col>
-          <b-col md="3">
-            <b-button :to="{ name: 'addreview', query: { item: this.$route.params.id } }" variant="primary" class="mx-2"> Add review </b-button>
+            <b-button
+              :to="{ name: 'addreview', query: { item: this.$route.params.id } }"
+              variant="primary" class="mx-2"
+            >Add review
+            </b-button>
           </b-col>
         </b-row>
       </b-container>
