@@ -4,7 +4,7 @@
 
     <b-container class="justify-content-md-center text-center">
     <b-row>
-      <b-col cols="8">
+      <b-col cols="8"  md="6">
         <form v-on:submit.prevent>
           <div class="form-row">
             <label for="email">Email:</label>
