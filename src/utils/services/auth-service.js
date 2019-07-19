@@ -24,7 +24,7 @@ class AuthService {
         passwordConfirm
       })
       .then(response => {
-        // console.log(response)
+        return response
       })
       .catch(error => {
         throw error

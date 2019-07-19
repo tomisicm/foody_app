@@ -39,6 +39,7 @@ const router = new Router({
         {
           name: 'signin',
           path: 'signin',
+          props: true,
           component: AppLogin,
           meta: {
             isAuthenticated: false

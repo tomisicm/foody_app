@@ -56,10 +56,17 @@ import { mapActions, mapGetters } from 'vuex'
 import _ from 'lodash'
 
 export default {
+  props: {
+    userEmail: {
+      type: String,
+      default: ''
+    }
+  },
+
   data () {
     return {
       form: {
-        email: '',
+        email: this.userEmail || '',
         password: ''
       }
     }

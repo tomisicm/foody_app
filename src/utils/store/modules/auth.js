@@ -24,7 +24,6 @@ const mutations = {
 const actions = {
   async login ({ commit }, { email, password }) {
     try {
-      // const response =
       await authService.login(email, password)
 
       commit('SET_DATA', getUserFromLocalStorage())
@@ -36,11 +35,8 @@ const actions = {
 
   async register ({ commit }, { email, password, passwordConfirm }) {
     try {
-      commit(
-        'SET_DATA',
-        await authService.register(email, password, passwordConfirm)
-      )
-      router.push({ name: 'signin' })
+      await authService.register(email, password, passwordConfirm)
+      router.push({ name: 'signin', params: { userEmail: email } })
     } catch (e) {
       throw e
     }
