@@ -16,7 +16,7 @@
 
       <b-container>
         <b-row v-if="isSignedIn">
-          <b-col cols="8" md="4">
+          <b-col cols="12" sm="8" md="6">
             <b-button
               :to="{ name: 'ordercatering', }" variant="success"
             >Order food
