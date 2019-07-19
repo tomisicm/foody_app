@@ -4,21 +4,27 @@
       <h1>{{cateringFacility && cateringFacility.name}}</h1>
     </div>
 
-    <baseCarousel class="my-4" />
+    <baseCarousel :images="cateringFacility && cateringFacility.images" class="my-4" />
 
     <div>
-      <div>
+      <b-row>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia optio facilis voluptas accusantium maxime quam, repellendus, in odit facere nesciunt quo laboriosam nisi magnam officia voluptatibus eum iusto? Dolorem, magni.</p>
         <p>Located on {{cateringFacility && cateringFacility.address.street + cateringFacility.address.streetNo}}, {{cateringFacility && cateringFacility.address.city}}.
           Famous for its {{cateringFacility && cateringFacility.cuisine.name }} cuisine and {{cateringFacility && cateringFacility.michelinStars }} Michelin Stars.
         </p>
-      </div>
+      </b-row>
 
       <b-container>
-        <b-row class="mx-2">
-          <!-- TODO: HIDE if user not logged in -->
-          <span class="pt-1">Add review:</span>
-          <b-button :to="{ name: 'addreview', query: { item: this.$route.params.id } }" pill variant="primary" class="mx-2"> + </b-button>
+        <b-row v-if="isSignedIn">
+          <b-col md="3">
+            <b-button
+              :to="{ name: 'ordercatering', }" variant="success"
+              >Order food
+            </b-button>
+          </b-col>
+          <b-col md="3">
+            <b-button :to="{ name: 'addreview', query: { item: this.$route.params.id } }" variant="primary" class="mx-2"> Add review </b-button>
+          </b-col>
         </b-row>
       </b-container>
 
@@ -44,6 +50,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import cateringService from '@/utils/services/catering-service'
 
 import baseCarousel from '@/components/base/baseCarousel'
@@ -69,6 +77,10 @@ export default {
       this.cateringFacility = data
     }
 
+  },
+
+  computed: {
+    ...mapGetters('authStore', ['isSignedIn'])
   },
 
   created () {
