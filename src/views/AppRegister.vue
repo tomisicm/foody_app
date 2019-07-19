@@ -66,6 +66,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import _ from 'lodash'
+import { getErrorMessageObject } from '@/utils/services/error-handler'
 
 export default {
   data () {
@@ -85,18 +86,10 @@ export default {
       try {
         await this.register(this.form)
       } catch (error) {
-        // TODO: refractor and clear noise
-
-        const { response } = error
-
-        const errorMsg = response.data.details[0].message
-        const errorKey = response.data.details[0].context.key
-
-        let newError = {}
-        newError[errorKey] = errorMsg
-
+        const newError = getErrorMessageObject(error)
+        
+        
         await this.handleError(newError)
-        // console.log(this.$store.getters['errorsStore/errors'])
       }
     }
   },
