@@ -87,8 +87,7 @@ export default {
         await this.register(this.form)
       } catch (error) {
         const newError = getErrorMessageObject(error)
-        
-        
+
         await this.handleError(newError)
       }
     }
