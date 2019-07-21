@@ -11,6 +11,8 @@
         >
           <b-container @click="handleClick">
             <b-row class="ml-1">{{item && item.title}}</b-row>
+            <b-row class="ml-1"><span><i>Average rating: {{item.avgRating}}</i></span></b-row>
+
             <b-row
               class="my-1 mx-1 text-size-10 text-muted"
             >
@@ -33,9 +35,16 @@
             size="sm"><font-awesome-icon icon="thumbs-up" />
           </b-button>
           <b-button
-          size="sm"
-          variant="outline-success"
-          ><font-awesome-icon :icon="!item.locked ? 'lock' : 'lock-open'" />
+            v-if="item.approved"
+            size="sm"
+            variant="outline-success"
+            ><font-awesome-icon icon="check" />
+        </b-button>
+          <b-button
+            v-if="isAdmin"
+            size="sm"
+            variant="outline-success"
+            ><font-awesome-icon :icon="item.locked ? 'lock' : 'lock-open'" />
         </b-button>
         </b-button-group>
       </b-col>
