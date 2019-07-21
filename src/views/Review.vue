@@ -15,11 +15,16 @@
         <b-col md="4" class="ml-auto">
 
           <b-button-group>
-            <b-button :disabled="true" variant="outline-success" class="ml-2">{{reviewLikes.likes}}</b-button>
+            <b-button
+              :disabled="true"
+              variant="outline-success"
+              class="ml-2"
+            >
+              {{review.likedBy && review.likedBy.likes}}</b-button>
             <b-button
               @click="handleLike"
               :disabled="!isSignedIn"
-              :pressed="reviewLikes.liked"
+              :pressed="review.likedBy && review.likedBy.liked"
               variant="success"><font-awesome-icon icon="thumbs-up" />
             </b-button>
           </b-button-group>
@@ -200,8 +205,7 @@ export default {
   data () {
     return {
       inEditMode: false,
-      review: {},
-      reviewLikes: {}
+      review: {}
     }
   },
 
@@ -230,14 +234,9 @@ export default {
       }
     },
 
-    async getReviewLikes () {
-      const { data } = await reviewService.getReviewLikes(this.$route.params.id)
-      this.reviewLikes = data
-    },
-
     async handleLike () {
       await reviewService.changeReviewLike(this.$route.params.id)
-        .then(() => this.getReviewLikes())
+        .then(() => this.getReviewData())
     }
   },
 
@@ -256,7 +255,6 @@ export default {
 
   created () {
     this.getReviewData()
-    this.getReviewLikes()
   },
 
   components: { baseEditable, StarRating, baseCollapse },

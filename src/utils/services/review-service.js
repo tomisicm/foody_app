@@ -39,17 +39,6 @@ class ReviewService {
       })
   }
 
-  getReviewLikes (id) {
-    return http
-      .get(`/api/review/${id}/like`)
-      .then(({ data }) => {
-        return data
-      })
-      .catch(error => {
-        throw error
-      })
-  }
-
   createReview (review) {
     return http
       .post('/api/review/', { ...review, itemType: 'cateringestablishment' })
