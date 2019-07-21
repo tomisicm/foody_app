@@ -4,7 +4,7 @@
       :items="reviews.docs"
     >
       <template v-slot:listitem="{item}">
-        <SingleReview :item="item"/>
+        <ReviewCard :item="item"/>
       </template>
     </List>
 
@@ -22,7 +22,7 @@
 
 <script>
 import List from '@/components/base/List'
-import SingleReview from '@/components/SingleReview'
+import ReviewCard from '@/components/ReviewCard'
 
 import reviewService from '@/utils/services/review-service'
 
@@ -61,7 +61,7 @@ export default {
   },
 
   components: {
-    List, SingleReview
+    List, ReviewCard
   }
 }
 </script>

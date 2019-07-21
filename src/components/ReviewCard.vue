@@ -21,12 +21,11 @@
       </b-col>
 
       <b-col md="3">
-        <!-- TODO: wire this thing up -->
         <b-button
-          v-if="item.likes"
+          v-if="item.likedBy"
           variant="outline-success"
           size="sm"
-        ><font-awesome-icon icon="thumbs-up" /></b-button>
+        >{{item.likedBy.length}} <font-awesome-icon icon="thumbs-up" /></b-button>
 
         <template v-if="isSignedIn">
           <template v-if="isAdmin">
