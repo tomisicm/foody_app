@@ -5,7 +5,7 @@
         <b-img width="50" height="50" class="avatar my-1 mx-1" :src="image" rounded="circle"></b-img>
       </b-col>
 
-      <b-col md="8" sm="8">
+      <b-col cols="6" sm="7" md="8">
         <b-card-text
           class="my-1 mx-1 item-text"
         >
@@ -20,31 +20,24 @@
         </b-card-text>
       </b-col>
 
-      <b-col md="3">
-        <b-button
-          v-if="item.likedBy"
-          variant="outline-success"
+      <b-col cols="6" sm="5" md="3">
+        <b-button-group>
+          <b-button
+            variant="outline-success"
+            class="ml-2"
+            size="sm"
+            >{{item.likedBy.likes}}</b-button>
+          <b-button
+            :pressed="item.likedBy.liked"
+            variant="success"
+            size="sm"><font-awesome-icon icon="thumbs-up" />
+          </b-button>
+          <b-button
           size="sm"
-        >{{item.likedBy.length}} <font-awesome-icon icon="thumbs-up" /></b-button>
-
-        <template v-if="isSignedIn">
-          <template v-if="isAdmin">
-            <b-button
-              v-if="!item.locked"
-              @click="handleLock"
-              variant="outline-success"
-              size="sm">
-              <font-awesome-icon icon="lock" />
-            </b-button>
-            <b-button
-              v-if="item.locked"
-              @click="handleLock"
-              variant="outline-success"
-              size="sm">
-              <font-awesome-icon icon="lock-open" />
-            </b-button>
-          </template>
-        </template>
+          variant="outline-success"
+          ><font-awesome-icon :icon="!item.locked ? 'lock' : 'lock-open'" />
+        </b-button>
+        </b-button-group>
       </b-col>
 
     </b-row>
@@ -53,8 +46,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
-import reviewService from '@/utils/services/review-service'
 
 import dateToString from '@/utils/mixins/dateToString'
 
@@ -69,12 +60,8 @@ export default {
   methods: {
     handleClick () {
       this.$router.push({ name: 'review', params: { id: this.item._id } })
-    },
-
-    async handleLock () {
-      await reviewService.changeReviewStatus(this.item._id, { locked: this.item.locked })
-      this.item.locked = !this.item.locked
     }
+
   },
 
   computed: {
