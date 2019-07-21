@@ -11,12 +11,12 @@
         >
           <b-container @click="handleClick">
             <b-row class="ml-1">{{item && item.title}}</b-row>
-            <b-row class="ml-1"><span><i>Average rating: {{item.avgRating}}</i></span></b-row>
+            <b-row class="ml-1"><span class="text-muted"><i>Customer rating:</i> {{item.avgRating}}</span></b-row>
 
             <b-row
               class="my-1 mx-1 text-size-10 text-muted"
             >
-              By {{item && item.createdBy && item.createdBy.name}}, {{item && item.updatedAt | formatDate('d MMM, YYYY')}}
+              <i>By {{item && item.createdBy && item.createdBy.name}}, {{item && item.updatedAt | formatDate('d MMM, YYYY')}}</i>
             </b-row>
           </b-container>
         </b-card-text>

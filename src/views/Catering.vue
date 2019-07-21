@@ -10,11 +10,16 @@
       <b-row>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia optio facilis voluptas accusantium maxime quam, repellendus, in odit facere nesciunt quo laboriosam nisi magnam officia voluptatibus eum iusto? Dolorem, magni.</p>
         <p>Located on {{cateringFacility && cateringFacility.address.street + cateringFacility.address.streetNo}}, {{cateringFacility && cateringFacility.address.city}}.
-          Famous for its {{cateringFacility && cateringFacility.cuisine.name }} cuisine and {{cateringFacility && cateringFacility.michelinStars }} Michelin Stars.
+          Famous for its {{cateringFacility && cateringFacility.cuisine.name }} cuisine and {{cateringFacility && cateringFacility.michelinStars }} Michelin Stars.</p>
+        <p>Contact Information: {{cateringFacility && cateringFacility.contactInformation.toString()}}</p>
+        <p v-if="cateringFacility && cateringFacility.website">Website:
+          <b-link :href="cateringFacility.website.toString()" target="_blank">
+            {{cateringFacility && cateringFacility.website}}
+          </b-link>
         </p>
       </b-row>
 
-      <b-container>
+      <b-container class="mt-3">
         <b-row v-if="isSignedIn">
           <b-col cols="12" sm="8" md="6">
             <b-button
