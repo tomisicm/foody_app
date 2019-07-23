@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO: find a way -->
   <div :class="[{ editable: inEditMode }, classes]"
     :contenteditable="inEditMode"
     :placeholder="placeholder"
