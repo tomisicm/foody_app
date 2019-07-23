@@ -80,7 +80,6 @@ export default {
       try {
         await this.login(this.form)
       } catch (error) {
-
         const newError = getErrorMessageObject(error)
 
         await this.handleError(newError)
