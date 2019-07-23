@@ -197,11 +197,16 @@
       </b-form>
     </b-tab>
 
-    <b-tab title="Menu">
+    <b-tab
+      v-if="catering._id"
+      title="Menu">
       <Menu />
     </b-tab>
 
-    <b-tab title="Delivery">
+    <b-tab
+      v-if="catering._id"
+      title="Delivery"
+    >
       <div>delivery</div>
     </b-tab>
   </b-tabs>
@@ -298,7 +303,9 @@ export default {
 
     async handleSubmit () {
       if (await this.validateBeforeSubmit()) {
-        await cateringService.saveCatering(this.$route.params.id, this.catering)
+        const { data } = await cateringService.saveCatering(this.$route.params.id, this.catering)
+        this.catering = data
+        this.$router.push({ path: `/catering/${this.catering._id}/edit` })
       }
     },
 
