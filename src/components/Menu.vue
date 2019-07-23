@@ -71,8 +71,10 @@ export default {
     },
 
     async getMenuItems () {
-      const { data } = await cateringService.getMentItemsForCatering(this.$route.params.id)
-      this.menuItems = data.docs
+      if (this.$route.params.id) {
+        const { data } = await cateringService.getMentItemsForCatering(this.$route.params.id)
+        this.menuItems = data.docs
+      }
     }
   },
 
