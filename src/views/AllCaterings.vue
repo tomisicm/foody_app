@@ -14,7 +14,7 @@
       <b-col v-if="isSignedIn"  md="8" order="1" order-sm="1" class="h-25 float-right">
         <b-nav pills class="my-2 ml-1">
           <b-nav-item active>All Foody Places</b-nav-item>
-          <b-nav-item :to="{ name: 'addcatering' }">New Foody Place</b-nav-item>
+          <b-nav-item :to="{ name: 'addcatering' }">Add Foody Place</b-nav-item>
         </b-nav>
       </b-col>
 
