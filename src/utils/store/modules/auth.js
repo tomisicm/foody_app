@@ -27,7 +27,7 @@ const actions = {
       await authService.login(email, password)
 
       commit('SET_DATA', getUserFromLocalStorage())
-      router.push({ name: '/' })
+      router.push({ name: 'home' })
     } catch (error) {
       throw error
     }

@@ -50,7 +50,6 @@ export default {
   methods: {
     ...mapActions('authStore', ['logout']),
 
-    // TODO: does this logout logic belong here?
     async handleLogout () {
       if (this.$route.meta.isAuthenticated) {
         await this.logout()
