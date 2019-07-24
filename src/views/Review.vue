@@ -244,7 +244,7 @@ export default {
     ...mapGetters('authStore', ['isSignedIn']),
     ...mapGetters('authStore', ['user']),
     img () {
-      return this.review.createdBy && 'http://localhost:3000/' + this.review.createdBy.profile.avatar
+      return this.review.createdBy && 'http://localhost:3000' + this.review.createdBy.profile.avatar
     },
 
     isLoggedUserReviewCreator () {
