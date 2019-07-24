@@ -3,7 +3,7 @@
 // 2. joi
 // 3. unique-validators and other pre hooks
 
-// TODO: lodash?
+// TODO: this should totally be on the backend
 export function getErrorMessageObject (errorObject) {
   const { response } = errorObject
   const { data } = response
