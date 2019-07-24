@@ -76,7 +76,7 @@ export default {
   computed: {
     ...mapGetters('authStore', ['isSignedIn', 'isAdmin']),
     image () {
-      return 'http://localhost:3000/' + this.item.createdBy.profile.avatar
+      return 'http://localhost:3000' + this.item.createdBy.profile.avatar
     }
   },
 
