@@ -73,12 +73,11 @@ export default {
       return this.params
     },
 
-    /* * * TODO: REFACTOR * * */
     getItemToBeRemoved (item) {
       this.$modal.show('confirm-action', {})
       this.itemToBeRemoved = item._id
     },
-    /* * * TODO: REFACTOR * * */
+
     async removeItem () {
       await this.deleteComment(this.itemToBeRemoved)
       this.$modal.hide('confirm-action', {})
