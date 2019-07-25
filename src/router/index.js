@@ -182,7 +182,4 @@ router.beforeEach((to, from, next) => {
   } else next()
 })
 
-// TODO: user can only edit his own reviews
-// TODO: user can only edit catering places he added
-
 export default router
