@@ -248,7 +248,6 @@ export default {
     },
 
     isLoggedUserReviewCreator () {
-      // TODO: THIS LOGIC SHOULD BE IN STROE !
       return this.isSignedIn && this.user._id === (this.review.createdBy || {})._id
     }
   },

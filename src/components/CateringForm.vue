@@ -313,7 +313,6 @@ export default {
       if (this.inEdit) {
         const { data } = await cateringService.getCatering(this.$route.params.id)
 
-        // TODO: extract this
         if (!data.pageMaintainedBy.includes(this.user._id)) {
           this.$router.push({ name: 'forbidden' })
         }
