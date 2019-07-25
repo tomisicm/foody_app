@@ -146,7 +146,7 @@ export default {
       this.form.username = data.name
       this.form.email = data.email
       this.form.profession = data.profile.profession
-      this.img = 'http://localhost:3000/' + data.profile.avatar
+      this.img = 'http://localhost:3000' + data.profile.avatar
     },
 
     async handleUpdate () {
