@@ -51,9 +51,9 @@ const actions = {
 
 const getters = {
   user: state => state.user,
-  isSignedIn: state => !_.isNull(state.user),
-  isAdmin: state => (getters.isSignedIn && state.user.admin) || false,
-  userId: state => state.user && state.user._id
+  isSignedIn: state => !!state.user || false,
+  isAdmin: state => (getters.isSignedIn && (state.user || {}).admin) || false,
+  userId: state => getters.isSignedIn && state.user && state.user._id
 }
 
 export const authStore = {
