@@ -64,8 +64,7 @@
             </b-row>
             <b-row class="ml-1"><span>Address: {{ review.item && review.item.address.city }},</span><span> {{ review.item && review.item.address.street }} at {{ review.item && review.item.address.streetNo }}</span></b-row>
             <b-row class="ml-1">Cuisine:
-              <!-- TODO: mixin -->
-              {{ review.item && review.item.cuisine.map(cuis => ' ' +cuis.name ).toString() }}
+              {{ review.item && review.item.cuisine | formatArray('name') }}
             </b-row>
           </b-card>
         </b-col>
@@ -196,6 +195,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import reviewService from '@/utils/services/review-service'
+import arrayToString from '@/utils/mixins/stringArrays'
 
 import StarRating from 'vue-star-rating'
 import baseEditable from '@/components/base/baseEditable'
@@ -258,6 +258,7 @@ export default {
   },
 
   components: { baseEditable, StarRating, baseCollapse },
+  mixins: [arrayToString],
   name: 'Review_Page'
 }
 </script>
