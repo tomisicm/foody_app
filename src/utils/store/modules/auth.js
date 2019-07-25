@@ -1,5 +1,4 @@
 import authService from '@/utils/services/auth-service'
-import _ from 'lodash'
 import router from '@/router'
 
 const getUserFromLocalStorage = () => {
