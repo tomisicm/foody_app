@@ -21,15 +21,20 @@
 
       <b-container class="mt-3">
         <b-row v-if="isSignedIn">
-          <b-col cols="12" sm="8" md="6">
+          <b-col cols="12" sm="10" md="8">
             <b-button
               :to="{ name: 'ordercatering', }" variant="success"
             >Order food
             </b-button>
             <b-button
               :to="{ name: 'addreview', query: { item: this.$route.params.id } }"
-              variant="primary" class="mx-2"
+              variant="primary" class="ml-2"
             >Add review
+            </b-button>
+            <b-button
+              :to="{ name: 'ordercatering', params: { id: this.$route.params.id } }"
+              variant="primary" class="ml-2"
+            >Make Order
             </b-button>
           </b-col>
         </b-row>
