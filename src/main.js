@@ -22,6 +22,8 @@ import * as icons from './icons'
 
 import VModal from 'vue-js-modal'
 
+import CommentCard from '@/components/CommentCard'
+
 import { phoneOrEmailRule } from '@/utils/validationRules'
 
 VeeValidate.Validator.extend('phoneOrEmail', phoneOrEmailRule)
@@ -34,6 +36,7 @@ Vue.use(VeeValidate, {
   inject: true,
   fieldsBagName: 'errorFields'
 })
+Vue.component('comment-card', CommentCard)
 
 Vue.use(VModal)
 

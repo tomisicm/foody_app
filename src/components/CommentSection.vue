@@ -27,7 +27,7 @@
   >
 
     <template v-slot:listitem="{ item }">
-      <SingleComment
+      <CommentCard
         :item="item"
         :removeItem="getItemToBeRemoved"
       />
@@ -58,7 +58,7 @@ import { mapGetters, mapActions } from 'vuex'
 import AppModal from '@/components/modals/AppModal'
 
 import List from '@/components/base/List'
-import SingleComment from '@/components/SingleComment'
+import CommentCard from '@/components/CommentCard'
 import NewComment from '@/components/NewComment'
 
 export default {
@@ -100,7 +100,7 @@ export default {
   },
 
   components: {
-    List, SingleComment, NewComment, AppModal
+    List, CommentCard, NewComment, AppModal
   }
 }
 </script>

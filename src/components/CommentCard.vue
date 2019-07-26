@@ -74,7 +74,7 @@
     </b-row>
 
     <div v-for="item in item.thread" :key="item._id">
-      <SingleComment class="ml-3"
+      <CommentCard class="ml-3"
         :item="item"
         :removeItem="removeItem"
       />
@@ -155,10 +155,10 @@ export default {
   },
 
   components: {
-    'NewComment': NewComment, 'SingleComment': this
+    NewComment
   },
   mixins: [ dateToString ],
-  name: 'SingleComment'
+  name: 'CommentCard'
 }
 </script>
 
