@@ -23,7 +23,7 @@
           <div cols="4">
             <b-dropdown
               split
-              variant="primary"
+              variant="secondary"
               class="m-2"
               v-model="perPage"
             >
