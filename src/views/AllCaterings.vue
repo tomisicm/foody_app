@@ -47,6 +47,8 @@
           </div>
         </b-row>
         <b-table
+          head-variant="dark"
+          outlined="outlined"
           :items="items"
           :fields="fields"
           @row-clicked="openCateringInNewTab($event)"
@@ -54,7 +56,7 @@
           hover
         >
           <template slot="cuisine" slot-scope="item">
-            {{ item.value.map(el => el.name).toString() }}
+            {{ item.value | formatArray('name') }}
           </template>
         </b-table>
       </b-col>
@@ -65,6 +67,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import cateringService from '@/utils/services/catering-service'
+
+import arrayToString from '@/utils/mixins/stringArrays'
 
 import FilterObjects from '@/components/FilterObjects'
 
@@ -146,6 +150,7 @@ export default {
     ...mapGetters('authStore', ['isSignedIn'])
   },
 
+  mixins: [arrayToString],
   components: { FilterObjects }
 }
 </script>
