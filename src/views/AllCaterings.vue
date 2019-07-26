@@ -24,6 +24,7 @@
             <b-dropdown
               split
               variant="secondary"
+              split-variant="outline-secondary"
               class="m-2"
               v-model="perPage"
             >
