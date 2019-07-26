@@ -17,24 +17,8 @@ import BootstrapVue from 'bootstrap-vue'
 import multiselect from 'vue-multiselect'
 import vueslider from 'vue-slider-component'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {
-  faTrash,
-  faEdit,
-  faSave,
-  faCheck,
-  faReply,
-  faArrowUp,
-  faArrowDown,
-  faExternalLinkSquareAlt,
-  faLock,
-  faLockOpen,
-  faLongArrowAltLeft,
-  faSmile,
-  faThumbsUp,
-  faWindowMinimize
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// eslint-disable-next-line no-unused-vars
+import * as icons from './icons'
 
 import VModal from 'vue-js-modal'
 
@@ -43,25 +27,6 @@ import { phoneOrEmailRule } from '@/utils/validationRules'
 VeeValidate.Validator.extend('phoneOrEmail', phoneOrEmailRule)
 
 Vue.use(BootstrapVue)
-
-library.add(
-  faTrash,
-  faEdit,
-  faSave,
-  faReply,
-  faCheck,
-  faArrowUp,
-  faArrowDown,
-  faExternalLinkSquareAlt,
-  faLock,
-  faLockOpen,
-  faLongArrowAltLeft,
-  faSmile,
-  faThumbsUp,
-  faWindowMinimize
-)
-
-Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.component('multiselect', multiselect)
 Vue.component('vueslider', vueslider)
