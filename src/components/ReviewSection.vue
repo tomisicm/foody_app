@@ -6,10 +6,16 @@
       <template v-slot:listitem="{item}">
         <ReviewCard :item="item"/>
       </template>
+
+      <template v-slot:emptylist>
+        <div class="text-size-11">
+          Currently, there aren't any reviews for this foody place.
+          Signin, if you would like to add one.
+        </div>
+      </template>
     </List>
 
-    <!-- TODO: no reviews case -->
-    <div cols="12">
+    <div v-if="!reviews.docs" cols="12">
       <b-pagination
         v-model="reviews.page"
         :total-rows="reviews.total"

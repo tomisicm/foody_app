@@ -32,9 +32,16 @@
         :removeItem="getItemToBeRemoved"
       />
     </template>
+
+    <template v-slot:emptylist>
+      <div class="text-size-11">
+        Currently, there aren't any comments for this foody place.
+        Signin, if you would like to add one.
+      </div>
+    </template>
   </List>
 
-  <div cols="12">
+  <div cols="12" v-if="!comments.docs">
     <b-pagination
       v-model="comments.page"
       :total-rows="comments.total"

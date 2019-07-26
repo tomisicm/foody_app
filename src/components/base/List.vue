@@ -1,18 +1,22 @@
 <template>
-  <div v-if="items.length">
-    <div
-      v-for="item in items"
-      v-bind:key="item._id"
-      no-body
-      class="overflow-hidden"
-    >
-
-      <slot
-        name="listitem"
-        :item="item"
-      />
-
+  <div>
+    <div v-if="items.length">
+      <div
+        v-for="item in items"
+        v-bind:key="item._id"
+        no-body
+        class="overflow-hidden"
+      >
+        <slot
+          name="listitem"
+          :item="item"
+        />
     </div>
+  </div>
+
+  <slot v-else
+    name="emptylist"
+  />
   </div>
 </template>
 
