@@ -85,7 +85,10 @@ export default {
         },
         totalRating: {
           label: 'Rating',
-          key: 'avgRating'
+          key: 'avgRating',
+          formatter: value => {
+            return value.toFixed(2)
+          }
         },
         status: {
           label: 'Approved',
