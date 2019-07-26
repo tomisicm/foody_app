@@ -32,9 +32,10 @@
             >Add review
             </b-button>
             <b-button
-              :to="{ name: 'ordercatering', params: { id: this.$route.params.id } }"
+              v-if="cateringFacility && cateringFacility.pageMaintainedBy.includes(this.user._id)"
+              :to="{ name: 'editcatering', params: { id: this.$route.params.id } }"
               variant="primary" class="ml-2"
-            >Make Order
+            >Edit
             </b-button>
           </b-col>
         </b-row>
@@ -92,7 +93,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('authStore', ['isSignedIn'])
+    ...mapGetters('authStore', ['isSignedIn', 'user'])
   },
 
   created () {
