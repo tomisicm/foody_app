@@ -100,7 +100,10 @@ export default {
         rating: {
           label: 'Rating',
           key: 'rating',
-          sortable: true
+          sortable: true,
+          formatter: value => {
+            return value.toFixed(2)
+          }
         }
       },
       items: [
