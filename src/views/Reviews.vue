@@ -12,7 +12,8 @@
     <div cols="4">
       <b-dropdown
         split
-        variant="primary"
+        variant="secondary"
+        split-variant="outline-secondary"
         class="m-2"
         v-model="perPage"
       >
@@ -43,6 +44,8 @@
       :fields="fields"
       striped
       hover
+      head-variant="dark"
+      outlined="outlined"
       @row-clicked="openReview($event)"
     >
       <template slot="address" slot-scope="reviews">

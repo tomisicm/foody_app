@@ -48,12 +48,11 @@
           </div>
         </b-row>
         <b-table
-          head-variant="dark"
-          outlined="outlined"
           :items="items"
           :fields="fields"
           @row-clicked="openCateringInNewTab($event)"
-          striped
+          head-variant="dark"
+          outlined="outlined"
           hover
         >
           <template slot="cuisine" slot-scope="item">
