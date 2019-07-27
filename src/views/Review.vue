@@ -5,12 +5,14 @@
         <b-button @click="handleBack" variant="primary"><font-awesome-icon icon="long-arrow-alt-left" /> Back</b-button>
       </div>
       <div class="h4 mx-5 my-2">
-        Title: {{review.title}}
+        Title: {{review && review.title}}
       </div>
     </b-row>
 
     <b-container fluid class="mt-2">
-      <b-row>
+      <b-row
+        v-if="review"
+      >
         <b-col cols="auto"></b-col>
         <b-col md="4" class="ml-auto">
 
@@ -20,11 +22,11 @@
               variant="outline-success"
               class="ml-2"
             >
-              {{review.likedBy && review.likedBy.likes}}</b-button>
+              {{ review.likedBy.likes }}</b-button>
             <b-button
               @click="handleLike"
               :disabled="!isSignedIn"
-              :pressed="review.likedBy && review.likedBy.liked"
+              :pressed="review.likedBy.liked"
               variant="success"><font-awesome-icon icon="thumbs-up" />
             </b-button>
           </b-button-group>
@@ -50,7 +52,7 @@
       </b-row>
     </b-container>
 
-    <b-form>
+    <b-form v-if="review">
       <b-row class="text-size-11">
         <b-col class="review__sectrion ml-1 mb-1 mt-4">
           <b-card>
@@ -86,33 +88,14 @@
 
       <div role="tablist" class="mx-1">
 
-        <baseCollapse
+        <ReviewComponent
           headline="General Impression"
-          :inEditMode=true
-          id="general"
-        >
-          <template v-slot:mainbody>
-            <baseEditable
-              :content.sync="review.generalImpression"
-              :inEditMode.sync="inEditMode"
-              @update="review.generalImpression = $event"
-            />
-          </template>
-
-          <template v-slot:additionalbody>
-            <b-col sm="3">
-              <label class="my-1">Rating:</label>
-            </b-col>
-            <b-col sm="2">
-              <star-rating
-                :read-only="!inEditMode"
-                :increment=0.1
-                :star-size=20
-                v-model="review.generalRating"
-              />
-            </b-col>
-          </template>
-        </baseCollapse>
+          :inEditMode="inEditMode"
+          locator="general"
+          :reviewContent="review.generalImpression"
+          :reviewRating.sync="review.generalRating"
+          @update:reviewcontent="review.generalImpression = $event"
+        />
 
         <baseCollapse
           headline="Food Impression"
@@ -201,11 +184,13 @@ import StarRating from 'vue-star-rating'
 import baseEditable from '@/components/base/baseEditable'
 import baseCollapse from '@/components/base/baseCollapse'
 
+import ReviewComponent from '@/components/parts/ReviewComponent'
+
 export default {
   data () {
     return {
       inEditMode: false,
-      review: {}
+      review: null
     }
   },
 
@@ -256,7 +241,7 @@ export default {
     this.getReviewData()
   },
 
-  components: { baseEditable, StarRating, baseCollapse },
+  components: { baseEditable, StarRating, baseCollapse, ReviewComponent },
   mixins: [arrayToString],
   name: 'Review_Page'
 }
