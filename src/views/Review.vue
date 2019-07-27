@@ -62,9 +62,9 @@
                   {{review.item && review.item.name}}</b-link>
               </span>
             </b-row>
-            <b-row class="ml-1"><span>Address: {{ review.item && review.item.address.city }},</span><span> {{ review.item && review.item.address.street }} at {{ review.item && review.item.address.streetNo }}</span></b-row>
+            <b-row class="ml-1"><span>Address: {{ review.item && review.item.address.city }}</span><span>{{  + review.item && review.item.address.street }} at {{ review.item && review.item.address.streetNo }}</span></b-row>
             <b-row class="ml-1">Cuisine:
-              {{ review.item && review.item.cuisine | formatArray('name') }}
+              {{ review.item && review.item.cuisine || [] | formatArray('name') }}
             </b-row>
           </b-card>
         </b-col>
