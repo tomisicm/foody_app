@@ -93,65 +93,31 @@
           :inEditMode="inEditMode"
           locator="general"
           :reviewContent="review.generalImpression"
-          :reviewRating.sync="review.generalRating"
-          @update:reviewcontent="review.generalImpression = $event"
+          :reviewRating="review.generalRating"
+          @update:content="review.generalImpression = $event"
+          @update:rating="review.generalRating = $event"
         />
 
-        <baseCollapse
+        <ReviewComponent
           headline="Food Impression"
-          :inEditMode=true
-          id="food"
-        >
-          <template v-slot:mainbody>
-            <baseEditable
-              :content.sync="review.foodSection"
-              :inEditMode.sync="inEditMode"
-              @update="review.foodSection = $event"
-            />
-          </template>
+          :inEditMode="inEditMode"
+          locator="food"
+          :reviewContent="review.foodSection"
+          :reviewRating="review.foodRating"
+          @update:content="review.foodSection = $event"
+          @update:rating="review.foodRating = $event"
+        />
 
-          <template v-slot:additionalbody>
-            <b-col sm="3">
-              <label class="my-1">Rating:</label>
-            </b-col>
-            <b-col sm="2">
-              <star-rating
-                :read-only="!inEditMode"
-                :increment=0.1
-                :star-size=20
-                v-model="review.foodRating"
-              />
-            </b-col>
-          </template>
-        </baseCollapse>
-
-        <baseCollapse
+        <ReviewComponent
           headline="Staff Impression"
-          :inEditMode=true
-          id="staff"
-        >
-          <template v-slot:mainbody>
-            <baseEditable
-              :content.sync="review.staffSection"
-              :inEditMode="inEditMode"
-              @update="review.staffSection = $event"
-            />
-          </template>
+          :inEditMode="inEditMode"
+          locator="staff"
+          :reviewContent="review.staffSection"
+          :reviewRating="review.staffRating"
+          @update:content="review.staffSection = $event"
+          @update:rating="review.staffRating = $event"
+        />
 
-          <template v-slot:additionalbody>
-            <b-col sm="3">
-              <label class="my-1">Rating:</label>
-            </b-col>
-            <b-col sm="2">
-              <star-rating
-                :read-only="!inEditMode"
-                :increment=0.1
-                :star-size=20
-                v-model="review.staffRating"
-              />
-            </b-col>
-          </template>
-        </baseCollapse>
       </div>
 
       <b-row

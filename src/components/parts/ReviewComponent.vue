@@ -21,7 +21,8 @@
           :read-only="!inEditMode"
           :increment=0.1
           :star-size=20
-          v-model="reviewRating"
+          v-model="rating"
+          @input="updateReviewRating($event)"
         />
       </b-col>
     </template>
@@ -63,17 +64,19 @@ export default {
 
   data () {
     return {
-
+      rating: this.reviewRating
     }
   },
 
   methods: {
     updateReviewContent (event) {
-      this.$emit('update:reviewcontent', event)
-    },
+      this.$emit('update:content', event)
+    }
+  },
 
-    updateReviewRating (event) {
-      this.$emit('update:reviewcontent', event)
+  watch: {
+    'rating' () {
+      this.$emit('update:rating', this.rating)
     }
   },
 
