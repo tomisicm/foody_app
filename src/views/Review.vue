@@ -146,10 +146,6 @@ import { mapGetters } from 'vuex'
 import reviewService from '@/utils/services/review-service'
 import arrayToString from '@/utils/mixins/stringArrays'
 
-import StarRating from 'vue-star-rating'
-import baseEditable from '@/components/base/baseEditable'
-import baseCollapse from '@/components/base/baseCollapse'
-
 import ReviewComponent from '@/components/parts/ReviewComponent'
 
 export default {
@@ -207,7 +203,7 @@ export default {
     this.getReviewData()
   },
 
-  components: { baseEditable, StarRating, baseCollapse, ReviewComponent },
+  components: { ReviewComponent },
   mixins: [arrayToString],
   name: 'Review_Page'
 }
