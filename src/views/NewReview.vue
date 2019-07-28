@@ -12,7 +12,7 @@
 
       <div role="tablist" class="mx-1">
 
-          <ReviewComponent
+        <ReviewComponent
           headline="General Impression"
           :inEditMode="true"
           locator="general"
@@ -43,6 +43,7 @@
         />
 
       </div>
+
       <b-row v-if="readyForSubmition" class="mx-1 my-3">
         <b-button variant="primary" @click="onSubmit">Submit</b-button>
       </b-row>
